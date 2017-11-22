@@ -12,8 +12,8 @@ class BNLSTMCell(RNNCell):
 	             is_training_tensor,
 	             max_bn_steps,
 	             forget_bias=1.0,
-	             initial_scale=0.1,  # TODO: test 0.01
-	             activation=tf.tanh,
+	             initial_scale=0.1, 
+	             activation=tf.sigmoid,
 	             decay=0.95):
 		"""
 		* max bn steps is the maximum number of steps for which to store separate population stats

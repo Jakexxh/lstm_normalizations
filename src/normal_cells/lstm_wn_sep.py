@@ -30,7 +30,7 @@ class WNLSTMCell(RNNCell):
 		self._num_units = num_units
 		self._forget_bias = forget_bias
 		self._state_is_tuple = state_is_tuple
-		self._activation = activation or math_ops.tanh
+		self._activation = tf.sigmoid
 
 	@property
 	def state_size(self):
@@ -134,7 +134,7 @@ def weight_norm(x, V, scope='weight_norm'):
 			],
 			dtype=tf.float32,
 
-			initializer=tf.truncated_normal_initializer(1.0))
+			initializer=tf.truncated_normal_initializer(0.01))
 
 		# b = tf.get_variable(
 		#     name=scope + '_b',

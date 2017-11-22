@@ -31,7 +31,7 @@ class CNLSTMCell(RNNCell):
 		self._num_units = num_units
 		self._forget_bias = forget_bias
 		self._state_is_tuple = state_is_tuple
-		self._activation = activation or math_ops.tanh
+		self._activation = tf.sigmoid
 
 	@property
 	def state_size(self):
@@ -141,7 +141,7 @@ def cosine_norm(x, w, name='cosine_norm'):
 			cos_mat = tf.matmul(x_l2, w_l2)
 			gamma = tf.get_variable(
 				name + '_gamma', [cos_mat.get_shape().as_list()[1]],
-				initializer=tf.truncated_normal_initializer(5.0))  # TODO: test1.0
+				initializer=tf.truncated_normal_initializer(1.0))  # TODO: test1.0
 
 			return gamma * cos_mat
 
