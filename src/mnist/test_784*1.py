@@ -71,36 +71,36 @@ def run():
 
         # Unstack to get a list of 'timesteps' tensors of shape (batch_size, n_input)
         x = tf.unstack(x, timesteps, 1)
-        x = tf.convert_to_tensor(x)
+        # x = tf.convert_to_tensor(x)
         if FLAGS.cell != 'bn_sep':
             # Define a lstm cell with tensorflow
             init_state = tf.contrib.rnn.LSTMStateTuple(
-	            tf.truncated_normal([batch_size, num_hidden], stddev=0.1),
-	            tf.truncated_normal([batch_size, num_hidden], stddev=0.1))
+                tf.truncated_normal([batch_size, num_hidden], stddev=0.1),
+                tf.truncated_normal([batch_size, num_hidden], stddev=0.1))
             lstm_cell = cell_dic[FLAGS.cell](num_hidden, forget_bias=1.0)
 
             # Get lstm cell output
             outputs, states = tf.nn.static_rnn(
-	            lstm_cell, x, initial_state=init_state, dtype=tf.float32)
+                lstm_cell, x, initial_state=init_state, dtype=tf.float32)
 
             # Linear activation, using rnn inner loop last output
             return tf.matmul(outputs[-1], weights) + biases
 
         else:
-             init_state = (tf.truncated_normal(
-                 [batch_size, num_hidden], stddev=0.1), tf.truncated_normal(
-                     [batch_size, num_hidden], stddev=0.1), tf.constant(
-                         0.0, shape=[1]))
-             lstm_cell = cell_dic[FLAGS.cell](
-                 num_hidden,
-                 FLAGS.max_steps,
-                 forget_bias=1.0,
-                 is_training_tensor=training)
-             outputs, states = tf.nn.static_rnn(
-                 lstm_cell, x, initial_state=init_state, dtype=tf.float32)
-             _, final_hidden, _ = states
+            init_state = (tf.truncated_normal(
+                [batch_size, num_hidden], stddev=0.1), tf.truncated_normal(
+                    [batch_size, num_hidden], stddev=0.1), tf.constant(
+                        0.0, shape=[1]))
+            lstm_cell = cell_dic[FLAGS.cell](
+                num_hidden,
+                FLAGS.max_steps,
+                forget_bias=1.0,
+                is_training_tensor=training)
+            outputs, states = tf.nn.static_rnn(
+                lstm_cell, x, initial_state=init_state, dtype=tf.float32)
+            _, final_hidden, _ = states
 
-             return tf.matmul(final_hidden, weights) + biases
+            return tf.matmul(final_hidden, weights) + biases
 
     logits = RNN(X, w, b)
 
@@ -233,7 +233,7 @@ if __name__ == '__main__':
         type=str,
         default='/tmp/logs/mnist/',
         help='Summaries log directory')
-    parser.add_argument('--cell', type=str, default='cn_sep', help='RNN Cell')
+    parser.add_argument('--cell', type=str, default='bn_sep', help='RNN Cell')
 
     FLAGS, unparsed = parser.parse_known_args()
     tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)

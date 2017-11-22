@@ -235,7 +235,7 @@ if __name__ == '__main__':
 		type=str,
 		default='/tmp/logs/mnist/base',
 		help='Summaries log directory')
-	parser.add_argument('--cell', type=str, default='bn_sep', help='RNN Cell')
+	parser.add_argument('--cell', type=str, default='cn_sep', help='RNN Cell')
 
 	FLAGS, unparsed = parser.parse_known_args()
 	tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
