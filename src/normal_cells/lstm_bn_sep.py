@@ -110,8 +110,8 @@ class BNLSTMCell(RNNCell):
 
             c, h, step = state
             # c = tf.Print(c, [tf.reduce_mean(c)], 'c')
-            h = tf.Print(h, [tf.reduce_mean(h)], 'h: ')
-            step = tf.Print(step, [tf.reduce_mean(step)], 'step_num: ')
+            # h = tf.Print(h, [tf.reduce_mean(h)], 'h: ')
+            # step = tf.Print(step, [tf.reduce_mean(step)], 'step_num: ')
 
             _step = tf.squeeze(tf.gather(tf.cast(step, tf.int32), 0))
 
@@ -136,7 +136,7 @@ class BNLSTMCell(RNNCell):
             hidden = bn_xh + bn_hh
 
             # hidden = hh + xh
-            hidden = tf.Print(hidden, [tf.reduce_mean(hidden)], 'hidden: ')
+            # hidden = tf.Print(hidden, [tf.reduce_mean(hidden)], 'hidden: ')
 
             f, i, o, j = tf.split(hidden, 4, 1)
 
