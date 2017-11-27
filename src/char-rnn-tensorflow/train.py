@@ -38,8 +38,8 @@ def main():
     parser.add_argument(
         '--model',
         type=str,
-        default='bn_sep',
-        help='base, cn_sep, wn_sep, ln_sep, or bn_sep')
+        default='cn_sep_scale',
+        help='base, cn_sep, wn_sep, ln_sep, cn_sep_scale, or bn_sep')
     parser.add_argument(
         '--batch_size', type=int, default=50, help='minibatch size')
     parser.add_argument(
