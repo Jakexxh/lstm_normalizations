@@ -9,7 +9,7 @@ import os
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/' + '..'))
 from normal_cells.lstm_bn_sep import BNLSTMCell
-# from normal_cells_new.lstm_cn_scale_input import CNSCALELSTMCell
+from normal_cells_new.lstm_cn_scale_input import CNSCALELSTMCell
 from normal_cells.lstm_cn_sep import CNLSTMCell
 from normal_cells.lstm_ln_sep import LNLSTMCell
 # from normal_cells_new.lstm_pcc_sep import PCCLSTMCell
@@ -32,6 +32,8 @@ class Model():
             cell_fn = LNLSTMCell
         elif args.model == 'wn_sep':
             cell_fn = WNLSTMCell
+        elif args.model == 'cn_sep_scale':
+            cell_fn = CNSCALELSTMCell
         elif args.model == 'bn_sep':
             cell_fn = BNLSTMCell
         else:
