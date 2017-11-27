@@ -43,7 +43,9 @@ class Model():
                 cell = cell_fn(args.rnn_size)
             else:
                 cell = cell_fn(
-                    args.rnn_size, max_bn_steps=args.seq_length, is_training_tensor=training)
+                    args.rnn_size,
+                    max_bn_steps=args.seq_length,
+                    is_training_tensor=training)
             if training and (args.output_keep_prob < 1.0
                              or args.input_keep_prob < 1.0):
                 cell = rnn.DropoutWrapper(

@@ -54,7 +54,7 @@ def main():
         default=5.,
         help='clip gradients at this value')
     parser.add_argument(
-        '--lr', type=float, default=0.00, help='learning rate') #0.002
+        '--lr', type=float, default=0.002, help='learning rate')
     parser.add_argument(
         '--decay_rate',
         type=float,

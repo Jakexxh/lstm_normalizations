@@ -66,42 +66,42 @@ def run():
 	tf.summary.histogram("f_biases", b)
 
 	def RNN(x, weights, biases):
-    
+	
 		# Prepare data shape to match `rnn` function requirements
 		# Current data input shape: (batch_size, timesteps, n_input)
 		# Required shape: 'timesteps' tensors list of shape (batch_size, n_input)
 
 		# Unstack to get a list of 'timesteps' tensors of shape (batch_size, n_input)
 		x = tf.unstack(x, timesteps, 1)
-		# x = tf.convert_to_tensor(x)
-		# if FLAGS.cell != 'bn_sep':
-		# 	# Define a lstm cell with tensorflow
-		# 	init_state = tf.contrib.rnn.LSTMStateTuple(
-		# 		tf.truncated_normal([batch_size, num_hidden], stddev=0.1),
-		# 		tf.truncated_normal([batch_size, num_hidden], stddev=0.1))
-		# 	lstm_cell = cell_dic[FLAGS.cell](num_hidden, forget_bias=1.0)
+		if FLAGS.cell != 'bn_sep':
+			# Define a lstm cell with tensorflow
+			init_state = tf.contrib.rnn.LSTMStateTuple(
+				tf.truncated_normal([batch_size, num_hidden], stddev=0.1),
+				tf.truncated_normal([batch_size, num_hidden], stddev=0.1))
+			lstm_cell = cell_dic[FLAGS.cell](num_hidden, forget_bias=1.0)
 
-		# 	# Get lstm cell output
-		# 	outputs, states = tf.nn.static_rnn(
-		# 		lstm_cell, x, initial_state=init_state, dtype=tf.float32)
+			# Get lstm cell output
+			outputs, states = tf.nn.static_rnn(
+				lstm_cell, x, initial_state=init_state, dtype=tf.float32)
 
-		# 	# Linear activation, using rnn inner loop last output
-		# 	return tf.matmul(outputs[-1], weights) + biases
+			# Linear activation, using rnn inner loop last output
+			return tf.matmul(outputs[-1], weights) + biases
 
-		# else:
-		init_state = (tf.truncated_normal(
-			[batch_size, num_hidden], stddev=0.1), tf.truncated_normal(
-			[batch_size, num_hidden], stddev=0.1), tf.constant(0.0, shape=[1]))
-		lstm_cell = cell_dic[FLAGS.cell](
-			num_hidden,
-			FLAGS.max_steps,
-			forget_bias=1.0,
-			is_training_tensor=training)
-		outputs, states = tf.nn.static_rnn(
-			lstm_cell, x, initial_state=init_state, dtype=tf.float32)
-		_, final_hidden, _ = states
+		else:
+			init_state = (tf.truncated_normal(
+				[batch_size, num_hidden], stddev=0.1), tf.truncated_normal(
+					[batch_size, num_hidden], stddev=0.1), tf.constant(
+						0.0, shape=[1]))
+			lstm_cell = cell_dic[FLAGS.cell](
+				num_hidden,
+				FLAGS.max_steps,
+				forget_bias=1.0,
+				is_training_tensor=training)
+			outputs, states = tf.nn.static_rnn(
+				lstm_cell, x, initial_state=init_state, dtype=tf.float32)
+			_, final_hidden, _ = states
 
-		return tf.matmul(final_hidden, weights) + biases
+			return tf.matmul(final_hidden, weights) + biases
 
 	logits = RNN(X, w, b)
 
@@ -113,8 +113,8 @@ def run():
 	optimizer = tf.train.GradientDescentOptimizer(learning_rate=FLAGS.lr)
 	gvs = optimizer.compute_gradients(loss_op)
 	capped_gvs = [(None
-	               if grad is None else tf.clip_by_value(grad, -1., 1.), var)
-	              for grad, var in gvs]
+				   if grad is None else tf.clip_by_value(grad, -1., 1.), var)
+				  for grad, var in gvs]
 
 	train_op = optimizer.apply_gradients(capped_gvs)
 
@@ -126,7 +126,7 @@ def run():
 		if grad is not None:
 			tf.summary.histogram('grad/{}'.format(var.name), capped_grad)
 			tf.summary.histogram('capped_fraction/{}'.format(var.name),
-			                     tf.nn.zero_fraction(grad - capped_grad))
+								 tf.nn.zero_fraction(grad - capped_grad))
 			tf.summary.histogram('variable/{}'.format(var.name), var)
 
 	tf.summary.scalar('accuracy', accuracy)
@@ -153,18 +153,18 @@ def run():
 			# Run optimization op (backprop)
 			sess.run(
 				[train_op], feed_dict={X: batch_x,
-				                       Y: batch_y,
-				                       training: True})
+									   Y: batch_y,
+									   training: True})
 			if step % display_step == 0 or step == 1:
 				# Calculate batch loss and accuracy
 				summary, loss, acc, _ = sess.run(
 					[merged, loss_op, accuracy, train_op],
 					feed_dict={X: batch_x,
-					           Y: batch_y,
-					           training: True})
+							   Y: batch_y,
+							   training: True})
 				print("Step " + str(step) + ", Minibatch Loss= " +
-				      "{:.4f}".format(loss) + ", Training Accuracy= " +
-				      "{:.3f}".format(acc))
+					  "{:.4f}".format(loss) + ", Training Accuracy= " +
+					  "{:.3f}".format(acc))
 				train_writer.add_summary(summary, step)
 
 				valid_x, valid_y = mnist.validation.next_batch(batch_size)
@@ -173,11 +173,11 @@ def run():
 				summary, loss, acc = sess.run(
 					[merged, loss_op, accuracy],
 					feed_dict={X: valid_x,
-					           Y: valid_y,
-					           training: False})
+							   Y: valid_y,
+							   training: False})
 				print("Step " + str(step) + ", Minibatch Loss= " +
-				      "{:.4f}".format(loss) + ", Valid Accuracy= " +
-				      "{:.3f}".format(acc))
+					  "{:.4f}".format(loss) + ", Valid Accuracy= " +
+					  "{:.3f}".format(acc))
 				valid_writer.add_summary(summary, step)
 
 		print("Optimization Finished!")
@@ -193,8 +193,8 @@ def run():
 			summary, loss, acc = sess.run(
 				[merged, loss_op, accuracy],
 				feed_dict={X: test_data,
-				           Y: test_label,
-				           training: False})
+						   Y: test_label,
+						   training: False})
 			test_loss += loss
 			test_acc += acc
 			print("Step " + str(step) + ", Minibatch Loss= " + "{:.4f}".format(
@@ -235,7 +235,7 @@ if __name__ == '__main__':
 		type=str,
 		default='/tmp/logs/mnist/base',
 		help='Summaries log directory')
-	parser.add_argument('--cell', type=str, default='cn_sep', help='RNN Cell')
+	parser.add_argument('--cell', type=str, default='base', help='RNN Cell')
 
 	FLAGS, unparsed = parser.parse_known_args()
 	tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
