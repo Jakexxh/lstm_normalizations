@@ -136,8 +136,8 @@ __init__	../src/char-rnn-tensorflow/utils.py	/^    def __init__(self, data_dir, 
 __init__	../src/normal_cells/lstm_basic.py	/^    def __init__(self,$/;"	kind:member	line:18
 __init__	../src/normal_cells/lstm_bn_sep.py	/^    def __init__(self,$/;"	kind:member	line:10
 __init__	../src/normal_cells/lstm_cn_scale_input.py	/^    def __init__(self,$/;"	kind:member	line:18
-__init__	../src/normal_cells/lstm_cn_sep.py	/^	def __init__(self,$/;"	kind:member	line:19
-__init__	../src/normal_cells/lstm_ln_sep.py	/^	def __init__(self,$/;"	kind:member	line:18
+__init__	../src/normal_cells/lstm_cn_sep.py	/^    def __init__(self,$/;"	kind:member	line:19
+__init__	../src/normal_cells/lstm_ln_sep.py	/^    def __init__(self,$/;"	kind:member	line:18
 __init__	../src/normal_cells/lstm_pcc_sep.py	/^	def __init__(self,$/;"	kind:member	line:18
 __init__	../src/normal_cells/lstm_wn_sep.py	/^	def __init__(self,$/;"	kind:member	line:18
 __init__	../src/normal_cells_new/lstm_basic.py	/^	def __init__(self,$/;"	kind:member	line:18
@@ -168,8 +168,8 @@ _initializer	../src/normal_cells/lstm_basic.py	/^    def _initializer(shape, dty
 _initializer	../src/normal_cells/lstm_bn_sep.py	/^    def _initializer(shape, dtype=tf.float32, partition_info=None):$/;"	kind:function	line:159
 _initializer	../src/normal_cells/lstm_bn_sep.py	/^    def _initializer(shape, dtype=tf.float32, partition_info=None):$/;"	kind:function	line:173
 _initializer	../src/normal_cells/lstm_cn_scale_input.py	/^    def _initializer(shape, dtype=tf.float32, partition_info=None):$/;"	kind:function	line:155
-_initializer	../src/normal_cells/lstm_cn_sep.py	/^	def _initializer(shape, dtype=tf.float32, partition_info=None):$/;"	kind:function	line:154
-_initializer	../src/normal_cells/lstm_ln_sep.py	/^	def _initializer(shape, dtype=tf.float32, partition_info=None):$/;"	kind:function	line:149
+_initializer	../src/normal_cells/lstm_cn_sep.py	/^    def _initializer(shape, dtype=tf.float32, partition_info=None):$/;"	kind:function	line:155
+_initializer	../src/normal_cells/lstm_ln_sep.py	/^    def _initializer(shape, dtype=tf.float32, partition_info=None):$/;"	kind:function	line:149
 _initializer	../src/normal_cells/lstm_pcc_sep.py	/^	def _initializer(shape, dtype=tf.float32, partition_info=None):$/;"	kind:function	line:154
 _initializer	../src/normal_cells/lstm_wn_sep.py	/^	def _initializer(shape, dtype=tf.float32, partition_info=None):$/;"	kind:function	line:150
 _initializer	../src/normal_cells_new/lstm_basic.py	/^	def _initializer(shape, dtype=tf.float32, partition_info=None):$/;"	kind:function	line:125
@@ -232,8 +232,8 @@ cPickle	../src/char-rnn-tensorflow/train.py	/^from six.moves import cPickle$/;"	
 cPickle	../src/char-rnn-tensorflow/utils.py	/^from six.moves import cPickle$/;"	kind:namespace	line:4
 call	../src/normal_cells/lstm_basic.py	/^    def call(self, inputs, state):$/;"	kind:member	line:44
 call	../src/normal_cells/lstm_cn_scale_input.py	/^    def call(self, inputs, state):$/;"	kind:member	line:44
-call	../src/normal_cells/lstm_cn_sep.py	/^	def call(self, inputs, state):$/;"	kind:member	line:45
-call	../src/normal_cells/lstm_ln_sep.py	/^	def call(self, inputs, state):$/;"	kind:member	line:44
+call	../src/normal_cells/lstm_cn_sep.py	/^    def call(self, inputs, state):$/;"	kind:member	line:45
+call	../src/normal_cells/lstm_ln_sep.py	/^    def call(self, inputs, state):$/;"	kind:member	line:44
 call	../src/normal_cells/lstm_pcc_sep.py	/^	def call(self, inputs, state):$/;"	kind:member	line:44
 call	../src/normal_cells/lstm_wn_sep.py	/^	def call(self, inputs, state):$/;"	kind:member	line:44
 call	../src/normal_cells_new/lstm_basic.py	/^	def call(self, inputs, state):$/;"	kind:member	line:44
@@ -293,7 +293,7 @@ hidden_size	../src/ptb/ptb_word_lm.py	/^    hidden_size = 650$/;"	kind:variable	
 identity_initializer	../src/normal_cells/lstm_basic.py	/^def identity_initializer(scale):$/;"	kind:function	line:124
 identity_initializer	../src/normal_cells/lstm_bn_sep.py	/^def identity_initializer(scale):$/;"	kind:function	line:158
 identity_initializer	../src/normal_cells/lstm_cn_scale_input.py	/^def identity_initializer(scale):$/;"	kind:function	line:154
-identity_initializer	../src/normal_cells/lstm_cn_sep.py	/^def identity_initializer(scale):$/;"	kind:function	line:153
+identity_initializer	../src/normal_cells/lstm_cn_sep.py	/^def identity_initializer(scale):$/;"	kind:function	line:154
 identity_initializer	../src/normal_cells/lstm_ln_sep.py	/^def identity_initializer(scale):$/;"	kind:function	line:148
 identity_initializer	../src/normal_cells/lstm_pcc_sep.py	/^def identity_initializer(scale):$/;"	kind:function	line:153
 identity_initializer	../src/normal_cells/lstm_wn_sep.py	/^def identity_initializer(scale):$/;"	kind:function	line:149
@@ -466,8 +466,8 @@ os	../src/translate/translate.py	/^import os$/;"	kind:namespace	line:34
 output_size	../src/normal_cells/lstm_basic.py	/^    def output_size(self):$/;"	kind:member	line:41
 output_size	../src/normal_cells/lstm_bn_sep.py	/^    def output_size(self):$/;"	kind:member	line:34
 output_size	../src/normal_cells/lstm_cn_scale_input.py	/^    def output_size(self):$/;"	kind:member	line:41
-output_size	../src/normal_cells/lstm_cn_sep.py	/^	def output_size(self):$/;"	kind:member	line:42
-output_size	../src/normal_cells/lstm_ln_sep.py	/^	def output_size(self):$/;"	kind:member	line:41
+output_size	../src/normal_cells/lstm_cn_sep.py	/^    def output_size(self):$/;"	kind:member	line:42
+output_size	../src/normal_cells/lstm_ln_sep.py	/^    def output_size(self):$/;"	kind:member	line:41
 output_size	../src/normal_cells/lstm_pcc_sep.py	/^	def output_size(self):$/;"	kind:member	line:41
 output_size	../src/normal_cells/lstm_wn_sep.py	/^	def output_size(self):$/;"	kind:member	line:41
 output_size	../src/normal_cells_new/lstm_basic.py	/^	def output_size(self):$/;"	kind:member	line:41
@@ -538,8 +538,8 @@ single_cell	../src/translate/seq2seq_model.py	/^        def single_cell():$/;"	k
 state_size	../src/normal_cells/lstm_basic.py	/^    def state_size(self):$/;"	kind:member	line:36
 state_size	../src/normal_cells/lstm_bn_sep.py	/^    def state_size(self):$/;"	kind:member	line:30
 state_size	../src/normal_cells/lstm_cn_scale_input.py	/^    def state_size(self):$/;"	kind:member	line:36
-state_size	../src/normal_cells/lstm_cn_sep.py	/^	def state_size(self):$/;"	kind:member	line:37
-state_size	../src/normal_cells/lstm_ln_sep.py	/^	def state_size(self):$/;"	kind:member	line:36
+state_size	../src/normal_cells/lstm_cn_sep.py	/^    def state_size(self):$/;"	kind:member	line:37
+state_size	../src/normal_cells/lstm_ln_sep.py	/^    def state_size(self):$/;"	kind:member	line:36
 state_size	../src/normal_cells/lstm_pcc_sep.py	/^	def state_size(self):$/;"	kind:member	line:36
 state_size	../src/normal_cells/lstm_wn_sep.py	/^	def state_size(self):$/;"	kind:member	line:36
 state_size	../src/normal_cells_new/lstm_basic.py	/^	def state_size(self):$/;"	kind:member	line:36

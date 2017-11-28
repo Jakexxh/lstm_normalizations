@@ -12,7 +12,7 @@ from normal_cells.lstm_bn_sep import BNLSTMCell
 from normal_cells.lstm_cn_scale_input import CNSCALELSTMCell
 from normal_cells.lstm_cn_sep import CNLSTMCell
 from normal_cells.lstm_ln_sep import LNLSTMCell
-# from normal_cells.lstm_pcc_sep import PCCLSTMCell
+from normal_cells.lstm_pcc_sep import PCCLSTMCell
 from normal_cells.lstm_wn_sep import WNLSTMCell
 from normal_cells.lstm_basic import BASICLSTMCell
 
@@ -34,6 +34,8 @@ class Model():
             cell_fn = WNLSTMCell
         elif args.model == 'cn_sep_scale':
             cell_fn = CNSCALELSTMCell
+        elif args.model == 'pcc_sep':
+            cell_fn = PCCLSTMCell
         elif args.model == 'bn_sep':
             cell_fn = BNLSTMCell
         else:
