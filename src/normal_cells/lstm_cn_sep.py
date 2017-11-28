@@ -31,7 +31,7 @@ class CNLSTMCell(RNNCell):
 		self._num_units = num_units
 		self._forget_bias = forget_bias
 		self._state_is_tuple = state_is_tuple
-		self._activation = tf.sigmoid
+		self._activation = activation or math_ops.tanh
 
 	@property
 	def state_size(self):
