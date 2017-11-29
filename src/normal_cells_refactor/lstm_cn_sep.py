@@ -107,16 +107,16 @@ def _line_sep(args,
         #     initializer=identity_initializer(0.9))
         W_ih = tf.get_variable(
             'W_ih', [h_size, h_size],
-            initializer=tf.initializers.identity(0.9))
+            initializer=tf.identity_initializer(0.9))
         W_jh = tf.get_variable(
             'W_jh', [h_size, h_size],
-            initializer=tf.initializers.identity(0.9))
+            initializer=tf.identity_initializer(0.9))
         W_fh = tf.get_variable(
             'W_fh', [h_size, h_size],
-            initializer=tf.initializers.identity(0.9))
+            initializer=tf.identity_initializer(0.9))
         W_oh = tf.get_variable(
             'W_oh', [h_size, h_size],
-            initializer=tf.initializers.identity(0.9))
+            initializer=tf.identity_initializer(0.9))
 
         cn_xh = cosine_norm(x, W_xh, 'cn_xh')
 
@@ -183,11 +183,8 @@ def identity_initializer(scale):
     def _initializer(shape, dtype=tf.float32, partition_info=None):
         size = shape[0]
         # gate (j) is identity
-        t = np.zeros(shape)
-        t[:, :size] = np.identity(size) * scale
-        t[:, size:size * 2] = np.identity(size) * scale
-        t[:, size * 2:size * 3] = np.identity(size) * scale
-        t[:, size * 3:] = np.identity(size) * scale
+        # t = np.zeros(shape)
+        t = np.identity(size) * scale
         return tf.constant(t, dtype)
 
     return _initializer
