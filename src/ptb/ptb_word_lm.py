@@ -67,7 +67,7 @@ from src.normal_cells.lstm_cn_scale_input import CNSCALELSTMCell
 from src.normal_cells_refactor.lstm_cn_sep import CNLSTMCell
 from src.normal_cells_refactor.lstm_ln_sep import LNLSTMCell
 from src.normal_cells.lstm_pcc_sep import PCCLSTMCell
-from src.normal_cells.lstm_wn_sep import WNLSTMCell
+from src.normal_cells_refactor.lstm_wn_sep import WNLSTMCell
 from src.normal_cells.lstm_basic import BASICLSTMCell
 
 import time
