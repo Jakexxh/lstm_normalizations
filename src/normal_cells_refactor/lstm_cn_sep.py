@@ -107,16 +107,16 @@ def _line_sep(args,
         #     initializer=identity_initializer(0.9))
         W_ih = tf.get_variable(
             'W_ih', [h_size, h_size],
-            initializer=tf.identity_initializer(0.9))
+            initializer=identity_initializer(0.9))
         W_jh = tf.get_variable(
             'W_jh', [h_size, h_size],
-            initializer=tf.identity_initializer(0.9))
+            initializer=identity_initializer(0.9))
         W_fh = tf.get_variable(
             'W_fh', [h_size, h_size],
-            initializer=tf.identity_initializer(0.9))
+            initializer=identity_initializer(0.9))
         W_oh = tf.get_variable(
             'W_oh', [h_size, h_size],
-            initializer=tf.identity_initializer(0.9))
+            initializer=identity_initializer(0.9))
 
         cn_xh = cosine_norm(x, W_xh, 'cn_xh')
 
