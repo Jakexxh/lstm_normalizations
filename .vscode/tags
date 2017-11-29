@@ -65,6 +65,7 @@ Model	../src/char-rnn-tensorflow/model.py	/^class Model():$/;"	kind:class	line:2
 Model	../src/char-rnn-tensorflow/sample.py	/^from model import Model$/;"	kind:namespace	line:8
 Model	../src/char-rnn-tensorflow/train.py	/^from model import Model$/;"	kind:namespace	line:10
 PAD_ID	../src/translate/data_utils.py	/^PAD_ID = 0$/;"	kind:variable	line:38
+PCCLSTMCell	../src/char-rnn-tensorflow/model.py	/^from normal_cells.lstm_pcc_sep import PCCLSTMCell$/;"	kind:namespace	line:15
 PCCLSTMCell	../src/normal_cells/lstm_pcc_sep.py	/^class PCCLSTMCell(RNNCell):$/;"	kind:class	line:17
 PCCLSTMCell	../src/ptb/ptb_word_lm.py	/^from src.normal_cells.lstm_pcc_sep import PCCLSTMCell$/;"	kind:namespace	line:69
 PCC_SEP	../src/ptb/ptb_word_lm.py	/^PCC_SEP = "pcc_sep"$/;"	kind:variable	line:110
@@ -138,7 +139,7 @@ __init__	../src/normal_cells/lstm_bn_sep.py	/^    def __init__(self,$/;"	kind:me
 __init__	../src/normal_cells/lstm_cn_scale_input.py	/^    def __init__(self,$/;"	kind:member	line:18
 __init__	../src/normal_cells/lstm_cn_sep.py	/^    def __init__(self,$/;"	kind:member	line:19
 __init__	../src/normal_cells/lstm_ln_sep.py	/^    def __init__(self,$/;"	kind:member	line:18
-__init__	../src/normal_cells/lstm_pcc_sep.py	/^	def __init__(self,$/;"	kind:member	line:18
+__init__	../src/normal_cells/lstm_pcc_sep.py	/^    def __init__(self,$/;"	kind:member	line:18
 __init__	../src/normal_cells/lstm_wn_sep.py	/^	def __init__(self,$/;"	kind:member	line:18
 __init__	../src/normal_cells_new/lstm_basic.py	/^	def __init__(self,$/;"	kind:member	line:18
 __init__	../src/normal_cells_new/lstm_bn_sep.py	/^    def __init__(self,$/;"	kind:member	line:10
@@ -170,7 +171,7 @@ _initializer	../src/normal_cells/lstm_bn_sep.py	/^    def _initializer(shape, dt
 _initializer	../src/normal_cells/lstm_cn_scale_input.py	/^    def _initializer(shape, dtype=tf.float32, partition_info=None):$/;"	kind:function	line:155
 _initializer	../src/normal_cells/lstm_cn_sep.py	/^    def _initializer(shape, dtype=tf.float32, partition_info=None):$/;"	kind:function	line:155
 _initializer	../src/normal_cells/lstm_ln_sep.py	/^    def _initializer(shape, dtype=tf.float32, partition_info=None):$/;"	kind:function	line:149
-_initializer	../src/normal_cells/lstm_pcc_sep.py	/^	def _initializer(shape, dtype=tf.float32, partition_info=None):$/;"	kind:function	line:154
+_initializer	../src/normal_cells/lstm_pcc_sep.py	/^    def _initializer(shape, dtype=tf.float32, partition_info=None):$/;"	kind:function	line:154
 _initializer	../src/normal_cells/lstm_wn_sep.py	/^	def _initializer(shape, dtype=tf.float32, partition_info=None):$/;"	kind:function	line:150
 _initializer	../src/normal_cells_new/lstm_basic.py	/^	def _initializer(shape, dtype=tf.float32, partition_info=None):$/;"	kind:function	line:125
 _initializer	../src/normal_cells_new/lstm_bn_sep.py	/^    def _initializer(shape, dtype=tf.float32, partition_info=None):$/;"	kind:function	line:145
@@ -234,7 +235,7 @@ call	../src/normal_cells/lstm_basic.py	/^    def call(self, inputs, state):$/;"	
 call	../src/normal_cells/lstm_cn_scale_input.py	/^    def call(self, inputs, state):$/;"	kind:member	line:44
 call	../src/normal_cells/lstm_cn_sep.py	/^    def call(self, inputs, state):$/;"	kind:member	line:45
 call	../src/normal_cells/lstm_ln_sep.py	/^    def call(self, inputs, state):$/;"	kind:member	line:44
-call	../src/normal_cells/lstm_pcc_sep.py	/^	def call(self, inputs, state):$/;"	kind:member	line:44
+call	../src/normal_cells/lstm_pcc_sep.py	/^    def call(self, inputs, state):$/;"	kind:member	line:44
 call	../src/normal_cells/lstm_wn_sep.py	/^	def call(self, inputs, state):$/;"	kind:member	line:44
 call	../src/normal_cells_new/lstm_basic.py	/^	def call(self, inputs, state):$/;"	kind:member	line:44
 call	../src/normal_cells_new/lstm_cn_sep.py	/^    def call(self, inputs, state):$/;"	kind:member	line:47
@@ -348,7 +349,7 @@ logging	../src/normal_cells_new/lstm_ln_sep.py	/^from tensorflow.python.platform
 logging	../src/normal_cells_new/lstm_wn_sep.py	/^from tensorflow.python.platform import tf_logging as logging$/;"	kind:namespace	line:11
 logging	../src/ptb/ptb_word_lm.py	/^logging = tf.logging$/;"	kind:variable	line:84
 logging	../src/translate/translate.py	/^import logging$/;"	kind:namespace	line:38
-loop	../src/char-rnn-tensorflow/model.py	/^        def loop(prev, _):$/;"	kind:function	line:83
+loop	../src/char-rnn-tensorflow/model.py	/^        def loop(prev, _):$/;"	kind:function	line:85
 lr	../src/ptb/ptb_word_lm.py	/^    def lr(self):$/;"	kind:member	line:362
 lr_decay	../src/ptb/ptb_word_lm.py	/^    lr_decay = 0.5$/;"	kind:variable	line:389
 lr_decay	../src/ptb/ptb_word_lm.py	/^    lr_decay = 0.5$/;"	kind:variable	line:440
@@ -468,7 +469,7 @@ output_size	../src/normal_cells/lstm_bn_sep.py	/^    def output_size(self):$/;"	
 output_size	../src/normal_cells/lstm_cn_scale_input.py	/^    def output_size(self):$/;"	kind:member	line:41
 output_size	../src/normal_cells/lstm_cn_sep.py	/^    def output_size(self):$/;"	kind:member	line:42
 output_size	../src/normal_cells/lstm_ln_sep.py	/^    def output_size(self):$/;"	kind:member	line:41
-output_size	../src/normal_cells/lstm_pcc_sep.py	/^	def output_size(self):$/;"	kind:member	line:41
+output_size	../src/normal_cells/lstm_pcc_sep.py	/^    def output_size(self):$/;"	kind:member	line:41
 output_size	../src/normal_cells/lstm_wn_sep.py	/^	def output_size(self):$/;"	kind:member	line:41
 output_size	../src/normal_cells_new/lstm_basic.py	/^	def output_size(self):$/;"	kind:member	line:41
 output_size	../src/normal_cells_new/lstm_bn_sep.py	/^    def output_size(self):$/;"	kind:member	line:34
@@ -522,7 +523,7 @@ rnn_mode	../src/ptb/ptb_word_lm.py	/^    rnn_mode = CUDNN$/;"	kind:variable	line
 run	../src/mnist/test_28*28.py	/^def run():$/;"	kind:function	line:39
 run	../src/mnist/test_784*1.py	/^def run():$/;"	kind:function	line:36
 run_epoch	../src/ptb/ptb_word_lm.py	/^def run_epoch(session, model, eval_op=None, verbose=False):$/;"	kind:function	line:446
-sample	../src/char-rnn-tensorflow/model.py	/^    def sample(self,$/;"	kind:member	line:117
+sample	../src/char-rnn-tensorflow/model.py	/^    def sample(self,$/;"	kind:member	line:119
 sample	../src/char-rnn-tensorflow/sample.py	/^def sample(args):$/;"	kind:function	line:36
 sample.py	../src/char-rnn-tensorflow/sample.py	1;"	kind:file	line:1
 sampled_loss	../src/translate/seq2seq_model.py	/^            def sampled_loss(labels, logits):$/;"	kind:function	line:115
@@ -540,7 +541,7 @@ state_size	../src/normal_cells/lstm_bn_sep.py	/^    def state_size(self):$/;"	ki
 state_size	../src/normal_cells/lstm_cn_scale_input.py	/^    def state_size(self):$/;"	kind:member	line:36
 state_size	../src/normal_cells/lstm_cn_sep.py	/^    def state_size(self):$/;"	kind:member	line:37
 state_size	../src/normal_cells/lstm_ln_sep.py	/^    def state_size(self):$/;"	kind:member	line:36
-state_size	../src/normal_cells/lstm_pcc_sep.py	/^	def state_size(self):$/;"	kind:member	line:36
+state_size	../src/normal_cells/lstm_pcc_sep.py	/^    def state_size(self):$/;"	kind:member	line:36
 state_size	../src/normal_cells/lstm_wn_sep.py	/^	def state_size(self):$/;"	kind:member	line:36
 state_size	../src/normal_cells_new/lstm_basic.py	/^	def state_size(self):$/;"	kind:member	line:36
 state_size	../src/normal_cells_new/lstm_bn_sep.py	/^    def state_size(self):$/;"	kind:member	line:30
@@ -620,7 +621,7 @@ vs	../src/normal_cells_new/lstm_ln_sep.py	/^from tensorflow.python.ops import va
 vs	../src/normal_cells_new/lstm_wn_sep.py	/^from tensorflow.python.ops import variable_scope as vs$/;"	kind:namespace	line:8
 weight_norm	../src/normal_cells/lstm_wn_sep.py	/^def weight_norm(x, V, scope='weight_norm'):$/;"	kind:function	line:127
 weight_norm	../src/normal_cells_new/lstm_wn_sep.py	/^def weight_norm(x, V, scope='weight_norm'):$/;"	kind:function	line:126
-weighted_pick	../src/char-rnn-tensorflow/model.py	/^        def weighted_pick(weights):$/;"	kind:function	line:131
+weighted_pick	../src/char-rnn-tensorflow/model.py	/^        def weighted_pick(weights):$/;"	kind:function	line:133
 with_autoparallel_prefix	../src/ptb/util.py	/^def with_autoparallel_prefix(replica_id, name):$/;"	kind:function	line:61
 with_prefix	../src/ptb/util.py	/^def with_prefix(prefix, name):$/;"	kind:function	line:56
 xrange	../src/translate/seq2seq_model.py	/^from six.moves import xrange  # pylint: disable=redefined-builtin$/;"	kind:namespace	line:24
