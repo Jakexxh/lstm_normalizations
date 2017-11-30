@@ -61,21 +61,21 @@ from __future__ import print_function
 import sys
 import os
 
-sys.path.append(os.path.join(os.path.dirname(__file__) + '..', '..'))
-from src.normal_cells.lstm_bn_sep import BNLSTMCell
-from src.normal_cells.lstm_cn_scale_input import CNSCALELSTMCell
-from src.normal_cells_refactor.lstm_cn_sep import CNLSTMCell
-from src.normal_cells_refactor.lstm_ln_sep import LNLSTMCell
-from src.normal_cells.lstm_pcc_sep import PCCLSTMCell
-from src.normal_cells.lstm_wn_sep import WNLSTMCell
-from src.normal_cells.lstm_basic import BASICLSTMCell
+sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/' + '..'))
+from normal_cells.lstm_bn_sep import BNLSTMCell
+from normal_cells.lstm_cn_scale_input import CNSCALELSTMCell
+from normal_cells_refactor.lstm_cn_sep import CNLSTMCell
+from normal_cells_refactor.lstm_ln_sep import LNLSTMCell
+from normal_cells_refactor.lstm_pcc_sep import PCCLSTMCell
+from normal_cells_refactor.lstm_wn_sep import WNLSTMCell
+from normal_cells.lstm_basic import BASICLSTMCell
 
 import time
 import numpy as np
 import tensorflow as tf
 
-from src.ptb import reader
-from src.ptb import util
+from ptb import reader
+from ptb import util
 
 from tensorflow.python.client import device_lib
 from tensorflow.python import debug as tf_debug
@@ -86,26 +86,26 @@ logging = tf.logging
 flags.DEFINE_string(
     "model", "small",
     "A type of model. Possible options are: small, medium, large.")
-flags.DEFINE_string("data_path", "../data/simple-examples/data/",
+flags.DEFINE_string("data_path", "./data/simple-examples/data/",
                     "Where the training/test data is stored.")
 flags.DEFINE_string("save_path", "/tmp/log/ptb/bn", "Model output directory.")
 flags.DEFINE_bool("use_fp16", False,
                   "Train using 16-bit floats instead of 32bit floats")
-flags.DEFINE_integer("num_gpus", 1,
+flags.DEFINE_integer("num_gpus", 0,
                      "If larger than 1, Grappler AutoParallel optimizer "
                      "will create multiple training replicas with each GPU "
                      "running one replica.")
-flags.DEFINE_string("rnn_mode", 'bn_sep',
+flags.DEFINE_string("rnn_mode", 'ln_sep',
                     "The low level implementation of lstm cell: one of CUDNN, "
                     "BASIC, and BLOCK, representing cudnn_lstm, basic_lstm, "
                     "and lstm_block_cell classes.")
-flags.DEFINE_float("lr", 1e-2, "learning rate")
+flags.DEFINE_float("lr", 1.0, "learning rate")
 
 FLAGS = flags.FLAGS
 BASIC = "basic"
 BN_SEP = "bn_sep"
 CN_SEP = "cn_sep"
-LN_SEP = "ls_sep"
+LN_SEP = "ln_sep"
 WN_SEP = "wn_sep"
 PCC_SEP = "pcc_sep"
 CN_SCALE_SEP = "cn_scale_sep"
@@ -192,7 +192,7 @@ class PTBModel(object):
         optimizer = tf.train.GradientDescentOptimizer(self._lr)
         self._train_op = optimizer.apply_gradients(
             zip(grads, tvars),
-            global_step=tf.contrib.framework.get_or_create_global_step())
+            global_step=tf.train.get_or_create_global_step())
 
         self._new_lr = tf.placeholder(
             tf.float32, shape=[], name="new_learning_rate")
@@ -246,8 +246,7 @@ class PTBModel(object):
             return cell_dic[config.rnn_mode](
                 config.hidden_size,
                 forget_bias=0.0,
-                state_is_tuple=True,
-                reuse=not is_training)
+                state_is_tuple=True)
 
         # raise ValueError("rnn_mode %s not supported" % config.rnn_mode)
 

@@ -18,12 +18,12 @@ class LNLSTMCell(RNNCell):
     """LSTM unit with layer normalization and recurrent dropout.
   This class adds layer normalization and recurrent dropout to a
   basic LSTM unit. Layer normalization implementation is based on:
-    https://arxiv.org/abs/1607.06450.
+	https://arxiv.org/abs/1607.06450.
   "Layer Normalization"
   Jimmy Lei Ba, Jamie Ryan Kiros, Geoffrey E. Hinton
   and is applied before the internal nonlinearities.
   Recurrent dropout is base on:
-    https://arxiv.org/abs/1603.05118
+	https://arxiv.org/abs/1603.05118
   "Recurrent Dropout without Memory Loss"
   Stanislau Semeniuta, Aliaksei Severyn, Erhardt Barth.
   """
@@ -31,6 +31,7 @@ class LNLSTMCell(RNNCell):
     def __init__(self,
                  num_units,
                  forget_bias=1.0,
+                 state_is_tuple=True,
                  input_size=None,
                  activation=math_ops.tanh,
                  layer_norm=True,
@@ -40,24 +41,24 @@ class LNLSTMCell(RNNCell):
                  dropout_prob_seed=None,
                  reuse=None):
         """Initializes the basic LSTM cell.
-    Args:
-      num_units: int, The number of units in the LSTM cell.
-      forget_bias: float, The bias added to forget gates (see above).
-      input_size: Deprecated and unused.
-      activation: Activation function of the inner states.
-      layer_norm: If `True`, layer normalization will be applied.
-      norm_gain: float, The layer normalization gain initial value. If
-        `layer_norm` has been set to `False`, this argument will be ignored.
-      norm_shift: float, The layer normalization shift initial value. If
-        `layer_norm` has been set to `False`, this argument will be ignored.
-      dropout_keep_prob: unit Tensor or float between 0 and 1 representing the
-        recurrent dropout probability value. If float and 1.0, no dropout will
-        be applied.
-      dropout_prob_seed: (optional) integer, the randomness seed.
-      reuse: (optional) Python boolean describing whether to reuse variables
-        in an existing scope.  If not `True`, and the existing scope already has
-        the given variables, an error is raised.
-    """
+	Args:
+	  num_units: int, The number of units in the LSTM cell.
+	  forget_bias: float, The bias added to forget gates (see above).
+	  input_size: Deprecated and unused.
+	  activation: Activation function of the inner states.
+	  layer_norm: If `True`, layer normalization will be applied.
+	  norm_gain: float, The layer normalization gain initial value. If
+		`layer_norm` has been set to `False`, this argument will be ignored.
+	  norm_shift: float, The layer normalization shift initial value. If
+		`layer_norm` has been set to `False`, this argument will be ignored.
+	  dropout_keep_prob: unit Tensor or float between 0 and 1 representing the
+		recurrent dropout probability value. If float and 1.0, no dropout will
+		be applied.
+	  dropout_prob_seed: (optional) integer, the randomness seed.
+	  reuse: (optional) Python boolean describing whether to reuse variables
+		in an existing scope.  If not `True`, and the existing scope already has
+		the given variables, an error is raised.
+	"""
         super(LNLSTMCell, self).__init__(_reuse=reuse)
 
         if input_size is not None:
@@ -66,6 +67,7 @@ class LNLSTMCell(RNNCell):
         self._num_units = num_units
         self._activation = activation
         self._forget_bias = forget_bias
+        self._state_is_tuple = state_is_tuple
         self._keep_prob = dropout_keep_prob
         self._seed = dropout_prob_seed
         self._layer_norm = layer_norm
@@ -75,7 +77,8 @@ class LNLSTMCell(RNNCell):
 
     @property
     def state_size(self):
-        return LSTMStateTuple(self._num_units, self._num_units)
+        return (LSTMStateTuple(self._num_units, self._num_units)
+                if self._state_is_tuple else 2 * self._num_units)
 
     @property
     def output_size(self):
@@ -112,7 +115,7 @@ class LNLSTMCell(RNNCell):
                     "linear is expecting 2D arguments: %s" % shapes)
             if shape[1].value is None:
                 raise ValueError("linear expects shape[1] to \
-                                be provided for shape %s, "
+								be provided for shape %s, "
                                  "but saw %s" % (shape, shape[1]))
             else:
                 total_arg_size += shape[1].value
@@ -182,7 +185,7 @@ def layer_norm(inputs, epsilon=1e-7, scope=None):
         scale = tf.get_variable(
             'alpha',
             shape=[inputs.get_shape()[1]],
-            initializer=tf.truncated_normal_initializer(0.1))
+            initializer=tf.truncated_normal_initializer(0.01))
         shift = tf.get_variable(
             'beta',
             shape=[inputs.get_shape()[1]],

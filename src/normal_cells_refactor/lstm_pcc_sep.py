@@ -14,7 +14,7 @@ _BIAS_VARIABLE_NAME = "bias"
 _WEIGHTS_VARIABLE_NAME = "kernel"
 
 
-class WNLSTMCell(RNNCell):
+class PCCLSTMCell(RNNCell):
     def __init__(self,
                  num_units,
                  forget_bias=1.0,
@@ -22,7 +22,7 @@ class WNLSTMCell(RNNCell):
                  activation=None,
                  reuse=None):
 
-        super(WNLSTMCell, self).__init__(_reuse=reuse)
+        super(PCCLSTMCell, self).__init__(_reuse=reuse)
         if not state_is_tuple:
             logging.warn(
                 "%s: Using a concatenated state is slower and will soon be "
@@ -117,15 +117,15 @@ def _line_sep(args,
             'W_oh', [h_size, h_size],
             initializer=identity_initializer(0.9))
 
-        wn_xh = weight_norm(x, W_xh, 'wn_xh')
+        pcc_xh = pcc_norm(x, W_xh, 'cn_xh')
 
-        wn_ih = weight_norm(h, W_ih, 'wn_ih') + wn_xh[:, :h_size]
-        wn_jh = weight_norm(h, W_jh, 'wn_jh') + wn_xh[:, h_size:h_size * 2]
-        wn_fh = weight_norm(h, W_fh, 'wn_fh') + wn_xh[:, h_size * 2:h_size * 3]
-        wn_oh = weight_norm(h, W_oh, 'wn_oh') + wn_xh[:, h_size * 3:]
+        pcc_ih = pcc_norm(h, W_ih, 'cn_ih') + pcc_xh[:, :h_size]
+        pcc_jh = pcc_norm(h, W_jh, 'cn_jh') + pcc_xh[:, h_size:h_size * 2]
+        pcc_fh = pcc_norm(h, W_fh, 'cn_fh') + pcc_xh[:, h_size * 2:h_size * 3]
+        pcc_oh = pcc_norm(h, W_oh, 'cn_oh') + pcc_xh[:, h_size * 3:]
 
         if not bias:
-            return wn_ih, wn_jh, wn_fh, wn_oh
+            return pcc_ih, pcc_jh, pcc_fh, pcc_oh
         with vs.variable_scope(outer_scope) as inner_scope:
             inner_scope.set_partitioner(None)
             if bias_initializer is None:
@@ -148,37 +148,40 @@ def _line_sep(args,
                 dtype=dtype,
                 initializer=bias_initializer)
 
-        return (nn_ops.bias_add(wn_ih, biases_i), nn_ops.bias_add(
-            wn_jh, biases_j), nn_ops.bias_add(wn_oh, biases_o),
-                nn_ops.bias_add(wn_fh, biases_f))
+        return (nn_ops.bias_add(pcc_ih, biases_i), nn_ops.bias_add(
+            pcc_jh, biases_j), nn_ops.bias_add(pcc_oh, biases_o),
+                nn_ops.bias_add(pcc_fh, biases_f))
 
 
-def weight_norm(x, V, scope='weight_norm'):
-    with tf.name_scope(scope):
-        shape = V.get_shape().as_list()
-        g = tf.get_variable(
-            name=scope + '_g',
-            shape=[
-                shape[1],
-            ],
-            dtype=tf.float32,
-            initializer=tf.truncated_normal_initializer(1.0))
+def pcc_norm(x, w, name=None):
+    with tf.name_scope(name + '_pcc_norm'):
+        x = tf.concat([x, tf.fill([tf.shape(x)[0], 1], 1e-7)], axis=1)
 
-        # b = tf.get_variable(
-        #     name=scope + '_b',
-        #     shape=[shape[1]],
-        #     initializer=tf.zeros_initializer)
+        w = tf.concat([w, tf.fill([1, tf.shape(w)[1]], 1e-7)], axis=0)
 
-        w = g * tf.nn.l2_normalize(V, 0)
+        x_mean, _ = tf.nn.moments(x, [1], keep_dims=True)
+        w_mean, _ = tf.nn.moments(w, [0], keep_dims=True)
+        if tf.equal(tf.shape(x)[1], tf.shape(w)[0]) is not None:
 
-        return tf.matmul(x, w)
+            x_l2 = tf.nn.l2_normalize(x - x_mean, 1)
+
+            w_l2 = tf.nn.l2_normalize(w - w_mean, 0)
+
+            cos_mat = tf.matmul(x_l2, w_l2)
+
+            gamma = tf.get_variable(
+                name + '_gamma', [cos_mat.get_shape().as_list()[1]],
+                initializer=tf.truncated_normal_initializer(1.0))
+
+            return gamma * cos_mat
+        else:
+            raise Exception(
+                'Matrix shape does not match in cosine_norm Operation!')
 
 
 def identity_initializer(scale):
     def _initializer(shape, dtype=tf.float32, partition_info=None):
         size = shape[0]
-        # gate (j) is identity
-        # t = np.zeros(shape)
         t = np.identity(size) * scale
         return tf.constant(t, dtype)
 
