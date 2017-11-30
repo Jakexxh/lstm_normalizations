@@ -61,21 +61,21 @@ from __future__ import print_function
 import sys
 import os
 
-sys.path.append(os.path.join(os.path.dirname(__file__) + '..', '..'))
-from src.normal_cells.lstm_bn_sep import BNLSTMCell
-from src.normal_cells.lstm_cn_scale_input import CNSCALELSTMCell
-from src.normal_cells_refactor.lstm_cn_sep import CNLSTMCell
-from src.normal_cells_refactor.lstm_ln_sep import LNLSTMCell
-from src.normal_cells.lstm_pcc_sep import PCCLSTMCell
-from src.normal_cells_refactor.lstm_wn_sep import WNLSTMCell
-from src.normal_cells.lstm_basic import BASICLSTMCell
+sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/' + '..'))
+from normal_cells.lstm_bn_sep import BNLSTMCell
+from normal_cells.lstm_cn_scale_input import CNSCALELSTMCell
+from normal_cells_refactor.lstm_cn_sep import CNLSTMCell
+from normal_cells_refactor.lstm_ln_sep import LNLSTMCell
+from normal_cells.lstm_pcc_sep import PCCLSTMCell
+from normal_cells_refactor.lstm_wn_sep import WNLSTMCell
+from normal_cells.lstm_basic import BASICLSTMCell
 
 import time
 import numpy as np
 import tensorflow as tf
 
-from src.ptb import reader
-from src.ptb import util
+from ptb import reader
+from ptb import util
 
 from tensorflow.python.client import device_lib
 from tensorflow.python import debug as tf_debug
@@ -105,7 +105,7 @@ FLAGS = flags.FLAGS
 BASIC = "basic"
 BN_SEP = "bn_sep"
 CN_SEP = "cn_sep"
-LN_SEP = "ls_sep"
+LN_SEP = "ln_sep"
 WN_SEP = "wn_sep"
 PCC_SEP = "pcc_sep"
 CN_SCALE_SEP = "cn_scale_sep"
@@ -246,8 +246,7 @@ class PTBModel(object):
             return cell_dic[config.rnn_mode](
                 config.hidden_size,
                 forget_bias=0.0,
-                state_is_tuple=True,
-                reuse=not is_training)
+                state_is_tuple=True)
 
         # raise ValueError("rnn_mode %s not supported" % config.rnn_mode)
 
