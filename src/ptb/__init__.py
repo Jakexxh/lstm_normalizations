@@ -18,5 +18,5 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-from src.ptb import reader
-from src.ptb import util
+from ptb import reader
+from ptb import util

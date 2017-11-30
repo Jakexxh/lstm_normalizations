@@ -31,6 +31,7 @@ class LNLSTMCell(RNNCell):
     def __init__(self,
                  num_units,
                  forget_bias=1.0,
+		 state_is_tuple=True,
                  input_size=None,
                  activation=math_ops.tanh,
                  layer_norm=True,
@@ -66,6 +67,7 @@ class LNLSTMCell(RNNCell):
         self._num_units = num_units
         self._activation = activation
         self._forget_bias = forget_bias
+	self._state_is_tuple = state_is_tuple
         self._keep_prob = dropout_keep_prob
         self._seed = dropout_prob_seed
         self._layer_norm = layer_norm
@@ -75,8 +77,8 @@ class LNLSTMCell(RNNCell):
 
     @property
     def state_size(self):
-        return LSTMStateTuple(self._num_units, self._num_units)
-
+        return (LSTMStateTuple(self._num_units, self._num_units)
+                if self._state_is_tuple else 2 * self._num_units)
     @property
     def output_size(self):
         return self._num_units
@@ -182,7 +184,7 @@ def layer_norm(inputs, epsilon=1e-7, scope=None):
         scale = tf.get_variable(
             'alpha',
             shape=[inputs.get_shape()[1]],
-            initializer=tf.truncated_normal_initializer(0.1))
+            initializer=tf.truncated_normal_initializer(0.01))
         shift = tf.get_variable(
             'beta',
             shape=[inputs.get_shape()[1]],
