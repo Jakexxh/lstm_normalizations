@@ -14,7 +14,7 @@ from normal_cells.lstm_bn_sep import BNLSTMCell
 # from normal_cells_new.lstm_cn_scale_input import CNSCALELSTMCell
 from normal_cells_refactor.lstm_cn_sep import CNLSTMCell
 from normal_cells_refactor.lstm_ln_sep import LNLSTMCell
-# from normal_cells_new.lstm_pcc_sep import PCCLSTMCell
+from normal_cells_refactor.lstm_pcc_sep import PCCLSTMCell
 from normal_cells_refactor.lstm_wn_sep import WNLSTMCell
 from normal_cells.lstm_basic import BASICLSTMCell
 
@@ -45,7 +45,7 @@ def run():
         # 'cn_scale_sep': CNSCALELSTMCell,
         'ln_sep': LNLSTMCell,
         'wn_sep': WNLSTMCell,
-        # 'pcc_sep': PCCLSTMCell
+        'pcc_sep': PCCLSTMCell
     }
 
     # tf Graph input
@@ -234,7 +234,7 @@ if __name__ == '__main__':
         type=str,
         default='/tmp/logs/mnist/base',
         help='Summaries log directory')
-    parser.add_argument('--cell', type=str, default='wn_sep', help='RNN Cell')
+    parser.add_argument('--cell', type=str, default='pcc_sep', help='RNN Cell')
 
     FLAGS, unparsed = parser.parse_known_args()
     tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
