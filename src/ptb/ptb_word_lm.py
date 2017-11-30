@@ -86,20 +86,20 @@ logging = tf.logging
 flags.DEFINE_string(
     "model", "small",
     "A type of model. Possible options are: small, medium, large.")
-flags.DEFINE_string("data_path", "../data/simple-examples/data/",
+flags.DEFINE_string("data_path", "./data/simple-examples/data/",
                     "Where the training/test data is stored.")
 flags.DEFINE_string("save_path", "/tmp/log/ptb/bn", "Model output directory.")
 flags.DEFINE_bool("use_fp16", False,
                   "Train using 16-bit floats instead of 32bit floats")
-flags.DEFINE_integer("num_gpus", 1,
+flags.DEFINE_integer("num_gpus", 0,
                      "If larger than 1, Grappler AutoParallel optimizer "
                      "will create multiple training replicas with each GPU "
                      "running one replica.")
-flags.DEFINE_string("rnn_mode", 'bn_sep',
+flags.DEFINE_string("rnn_mode", 'ln_sep',
                     "The low level implementation of lstm cell: one of CUDNN, "
                     "BASIC, and BLOCK, representing cudnn_lstm, basic_lstm, "
                     "and lstm_block_cell classes.")
-flags.DEFINE_float("lr", 1e-2, "learning rate")
+flags.DEFINE_float("lr", 1.0, "learning rate")
 
 FLAGS = flags.FLAGS
 BASIC = "basic"
@@ -192,7 +192,7 @@ class PTBModel(object):
         optimizer = tf.train.GradientDescentOptimizer(self._lr)
         self._train_op = optimizer.apply_gradients(
             zip(grads, tvars),
-            global_step=tf.contrib.framework.get_or_create_global_step())
+            global_step=tf.train.get_or_create_global_step())
 
         self._new_lr = tf.placeholder(
             tf.float32, shape=[], name="new_learning_rate")
