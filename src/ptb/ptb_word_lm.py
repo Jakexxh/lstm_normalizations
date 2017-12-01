@@ -61,14 +61,15 @@ from __future__ import print_function
 import sys
 import os
 
-sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/' + '..'))
-from normal_cells.lstm_bn_sep import BNLSTMCell
+sys.path.append(os.path.abspath(os.path.dirname(__file__) + '..'))
+
+from normal_cells_refactor.lstm_bn_sep import BNLSTMCell
 from normal_cells.lstm_cn_scale_input import CNSCALELSTMCell
 from normal_cells_refactor.lstm_cn_sep import CNLSTMCell
 from normal_cells_refactor.lstm_ln_sep import LNLSTMCell
 from normal_cells_refactor.lstm_pcc_sep import PCCLSTMCell
 from normal_cells_refactor.lstm_wn_sep import WNLSTMCell
-from normal_cells.lstm_basic import BASICLSTMCell
+from normal_cells_refactor.lstm_basic import BASICLSTMCell
 
 import time
 import numpy as np
@@ -86,7 +87,7 @@ logging = tf.logging
 flags.DEFINE_string(
     "model", "small",
     "A type of model. Possible options are: small, medium, large.")
-flags.DEFINE_string("data_path", "../data/simple-examples/data/",
+flags.DEFINE_string("data_path", "../../data/simple-examples/data/",
                     "Where the training/test data is stored.")
 flags.DEFINE_string("save_path", "/tmp/log/ptb/bn", "Model output directory.")
 flags.DEFINE_bool("use_fp16", False,
@@ -244,9 +245,7 @@ class PTBModel(object):
         else:
 
             return cell_dic[config.rnn_mode](
-                config.hidden_size,
-                forget_bias=0.0,
-                state_is_tuple=True)
+                config.hidden_size, forget_bias=0.0, state_is_tuple=True)
 
         # raise ValueError("rnn_mode %s not supported" % config.rnn_mode)
 
