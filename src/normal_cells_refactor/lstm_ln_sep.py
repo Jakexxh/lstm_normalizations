@@ -88,10 +88,10 @@ class LNLSTMCell(RNNCell):
         shape = inp.get_shape()[-1:]
         gamma_init = init_ops.constant_initializer(self._g)
         beta_init = init_ops.constant_initializer(self._b)
-        with vs.variable_scope(scope):
-            # Initialize beta and gamma for use by layer_norm.
-            vs.get_variable("gamma", shape=shape, initializer=gamma_init)
-            vs.get_variable("beta", shape=shape, initializer=beta_init)
+        #with vs.variable_scope(scope):
+        #    # Initialize beta and gamma for use by layer_norm.
+        #    vs.get_variable("gamma", shape=shape, initializer=gamma_init)
+        #    vs.get_variable("beta", shape=shape, initializer=beta_init)
         normalized = layer_norm(inp, scope=scope)
         return normalized
 
@@ -115,7 +115,7 @@ class LNLSTMCell(RNNCell):
                     "linear is expecting 2D arguments: %s" % shapes)
             if shape[1].value is None:
                 raise ValueError("linear expects shape[1] to \
-								be provided for shape %s, "
+        							be provided for shape %s, "
                                  "but saw %s" % (shape, shape[1]))
             else:
                 total_arg_size += shape[1].value
@@ -129,11 +129,11 @@ class LNLSTMCell(RNNCell):
             [x, h] = args
             x_size = x.get_shape().as_list()[1]
             W_xh = tf.get_variable(
-                'W_xh', [x_size, output_size],
-                initializer=tf.orthogonal_initializer)
+                'W_xh', [x_size, output_size] #, initializer=tf.orthogonal_initializer
+		)
             W_hh = tf.get_variable(
-                'W_hh', [int(output_size / 4), output_size],
-                initializer=identity_initializer(0.9))
+                'W_hh', [int(output_size / 4), output_size] #, initializer=identity_initializer(0.9)
+		)
             cn_xh = tf.matmul(x, W_xh)  # one hot vector
             cn_hh = tf.matmul(h, W_hh)
             res = cn_xh + cn_hh
@@ -150,11 +150,14 @@ class LNLSTMCell(RNNCell):
                     dtype=dtype,
                     initializer=bias_initializer)
             return nn_ops.bias_add(res, biases)
+    
 
     def call(self, inputs, state):
         """LSTM cell with layer normalization and recurrent dropout."""
         c, h = state
-
+        #args = array_ops.concat([inputs, h], 1)
+    	#concat = self._linear(args)
+    	#dtype = args.dtype
         concat = self._linear([inputs, h], self._num_units * 4, False)
 
         i, j, f, o = array_ops.split(
@@ -185,7 +188,7 @@ def layer_norm(inputs, epsilon=1e-7, scope=None):
         scale = tf.get_variable(
             'alpha',
             shape=[inputs.get_shape()[1]],
-            initializer=tf.truncated_normal_initializer(0.01))
+            initializer=tf.truncated_normal_initializer(0.1))
         shift = tf.get_variable(
             'beta',
             shape=[inputs.get_shape()[1]],

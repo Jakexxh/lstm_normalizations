@@ -1,6 +1,5 @@
-import tensorflow as tf
 import numpy as np
-# import time
+import tensorflow as tf
 from tensorflow.python.ops.rnn_cell import RNNCell, LSTMStateTuple
 
 from tensorflow.python.ops import math_ops
@@ -15,7 +14,7 @@ _BIAS_VARIABLE_NAME = "bias"
 _WEIGHTS_VARIABLE_NAME = "kernel"
 
 
-class CNLSTMCell(RNNCell):
+class BASICLSTMCell(RNNCell):
     def __init__(self,
                  num_units,
                  forget_bias=1.0,
@@ -23,7 +22,7 @@ class CNLSTMCell(RNNCell):
                  activation=None,
                  reuse=None):
 
-        super(CNLSTMCell, self).__init__(_reuse=reuse)
+        super(BASICLSTMCell, self).__init__(_reuse=reuse)
         if not state_is_tuple:
             logging.warn(
                 "%s: Using a concatenated state is slower and will soon be "
@@ -50,11 +49,11 @@ class CNLSTMCell(RNNCell):
             c, h = state
         else:
             c, h = array_ops.split(value=state, num_or_size_splits=2, axis=1)
-        i, j, f, o = _line_sep([inputs, h], self._num_units, bias=True)
+        concat = _line_sep([inputs, h], 4 * self._num_units, bias=True)
 
         # i = input_gate, j = new_input, f = forget_gate, o = output_gate
-        # i, j, f, o = array_ops.split(
-        # value=concat, num_or_size_splits=4, axis=1)
+        i, j, f, o = array_ops.split(
+            value=concat, num_or_size_splits=4, axis=1)
 
         new_c = (c * sigmoid(f + self._forget_bias) +
                  sigmoid(i) * self._activation(j))
@@ -68,7 +67,7 @@ class CNLSTMCell(RNNCell):
 
 
 def _line_sep(args,
-              h_size,
+              output_size,
               bias,
               bias_initializer=None,
               kernel_initializer=None):
@@ -97,94 +96,40 @@ def _line_sep(args,
     with vs.variable_scope(scope) as outer_scope:
 
         [x, h] = args
-
         x_size = x.get_shape().as_list()[1]
         W_xh = tf.get_variable(
-            'W_xh', [x_size, h_size * 4] #, initializer=tf.orthogonal_initializer
+            'W_xh', [x_size, output_size] #,initializer=tf.orthogonal_initializer
 	)
-        # W_hh = tf.get_variable(
-        #     'W_hh', [h_size, h_size * 4],
-        #     initializer=identity_initializer(0.9))
-        W_ih = tf.get_variable(
-            'W_ih', [h_size, h_size] #, initializer=identity_initializer(0.9)
+        W_hh = tf.get_variable(
+            'W_hh', [int(output_size / 4), output_size] #,initializer=identity_initializer(0.9)
 	)
-        W_jh = tf.get_variable(
-            'W_jh', [h_size, h_size] #, initializer=identity_initializer(0.9)
-	)
-        W_fh = tf.get_variable(
-            'W_fh', [h_size, h_size] #, initializer=identity_initializer(0.9)
-	)
-        W_oh = tf.get_variable(
-            'W_oh', [h_size, h_size] #, initializer=identity_initializer(0.9)
-	)
-
-        cn_xh = cosine_norm(x, W_xh, 'cn_xh')
-
-        cn_ih = cosine_norm(h, W_ih, 'cn_ih') + cn_xh[:, :h_size]
-        cn_jh = cosine_norm(h, W_jh, 'cn_jh') + cn_xh[:, h_size:h_size * 2]
-        cn_fh = cosine_norm(h, W_fh, 'cn_fh') + cn_xh[:, h_size * 2:h_size * 3]
-        cn_oh = cosine_norm(h, W_oh, 'cn_oh') + cn_xh[:, h_size * 3:]
+        cn_xh = tf.matmul(x, W_xh)  # one hot vector
+        cn_hh = tf.matmul(h, W_hh)
+        res = cn_xh + cn_hh
 
         if not bias:
-            return cn_ih, cn_jh, cn_fh, cn_oh
+            return res
         with vs.variable_scope(outer_scope) as inner_scope:
             inner_scope.set_partitioner(None)
             if bias_initializer is None:
                 bias_initializer = init_ops.constant_initializer(
                     0.0, dtype=dtype)
-            biases_i = vs.get_variable(
-                _BIAS_VARIABLE_NAME + 'i', [h_size],
+            biases = vs.get_variable(
+                _BIAS_VARIABLE_NAME, [output_size],
                 dtype=dtype,
                 initializer=bias_initializer)
-            biases_j = vs.get_variable(
-                _BIAS_VARIABLE_NAME + 'j', [h_size],
-                dtype=dtype,
-                initializer=bias_initializer)
-            biases_o = vs.get_variable(
-                _BIAS_VARIABLE_NAME + 'o', [h_size],
-                dtype=dtype,
-                initializer=bias_initializer)
-            biases_f = vs.get_variable(
-                _BIAS_VARIABLE_NAME + 'f', [h_size],
-                dtype=dtype,
-                initializer=bias_initializer)
-
-        return (nn_ops.bias_add(cn_ih, biases_i), nn_ops.bias_add(
-            cn_jh, biases_j), nn_ops.bias_add(cn_oh, biases_o),
-                nn_ops.bias_add(cn_fh, biases_f))
-
-
-def cosine_norm(x, w, name='cosine_norm'):
-    with tf.name_scope(name):
-        x = tf.concat([x, tf.fill([tf.shape(x)[0], 1], 1e-7)], axis=1)
-
-        w = tf.concat([w, tf.fill([1, tf.shape(w)[1]], 1e-7)], axis=0)
-
-        if tf.equal(tf.shape(x)[1], tf.shape(w)[0]) is not None:
-
-            x_l2 = tf.nn.l2_normalize(x, 1)
-
-            w_l2 = tf.nn.l2_normalize(w, 0)
-
-            cos_mat = tf.matmul(x_l2, w_l2)
-            gamma = tf.get_variable(
-                name + '_gamma', [cos_mat.get_shape().as_list()[1]],
-                initializer=tf.truncated_normal_initializer(
-                    1.0))  # TODO: test1.0
-
-            return gamma * cos_mat
-
-        else:
-            raise Exception(
-                'Matrix shape does not match in cosine_norm Operation!')
+        return nn_ops.bias_add(res, biases)
 
 
 def identity_initializer(scale):
     def _initializer(shape, dtype=tf.float32, partition_info=None):
         size = shape[0]
         # gate (j) is identity
-        # t = np.zeros(shape)
-        t = np.identity(size) * scale
+        t = np.zeros(shape)
+        t[:, size:size * 2] = np.identity(size) * scale
+        t[:, :size] = np.identity(size) * scale
+        t[:, size * 2:size * 3] = np.identity(size) * scale
+        t[:, size * 3:] = np.identity(size) * scale
         return tf.constant(t, dtype)
 
     return _initializer

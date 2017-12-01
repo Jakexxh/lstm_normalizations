@@ -99,23 +99,23 @@ def _line_sep(args,
 
         x_size = x.get_shape().as_list()[1]
         W_xh = tf.get_variable(
-            'W_xh', [x_size, h_size * 4],
-            initializer=tf.orthogonal_initializer)
+            'W_xh', [x_size, h_size * 4] #,initializer=tf.orthogonal_initializer
+	)
         # W_hh = tf.get_variable(
         #     'W_hh', [h_size, h_size * 4],
         #     initializer=identity_initializer(0.9))
         W_ih = tf.get_variable(
-            'W_ih', [h_size, h_size],
-            initializer=identity_initializer(0.9))
+            'W_ih', [h_size, h_size] #, initializer=identity_initializer(0.9)
+	)
         W_jh = tf.get_variable(
-            'W_jh', [h_size, h_size],
-            initializer=identity_initializer(0.9))
+            'W_jh', [h_size, h_size] #, initializer=identity_initializer(0.9)
+	)
         W_fh = tf.get_variable(
-            'W_fh', [h_size, h_size],
-            initializer=identity_initializer(0.9))
+            'W_fh', [h_size, h_size] #,initializer=identity_initializer(0.9)
+	)
         W_oh = tf.get_variable(
-            'W_oh', [h_size, h_size],
-            initializer=identity_initializer(0.9))
+            'W_oh', [h_size, h_size] #,initializer=identity_initializer(0.9)
+	)
 
         pcc_xh = pcc_norm(x, W_xh, 'cn_xh')
 
