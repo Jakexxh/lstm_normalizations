@@ -201,8 +201,10 @@ def run():
             test_writer.add_summary(summary, step)
 
         print("Test Finished!")
-        print("Test Ave_loss: " + str(test_loss / (1000)))
-        print("Test Ave_acc: " + str(test_acc / (1000)))
+        print("Test Finished!")
+        with open(FLAGS.log_dir + '/final.txt') as file:
+            file.write("Test Ave_loss: " + str(test_loss / (1000)))
+            file.write("Test Ave_acc: " + str(test_acc / (1000)))
 
         train_writer.close()
         test_writer.close()
