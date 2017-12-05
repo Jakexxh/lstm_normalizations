@@ -100,11 +100,11 @@ def _line_sep(args,
         x_size = x.get_shape().as_list()[1]
 
         W_xh = tf.get_variable(
-            'W_xh', [x_size, output_size],
-            initializer=tf.orthogonal_initializer)
+	        'W_xh', [x_size, output_size]  # , initializer=tf.orthogonal_initializer
+        )
         W_hh = tf.get_variable(
-            'W_hh', [int(output_size / 4), output_size],
-            initializer=identity_initializer(0.9))
+	        'W_hh', [int(output_size / 4), output_size]  # ,initializer=identity_initializer(0.9)
+        )
 
         pcc_xh = pcc_norm(x, W_xh, 'pcc_xh')
         pcc_hh = pcc_norm(h, W_hh, 'pcc_hh')

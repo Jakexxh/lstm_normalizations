@@ -100,11 +100,11 @@ def _line_sep(args,
 		x_size = x.get_shape().as_list()[1]
 
 		W_xh = tf.get_variable(
-			'W_xh', [x_size, output_size],
-			initializer=tf.orthogonal_initializer)
+			'W_xh', [x_size, output_size]  # ,initializer=tf.orthogonal_initializer
+		)
 		W_hh = tf.get_variable(
-			'W_hh', [int(output_size / 4), output_size],
-			initializer=identity_initializer(0.9))
+			'W_hh', [int(output_size / 4), output_size]  # ,initializer=identity_initializer(0.9)
+		)
 
 		wn_xh = weight_norm(x, W_xh, 'wn_xh')
 		wn_hh = weight_norm(h, W_hh, 'wn_hh')

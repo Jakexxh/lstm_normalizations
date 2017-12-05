@@ -59,7 +59,6 @@ class BNLSTMCell(RNNCell):
                 offset = tf.get_variable(
                     'offset', [size], initializer=tf.zeros_initializer)
 
-            # print(self._max_bn_steps)
             pop_mean_all_steps = tf.get_variable(
                 'pop_mean_all', [self._max_bn_steps, size],
                 initializer=tf.zeros_initializer,
@@ -70,15 +69,11 @@ class BNLSTMCell(RNNCell):
                 trainable=False)
 
             step = tf.minimum(step, self._max_bn_steps - 1)
-            # tf.Print(step, [tf.reduce_mean(step)], 'step')
 
             pop_mean = pop_mean_all_steps[step]
             pop_var = pop_var_all_steps[step]
 
             batch_mean, batch_var = tf.nn.moments(x, [0])
-
-            # batch_mean = tf.Print(batch_mean, [tf.reduce_mean(batch_mean)], 'batch_mean')
-            # batch_var = tf.Print(batch_var, [tf.reduce_mean(batch_var)], 'batch_var')
 
             def batch_statistics():
                 pop_mean_new = pop_mean * self._decay + batch_mean * (
@@ -109,19 +104,16 @@ class BNLSTMCell(RNNCell):
         with tf.variable_scope(scope or type(self).__name__):
 
             c, h, step = state
-            # c = tf.Print(c, [tf.reduce_mean(c)], 'c')
-            # h = tf.Print(h, [tf.reduce_mean(h)], 'h: ')
-            # step = tf.Print(step, [tf.reduce_mean(step)], 'step_num: ')
 
             _step = tf.squeeze(tf.gather(tf.cast(step, tf.int32), 0))
 
             x_size = x.get_shape().as_list()[1]
             W_xh = tf.get_variable(
-                'W_xh', [x_size, 4 * self._num_units],
-                initializer=tf.orthogonal_initializer)
+	            'W_xh', [x_size, 4 * self._num_units]  # ,initializer=tf.orthogonal_initializer
+            )
             W_hh = tf.get_variable(
-                'W_hh', [self._num_units, 4 * self._num_units],
-                initializer=identity_initializer(0.9))
+	            'W_hh', [self._num_units, 4 * self._num_units]  # ,initializer=identity_initializer(0.9)
+            )
 
             hh = tf.matmul(h, W_hh)
             xh = tf.matmul(x, W_xh)
@@ -130,27 +122,16 @@ class BNLSTMCell(RNNCell):
                 hh, 'hh', _step, set_forget_gate_bias=True)
             bn_xh = self._batch_norm(xh, 'xh', _step, no_offset=True)
 
-            # bn_hh = tf.Print(bn_hh, [tf.reduce_mean(bn_hh)], 'bn_hh')
-            # bn_xh = tf.Print(bn_xh, [tf.reduce_mean(bn_xh)], 'bn_xh')
-
             hidden = bn_xh + bn_hh
-
-            # hidden = hh + xh
-            # hidden = tf.Print(hidden, [tf.reduce_mean(hidden)], 'hidden: ')
 
             f, i, o, j = tf.split(hidden, 4, 1)
 
             new_c = c * tf.sigmoid(f + self._forget_bias) + tf.sigmoid(
                 i) * self._activation(j)
 
-            # new_c = tf.Print(new_c, [tf.reduce_mean(new_c)], 'new_c: ')
-
             bn_new_c = self._batch_norm(new_c, 'c', _step)
 
-            # bn_new_c = tf.Print(bn_new_c, [tf.reduce_mean(bn_new_c)], 'bn_new_c: ')
-
             new_h = self._activation(bn_new_c) * tf.sigmoid(o)
-            # new_h = self._activation(new_c) * tf.sigmoid(o)
 
             return new_h, (new_c, new_h, step + 1)
 

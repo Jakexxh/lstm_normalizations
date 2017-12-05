@@ -11,7 +11,7 @@ from tensorflow.examples.tutorials.mnist import input_data
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/' + '..'))
 from normal_cells.lstm_bn_sep import BNLSTMCell
-# from normal_cells_new.lstm_cn_scale_input import CNSCALELSTMCell
+# from normal_cells_last.lstm_cn_scale_input import CNSCALELSTMCell
 from normal_cells_refactor.lstm_cn_sep import CNLSTMCell
 from normal_cells_refactor.lstm_ln_sep import LNLSTMCell
 from normal_cells_refactor.lstm_pcc_sep import PCCLSTMCell

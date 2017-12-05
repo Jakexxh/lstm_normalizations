@@ -100,11 +100,11 @@ def _line_sep(args,
         x_size = x.get_shape().as_list()[1]
         h_size = h.get_shape().as_list()[1]
         W_xh = tf.get_variable(
-            'W_xh', [x_size, output_size],
-            initializer=tf.orthogonal_initializer)
+	        'W_xh', [x_size, output_size]  # ,initializer=tf.orthogonal_initializer
+        )
         W_hh = tf.get_variable(
-            'W_hh', [int(output_size / 4), output_size],
-            initializer=identity_initializer(0.9))
+	        'W_hh', [int(output_size / 4), output_size]  # ,initializer=identity_initializer(0.9)
+        )
 
         W_rescale = tf.get_variable(
             'W_rescale', [h_size], initializer=tf.constant_initializer(10.0))

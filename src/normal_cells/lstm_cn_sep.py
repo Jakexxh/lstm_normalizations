@@ -97,17 +97,14 @@ def _line_sep(args,
     with vs.variable_scope(scope) as outer_scope:
 
         [x, h] = args
-        # t = time.time()
-        # x = tf.Print(x, [tf.reduce_mean(x)], str(t)+' x: ')
-        # h = tf.Print(h, [tf.reduce_mean(h)], str(t)+' h: ')
 
         x_size = x.get_shape().as_list()[1]
         W_xh = tf.get_variable(
-            'W_xh', [x_size, output_size],
-            initializer=tf.orthogonal_initializer)
+	        'W_xh', [x_size, output_size],  # initializer=tf.orthogonal_initializer
+        )
         W_hh = tf.get_variable(
-            'W_hh', [int(output_size / 4), output_size],
-            initializer=identity_initializer(0.9))
+	        'W_hh', [int(output_size / 4), output_size]  # , initializer=identity_initializer(0.9)
+        )
         cn_xh = cosine_norm(x, W_xh, 'cn_xh')  # one hot vector
         cn_hh = cosine_norm(h, W_hh, 'cn_hh')
         res = cn_xh + cn_hh
