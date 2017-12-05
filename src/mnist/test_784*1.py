@@ -6,7 +6,7 @@ import argparse
 import sys
 import os
 
-sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/' + '..'))
+sys.path.append(os.path.abspath(os.path.dirname(__file__)  + '..'))
 from normal_cells.lstm_bn_sep import BNLSTMCell
 # from normal_cells_last.lstm_cn_scale_input import CNSCALELSTMCell
 from normal_cells.lstm_cn_sep import CNLSTMCell
