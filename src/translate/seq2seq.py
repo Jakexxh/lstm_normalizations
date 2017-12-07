@@ -83,7 +83,7 @@ _WEIGHTS_VARIABLE_NAME = "kernel"
 # TODO(ebrevdo): Remove once _linear is fully deprecated.
 # Linear = core_rnn_cell._Linear  # pylint: disable=protected-access,invalid-name
 
-class _Linear(object):
+class Linear(object):
 	"""Linear map: sum_i(args[i] * W[i]), where W[i] is a variable.
 
 	Args:
