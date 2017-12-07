@@ -131,9 +131,13 @@ class Seq2SeqModel(object):
             def single_cell():
                 return tf.contrib.rnn.BasicLSTMCell(size)
 
-        cell = single_cell()
+        enc_cell = single_cell()
+        dec_cell = single_cell()
+
         if num_layers > 1:
-            cell = tf.contrib.rnn.MultiRNNCell(
+            enc_cell = tf.contrib.rnn.MultiRNNCell(
+                [single_cell() for _ in range(num_layers)])
+            dec_cell = tf.contrib.rnn.MultiRNNCell(
                 [single_cell() for _ in range(num_layers)])
 
         # The seq2seq function: we use embedding for the input and attention.
@@ -141,7 +145,8 @@ class Seq2SeqModel(object):
             return seq2seq.embedding_attention_seq2seq(
                 encoder_inputs,
                 decoder_inputs,
-                cell,
+                enc_cell,
+                dec_cell,
                 num_encoder_symbols=source_vocab_size,
                 num_decoder_symbols=target_vocab_size,
                 embedding_size=size,

@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0754ad83-7524-4d9e-ac27-6f7b38ce1b37" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/translate/seq2seq.py" afterPath="$PROJECT_DIR$/src/translate/seq2seq.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/translate/seq2seq_model.py" afterPath="$PROJECT_DIR$/src/translate/seq2seq_model.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,91 +32,90 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="seq2seq_model.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/translate/seq2seq_model.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="119" column="48" lean-forward="true" selection-start-line="119" selection-start-column="48" selection-end-line="119" selection-end-column="48" />
-              <folding>
-                <element signature="e#752#790#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lstm_ln_sep.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/normal_cells_refactor/lstm_ln_sep.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="33" column="37" lean-forward="true" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="seq2seq.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/translate/seq2seq.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="877">
-              <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-              <folding>
-                <element signature="e#2693#2731#0" expanded="true" />
-                <element signature="e#6494#7345#0" expanded="false" />
-                <element signature="e#7499#9373#0" expanded="false" />
-                <element signature="e#9560#10766#0" expanded="false" />
-                <element signature="e#10989#12654#0" expanded="false" />
-                <element signature="e#13052#16104#0" expanded="false" />
-                <element signature="e#16534#20746#0" expanded="false" />
-                <element signature="e#21223#26591#0" expanded="false" />
-                <element signature="e#26977#33948#0" expanded="false" />
-                <element signature="e#34652#38068#0" expanded="false" />
-                <element signature="e#38712#43721#0" expanded="false" />
-                <element signature="e#44147#49174#0" expanded="false" />
-                <element signature="e#49449#51467#0" expanded="false" />
-                <element signature="e#51721#53121#0" expanded="false" />
-                <element signature="e#53464#56812#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lstm_cn_sep.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/normal_cells/lstm_cn_sep.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="42" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="translate.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/translate/translate.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="227" column="50" lean-forward="false" selection-start-line="227" selection-start-column="49" selection-end-line="227" selection-end-column="50" />
-              <folding>
-                <element signature="e#1287#1325#0" expanded="true" />
-                <element signature="e#14218#15150#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="data_utils.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/translate/data_utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="610">
-              <caret line="139" column="34" lean-forward="false" selection-start-line="139" selection-start-column="29" selection-end-line="139" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="seq2seq_model.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/translate/seq2seq_model.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="304">
+                  <caret line="119" column="48" lean-forward="true" selection-start-line="119" selection-start-column="48" selection-end-line="119" selection-end-column="48" />
+                  <folding>
+                    <element signature="e#752#790#0" expanded="true" />
+                    <marker date="1512627922822" expanded="true" signature="5708:5721" ph="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="seq2seq.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/translate/seq2seq.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="42">
+                  <caret line="868" column="47" lean-forward="true" selection-start-line="868" selection-start-column="47" selection-end-line="868" selection-end-column="47" />
+                  <folding>
+                    <element signature="e#2693#2731#0" expanded="true" />
+                    <element signature="e#3886#6166#0" expanded="false" />
+                    <element signature="e#6318#7169#0" expanded="false" />
+                    <element signature="e#7323#9197#0" expanded="false" />
+                    <element signature="e#9384#10590#0" expanded="false" />
+                    <element signature="e#10813#12478#0" expanded="false" />
+                    <element signature="e#12876#15928#0" expanded="false" />
+                    <element signature="e#16358#20570#0" expanded="false" />
+                    <element signature="e#21047#26415#0" expanded="false" />
+                    <element signature="e#26801#33772#0" expanded="false" />
+                    <element signature="e#34476#37892#0" expanded="false" />
+                    <element signature="e#43971#48998#0" expanded="false" />
+                    <element signature="e#49273#51291#0" expanded="false" />
+                    <element signature="e#51545#52945#0" expanded="false" />
+                    <element signature="e#53288#56636#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="translate.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/translate/translate.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="301">
+                  <caret line="227" column="50" lean-forward="false" selection-start-line="227" selection-start-column="49" selection-end-line="227" selection-end-column="50" />
+                  <folding>
+                    <element signature="e#1287#1325#0" expanded="true" />
+                    <element signature="e#14218#15150#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="data_utils.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/translate/data_utils.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="610">
+                  <caret line="139" column="34" lean-forward="false" selection-start-line="139" selection-start-column="29" selection-end-line="139" selection-end-column="34" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="seq2seq_model.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/translate/seq2seq_model.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="620">
+                  <caret line="154" column="28" lean-forward="true" selection-start-line="154" selection-start-column="28" selection-end-line="154" selection-end-column="28" />
+                  <folding>
+                    <element signature="e#752#790#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -127,7 +126,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>no_offset</find>
       <find>hidden</find>
       <find>PTBModel</find>
       <find>offset</find>
@@ -154,9 +152,10 @@
       <find>decode</find>
       <find>dev_prefix</find>
       <find>embedding_a</find>
-      <find>embedd</find>
       <find>Linear</find>
       <find>_extract_argmax_and_embed</find>
+      <find>embedd</find>
+      <find>dec_cell</find>
     </findStrings>
     <replaceStrings>
       <replace>lr</replace>
@@ -205,8 +204,8 @@
         <option value="$PROJECT_DIR$/src/mnist/test_784*1.py" />
         <option value="$PROJECT_DIR$/src/mnist/run.sh" />
         <option value="$PROJECT_DIR$/src/char-rnn-tensorflow/seq2seq.py" />
-        <option value="$PROJECT_DIR$/src/translate/seq2seq_model.py" />
         <option value="$PROJECT_DIR$/src/translate/seq2seq.py" />
+        <option value="$PROJECT_DIR$/src/translate/seq2seq_model.py" />
       </list>
     </option>
   </component>
@@ -633,7 +632,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512626849256</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="up">
+      <created>1512627546432</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1512627546432</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TodoView">
@@ -655,7 +661,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265097" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25281474" sideWeight="0.49353796" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2794268" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13736264" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13736264" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -721,9 +727,9 @@
     <MESSAGE value="fix char" />
     <MESSAGE value="add file write to mnist" />
     <MESSAGE value="add mnist_ref base" />
-    <MESSAGE value="up" />
     <MESSAGE value="use new embedding_attention_seq2seq" />
-    <option name="LAST_COMMIT_MESSAGE" value="use new embedding_attention_seq2seq" />
+    <MESSAGE value="up" />
+    <option name="LAST_COMMIT_MESSAGE" value="up" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -746,7 +752,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/translate/seq2seq_model.py</url>
-          <line>320</line>
+          <line>325</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -1108,17 +1114,7 @@
         <state relative-caret-position="151">
           <caret line="33" column="37" lean-forward="true" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
           <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/translate/seq2seq_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="119" column="48" lean-forward="true" selection-start-line="119" selection-start-column="48" selection-end-line="119" selection-end-column="48" />
-          <folding>
-            <element signature="e#752#790#0" expanded="true" />
+            <element signature="e#0#23#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1133,24 +1129,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/translate/seq2seq.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="877">
-          <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+        <state relative-caret-position="42">
+          <caret line="868" column="47" lean-forward="true" selection-start-line="868" selection-start-column="47" selection-end-line="868" selection-end-column="47" />
           <folding>
             <element signature="e#2693#2731#0" expanded="true" />
-            <element signature="e#6494#7345#0" expanded="false" />
-            <element signature="e#7499#9373#0" expanded="false" />
-            <element signature="e#9560#10766#0" expanded="false" />
-            <element signature="e#10989#12654#0" expanded="false" />
-            <element signature="e#13052#16104#0" expanded="false" />
-            <element signature="e#16534#20746#0" expanded="false" />
-            <element signature="e#21223#26591#0" expanded="false" />
-            <element signature="e#26977#33948#0" expanded="false" />
-            <element signature="e#34652#38068#0" expanded="false" />
-            <element signature="e#38712#43721#0" expanded="false" />
-            <element signature="e#44147#49174#0" expanded="false" />
-            <element signature="e#49449#51467#0" expanded="false" />
-            <element signature="e#51721#53121#0" expanded="false" />
-            <element signature="e#53464#56812#0" expanded="false" />
+            <element signature="e#3886#6166#0" expanded="false" />
+            <element signature="e#6318#7169#0" expanded="false" />
+            <element signature="e#7323#9197#0" expanded="false" />
+            <element signature="e#9384#10590#0" expanded="false" />
+            <element signature="e#10813#12478#0" expanded="false" />
+            <element signature="e#12876#15928#0" expanded="false" />
+            <element signature="e#16358#20570#0" expanded="false" />
+            <element signature="e#21047#26415#0" expanded="false" />
+            <element signature="e#26801#33772#0" expanded="false" />
+            <element signature="e#34476#37892#0" expanded="false" />
+            <element signature="e#43971#48998#0" expanded="false" />
+            <element signature="e#49273#51291#0" expanded="false" />
+            <element signature="e#51545#52945#0" expanded="false" />
+            <element signature="e#53288#56636#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/translate/seq2seq_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="154" column="28" lean-forward="true" selection-start-line="154" selection-start-column="28" selection-end-line="154" selection-end-column="28" />
+          <folding>
+            <element signature="e#752#790#0" expanded="true" />
           </folding>
         </state>
       </provider>
