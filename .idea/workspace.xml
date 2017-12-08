@@ -2,6 +2,53 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0754ad83-7524-4d9e-ac27-6f7b38ce1b37" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/attention_model.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/g3doc/img/attention_equation_0.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/g3doc/img/attention_equation_1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/g3doc/img/attention_mechanism.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/g3doc/img/attention_vis.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/g3doc/img/encdec.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/g3doc/img/greedy_dec.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/g3doc/img/seq2seq.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/gnmt_model.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/inference.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/inference_test.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/model.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/model_helper.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/model_test.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/nmt.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/scripts/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/scripts/bleu.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/scripts/download_iwslt15.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/scripts/rouge.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/scripts/wmt16_en_de.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/standard_hparams/iwslt15.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/standard_hparams/wmt16.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/standard_hparams/wmt16_gnmt_4_layer.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/standard_hparams/wmt16_gnmt_8_layer.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/testdata/deen_output" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/testdata/deen_ref_bpe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/testdata/deen_ref_spm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/testdata/label_ref" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/testdata/pred_output" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/testdata/test_embed.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/testdata/test_embed_with_header.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/testdata/test_infer_file" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/testdata/test_infer_vocab.src" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/testdata/test_infer_vocab.tgt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/train.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/utils/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/utils/common_test_utils.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/utils/evaluation_utils.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/utils/evaluation_utils_test.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/utils/iterator_utils.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/utils/iterator_utils_test.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/utils/misc_utils.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/utils/misc_utils_test.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/utils/nmt_utils.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/utils/vocab_utils.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/nmt/utils/vocab_utils_test.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nmt/run.sh" afterPath="$PROJECT_DIR$/src/nmt/run.sh" />
     </list>
@@ -38,8 +85,8 @@
       <file leaf-file-name="run.sh" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/nmt/run.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="61" column="10" lean-forward="false" selection-start-line="61" selection-start-column="10" selection-end-line="61" selection-end-column="10" />
+            <state relative-caret-position="345">
+              <caret line="23" column="35" lean-forward="false" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -781,7 +828,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512728003556</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="prepare nmt">
+      <created>1512728162888</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1512728162888</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1266,16 +1320,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="730">
           <caret line="320" column="28" lean-forward="true" selection-start-line="320" selection-start-column="28" selection-end-line="320" selection-end-column="28" />
-          <folding>
-            <element signature="e#45#82#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nmt/run.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="61" column="10" lean-forward="false" selection-start-line="61" selection-start-column="10" selection-end-line="61" selection-end-column="10" />
+        <state relative-caret-position="345">
+          <caret line="23" column="35" lean-forward="false" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
           <folding />
         </state>
       </provider>
