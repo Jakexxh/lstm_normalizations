@@ -1,5 +1,5 @@
 
-python -m nmt.nmt \
+python -m nmt \
     -- unit_type=base \
     --src=vi --tgt=en \
     --vocab_prefix=../../data/nmt_data/vocab  \
@@ -14,7 +14,7 @@ python -m nmt.nmt \
     --dropout=0.2 \
     --metrics=bleu
 
-python -m nmt.nmt \
+python -m nmt \
     -- unit_type=cn_sep \
     --src=vi --tgt=en \
     --vocab_prefix=../../data/nmt_data/vocab  \
@@ -29,7 +29,7 @@ python -m nmt.nmt \
     --dropout=0.2 \
     --metrics=bleu
 
-python -m nmt.nmt \
+python -m nmt \
     -- unit_type=wn_sep \
     --src=vi --tgt=en \
     --vocab_prefix=../../data/nmt_data/vocab  \
@@ -44,7 +44,7 @@ python -m nmt.nmt \
     --dropout=0.2 \
     --metrics=bleu
 
-python -m nmt.nmt \
+python -m nmt \
     -- unit_type=ln_sep \
     --src=vi --tgt=en \
     --vocab_prefix=../../data/nmt_data/vocab  \
@@ -59,7 +59,7 @@ python -m nmt.nmt \
     --dropout=0.2 \
     --metrics=bleu
 
-python -m nmt.nmt \
+python -m nmt \
     -- unit_type=pcc_sep \
     --src=vi --tgt=en \
     --vocab_prefix=../../data/nmt_data/vocab  \

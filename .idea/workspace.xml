@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0754ad83-7524-4d9e-ac27-6f7b38ce1b37" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/MNIST/train-images-idx3-ubyte.gz" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mnist/test_28*28.py" afterPath="$PROJECT_DIR$/src/mnist/test_28*28.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mnist/test_784*1.py" afterPath="$PROJECT_DIR$/src/mnist/test_784*1.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nmt/model_helper.py" afterPath="$PROJECT_DIR$/src/nmt/model_helper.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nmt/run.sh" afterPath="$PROJECT_DIR$/src/nmt/run.sh" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,40 +38,8 @@
       <file leaf-file-name="run.sh" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/nmt/run.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-305">
-              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="model.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nmt/model.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3702">
-              <caret line="345" column="35" lean-forward="true" selection-start-line="345" selection-start-column="35" selection-end-line="345" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="model_helper.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nmt/model_helper.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="730">
-              <caret line="320" column="28" lean-forward="true" selection-start-line="320" selection-start-column="28" selection-end-line="320" selection-end-column="28" />
-              <folding>
-                <element signature="e#45#82#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nmt.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nmt/nmt.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="259" column="17" lean-forward="true" selection-start-line="259" selection-start-column="17" selection-end-line="259" selection-end-column="17" />
+            <state relative-caret-position="464">
+              <caret line="61" column="10" lean-forward="false" selection-start-line="61" selection-start-column="10" selection-end-line="61" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -810,7 +774,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512716749247</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="prepare nmt">
+      <created>1512728003556</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1512728003556</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TodoView">
@@ -904,7 +875,8 @@
     <MESSAGE value="prepare test vani mnist" />
     <MESSAGE value="up" />
     <MESSAGE value="fix vani bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix vani bug" />
+    <MESSAGE value="prepare nmt" />
+    <option name="LAST_COMMIT_MESSAGE" value="prepare nmt" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1295,15 +1267,15 @@
         <state relative-caret-position="730">
           <caret line="320" column="28" lean-forward="true" selection-start-line="320" selection-start-column="28" selection-end-line="320" selection-end-column="28" />
           <folding>
-            <element signature="e#45#82#0" expanded="true" />
+            <element signature="e#45#82#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nmt/run.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-305">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="464">
+          <caret line="61" column="10" lean-forward="false" selection-start-line="61" selection-start-column="10" selection-end-line="61" selection-end-column="10" />
           <folding />
         </state>
       </provider>
