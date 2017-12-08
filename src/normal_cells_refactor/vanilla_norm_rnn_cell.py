@@ -62,6 +62,7 @@ Args:
 
 	def call(self, inputs, state):
 		"""Most basic RNN: output = new_state = act(W * input + U * state + B)."""
+		input_depth = tf.shape(inputs)[1]
 		if self._mode == 'base':
 			gate_inputs = tf.matmul(tf.concat([inputs, state], 1), self._kernel)
 			gate_inputs = tf.nn.bias_add(gate_inputs, self._bias)
@@ -71,31 +72,40 @@ Args:
 		elif self._mode == 'bn_sep':
 			h, step = state
 			_step = tf.squeeze(tf.gather(tf.cast(step, tf.int32), 0))
-			gate_inputs = tf.matmul(tf.concat([inputs, h], 1), self._kernel)
-			output = self._batch_norm(gate_inputs, 'bn_output', _step)
+			xh_gate = self._batch_norm(tf.matmul(inputs, self._kernel[:input_depth, :]), 'bn_xh', _step)
+			hh_gate = self._batch_norm(tf.matmul(state, self._kernel[input_depth:, :]), 'bn_hh', _step)
+			output = xh_gate + hh_gate
 			output = self._activation(output)
 			return output, (output, step + 1)
 
 		elif self._mode == 'cn_sep':
-			gate_inputs = self._cosine_norm(tf.concat([inputs, state], 1), self._kernel)
+			xh_gate = self._cosine_norm(inputs, self._kernel[:input_depth, :])
+			hh_gate = self._cosine_norm(state, self._kernel[input_depth:, :])
+			gate_inputs = xh_gate + hh_gate
 			gate_inputs = tf.nn.bias_add(gate_inputs, self._bias)
 			output = self._activation(gate_inputs)
 			return output, output
 
 		elif self._mode == 'pcc_sep':
-			gate_inputs = self._pcc_norm(tf.concat([inputs, state], 1), self._kernel)
+			xh_gate = self._pcc_norm(inputs, self._kernel[:input_depth, :])
+			hh_gate = self._pcc_norm(state, self._kernel[input_depth:, :])
+			gate_inputs = xh_gate + hh_gate
 			gate_inputs = tf.nn.bias_add(gate_inputs, self._bias)
 			output = self._activation(gate_inputs)
 			return output, output
 
 		elif self._mode == 'ln_sep':
-			gate_inputs = tf.matmul(tf.concat([inputs, state], 1), self._kernel)
+			xh_gate = self._layer_norm(tf.matmul(inputs, self._kernel[:input_depth, :]))
+			hh_gate = self._layer_norm(tf.matmul(state, self._kernel[input_depth:, :]))
+			gate_inputs = xh_gate + hh_gate
 			output = self._layer_norm(gate_inputs)
 			output = self._activation(output)
 			return output, output
 
 		elif self._mode == 'wn_sep':
-			gate_inputs = self._weight_norm(tf.concat([inputs, state], 1), self._kernel)
+			xh_gate = self._weight_norm(inputs, self._kernel[:input_depth, :])
+			hh_gate = self._weight_norm(state, self._kernel[input_depth:, :])
+			gate_inputs = xh_gate + hh_gate
 			gate_inputs = tf.nn.bias_add(gate_inputs, self._bias)
 			output = self._activation(gate_inputs)
 			return output, output
