@@ -200,7 +200,7 @@ def run():
 			test_writer.add_summary(summary, step)
 
 		print("Test Finished!")
-		with open(FLAGS.log_dir + '/final.txt') as file:
+		with open(FLAGS.log_dir + '/final.txt','w+') as file:
 			file.write("Test Ave_loss: " + str(test_loss / (1000)))
 			file.write("Test Ave_acc: " + str(test_acc / (1000)))
 

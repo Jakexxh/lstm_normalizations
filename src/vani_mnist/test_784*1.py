@@ -16,8 +16,8 @@ batch_size = 128
 display_step = 200
 
 # Network Parameters
-num_input = 1  # MNIST data input (img shape: 28*28)
-timesteps = 784  # timesteps
+num_input = 28  # MNIST data input (img shape: 28*28)
+timesteps = 28  # timesteps
 num_hidden = 128  # hidden layer num of features
 num_classes = 10  # MNIST total classes (0-9 digits)
 
@@ -179,7 +179,7 @@ def run():
 			test_writer.add_summary(summary, step)
 
 		print("Test Finished!")
-		with open(FLAGS.log_dir + '/final.txt') as file:
+		with open(FLAGS.log_dir + '/final.txt','w+') as file:
 			file.write("Test Ave_loss: " + str(test_loss / (1000)))
 			file.write("Test Ave_acc: " + str(test_acc / (1000)))
 
