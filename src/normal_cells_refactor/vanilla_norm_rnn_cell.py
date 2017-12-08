@@ -74,8 +74,8 @@ Args:
 			_step = tf.squeeze(tf.gather(tf.cast(step, tf.int32), 0))
 			xh_gate = self._batch_norm(tf.matmul(inputs, self._kernel[:input_depth, :]), 'bn_xh', _step)
 			hh_gate = self._batch_norm(tf.matmul(state, self._kernel[input_depth:, :]), 'bn_hh', _step)
-			output = xh_gate + hh_gate
-			output = self._activation(output)
+			gate_inputs = xh_gate + hh_gate
+			output = self._activation(gate_inputs)
 			return output, (output, step + 1)
 
 		elif self._mode == 'cn_sep':
@@ -98,8 +98,8 @@ Args:
 			xh_gate = self._layer_norm(tf.matmul(inputs, self._kernel[:input_depth, :]))
 			hh_gate = self._layer_norm(tf.matmul(state, self._kernel[input_depth:, :]))
 			gate_inputs = xh_gate + hh_gate
-			output = self._layer_norm(gate_inputs)
-			output = self._activation(output)
+			gate_inputs = self._layer_norm(gate_inputs)
+			output = self._activation(gate_inputs)
 			return output, output
 
 		elif self._mode == 'wn_sep':
