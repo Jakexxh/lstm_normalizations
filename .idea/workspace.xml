@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0754ad83-7524-4d9e-ac27-6f7b38ce1b37" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vani_mnist/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vani_mnist/run.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vani_mnist/test_784*1.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/translate/seq2seq.py" afterPath="$PROJECT_DIR$/src/translate/seq2seq.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.vscode/tags" afterPath="$PROJECT_DIR$/.vscode/tags" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/normal_cells_refactor/lstm_wn_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_refactor/lstm_wn_sep.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,89 +36,36 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="seq2seq_model.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/translate/seq2seq_model.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="304">
-                  <caret line="119" column="48" lean-forward="true" selection-start-line="119" selection-start-column="48" selection-end-line="119" selection-end-column="48" />
-                  <folding>
-                    <element signature="e#752#790#0" expanded="true" />
-                    <marker date="1512627922822" expanded="true" signature="5708:5721" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="seq2seq.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/translate/seq2seq.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="519">
-                  <caret line="88" column="9" lean-forward="true" selection-start-line="88" selection-start-column="9" selection-end-line="88" selection-end-column="9" />
-                  <folding>
-                    <element signature="e#2693#2731#0" expanded="true" />
-                    <element signature="e#6317#7168#0" expanded="false" />
-                    <element signature="e#7322#9196#0" expanded="false" />
-                    <element signature="e#9383#10589#0" expanded="false" />
-                    <element signature="e#10812#12477#0" expanded="false" />
-                    <element signature="e#12875#15927#0" expanded="false" />
-                    <element signature="e#16357#20569#0" expanded="false" />
-                    <element signature="e#21046#26414#0" expanded="false" />
-                    <element signature="e#26800#33771#0" expanded="false" />
-                    <element signature="e#34475#37891#0" expanded="false" />
-                    <element signature="e#43970#48997#0" expanded="false" />
-                    <element signature="e#49272#51290#0" expanded="false" />
-                    <element signature="e#51544#52944#0" expanded="false" />
-                    <element signature="e#53287#56635#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="translate.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/translate/translate.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="301">
-                  <caret line="227" column="50" lean-forward="false" selection-start-line="227" selection-start-column="49" selection-end-line="227" selection-end-column="50" />
-                  <folding>
-                    <element signature="e#1287#1325#0" expanded="true" />
-                    <element signature="e#14218#15150#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="data_utils.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/translate/data_utils.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="610">
-                  <caret line="139" column="34" lean-forward="false" selection-start-line="139" selection-start-column="29" selection-end-line="139" selection-end-column="34" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="seq2seq_model.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/translate/seq2seq_model.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="275">
-                  <caret line="131" column="57" lean-forward="true" selection-start-line="131" selection-start-column="57" selection-end-line="131" selection-end-column="57" />
-                  <folding>
-                    <element signature="e#752#790#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="vanilla_norm_rnn_cell.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/normal_vani_cells_refactor/vanilla_norm_rnn_cell.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-980">
+              <caret line="37" column="34" lean-forward="true" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+                <element signature="e#5091#5655#0" expanded="false" />
+                <element signature="e#5842#6081#0" expanded="false" />
+                <element signature="e#6246#6935#0" expanded="false" />
+                <element signature="e#7021#7246#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_784*1.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/vani_mnist/test_784*1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="520">
+              <caret line="79" column="32" lean-forward="true" selection-start-line="79" selection-start-column="32" selection-end-line="79" selection-end-column="32" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -125,13 +76,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>hidden</find>
-      <find>PTBModel</find>
-      <find>offset</find>
-      <find>ln_sep</find>
-      <find>0.01</find>
-      <find>normal_cells</find>
-      <find>Print</find>
       <find>0.1</find>
       <find>learning_rate</find>
       <find>final_state</find>
@@ -154,7 +98,14 @@
       <find>Linear</find>
       <find>_extract_argmax_and_embed</find>
       <find>embedd</find>
+      <find>train_dir</find>
+      <find>sum</find>
       <find>dec_cell</find>
+      <find>loss</find>
+      <find>output_projection</find>
+      <find>softmax_loss_function</find>
+      <find>ValueError</find>
+      <find>max</find>
     </findStrings>
     <replaceStrings>
       <replace>lr</replace>
@@ -205,6 +156,10 @@
         <option value="$PROJECT_DIR$/src/char-rnn-tensorflow/seq2seq.py" />
         <option value="$PROJECT_DIR$/src/translate/seq2seq_model.py" />
         <option value="$PROJECT_DIR$/src/translate/seq2seq.py" />
+        <option value="$PROJECT_DIR$/src/normal_cells_refactor/lstm_wn_sep.py" />
+        <option value="$PROJECT_DIR$/src/normal_vani_cells_refactor/lstm_basic.py" />
+        <option value="$PROJECT_DIR$/src/normal_vani_cells_refactor/vanilla_norm_rnn_cell.py" />
+        <option value="$PROJECT_DIR$/src/vani_mnist/test_784*1.py" />
       </list>
     </option>
   </component>
@@ -215,10 +170,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="x" value="1280" />
-    <option name="y" value="-250" />
-    <option name="width" value="1680" />
-    <option name="height" value="1050" />
+    <option name="x" value="1599" />
+    <option name="y" value="-84" />
+    <option name="width" value="1280" />
+    <option name="height" value="800" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -309,6 +264,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="NBKnowledgePane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -326,13 +283,7 @@
               <item name="lstm_normalizations" type="b2602c69:ProjectViewProjectNode" />
               <item name="lstm_normalizations" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="char-rnn-tensorflow" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lstm_normalizations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lstm_normalizations" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="normal_cells" type="462c0819:PsiDirectoryNode" />
+              <item name="normal_vani_cells_refactor" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lstm_normalizations" type="b2602c69:ProjectViewProjectNode" />
@@ -340,12 +291,16 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="translate" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="lstm_normalizations" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lstm_normalizations" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="vani_mnist" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="NBKnowledgePane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -355,15 +310,16 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/char-rnn-tensorflow" />
+      <recent name="$PROJECT_DIR$/src/normal_cells" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/translate" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/mnist" />
       <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/char-rnn-tensorflow" />
-      <recent name="$PROJECT_DIR$/src/normal_cells" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -645,7 +601,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512627959265</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="up">
+      <created>1512628019140</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1512628019140</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TodoView">
@@ -663,16 +626,16 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32907802" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24896836" sideWeight="0.50646204" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25281474" sideWeight="0.49353796" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265097" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265097" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25281474" sideWeight="0.49353796" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2794268" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13736264" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13736264" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21596725" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -734,9 +697,9 @@
     <MESSAGE value="add file write to mnist" />
     <MESSAGE value="add mnist_ref base" />
     <MESSAGE value="use new embedding_attention_seq2seq" />
-    <MESSAGE value="up" />
     <MESSAGE value="fix seq2seq parameter bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix seq2seq parameter bug" />
+    <MESSAGE value="up" />
+    <option name="LAST_COMMIT_MESSAGE" value="up" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -773,75 +736,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ptb/util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="39" column="23" lean-forward="false" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells/lstm_bn_sep.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ptb/ptb_word_lm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7215">
-          <caret line="575" column="0" lean-forward="false" selection-start-line="575" selection-start-column="0" selection-end-line="575" selection-end-column="0" />
-          <folding>
-            <element signature="e#2344#2382#0" expanded="true" />
-            <element signature="e#14912#15204#0" expanded="false" />
-            <element signature="e#15238#15538#0" expanded="false" />
-            <element signature="e#15571#15869#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ptb/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ptb/util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="35" column="53" lean-forward="false" selection-start-line="35" selection-start-column="53" selection-end-line="35" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mnist/test_784*1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="16" column="21" lean-forward="false" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells/lstm_basic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1485">
-          <caret line="109" column="0" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells/lstm_bn_sep.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="85" column="38" lean-forward="true" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells/lstm_cn_scale_input.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2160">
-          <caret line="154" column="0" lean-forward="true" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/normal_cells/lstm_cn_sep.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1635">
@@ -1027,13 +921,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_refactor/lstm_wn_sep.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1935">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/normal_cells_refactor/lstm_basic.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1069,13 +956,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mnist/test_784*1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="145" column="0" lean-forward="true" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/normal_cells/lstm_cn_scale_input.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
@@ -1097,10 +977,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/normal_cells/lstm_cn_sep.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="42" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/translate/seq2seq.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2873">
+          <caret line="88" column="9" lean-forward="true" selection-start-line="88" selection-start-column="9" selection-end-line="88" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/translate/seq2seq_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="244" column="60" lean-forward="true" selection-start-line="244" selection-start-column="60" selection-end-line="244" selection-end-column="60" />
+          <folding>
+            <element signature="e#752#790#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/translate/translate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="227" column="50" lean-forward="false" selection-start-line="227" selection-start-column="49" selection-end-line="227" selection-end-column="50" />
+        <state relative-caret-position="74">
+          <caret line="180" column="45" lean-forward="false" selection-start-line="180" selection-start-column="45" selection-end-line="180" selection-end-column="45" />
           <folding>
             <element signature="e#1287#1325#0" expanded="true" />
             <element signature="e#14218#15150#0" expanded="false" />
@@ -1116,54 +1020,110 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_refactor/lstm_ln_sep.py">
+    <entry file="file://$PROJECT_DIR$/src/normal_vani_cells_refactor/lstm_bn_sep.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="33" column="37" lean-forward="true" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/normal_vani_cells_refactor/lstm_cn_sep.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1935">
+          <caret line="5" column="42" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_refactor/lstm_cn_sep.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="154" column="0" lean-forward="true" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
           <folding>
             <element signature="e#0#23#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells/lstm_cn_sep.py">
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_refactor/lstm_ln_sep.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="42" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="405">
+          <caret line="183" column="0" lean-forward="false" selection-start-line="183" selection-start-column="0" selection-end-line="197" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/translate/seq2seq_model.py">
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_refactor/lstm_pcc_sep.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="119" column="48" lean-forward="true" selection-start-line="119" selection-start-column="48" selection-end-line="119" selection-end-column="48" />
+        <state relative-caret-position="315">
+          <caret line="153" column="0" lean-forward="false" selection-start-line="153" selection-start-column="0" selection-end-line="178" selection-end-column="72" />
           <folding>
-            <element signature="e#752#790#0" expanded="true" />
-            <marker date="1512627922822" expanded="true" signature="5708:5721" ph="..." />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/translate/seq2seq.py">
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_refactor/lstm_wn_sep.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="88" column="9" lean-forward="true" selection-start-line="88" selection-start-column="9" selection-end-line="88" selection-end-column="9" />
+        <state relative-caret-position="465">
+          <caret line="155" column="0" lean-forward="false" selection-start-line="155" selection-start-column="0" selection-end-line="168" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_refactor/lstm_bn_sep.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="170" column="0" lean-forward="false" selection-start-line="170" selection-start-column="0" selection-end-line="179" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/vani_mnist/run.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mnist/test_784*1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="20" column="21" lean-forward="true" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/vani_mnist/test_28*28.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/normal_vani_cells_refactor/vanilla_norm_rnn_cell.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-980">
+          <caret line="37" column="34" lean-forward="true" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
           <folding>
-            <element signature="e#2693#2731#0" expanded="true" />
-            <element signature="e#6317#7168#0" expanded="false" />
-            <element signature="e#7322#9196#0" expanded="false" />
-            <element signature="e#9383#10589#0" expanded="false" />
-            <element signature="e#10812#12477#0" expanded="false" />
-            <element signature="e#12875#15927#0" expanded="false" />
-            <element signature="e#16357#20569#0" expanded="false" />
-            <element signature="e#21046#26414#0" expanded="false" />
-            <element signature="e#26800#33771#0" expanded="false" />
-            <element signature="e#34475#37891#0" expanded="false" />
-            <element signature="e#43970#48997#0" expanded="false" />
-            <element signature="e#49272#51290#0" expanded="false" />
-            <element signature="e#51544#52944#0" expanded="false" />
-            <element signature="e#53287#56635#0" expanded="false" />
+            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#5091#5655#0" expanded="false" />
+            <element signature="e#5842#6081#0" expanded="false" />
+            <element signature="e#6246#6935#0" expanded="false" />
+            <element signature="e#7021#7246#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/vani_mnist/test_784*1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="79" column="32" lean-forward="true" selection-start-line="79" selection-start-column="32" selection-end-line="79" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
