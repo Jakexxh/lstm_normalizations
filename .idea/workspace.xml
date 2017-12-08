@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0754ad83-7524-4d9e-ac27-6f7b38ce1b37" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/lstm_normalizations.iml" afterPath="$PROJECT_DIR$/.idea/lstm_normalizations.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vani_mnist/run.sh" afterPath="$PROJECT_DIR$/src/vani_mnist/run.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vani_mnist/test_784*1.py" afterPath="$PROJECT_DIR$/src/vani_mnist/test_784*1.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,31 +34,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="vanilla_norm_rnn_cell.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="vanilla_norm_rnn_cell.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/normal_cells_refactor/vanilla_norm_rnn_cell.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" column="13" lean-forward="true" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
+            <state relative-caret-position="404">
+              <caret line="63" column="32" lean-forward="true" selection-start-line="63" selection-start-column="32" selection-end-line="63" selection-end-column="32" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
-                <element signature="e#3405#5090#0" expanded="false" />
-                <element signature="e#5145#5738#0" expanded="false" />
-                <element signature="e#5800#6243#0" expanded="false" />
-                <element signature="e#6286#7018#0" expanded="false" />
-                <element signature="e#7074#7355#0" expanded="false" />
-                <element signature="e#7385#7635#0" expanded="false" />
-                <marker date="1512713632960" expanded="false" signature="6325:7018" ph="..." />
-                <marker date="1512713632960" expanded="false" signature="7100:7329" ph="..." />
+                <element signature="e#3479#5164#0" expanded="false" />
+                <element signature="e#5219#5812#0" expanded="false" />
+                <element signature="e#6360#7092#0" expanded="false" />
+                <element signature="e#7148#7429#0" expanded="false" />
+                <element signature="e#7459#7709#0" expanded="false" />
+                <marker date="1512714683768" expanded="false" signature="6399:7092" ph="..." />
+                <marker date="1512714683768" expanded="false" signature="7174:7403" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="run.sh" pinned="false" current-in-tab="true">
+      <file leaf-file-name="run.sh" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/vani_mnist/run.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="93" lean-forward="true" selection-start-line="7" selection-start-column="93" selection-end-line="7" selection-end-column="93" />
+            <state relative-caret-position="420">
+              <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -120,7 +116,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>final_state</find>
       <find>tra</find>
       <find>preprocess</find>
       <find>next_batch</find>
@@ -150,11 +145,13 @@
       <find>self._decay</find>
       <find>_batch_norm</find>
       <find>training</find>
+      <find>mnist_ref_base</find>
     </findStrings>
     <replaceStrings>
       <replace>lr</replace>
       <replace>mnist_ref_base</replace>
       <replace>decay</replace>
+      <replace>vani_mnist_ref</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -206,6 +203,7 @@
         <option value="$PROJECT_DIR$/src/normal_vani_cells_refactor/vanilla_norm_rnn_cell.py" />
         <option value="$PROJECT_DIR$/src/vani_mnist/test_784*1.py" />
         <option value="$PROJECT_DIR$/src/vani_mnist/run.sh" />
+        <option value="$PROJECT_DIR$/src/normal_cells_refactor/vanilla_norm_rnn_cell.py" />
       </list>
     </option>
   </component>
@@ -658,7 +656,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512708023382</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="prepare test vani mnist">
+      <created>1512714393371</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1512714393371</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TodoView">
@@ -676,7 +681,7 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32907802" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32753327" sideWeight="0.50915754" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32753327" sideWeight="0.4908425" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32753327" sideWeight="0.4908425" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265097" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265097" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2794268" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -750,7 +755,8 @@
     <MESSAGE value="fix seq2seq parameter bug" />
     <MESSAGE value="up" />
     <MESSAGE value="add vanilla cell&#10;add nmt data" />
-    <option name="LAST_COMMIT_MESSAGE" value="add vanilla cell&#10;add nmt data" />
+    <MESSAGE value="prepare test vani mnist" />
+    <option name="LAST_COMMIT_MESSAGE" value="prepare test vani mnist" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1186,29 +1192,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_refactor/vanilla_norm_rnn_cell.py">
+    <entry file="file://$PROJECT_DIR$/src/vani_mnist/run.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="13" lean-forward="true" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-            <element signature="e#3405#5090#0" expanded="false" />
-            <element signature="e#5145#5738#0" expanded="false" />
-            <element signature="e#5800#6243#0" expanded="false" />
-            <element signature="e#6286#7018#0" expanded="false" />
-            <element signature="e#7074#7355#0" expanded="false" />
-            <element signature="e#7385#7635#0" expanded="false" />
-            <marker date="1512713632960" expanded="false" signature="6325:7018" ph="..." />
-            <marker date="1512713632960" expanded="false" signature="7100:7329" ph="..." />
-          </folding>
+        <state relative-caret-position="420">
+          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/vani_mnist/run.sh">
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_refactor/vanilla_norm_rnn_cell.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="93" lean-forward="true" selection-start-line="7" selection-start-column="93" selection-end-line="7" selection-end-column="93" />
-          <folding />
+        <state relative-caret-position="404">
+          <caret line="63" column="32" lean-forward="true" selection-start-line="63" selection-start-column="32" selection-end-line="63" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#3479#5164#0" expanded="false" />
+            <element signature="e#5219#5812#0" expanded="false" />
+            <element signature="e#6360#7092#0" expanded="false" />
+            <element signature="e#7148#7429#0" expanded="false" />
+            <element signature="e#7459#7709#0" expanded="false" />
+            <marker date="1512714683768" expanded="false" signature="6399:7092" ph="..." />
+            <marker date="1512714683768" expanded="false" signature="7174:7403" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
