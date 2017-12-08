@@ -79,32 +79,32 @@ Args:
 			return output, (output, step + 1)
 
 		elif self._mode == 'cn_sep':
-			xh_gate = self._cosine_norm(inputs, self._kernel[:input_depth, :])
-			hh_gate = self._cosine_norm(state, self._kernel[input_depth:, :])
+			xh_gate = self._cosine_norm(inputs, self._kernel[:input_depth, :], 'cn_xh')
+			hh_gate = self._cosine_norm(state, self._kernel[input_depth:, :], 'cn_hh')
 			gate_inputs = xh_gate + hh_gate
 			gate_inputs = tf.nn.bias_add(gate_inputs, self._bias)
 			output = self._activation(gate_inputs)
 			return output, output
 
 		elif self._mode == 'pcc_sep':
-			xh_gate = self._pcc_norm(inputs, self._kernel[:input_depth, :])
-			hh_gate = self._pcc_norm(state, self._kernel[input_depth:, :])
+			xh_gate = self._pcc_norm(inputs, self._kernel[:input_depth, :], 'pcc_xh')
+			hh_gate = self._pcc_norm(state, self._kernel[input_depth:, :], 'pcc_hh')
 			gate_inputs = xh_gate + hh_gate
 			gate_inputs = tf.nn.bias_add(gate_inputs, self._bias)
 			output = self._activation(gate_inputs)
 			return output, output
 
 		elif self._mode == 'ln_sep':
-			xh_gate = self._layer_norm(tf.matmul(inputs, self._kernel[:input_depth, :]))
-			hh_gate = self._layer_norm(tf.matmul(state, self._kernel[input_depth:, :]))
+			xh_gate = self._layer_norm(tf.matmul(inputs, self._kernel[:input_depth, :]), scope='ln_xh')
+			hh_gate = self._layer_norm(tf.matmul(state, self._kernel[input_depth:, :]), scope='ln_hh')
 			gate_inputs = xh_gate + hh_gate
 			gate_inputs = self._layer_norm(gate_inputs)
 			output = self._activation(gate_inputs)
 			return output, output
 
 		elif self._mode == 'wn_sep':
-			xh_gate = self._weight_norm(inputs, self._kernel[:input_depth, :])
-			hh_gate = self._weight_norm(state, self._kernel[input_depth:, :])
+			xh_gate = self._weight_norm(inputs, self._kernel[:input_depth, :], 'wn_xh')
+			hh_gate = self._weight_norm(state, self._kernel[input_depth:, :], 'wn_hh')
 			gate_inputs = xh_gate + hh_gate
 			gate_inputs = tf.nn.bias_add(gate_inputs, self._bias)
 			output = self._activation(gate_inputs)
