@@ -6,15 +6,12 @@ import argparse
 import sys
 import os
 
-sys.path.append(os.path.abspath(os.path.dirname(__file__) + '..'))
-from normal_vani_cells_refactor import vanilla_norm_rnn_cell
+sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/..'))
+from normal_cells_refactor.vanilla_norm_rnn_cell import Vani_Norm_BasicRNNCell
 
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
 
-# Training Parameters
-# learning_rate = 0.001
-# training_steps = 100000
 batch_size = 128
 display_step = 200
 
@@ -58,37 +55,31 @@ def run():
 		# x = tf.convert_to_tensor(x)
 		if FLAGS.cell != 'bn_sep':
 			# Define a lstm cell with tensorflow
-			init_state = tf.contrib.rnn.LSTMStateTuple(
-				tf.truncated_normal([batch_size, num_hidden], stddev=0.1),
-				tf.truncated_normal([batch_size, num_hidden], stddev=0.1))
-			lstm_cell = vanilla_norm_rnn_cell(
+			init_state = tf.truncated_normal([batch_size, num_hidden], stddev=0.1)
+			lstm_cell = Vani_Norm_BasicRNNCell(
 				num_hidden,
 				mode=FLAGS.cell,
 				is_training_tensor=training)
 
 			# Get lstm cell output
-			outputs, states = tf.nn.static_rnn(
+			outputs, _ = tf.nn.static_rnn(
 				lstm_cell, x, initial_state=init_state, dtype=tf.float32)
 
 			# Linear activation, using rnn inner loop last output
 			return tf.matmul(outputs[-1], weights) + biases
 
 		else:
-			init_state = (tf.truncated_normal(
-				[batch_size, num_hidden], stddev=0.1), tf.truncated_normal(
-				[batch_size, num_hidden], stddev=0.1), tf.constant(
-				0.0, shape=[1]))
-			lstm_cell = vanilla_norm_rnn_cell(
+			init_state = (tf.truncated_normal([batch_size, num_hidden], stddev=0.1),
+			              tf.constant(0.0, shape=[1]))
+			lstm_cell = Vani_Norm_BasicRNNCell(
 				num_hidden,
 				mode=FLAGS.cell,
 				is_training_tensor=training,
 				max_steps=FLAGS.max_steps)
 
-			outputs, states = tf.nn.static_rnn(
+			outputs, _ = tf.nn.static_rnn(
 				lstm_cell, x, initial_state=init_state, dtype=tf.float32)
-			_, final_hidden, _ = states
-
-			return tf.matmul(final_hidden, weights) + biases
+			return tf.matmul(outputs[-1], weights) + biases
 
 	logits = RNN(X, w, b)
 
