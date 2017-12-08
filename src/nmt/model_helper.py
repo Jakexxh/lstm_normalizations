@@ -12,6 +12,15 @@ from .utils import iterator_utils
 from .utils import misc_utils as utils
 from .utils import vocab_utils
 
+sys.path.append(os.path.abspath(os.path.dirname(__file__) + '..'))
+from normal_cells_refactor.lstm_bn_sep import BNLSTMCell
+# from normal_cells_last.lstm_cn_scale_input import CNSCALELSTMCell
+from normal_cells_refactor.lstm_cn_sep import CNLSTMCell
+from normal_cells_refactor.lstm_ln_sep import LNLSTMCell
+from normal_cells_refactor.lstm_pcc_sep import PCCLSTMCell
+from normal_cells_refactor.lstm_wn_sep import WNLSTMCell
+from normal_cells_refactor.lstm_basic import BASICLSTMCell
+
 __all__ = [
 	"get_initializer", "get_device_str",
 	"create_train_model", "create_eval_model", "create_infer_model",
@@ -282,11 +291,33 @@ def _single_cell(unit_type, num_units, forget_bias, dropout, mode,
 	dropout = dropout if mode == tf.contrib.learn.ModeKeys.TRAIN else 0.0
 
 	# Cell Type
-	if unit_type == "lstm":
-		utils.print_out("  LSTM, forget_bias=%g" % forget_bias, new_line=False)
-		single_cell = tf.contrib.rnn.BasicLSTMCell(
+	if unit_type == "base":
+		utils.print_out("  base LSTM, forget_bias=%g" % forget_bias, new_line=False)
+		single_cell = BASICLSTMCell(
 			num_units,
 			forget_bias=forget_bias)
+	elif unit_type == "cn_sep":
+		utils.print_out("  cn_sep LSTM, forget_bias=%g" % forget_bias, new_line=False)
+		single_cell = CNLSTMCell(
+			num_units,
+			forget_bias=forget_bias)
+	elif unit_type == "wn_sep":
+		utils.print_out("  wn_sep LSTM, forget_bias=%g" % forget_bias, new_line=False)
+		single_cell = WNLSTMCell(
+			num_units,
+			forget_bias=forget_bias)
+	elif unit_type == "ln_sep":
+		utils.print_out("  ln_sep LSTM, forget_bias=%g" % forget_bias, new_line=False)
+		single_cell = LNLSTMCell(
+			num_units,
+			forget_bias=forget_bias)
+	elif unit_type == "pcc_sep":
+		utils.print_out("  pcc_sep LSTM, forget_bias=%g" % forget_bias, new_line=False)
+		single_cell = PCCLSTMCell(
+			num_units,
+			forget_bias=forget_bias)
+	elif unit_type == "bn_sep":
+		pass
 	elif unit_type == "gru":
 		utils.print_out("  GRU", new_line=False)
 		single_cell = tf.contrib.rnn.GRUCell(num_units)
