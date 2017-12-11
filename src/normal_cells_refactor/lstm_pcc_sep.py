@@ -171,7 +171,7 @@ def pcc_norm(x, w, name=None):
 
             gamma = tf.get_variable(
                 name + '_gamma', [cos_mat.get_shape().as_list()[1]],
-                initializer=tf.truncated_normal_initializer(10.0))
+                initializer=tf.truncated_normal_initializer(1.0))
 
             return gamma * cos_mat
         else:
