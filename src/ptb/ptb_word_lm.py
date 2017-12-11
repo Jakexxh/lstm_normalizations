@@ -64,7 +64,7 @@ import os
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + '..'))
 
 from normal_cells_refactor.lstm_bn_sep import BNLSTMCell
-from normal_cells.lstm_cn_scale_input import CNSCALELSTMCell
+# from normal_cells.lstm_cn_scale_input import CNSCALELSTMCell
 from normal_cells_refactor.lstm_cn_sep import CNLSTMCell
 from normal_cells_refactor.lstm_ln_sep import LNLSTMCell
 from normal_cells_refactor.lstm_pcc_sep import PCCLSTMCell
@@ -616,7 +616,7 @@ def main(_):
             test_perplexity = run_epoch(session, mtest)
             print("Test Perplexity: %.3f" % test_perplexity)
 
-            with open(FLAGS.save_path + "/log.txt", "w") as myfile:
+            with open(FLAGS.save_path + "/log.txt", "w+") as myfile:
                 myfile.write("\nlearning rate: " + str(FLAGS.lr) + '\n')
                 myfile.write("final Train Perplexity: " + str(train_perplexity)
                              + '\n')

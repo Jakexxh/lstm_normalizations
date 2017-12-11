@@ -6,7 +6,8 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/data/MNIST/t10k-labels-idx1-ubyte.gz" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/data/MNIST/train-labels-idx1-ubyte.gz" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/nmt/run.sh" afterPath="$PROJECT_DIR$/src/nmt/run.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ptb/ptb_word_lm.py" afterPath="$PROJECT_DIR$/src/ptb/ptb_word_lm.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ptb/run.sh" afterPath="$PROJECT_DIR$/src/ptb/run.sh" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,21 +39,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="run.sh" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/nmt/run.sh">
+      <file leaf-file-name="ptb_word_lm.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ptb/ptb_word_lm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="18" lean-forward="true" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
-              <folding />
+            <state relative-caret-position="505">
+              <caret line="73" column="11" lean-forward="true" selection-start-line="73" selection-start-column="11" selection-end-line="73" selection-end-column="11" />
+              <folding>
+                <element signature="e#2344#2382#0" expanded="true" />
+                <element signature="e#14914#15206#0" expanded="false" />
+                <element signature="e#15240#15540#0" expanded="false" />
+                <element signature="e#15573#15871#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nmt.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nmt/nmt/nmt.py">
+      <file leaf-file-name="run.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ptb/run.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="193" column="17" lean-forward="true" selection-start-line="193" selection-start-column="17" selection-end-line="193" selection-end-column="17" />
+            <state relative-caret-position="870">
+              <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -137,7 +143,6 @@
         <option value="$PROJECT_DIR$/src/char-rnn-tensorflow/model.py" />
         <option value="$PROJECT_DIR$/src/char-rnn-tensorflow/utils.py" />
         <option value="$PROJECT_DIR$/src/char-rnn-tensorflow/train.py" />
-        <option value="$PROJECT_DIR$/src/ptb/ptb_word_lm.py" />
         <option value="$PROJECT_DIR$/src/normal_cells/lstm_cn_sep.py" />
         <option value="$PROJECT_DIR$/src/normal_cells/lstm_basic.py" />
         <option value="$PROJECT_DIR$/src/normal_cells/lstm_cn_scale_input.py" />
@@ -161,6 +166,8 @@
         <option value="$PROJECT_DIR$/src/vani_mnist/test_784*1.py" />
         <option value="$PROJECT_DIR$/src/nmt/nmt/nmt.py" />
         <option value="$PROJECT_DIR$/src/nmt/run.sh" />
+        <option value="$PROJECT_DIR$/src/ptb/run.sh" />
+        <option value="$PROJECT_DIR$/src/ptb/ptb_word_lm.py" />
       </list>
     </option>
   </component>
@@ -286,14 +293,7 @@
               <item name="lstm_normalizations" type="b2602c69:ProjectViewProjectNode" />
               <item name="lstm_normalizations" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="nmt" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lstm_normalizations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lstm_normalizations" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="nmt" type="462c0819:PsiDirectoryNode" />
-              <item name="nmt" type="462c0819:PsiDirectoryNode" />
+              <item name="ptb" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -828,7 +828,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512960654533</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="prepare for nmt">
+      <created>1512961245200</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1512961245200</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TodoView">
@@ -849,7 +856,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265097" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265097" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36335722" sideWeight="0.4908425" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46980554" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46980554" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13980465" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -924,7 +931,8 @@
     <MESSAGE value="fix vani bug" />
     <MESSAGE value="prepare nmt" />
     <MESSAGE value="add nmt" />
-    <option name="LAST_COMMIT_MESSAGE" value="add nmt" />
+    <MESSAGE value="prepare for nmt" />
+    <option name="LAST_COMMIT_MESSAGE" value="prepare for nmt" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -971,14 +979,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/normal_cells/lstm_cn2_sep.py" />
-    <entry file="file://$PROJECT_DIR$/src/ptb/reader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ptb/util.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -1005,19 +1005,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="24" column="29" lean-forward="false" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ptb/ptb_word_lm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="633" column="0" lean-forward="false" selection-start-line="633" selection-start-column="0" selection-end-line="633" selection-end-column="0" />
-          <folding>
-            <element signature="e#2344#2382#0" expanded="true" />
-            <element signature="e#14912#15204#0" expanded="false" />
-            <element signature="e#15238#15538#0" expanded="false" />
-            <element signature="e#15571#15869#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1209,14 +1196,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mnist/test_784*1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="15" column="58" lean-forward="false" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/nmt/model_helper.py" />
     <entry file="file://$PROJECT_DIR$/src/nmt/nmt/model_helper.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -1302,11 +1281,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/mnist/test_784*1_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2545">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mnist/test_784*1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1243">
+          <caret line="216" column="0" lean-forward="true" selection-start-line="216" selection-start-column="0" selection-end-line="216" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/nmt/run.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="18" lean-forward="true" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+        <state relative-caret-position="690">
+          <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ptb/run.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ptb/ptb_word_lm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="73" column="11" lean-forward="true" selection-start-line="73" selection-start-column="11" selection-end-line="73" selection-end-column="11" />
+          <folding>
+            <element signature="e#2344#2382#0" expanded="true" />
+            <element signature="e#14914#15206#0" expanded="false" />
+            <element signature="e#15240#15540#0" expanded="false" />
+            <element signature="e#15573#15871#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
