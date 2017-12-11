@@ -25,14 +25,15 @@ batch_size = 128
 display_step = 200
 
 # Network Parameters
-num_input = 28  # MNIST data input (img shape: 28*28)
+num_input = 28  # mnist data input (img shape: 28*28)
 timesteps = 28  # timesteps
 num_hidden = 128  # hidden layer num of features
-num_classes = 10  # MNIST total classes (0-9 digits)
+num_classes = 10  # mnist total classes (0-9 digits)
 
 FLAGS = None
 
-# Import MNIST data
+
+# Import mnist data
 
 
 def run():
@@ -229,7 +230,7 @@ if __name__ == '__main__':
     parser.add_argument(
         '--data_dir',
         type=str,
-        default='../../data/MNIST',
+	    default='../../data/mnist',
         help='Directory for storing input data')
     parser.add_argument(
         '--log_dir',

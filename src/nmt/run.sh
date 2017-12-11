@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 python -m nmt.nmt \
     -- unit_type=base \
