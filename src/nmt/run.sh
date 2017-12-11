@@ -22,7 +22,7 @@ python -m nmt.nmt \
     --train_prefix=../../data/nmt_data/train \
     --dev_prefix=../../data/nmt_data/tst2012  \
     --test_prefix=../../data/nmt_data/tst2013 \
-    --out_dir=/tmp/nmt_model/base \
+    --out_dir=/tmp/nmt_model/cn_sep \
     --num_train_steps=12000 \
     --steps_per_stats=100 \
     --num_layers=2 \
@@ -37,7 +37,7 @@ python -m nmt.nmt \
     --train_prefix=../../data/nmt_data/train \
     --dev_prefix=../../data/nmt_data/tst2012  \
     --test_prefix=../../data/nmt_data/tst2013 \
-    --out_dir=/tmp/nmt_model/base \
+    --out_dir=/tmp/nmt_model/wn_sep \
     --num_train_steps=12000 \
     --steps_per_stats=100 \
     --num_layers=2 \
@@ -52,7 +52,7 @@ python -m nmt.nmt \
     --train_prefix=../../data/nmt_data/train \
     --dev_prefix=../../data/nmt_data/tst2012  \
     --test_prefix=../../data/nmt_data/tst2013 \
-    --out_dir=/tmp/nmt_model/base \
+    --out_dir=/tmp/nmt_model/ln_sep \
     --num_train_steps=12000 \
     --steps_per_stats=100 \
     --num_layers=2 \
@@ -67,7 +67,7 @@ python -m nmt.nmt \
     --train_prefix=../../data/nmt_data/train \
     --dev_prefix=../../data/nmt_data/tst2012  \
     --test_prefix=../../data/nmt_data/tst2013 \
-    --out_dir=/tmp/nmt_model/base \
+    --out_dir=/tmp/nmt_model/pcc_sep \
     --num_train_steps=12000 \
     --steps_per_stats=100 \
     --num_layers=2 \
