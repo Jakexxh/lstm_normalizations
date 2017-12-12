@@ -96,14 +96,14 @@ flags.DEFINE_integer("num_gpus", 0,
                      "If larger than 1, Grappler AutoParallel optimizer "
                      "will create multiple training replicas with each GPU "
                      "running one replica.")
-flags.DEFINE_string("rnn_mode", 'ln_sep',
+flags.DEFINE_string("rnn_mode", 'bn_sep',
                     "The low level implementation of lstm cell: one of CUDNN, "
                     "BASIC, and BLOCK, representing cudnn_lstm, basic_lstm, "
                     "and lstm_block_cell classes.")
 flags.DEFINE_float("lr", 1.0, "learning rate")
 
 FLAGS = flags.FLAGS
-BASIC = "basic"
+BASIC = "base"
 BN_SEP = "bn_sep"
 CN_SEP = "cn_sep"
 LN_SEP = "ln_sep"
@@ -116,7 +116,7 @@ cell_dic = {
     BASIC: BASICLSTMCell,
     BN_SEP: BNLSTMCell,
     CN_SEP: CNLSTMCell,
-    CN_SCALE_SEP: CNSCALELSTMCell,
+    #    CN_SCALE_SEP: CNSCALELSTMCell,
     LN_SEP: LNLSTMCell,
     WN_SEP: WNLSTMCell,
     PCC_SEP: PCCLSTMCell
@@ -241,7 +241,7 @@ class PTBModel(object):
                 config.hidden_size,
                 self.num_steps,
                 forget_bias=0.0,
-                is_training)
+                is_training_tensor=is_training)
 
         else:
             return cell_dic[config.rnn_mode](
@@ -263,11 +263,13 @@ class PTBModel(object):
         cell = tf.contrib.rnn.MultiRNNCell(
             [cell for _ in range(config.num_layers)], state_is_tuple=True)
 
-        # if config.rnn_mode != BNLSTMCell:
-        # 	self._initial_state = cell.zero_state(config.batch_size, data_type())
-        # 	inputs = tf.unstack(inputs, num=self.num_steps, axis=1)
-        # 	state = self._initial_state
-        # 	outputs, state = tf.contrib.rnn.static_rnn(cell, inputs, initial_state=state)
+        if config.rnn_mode != BNLSTMCell:
+            # self._initial_state = tf.contrib.rnn.LSTMStateTuple\
+            #                       (tf.truncated_normal([config.batch_size, config.hidden_size]),
+            #                    tf.truncated_normal([config.batch_size, config.hidden_size]))
+            # inputs = tf.unstack(inputs, num=self.num_steps, axis=1)
+            # state = self._initial_state
+            # outputs, state = tf.contrib.rnn.static_rnn(cell, inputs, initial_state=state)
         # outputs = []
         # with tf.variable_scope("RNN"):
         #     for time_step in range(self.num_steps):
@@ -275,20 +277,25 @@ class PTBModel(object):
         #         (cell_output, state) = cell(inputs[:, time_step, :], state)
         #         outputs.append(cell_output)
 
-        # else:
-        # 	self._initial_state = \
-        # 		(tf.truncated_normal([config.batch_size, config.hidden_size], stddev=0.1),
-        # 		 tf.truncated_normal([config.batch_size, config.hidden_size], stddev=0.1),
-        # 		 tf.constant(0.0, shape=[1]))
-        # 	inputs = tf.unstack(inputs, num=self.num_steps, axis=1)
-        # 	state = self._initial_state
-        # 	outputs, state = tf.contrib.rnn.static_rnn(cell, inputs, initial_state=state, dtype=tf.float32)
+            self._initial_state = cell.zero_state(config.batch_size, data_type())
+            inputs = tf.unstack(inputs, num=self.num_steps, axis=1)
+            state = self._initial_state
+            outputs, state = tf.contrib.rnn.static_rnn(cell, inputs, initial_state=state)
 
-        self._initial_state = cell.zero_state(config.batch_size, data_type())
-        inputs = tf.unstack(inputs, num=self.num_steps, axis=1)
-        state = self._initial_state
-        outputs, state = tf.contrib.rnn.static_rnn(
-            cell, inputs, initial_state=state)
+        else:
+            self._initial_state = tf.zeros \
+                (tf.truncated_normal([config.batch_size, config.hidden_size]),
+                 tf.truncated_normal([config.batch_size, config.hidden_size]),
+                 tf.constant(0.0, shape=[1]))
+            inputs = tf.unstack(inputs, num=self.num_steps, axis=1)
+            state = self._initial_state
+            outputs, state = tf.contrib.rnn.static_rnn(cell, inputs, initial_state=state, dtype=tf.float32)
+
+        # self._initial_state = cell.zero_state(config.batch_size, data_type())
+        # inputs = tf.unstack(inputs, num=self.num_steps, axis=1)
+        # state = self._initial_state
+        # outputs, state = tf.contrib.rnn.static_rnn(
+        #     cell, inputs, initial_state=state)
         output = tf.reshape(tf.concat(outputs, 1), [-1, config.hidden_size])
 
         return output, state
@@ -490,7 +497,6 @@ def run_epoch(session, model, eval_op=None, verbose=False):
 
             costs += cost
             iters += model.input.num_steps
-            print('cost: ' + str(cost))
             if verbose and step_num % (model.input.epoch_size // 10) == 10:
                 print(
                     "%.3f perplexity: %.3f speed: %.0f wps" %
@@ -544,7 +550,7 @@ def main(_):
     config = get_config()
     eval_config = get_config()
     eval_config.batch_size = 1
-    eval_config.num_steps = 1  # originally is 1
+    eval_config.num_steps = config.num_steps  # originally is 1
 
     with tf.Graph().as_default():
         initializer = tf.random_uniform_initializer(-config.init_scale,
