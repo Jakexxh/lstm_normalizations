@@ -239,11 +239,11 @@ class PTBModel(object):
         if config.rnn_mode == BN_SEP:
             return cell_dic[BN_SEP](
                 config.hidden_size,
-                is_training,
                 self.num_steps,
-                forget_bias=0.0, )
-        else:
+                forget_bias=0.0,
+                is_training)
 
+        else:
             return cell_dic[config.rnn_mode](
                 config.hidden_size, forget_bias=0.0, state_is_tuple=True)
 
