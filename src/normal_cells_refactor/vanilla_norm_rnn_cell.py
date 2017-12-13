@@ -73,7 +73,7 @@ Args:
 			h, step = state
 			_step = tf.squeeze(tf.gather(tf.cast(step, tf.int32), 0))
 			xh_gate = self._batch_norm(tf.matmul(inputs, self._kernel[:input_depth, :]), 'bn_xh', _step)
-			hh_gate = self._batch_norm(tf.matmul(state, self._kernel[input_depth:, :]), 'bn_hh', _step)
+			hh_gate = self._batch_norm(tf.matmul(h, self._kernel[input_depth:, :]), 'bn_hh', _step)
 			gate_inputs = xh_gate + hh_gate
 			output = self._activation(gate_inputs)
 			return output, (output, step + 1)
@@ -98,7 +98,6 @@ Args:
 			xh_gate = self._layer_norm(tf.matmul(inputs, self._kernel[:input_depth, :]), scope='ln_xh')
 			hh_gate = self._layer_norm(tf.matmul(state, self._kernel[input_depth:, :]), scope='ln_hh')
 			gate_inputs = xh_gate + hh_gate
-			gate_inputs = self._layer_norm(gate_inputs)
 			output = self._activation(gate_inputs)
 			return output, output
 
@@ -203,7 +202,7 @@ Args:
 				raise Exception(
 					'Matrix shape does not match in cosine_norm Operation!')
 
-	def _layer_norm(self, inputs, epsilon=1e-7, scope=None):
+	def _layer_norm(self, inputs, epsilon=1e-7, scope='layer_norm'):
 		# TODO: may be optimized
 		mean, var = tf.nn.moments(inputs, [1], keep_dims=True)
 		with tf.variable_scope(scope + 'ln'):
