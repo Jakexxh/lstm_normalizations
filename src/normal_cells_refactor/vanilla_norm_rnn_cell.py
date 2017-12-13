@@ -73,7 +73,7 @@ Args:
 			h, step = state
 			_step = tf.squeeze(tf.gather(tf.cast(step, tf.int32), 0))
 			xh_gate = self._batch_norm(tf.matmul(inputs, self._kernel[:input_depth, :]), 'bn_xh', _step)
-			hh_gate = self._batch_norm(tf.matmul(state, self._kernel[input_depth:, :]), 'bn_hh', _step)
+			hh_gate = self._batch_norm(tf.matmul(h, self._kernel[input_depth:, :]), 'bn_hh', _step)
 			gate_inputs = xh_gate + hh_gate
 			output = self._activation(gate_inputs)
 			return output, (output, step + 1)
