@@ -6,7 +6,7 @@ import argparse
 import sys
 import os
 
-sys.path.append(os.path.abspath(os.path.dirname(__file__) + '..'))
+sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/..'))
 from normal_cells_refactor.vanilla_norm_rnn_cell import Vani_Norm_BasicRNNCell
 
 import tensorflow as tf
@@ -213,7 +213,7 @@ if __name__ == '__main__':
 		type=str,
 		default='/tmp/logs/mnist/',
 		help='Summaries log directory')
-	parser.add_argument('--cell', type=str, default='base', help='RNN Cell')
+	parser.add_argument('--cell', type=str, default='bn_sep', help='RNN Cell')
 
 	FLAGS, unparsed = parser.parse_known_args()
 	tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
