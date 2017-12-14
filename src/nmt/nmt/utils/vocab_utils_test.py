@@ -27,6 +27,7 @@ from ..utils import vocab_utils
 
 
 class VocabUtilsTest(tf.test.TestCase):
+
 	def testCheckVocab(self):
 		# Create a vocab file
 		vocab_dir = os.path.join(tf.test.get_temp_dir(), "vocab_dir")

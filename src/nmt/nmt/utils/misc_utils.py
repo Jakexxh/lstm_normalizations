@@ -29,9 +29,8 @@ import tensorflow as tf
 
 
 def check_tensorflow_version():
-	min_tf_version = "1.2.0"
-	if tf.__version__ < min_tf_version:
-		raise EnvironmentError("Tensorflow version must >= %s" % min_tf_version)
+	if tf.__version__ < "1.2.1":
+		raise EnvironmentError("Tensorflow version must >= 1.2.1")
 
 
 def safe_exp(value):
@@ -146,7 +145,7 @@ def get_config_proto(log_device_placement=False, allow_soft_placement=True):
 def format_text(words):
 	"""Convert a sequence words into sentence."""
 	if (not hasattr(words, "__len__") and  # for numpy array
-		    not isinstance(words, collections.Iterable)):
+			not isinstance(words, collections.Iterable)):
 		words = [words]
 	return b" ".join(words)
 
@@ -166,9 +165,3 @@ def format_bpe_text(symbols, delimiter=b"@@"):
 			words.append(word)
 			word = b""
 	return b" ".join(words)
-
-
-def format_spm_text(symbols):
-	"""Decode a text in SPM (https://github.com/google/sentencepiece) format."""
-	return u"".join(format_text(symbols).decode("utf-8").split()).replace(
-		u"\u2581", u" ").strip().encode("utf-8")

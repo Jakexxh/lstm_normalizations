@@ -24,46 +24,41 @@ import tensorflow as tf
 from ..scripts import bleu
 from ..scripts import rouge
 
+
 __all__ = ["evaluate"]
 
 
-def evaluate(ref_file, trans_file, metric, subword_option=None):
+def evaluate(ref_file, trans_file, metric, bpe_delimiter=None):
 	"""Pick a metric and evaluate depending on task."""
 	# BLEU scores for translation task
 	if metric.lower() == "bleu":
 		evaluation_score = _bleu(ref_file, trans_file,
-		                         subword_option=subword_option)
+		                         bpe_delimiter=bpe_delimiter)
 	# ROUGE scores for summarization tasks
 	elif metric.lower() == "rouge":
 		evaluation_score = _rouge(ref_file, trans_file,
-		                          subword_option=subword_option)
+		                          bpe_delimiter=bpe_delimiter)
 	elif metric.lower() == "accuracy":
 		evaluation_score = _accuracy(ref_file, trans_file)
-	elif metric.lower() == "word_accuracy":
-		evaluation_score = _word_accuracy(ref_file, trans_file)
 	else:
 		raise ValueError("Unknown metric %s" % metric)
 
 	return evaluation_score
 
 
-def _clean(sentence, subword_option):
-	"""Clean and handle BPE or SPM outputs."""
+def _clean(sentence, bpe_delimiter):
+	"""Clean and handle BPE delimiter."""
 	sentence = sentence.strip()
 
 	# BPE
-	if subword_option == "bpe":
-		sentence = re.sub("@@ ", "", sentence)
-
-	# SPM
-	elif subword_option == "spm":
-		sentence = u"".join(sentence.split()).replace(u"\u2581", u" ").lstrip()
+	if bpe_delimiter:
+		sentence = re.sub(bpe_delimiter + " ", "", sentence)
 
 	return sentence
 
 
 # Follow //transconsole/localization/machine_translation/metrics/bleu_calc.py
-def _bleu(ref_file, trans_file, subword_option=None):
+def _bleu(ref_file, trans_file, bpe_delimiter=None):
 	"""Compute BLEU scores and handling BPE."""
 	max_order = 4
 	smooth = False
@@ -79,14 +74,14 @@ def _bleu(ref_file, trans_file, subword_option=None):
 	for references in zip(*reference_text):
 		reference_list = []
 		for reference in references:
-			reference = _clean(reference, subword_option)
+			reference = _clean(reference, bpe_delimiter)
 			reference_list.append(reference.split(" "))
 		per_segment_references.append(reference_list)
 
 	translations = []
 	with codecs.getreader("utf-8")(tf.gfile.GFile(trans_file, "rb")) as fh:
 		for line in fh:
-			line = _clean(line, subword_option=None)
+			line = _clean(line, bpe_delimiter)
 			translations.append(line.split(" "))
 
 	# bleu_score, precisions, bp, ratio, translation_length, reference_length
@@ -95,19 +90,19 @@ def _bleu(ref_file, trans_file, subword_option=None):
 	return 100 * bleu_score
 
 
-def _rouge(ref_file, summarization_file, subword_option=None):
+def _rouge(ref_file, summarization_file, bpe_delimiter=None):
 	"""Compute ROUGE scores and handling BPE."""
 
 	references = []
 	with codecs.getreader("utf-8")(tf.gfile.GFile(ref_file, "rb")) as fh:
 		for line in fh:
-			references.append(_clean(line, subword_option))
+			references.append(_clean(line, bpe_delimiter))
 
 	hypotheses = []
 	with codecs.getreader("utf-8")(
 			tf.gfile.GFile(summarization_file, "rb")) as fh:
 		for line in fh:
-			hypotheses.append(_clean(line, subword_option=None))
+			hypotheses.append(_clean(line, bpe_delimiter))
 
 	rouge_score_map = rouge.rouge(hypotheses, references)
 	return 100 * rouge_score_map["rouge_l/f_score"]
@@ -129,51 +124,21 @@ def _accuracy(label_file, pred_file):
 	return 100 * match / count
 
 
-def _word_accuracy(label_file, pred_file):
-	"""Compute accuracy on per word basis."""
-
-	with codecs.getreader("utf-8")(tf.gfile.GFile(label_file, "r")) as label_fh:
-		with codecs.getreader("utf-8")(tf.gfile.GFile(pred_file, "r")) as pred_fh:
-			total_acc, total_count = 0., 0.
-			for sentence in label_fh:
-				labels = sentence.strip().split(" ")
-				preds = pred_fh.readline().strip().split(" ")
-				match = 0.0
-				for pos in range(min(len(labels), len(preds))):
-					label = labels[pos]
-					pred = preds[pos]
-					if label == pred:
-						match += 1
-				total_acc += 100 * match / max(len(labels), len(preds))
-				total_count += 1
-	return total_acc / total_count
-
-
-def _moses_bleu(multi_bleu_script, tgt_test, trans_file, subword_option=None):
+def _moses_bleu(multi_bleu_script, tgt_test, trans_file, bpe_delimiter=None):
 	"""Compute BLEU scores using Moses multi-bleu.perl script."""
-
-	# TODO(thangluong): perform rewrite using python
 	# BPE
-	if subword_option == "bpe":
+	if bpe_delimiter:
 		debpe_tgt_test = tgt_test + ".debpe"
 		if not os.path.exists(debpe_tgt_test):
 			# TODO(thangluong): not use shell=True, can be a security hazard
 			subprocess.call("cp %s %s" % (tgt_test, debpe_tgt_test), shell=True)
-			subprocess.call("sed s/@@ //g %s" % (debpe_tgt_test),
+			subprocess.call("sed s/%s //g %s" % (bpe_delimiter, debpe_tgt_test),
 			                shell=True)
 		tgt_test = debpe_tgt_test
-	elif subword_option == "spm":
-		despm_tgt_test = tgt_test + ".despm"
-		if not os.path.exists(debpe_tgt_test):
-			subprocess.call("cp %s %s" % (tgt_test, despm_tgt_test))
-			subprocess.call("sed s/ //g %s" % (despm_tgt_test))
-			subprocess.call(u"sed s/^\u2581/g %s" % (despm_tgt_test))
-			subprocess.call(u"sed s/\u2581/ /g %s" % (despm_tgt_test))
-		tgt_test = despm_tgt_test
+
 	cmd = "%s %s < %s" % (multi_bleu_script, tgt_test, trans_file)
 
 	# subprocess
-	# TODO(thangluong): not use shell=True, can be a security hazard
 	bleu_output = subprocess.check_output(cmd, shell=True)
 
 	# extract BLEU score

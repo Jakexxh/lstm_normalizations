@@ -1,17 +1,11 @@
 """Utility functions for building models."""
 from __future__ import print_function
 
-import collections
 import time
 
 import tensorflow as tf
 
-from tensorflow.python.ops import lookup_ops
-
-from .utils import iterator_utils
 from .utils import misc_utils as utils
-from .utils import vocab_utils
-
 import sys
 import os
 
@@ -25,9 +19,8 @@ from normal_cells.lstm_wn_sep import WNLSTMCell
 from normal_cells.lstm_basic import BASICLSTMCell
 
 __all__ = [
-	"get_initializer", "get_device_str",
-	"create_train_model", "create_eval_model", "create_infer_model",
-	"create_emb_for_encoder_and_decoder", "create_rnn_cell",
+	"get_initializer",
+	"get_device_str", "create_emb_for_encoder_and_decoder", "create_rnn_cell",
 	"gradient_clip", "create_or_load_model", "load_model", "compute_perplexity"
 ]
 
@@ -39,10 +32,10 @@ def get_initializer(init_op, seed=None, init_weight=None):
 		return tf.random_uniform_initializer(
 			-init_weight, init_weight, seed=seed)
 	elif init_op == "glorot_normal":
-		return tf.keras.initializers.glorot_normal(
+		return tf.contrib.keras.initializers.glorot_normal(
 			seed=seed)
 	elif init_op == "glorot_uniform":
-		return tf.keras.initializers.glorot_uniform(
+		return tf.contrib.keras.initializers.glorot_uniform(
 			seed=seed)
 	else:
 		raise ValueError("Unknown init_op %s" % init_op)
@@ -54,172 +47,6 @@ def get_device_str(device_id, num_gpus):
 		return "/cpu:0"
 	device_str_output = "/gpu:%d" % (device_id % num_gpus)
 	return device_str_output
-
-
-class ExtraArgs(collections.namedtuple(
-	"ExtraArgs", ("single_cell_fn", "model_device_fn",
-	              "attention_mechanism_fn"))):
-	pass
-
-
-class TrainModel(
-	collections.namedtuple("TrainModel", ("graph", "model", "iterator",
-	                                      "skip_count_placeholder"))):
-	pass
-
-
-def create_train_model(
-		model_creator, hparams, scope=None, num_workers=1, jobid=0,
-		extra_args=None):
-	"""Create train graph, model, and iterator."""
-	src_file = "%s.%s" % (hparams.train_prefix, hparams.src)
-	tgt_file = "%s.%s" % (hparams.train_prefix, hparams.tgt)
-	src_vocab_file = hparams.src_vocab_file
-	tgt_vocab_file = hparams.tgt_vocab_file
-
-	graph = tf.Graph()
-
-	with graph.as_default(), tf.container(scope or "train"):
-		src_vocab_table, tgt_vocab_table = vocab_utils.create_vocab_tables(
-			src_vocab_file, tgt_vocab_file, hparams.share_vocab)
-
-		src_dataset = tf.contrib.data.TextLineDataset(src_file)
-		tgt_dataset = tf.contrib.data.TextLineDataset(tgt_file)
-		skip_count_placeholder = tf.placeholder(shape=(), dtype=tf.int64)
-
-		iterator = iterator_utils.get_iterator(
-			src_dataset,
-			tgt_dataset,
-			src_vocab_table,
-			tgt_vocab_table,
-			batch_size=hparams.batch_size,
-			sos=hparams.sos,
-			eos=hparams.eos,
-			source_reverse=hparams.source_reverse,
-			random_seed=hparams.random_seed,
-			num_buckets=hparams.num_buckets,
-			src_max_len=hparams.src_max_len,
-			tgt_max_len=hparams.tgt_max_len,
-			skip_count=skip_count_placeholder,
-			num_shards=num_workers,
-			shard_index=jobid)
-
-		# Note: One can set model_device_fn to
-		# `tf.train.replica_device_setter(ps_tasks)` for distributed training.
-		model_device_fn = None
-		if extra_args: model_device_fn = extra_args.model_device_fn
-		with tf.device(model_device_fn):
-			model = model_creator(
-				hparams,
-				iterator=iterator,
-				mode=tf.contrib.learn.ModeKeys.TRAIN,
-				source_vocab_table=src_vocab_table,
-				target_vocab_table=tgt_vocab_table,
-				scope=scope,
-				extra_args=extra_args)
-
-	return TrainModel(
-		graph=graph,
-		model=model,
-		iterator=iterator,
-		skip_count_placeholder=skip_count_placeholder)
-
-
-class EvalModel(
-	collections.namedtuple("EvalModel",
-	                       ("graph", "model", "src_file_placeholder",
-	                        "tgt_file_placeholder", "iterator"))):
-	pass
-
-
-def create_eval_model(model_creator, hparams, scope=None, extra_args=None):
-	"""Create train graph, model, src/tgt file holders, and iterator."""
-	src_vocab_file = hparams.src_vocab_file
-	tgt_vocab_file = hparams.tgt_vocab_file
-	graph = tf.Graph()
-
-	with graph.as_default(), tf.container(scope or "eval"):
-		src_vocab_table, tgt_vocab_table = vocab_utils.create_vocab_tables(
-			src_vocab_file, tgt_vocab_file, hparams.share_vocab)
-		src_file_placeholder = tf.placeholder(shape=(), dtype=tf.string)
-		tgt_file_placeholder = tf.placeholder(shape=(), dtype=tf.string)
-		src_dataset = tf.contrib.data.TextLineDataset(src_file_placeholder)
-		tgt_dataset = tf.contrib.data.TextLineDataset(tgt_file_placeholder)
-		iterator = iterator_utils.get_iterator(
-			src_dataset,
-			tgt_dataset,
-			src_vocab_table,
-			tgt_vocab_table,
-			hparams.batch_size,
-			sos=hparams.sos,
-			eos=hparams.eos,
-			source_reverse=hparams.source_reverse,
-			random_seed=hparams.random_seed,
-			num_buckets=hparams.num_buckets,
-			src_max_len=hparams.src_max_len_infer,
-			tgt_max_len=hparams.tgt_max_len_infer)
-		model = model_creator(
-			hparams,
-			iterator=iterator,
-			mode=tf.contrib.learn.ModeKeys.EVAL,
-			source_vocab_table=src_vocab_table,
-			target_vocab_table=tgt_vocab_table,
-			scope=scope,
-			extra_args=extra_args)
-	return EvalModel(
-		graph=graph,
-		model=model,
-		src_file_placeholder=src_file_placeholder,
-		tgt_file_placeholder=tgt_file_placeholder,
-		iterator=iterator)
-
-
-class InferModel(
-	collections.namedtuple("InferModel",
-	                       ("graph", "model", "src_placeholder",
-	                        "batch_size_placeholder", "iterator"))):
-	pass
-
-
-def create_infer_model(model_creator, hparams, scope=None, extra_args=None):
-	"""Create inference model."""
-	graph = tf.Graph()
-	src_vocab_file = hparams.src_vocab_file
-	tgt_vocab_file = hparams.tgt_vocab_file
-
-	with graph.as_default(), tf.container(scope or "infer"):
-		src_vocab_table, tgt_vocab_table = vocab_utils.create_vocab_tables(
-			src_vocab_file, tgt_vocab_file, hparams.share_vocab)
-		reverse_tgt_vocab_table = lookup_ops.index_to_string_table_from_file(
-			tgt_vocab_file, default_value=vocab_utils.UNK)
-
-		src_placeholder = tf.placeholder(shape=[None], dtype=tf.string)
-		batch_size_placeholder = tf.placeholder(shape=[], dtype=tf.int64)
-
-		src_dataset = tf.contrib.data.Dataset.from_tensor_slices(
-			src_placeholder)
-		iterator = iterator_utils.get_infer_iterator(
-			src_dataset,
-			src_vocab_table,
-			batch_size=batch_size_placeholder,
-			eos=hparams.eos,
-			source_reverse=hparams.source_reverse,
-			src_max_len=hparams.src_max_len_infer)
-		model = model_creator(
-			hparams,
-			iterator=iterator,
-			mode=tf.contrib.learn.ModeKeys.INFER,
-			source_vocab_table=src_vocab_table,
-			target_vocab_table=tgt_vocab_table,
-			reverse_target_vocab_table=reverse_tgt_vocab_table,
-			scope=scope,
-			extra_args=extra_args)
-	return InferModel(
-		graph=graph,
-		model=model,
-		src_placeholder=src_placeholder,
-		batch_size_placeholder=batch_size_placeholder,
-		iterator=iterator)
 
 
 def create_emb_for_encoder_and_decoder(share_vocab,
@@ -264,7 +91,7 @@ def create_emb_for_encoder_and_decoder(share_vocab,
 		partitioner = tf.fixed_size_partitioner(num_partitions)
 
 	with tf.variable_scope(
-					scope or "embeddings", dtype=dtype, partitioner=partitioner) as scope:
+			scope or "embeddings", dtype=dtype, partitioner=partitioner) as scope:
 		# Share embedding
 		if share_vocab:
 			if src_vocab_size != tgt_vocab_size:
@@ -287,12 +114,18 @@ def create_emb_for_encoder_and_decoder(share_vocab,
 	return embedding_encoder, embedding_decoder
 
 
-def _single_cell(unit_type, num_units, forget_bias, dropout, mode,
-                 residual_connection=False, device_str=None, residual_fn=None):
+def _single_cell(unit_type, num_units, forget_bias, dropout,
+                 mode, residual_connection=False, device_str=None):
 	"""Create an instance of a single RNN cell."""
 	# dropout (= 1 - keep_prob) is set to 0 during eval and infer
 	dropout = dropout if mode == tf.contrib.learn.ModeKeys.TRAIN else 0.0
 
+	# Cell Type
+	# if unit_type == "lstm":
+	# 	utils.print_out("  LSTM, forget_bias=%g" % forget_bias, new_line=False)
+	# 	single_cell = tf.contrib.rnn.BasicLSTMCell(
+	# 		num_units,
+	# 		forget_bias=forget_bias)
 	# Cell Type
 	if unit_type == "base":
 		utils.print_out("  base LSTM, forget_bias=%g" % forget_bias, new_line=False)
@@ -331,9 +164,6 @@ def _single_cell(unit_type, num_units, forget_bias, dropout, mode,
 			num_units,
 			forget_bias=forget_bias,
 			layer_norm=True)
-	elif unit_type == "nas":
-		utils.print_out("  NASCell", new_line=False)
-		single_cell = tf.contrib.rnn.NASCell(num_units)
 	else:
 		raise ValueError("Unknown unit type %s!" % unit_type)
 
@@ -346,8 +176,7 @@ def _single_cell(unit_type, num_units, forget_bias, dropout, mode,
 
 	# Residual
 	if residual_connection:
-		single_cell = tf.contrib.rnn.ResidualWrapper(
-			single_cell, residual_fn=residual_fn)
+		single_cell = tf.contrib.rnn.ResidualWrapper(single_cell)
 		utils.print_out("  %s" % type(single_cell).__name__, new_line=False)
 
 	# Device Wrapper
@@ -361,7 +190,7 @@ def _single_cell(unit_type, num_units, forget_bias, dropout, mode,
 
 def _cell_list(unit_type, num_units, num_layers, num_residual_layers,
                forget_bias, dropout, mode, num_gpus, base_gpu=0,
-               single_cell_fn=None, residual_fn=None):
+               single_cell_fn=None):
 	"""Create a list of RNN cells."""
 	if not single_cell_fn:
 		single_cell_fn = _single_cell
@@ -378,7 +207,6 @@ def _cell_list(unit_type, num_units, num_layers, num_residual_layers,
 			mode=mode,
 			residual_connection=(i >= num_layers - num_residual_layers),
 			device_str=get_device_str(i + base_gpu, num_gpus),
-			residual_fn=residual_fn
 		)
 		utils.print_out("")
 		cell_list.append(single_cell)
@@ -407,7 +235,7 @@ def create_rnn_cell(unit_type, num_units, num_layers, num_residual_layers,
 	  base_gpu: The gpu device id to use for the first RNN cell in the
 		returned list. The i-th RNN cell will use `(base_gpu + i) % num_gpus`
 		as its device id.
-	  single_cell_fn: allow for adding customized cell.
+	  single_cell_fn: single_cell_fn: allow for adding customized cell.
 		When not specified, we default to model_helper._single_cell
 	Returns:
 	  An `RNNCell` instance.

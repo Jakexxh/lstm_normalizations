@@ -33,8 +33,6 @@ def create_test_hparams(unit_type="lstm",
                         attention_architecture=None,
                         use_residual=False,
                         inference_indices=None,
-                        num_translations_per_input=1,
-                        beam_width=0,
                         init_op="uniform"):
 	"""Create training and inference test hparams."""
 	num_residual_layers = 0
@@ -66,12 +64,9 @@ def create_test_hparams(unit_type="lstm",
 		max_gradient_norm=5.0,
 		max_emb_gradient_norm=None,
 		learning_rate=1.0,
-		warmup_steps=0,
-		warmup_scheme="t2t",
 		start_decay_step=0,
 		decay_factor=0.98,
 		decay_steps=100,
-		learning_rate_decay_scheme="",
 		colocate_gradients_with_ops=True,
 		batch_size=128,
 		num_buckets=5,
@@ -79,9 +74,8 @@ def create_test_hparams(unit_type="lstm",
 		# Infer
 		tgt_max_len_infer=100,
 		infer_batch_size=32,
-		beam_width=beam_width,
+		beam_width=0,
 		length_penalty_weight=0.0,
-		num_translations_per_input=num_translations_per_input,
 
 		# Misc
 		forget_bias=0.0,
@@ -97,7 +91,7 @@ def create_test_hparams(unit_type="lstm",
 
 		# For inference.py test
 		source_reverse=False,
-		subword_option="bpe",
+		bpe_delimiter="@@",
 		src="src",
 		tgt="tgt",
 		src_max_len=400,
@@ -120,11 +114,11 @@ def create_test_iterator(hparams, mode):
 		reverse_tgt_vocab_table = lookup_ops.index_to_string_table_from_tensor(
 			tgt_vocab_mapping)
 
-	src_dataset = tf.data.Dataset.from_tensor_slices(
+	src_dataset = tf.contrib.data.Dataset.from_tensor_slices(
 		tf.constant(["a a b b c", "a b b"]))
 
 	if mode != tf.contrib.learn.ModeKeys.INFER:
-		tgt_dataset = tf.data.Dataset.from_tensor_slices(
+		tgt_dataset = tf.contrib.data.Dataset.from_tensor_slices(
 			tf.constant(["a b c b c", "a b c b"]))
 		return (
 			iterator_utils.get_iterator(

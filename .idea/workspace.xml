@@ -3,7 +3,51 @@
   <component name="ChangeListManager">
     <list default="true" id="0754ad83-7524-4d9e-ac27-6f7b38ce1b37" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/__init__.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/attention_model.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/attention_model.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/g3doc/img/attention_equation_0.jpg" afterPath="$PROJECT_DIR$/src/nmt/nmt/g3doc/img/attention_equation_0.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/g3doc/img/attention_equation_1.jpg" afterPath="$PROJECT_DIR$/src/nmt/nmt/g3doc/img/attention_equation_1.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/g3doc/img/attention_mechanism.jpg" afterPath="$PROJECT_DIR$/src/nmt/nmt/g3doc/img/attention_mechanism.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/g3doc/img/attention_vis.jpg" afterPath="$PROJECT_DIR$/src/nmt/nmt/g3doc/img/attention_vis.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/g3doc/img/encdec.jpg" afterPath="$PROJECT_DIR$/src/nmt/nmt/g3doc/img/encdec.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/g3doc/img/greedy_dec.jpg" afterPath="$PROJECT_DIR$/src/nmt/nmt/g3doc/img/greedy_dec.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/g3doc/img/seq2seq.jpg" afterPath="$PROJECT_DIR$/src/nmt/nmt/g3doc/img/seq2seq.jpg" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/gnmt_model.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/gnmt_model.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/inference.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/inference.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/inference_test.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/inference_test.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/model.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/model.py" />
       <change beforePath="$PROJECT_DIR$/src/nmt/nmt/model_helper.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/model_helper.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/model_test.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/model_test.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/nmt.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/nmt.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/scripts/__init__.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/scripts/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/scripts/bleu.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/scripts/bleu.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/scripts/rouge.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/scripts/rouge.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/standard_hparams/iwslt15.json" afterPath="$PROJECT_DIR$/src/nmt/nmt/standard_hparams/iwslt15.json" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/standard_hparams/wmt16.json" afterPath="$PROJECT_DIR$/src/nmt/nmt/standard_hparams/wmt16.json" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/standard_hparams/wmt16_gnmt_4_layer.json" afterPath="$PROJECT_DIR$/src/nmt/nmt/standard_hparams/wmt16_gnmt_4_layer.json" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/standard_hparams/wmt16_gnmt_8_layer.json" afterPath="$PROJECT_DIR$/src/nmt/nmt/standard_hparams/wmt16_gnmt_8_layer.json" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/testdata/deen_output" afterPath="$PROJECT_DIR$/src/nmt/nmt/testdata/deen_output" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/testdata/deen_ref_bpe" afterPath="$PROJECT_DIR$/src/nmt/nmt/testdata/deen_ref_bpe" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/testdata/deen_ref_spm" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/testdata/label_ref" afterPath="$PROJECT_DIR$/src/nmt/nmt/testdata/label_ref" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/testdata/pred_output" afterPath="$PROJECT_DIR$/src/nmt/nmt/testdata/pred_output" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/testdata/test_embed.txt" afterPath="$PROJECT_DIR$/src/nmt/nmt/testdata/test_embed.txt" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/testdata/test_embed_with_header.txt" afterPath="$PROJECT_DIR$/src/nmt/nmt/testdata/test_embed_with_header.txt" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/testdata/test_infer_file" afterPath="$PROJECT_DIR$/src/nmt/nmt/testdata/test_infer_file" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/testdata/test_infer_vocab.src" afterPath="$PROJECT_DIR$/src/nmt/nmt/testdata/test_infer_vocab.src" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/testdata/test_infer_vocab.tgt" afterPath="$PROJECT_DIR$/src/nmt/nmt/testdata/test_infer_vocab.tgt" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/train.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/train.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/utils/__init__.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/utils/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/utils/common_test_utils.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/utils/common_test_utils.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/utils/evaluation_utils.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/utils/evaluation_utils.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/utils/evaluation_utils_test.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/utils/evaluation_utils_test.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/utils/iterator_utils.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/utils/iterator_utils.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/utils/iterator_utils_test.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/utils/iterator_utils_test.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/utils/misc_utils.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/utils/misc_utils.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/utils/misc_utils_test.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/utils/misc_utils_test.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/utils/nmt_utils.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/utils/nmt_utils.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/utils/vocab_utils.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/utils/vocab_utils.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/utils/vocab_utils_test.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/utils/vocab_utils_test.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,8 +82,55 @@
       <file leaf-file-name="model_helper.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/nmt/nmt/model_helper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="82" column="75" lean-forward="true" selection-start-line="82" selection-start-column="75" selection-end-line="82" selection-end-column="75" />
+            <state relative-caret-position="150">
+              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding>
+                <element signature="e#45#82#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="model.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nmt/nmt/model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#743#781#0" expanded="true" />
+                <marker date="1503638798000" expanded="true" signature="1142:1143" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="attention_model.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nmt/nmt/attention_model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1503638798000" expanded="true" signature="1000:1001" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nmt.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nmt/nmt/nmt.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2598">
+              <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="model_test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nmt/nmt/model_test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -314,6 +405,145 @@
       <recent name="$PROJECT_DIR$/src/char-rnn-tensorflow" />
       <recent name="$PROJECT_DIR$/src/normal_cells" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/__init__.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/attention_model.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/gnmt_model.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/inference.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/model.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/model_helper.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/model_helper.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/scripts/__init__.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/scripts/bleu.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/scripts/rouge.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/train.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/utils/__init__.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/utils/evaluation_utils.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/utils/iterator_utils.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/utils/iterator_utils.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/utils/misc_utils.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/utils/nmt_utils.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/utils/vocab_utils.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/normal_cells_refactor/__init__.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/normal_cells_refactor/lstm_basic.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/normal_cells_refactor/lstm_bn_sep.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/normal_cells_refactor/lstm_cn_sep.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/normal_cells_refactor/lstm_ln_sep.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/normal_cells_refactor/lstm_pcc_sep.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/normal_cells_refactor/lstm_wn_sep.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/ptb/__init__.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/ptb/reader.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/ptb/run.sh</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/ptb/util.pyc</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/mnist/.run_base.sh.swp</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -752,7 +982,14 @@
       <option name="project" value="LOCAL" />
       <updated>1513155220205</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="change tf.data">
+      <created>1513218583833</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1513218583833</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TodoView">
@@ -829,7 +1066,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="refactor" />
     <MESSAGE value="still fix bn_sep" />
     <MESSAGE value="finish fix bn_sep&#10;cannot add bn_new_bn to ptb" />
     <MESSAGE value="change scale to truncated" />
@@ -854,7 +1090,8 @@
     <MESSAGE value="fix vani rnn" />
     <MESSAGE value="add textsum" />
     <MESSAGE value="up" />
-    <option name="LAST_COMMIT_MESSAGE" value="up" />
+    <MESSAGE value="change tf.data" />
+    <option name="LAST_COMMIT_MESSAGE" value="change tf.data" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -891,11 +1128,6 @@
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/nmt/nmt/nmt.py</url>
-          <line>658</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/normal_cells_refactor/lstm_bn_sep.py</url>
           <line>66</line>
           <option name="timeStamp" value="29" />
@@ -906,27 +1138,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/char-rnn-tensorflow/run.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="116" lean-forward="true" selection-start-line="14" selection-start-column="116" selection-end-line="14" selection-end-column="116" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/char-rnn-tensorflow/sample.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="36" column="64" lean-forward="false" selection-start-line="36" selection-start-column="64" selection-end-line="36" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/char-rnn-tensorflow/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="24" column="29" lean-forward="false" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/char-rnn-tensorflow/train.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1024,14 +1235,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="397">
           <caret line="103" column="9" lean-forward="true" selection-start-line="103" selection-start-column="9" selection-end-line="103" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/nmt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="193" column="17" lean-forward="true" selection-start-line="193" selection-start-column="17" selection-end-line="193" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1162,6 +1365,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
           <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1208,6 +1412,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="574" column="0" lean-forward="false" selection-start-line="574" selection-start-column="0" selection-end-line="574" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1222,14 +1427,54 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="1252" column="0" lean-forward="false" selection-start-line="1252" selection-start-column="0" selection-end-line="1252" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#743#781#0" expanded="true" />
+            <marker date="1503638798000" expanded="true" signature="1142:1143" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/attention_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1503638798000" expanded="true" signature="1000:1001" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/model_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/nmt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2598">
+          <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nmt/nmt/model_helper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="82" column="75" lean-forward="true" selection-start-line="82" selection-start-column="75" selection-end-line="82" selection-end-column="75" />
-          <folding />
+        <state relative-caret-position="150">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="e#45#82#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
