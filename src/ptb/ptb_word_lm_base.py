@@ -236,7 +236,7 @@ class PTBModel(object):
 
 		if config.rnn_mode == BLOCK:
 			return tf.contrib.rnn.LSTMBlockCell(
-				config.hidden_size, forget_bias=0.0, grain=FLAGS.g)
+				config.hidden_size, forget_bias=0.0)
 
 		if config.rnn_mode == BN_SEP:
 			return cell_dic[BN_SEP](
@@ -248,7 +248,7 @@ class PTBModel(object):
 
 		else:
 			return cell_dic[config.rnn_mode](
-				config.hidden_size, forget_bias=0.0, state_is_tuple=True)
+				config.hidden_size, grain=FLAGS.g, forget_bias=0.0, state_is_tuple=True)
 
 		# raise ValueError("rnn_mode %s not supported" % config.rnn_mode)
 
@@ -536,7 +536,7 @@ def get_config():
 
 
 def main(_):
-	save_path = FLAGS.save_path + '/' + FLAGS.rnn_mode + '_g' + FLAGS.g + '_lr' + FLAGS.lr
+	save_path = FLAGS.save_path + '/' + FLAGS.rnn_mode + '_g' + str(FLAGS.g0) + '_lr' + str(FLAGS.lr)
 	if not FLAGS.data_path:
 		raise ValueError("Must set --data_path to PTB data directory")
 	gpus = [
