@@ -536,7 +536,7 @@ def get_config():
 
 
 def main(_):
-	save_path = FLAGS.save_path + '/' + FLAGS.rnn_mode + '_g' + str(FLAGS.g0) + '_lr' + str(FLAGS.lr)
+	save_path = FLAGS.save_path + '/' + FLAGS.rnn_mode + '_g' + str(FLAGS.g) + '_lr' + str(FLAGS.lr)
 	if not FLAGS.data_path:
 		raise ValueError("Must set --data_path to PTB data directory")
 	gpus = [
