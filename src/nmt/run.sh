@@ -3,11 +3,12 @@
 python -m nmt.nmt \
     --unit_type=base \
     --src=vi --tgt=en \
+    --learning_rate=0.1 \
     --vocab_prefix=../../data/nmt_data/vocab  \
     --train_prefix=../../data/nmt_data/train \
     --dev_prefix=../../data/nmt_data/tst2012  \
     --test_prefix=../../data/nmt_data/tst2013 \
-    --out_dir=/tmp/nmt_model/base \
+    --out_dir=/tmp/nmt_model/nmt_1/base_0.1 \
     --num_train_steps=12000 \
     --steps_per_stats=100 \
     --num_layers=2 \
@@ -16,13 +17,46 @@ python -m nmt.nmt \
     --metrics=bleu
 
 python -m nmt.nmt \
-    --unit_type=cn_sep \
+    --unit_type=base \
     --src=vi --tgt=en \
+    --learning_rate=10.0 \
     --vocab_prefix=../../data/nmt_data/vocab  \
     --train_prefix=../../data/nmt_data/train \
     --dev_prefix=../../data/nmt_data/tst2012  \
     --test_prefix=../../data/nmt_data/tst2013 \
-    --out_dir=/tmp/nmt_model/cn_sep \
+    --out_dir=/tmp/nmt_model/nmt_1/base_10.0 \
+    --num_train_steps=12000 \
+    --steps_per_stats=100 \
+    --num_layers=2 \
+    --num_units=128 \
+    --dropout=0.2 \
+    --metrics=bleu
+
+python -m nmt.nmt \
+   --unit_type=cn_sep \
+    --src=vi --tgt=en \
+    --learning_rate=0.1 \
+    --vocab_prefix=../../data/nmt_data/vocab  \
+    --train_prefix=../../data/nmt_data/train \
+    --dev_prefix=../../data/nmt_data/tst2012  \
+    --test_prefix=../../data/nmt_data/tst2013 \
+    --out_dir=/tmp/nmt_model/nmt_1/cn_sep_g1.0_0.1 \
+    --num_train_steps=12000 \
+    --steps_per_stats=100 \
+    --num_layers=2 \
+    --num_units=128 \
+    --dropout=0.2 \
+    --metrics=bleu
+
+python -m nmt.nmt \
+   --unit_type=cn_sep \
+    --src=vi --tgt=en \
+    --learning_rate=10.0 \
+    --vocab_prefix=../../data/nmt_data/vocab  \
+    --train_prefix=../../data/nmt_data/train \
+    --dev_prefix=../../data/nmt_data/tst2012  \
+    --test_prefix=../../data/nmt_data/tst2013 \
+    --out_dir=/tmp/nmt_model/nmt_1/cn_sep_g1.0_10.0 \
     --num_train_steps=12000 \
     --steps_per_stats=100 \
     --num_layers=2 \
@@ -33,11 +67,28 @@ python -m nmt.nmt \
 python -m nmt.nmt \
     --unit_type=wn_sep \
     --src=vi --tgt=en \
+    --learning_rate=0.1 \
     --vocab_prefix=../../data/nmt_data/vocab  \
     --train_prefix=../../data/nmt_data/train \
     --dev_prefix=../../data/nmt_data/tst2012  \
     --test_prefix=../../data/nmt_data/tst2013 \
-    --out_dir=/tmp/nmt_model/wn_sep \
+    --out_dir=/tmp/nmt_model/nmt_1/wn_sep_g1.0_0.1 \
+    --num_train_steps=12000 \
+    --steps_per_stats=100 \
+    --num_layers=2 \
+    --num_units=128 \
+    --dropout=0.2 \
+    --metrics=bleu
+
+python -m nmt.nmt \
+    --unit_type=wn_sep \
+    --src=vi --tgt=en \
+    --learning_rate=10.0 \
+    --vocab_prefix=../../data/nmt_data/vocab  \
+    --train_prefix=../../data/nmt_data/train \
+    --dev_prefix=../../data/nmt_data/tst2012  \
+    --test_prefix=../../data/nmt_data/tst2013 \
+    --out_dir=/tmp/nmt_model/nmt_1/wn_sep_g1.0_10.0 \
     --num_train_steps=12000 \
     --steps_per_stats=100 \
     --num_layers=2 \
@@ -48,11 +99,28 @@ python -m nmt.nmt \
 python -m nmt.nmt \
     --unit_type=ln_sep \
     --src=vi --tgt=en \
+    --learning_rate=0.1 \
     --vocab_prefix=../../data/nmt_data/vocab  \
     --train_prefix=../../data/nmt_data/train \
     --dev_prefix=../../data/nmt_data/tst2012  \
     --test_prefix=../../data/nmt_data/tst2013 \
-    --out_dir=/tmp/nmt_model/ln_sep \
+    --out_dir=/tmp/nmt_model/nmt_1/ln_sep_g0.1_0.1 \
+    --num_train_steps=12000 \
+    --steps_per_stats=100 \
+    --num_layers=2 \
+    --num_units=128 \
+    --dropout=0.2 \
+    --metrics=bleu
+
+python -m nmt.nmt \
+    --unit_type=ln_sep \
+    --src=vi --tgt=en \
+    --learning_rate=10.0 \
+    --vocab_prefix=../../data/nmt_data/vocab  \
+    --train_prefix=../../data/nmt_data/train \
+    --dev_prefix=../../data/nmt_data/tst2012  \
+    --test_prefix=../../data/nmt_data/tst2013 \
+    --out_dir=/tmp/nmt_model/nmt_1/ln_sep_g0.1_10.0 \
     --num_train_steps=12000 \
     --steps_per_stats=100 \
     --num_layers=2 \
@@ -63,11 +131,28 @@ python -m nmt.nmt \
 python -m nmt.nmt \
     --unit_type=pcc_sep \
     --src=vi --tgt=en \
+    --learning_rate=0.1 \
     --vocab_prefix=../../data/nmt_data/vocab  \
     --train_prefix=../../data/nmt_data/train \
     --dev_prefix=../../data/nmt_data/tst2012  \
     --test_prefix=../../data/nmt_data/tst2013 \
-    --out_dir=/tmp/nmt_model/pcc_sep \
+    --out_dir=/tmp/nmt_model/nmt_1/pcc_sep_g1.0_0.1 \
+    --num_train_steps=12000 \
+    --steps_per_stats=100 \
+    --num_layers=2 \
+    --num_units=128 \
+    --dropout=0.2 \
+    --metrics=bleu
+
+python -m nmt.nmt \
+    --unit_type=pcc_sep \
+    --src=vi --tgt=en \
+    --learning_rate=10.0 \
+    --vocab_prefix=../../data/nmt_data/vocab  \
+    --train_prefix=../../data/nmt_data/train \
+    --dev_prefix=../../data/nmt_data/tst2012  \
+    --test_prefix=../../data/nmt_data/tst2013 \
+    --out_dir=/tmp/nmt_model/nmt_1/pcc_sep_g1.0_10.0 \
     --num_train_steps=12000 \
     --steps_per_stats=100 \
     --num_layers=2 \

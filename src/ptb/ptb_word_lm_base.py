@@ -63,13 +63,13 @@ import os
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + '..'))
 
-from normal_cells.lstm_bn_sep import BNLSTMCell
+from normal_cells_ptb.lstm_bn_sep import BNLSTMCell
 # from normal_cells.lstm_cn_scale_input import CNSCALELSTMCell
-from normal_cells.lstm_cn_sep import CNLSTMCell
-from normal_cells.lstm_ln_sep import LNLSTMCell
-from normal_cells.lstm_pcc_sep import PCCLSTMCell
-from normal_cells.lstm_wn_sep import WNLSTMCell
-from normal_cells.lstm_basic import BASICLSTMCell
+from normal_cells_ptb.lstm_cn_sep import CNLSTMCell
+from normal_cells_ptb.lstm_ln_sep import LNLSTMCell
+from normal_cells_ptb.lstm_pcc_sep import PCCLSTMCell
+from normal_cells_ptb.lstm_wn_sep import WNLSTMCell
+from normal_cells_ptb.lstm_basic import BASICLSTMCell
 
 import time
 import numpy as np
