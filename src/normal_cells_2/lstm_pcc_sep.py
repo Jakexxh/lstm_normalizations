@@ -17,6 +17,7 @@ _WEIGHTS_VARIABLE_NAME = "kernel"
 class PCCLSTMCell(RNNCell):
     def __init__(self,
                  num_units,
+                 grain,
                  forget_bias=1.0,
                  state_is_tuple=True,
                  activation=None,
@@ -28,6 +29,7 @@ class PCCLSTMCell(RNNCell):
                 "%s: Using a concatenated state is slower and will soon be "
                 "deprecated.  Use state_is_tuple=True.", self)
         self._num_units = num_units
+        self._grain = grain
         self._forget_bias = forget_bias
         self._state_is_tuple = state_is_tuple
         self._activation = activation or math_ops.tanh
@@ -50,7 +52,7 @@ class PCCLSTMCell(RNNCell):
         else:
             c, h = array_ops.split(value=state, num_or_size_splits=2, axis=1)
 
-        concat = _line_sep([inputs, h], 4 * self._num_units, bias=True)
+        concat = self._line_sep([inputs, h], 4 * self._num_units, bias=True)
 
         # i = input_gate, j = new_input, f = forget_gate, o = output_gate
         i, j, f, o = array_ops.split(
@@ -66,88 +68,87 @@ class PCCLSTMCell(RNNCell):
             new_state = array_ops.concat([new_c, new_h], 1)
         return new_h, new_state
 
+    def _line_sep(self,
+                  args,
+                  output_size,
+                  bias,
+                  bias_initializer=None,
+                  kernel_initializer=None):
+	    if args is None or (nest.is_sequence(args) and not args):
+		    raise ValueError("`args` must be specified")
+	    if not nest.is_sequence(args):
+		    args = [args]
 
-def _line_sep(args,
-              output_size,
-              bias,
-              bias_initializer=None,
-              kernel_initializer=None):
-    if args is None or (nest.is_sequence(args) and not args):
-        raise ValueError("`args` must be specified")
-    if not nest.is_sequence(args):
-        args = [args]
+	    # Calculate the total size of arguments on dimension 1.
+	    total_arg_size = 0
+	    shapes = [a.get_shape() for a in args]
+	    for shape in shapes:
+		    if shape.ndims != 2:
+			    raise ValueError("linear is expecting 2D arguments: %s" % shapes)
+		    if shape[1].value is None:
+			    raise ValueError("linear expects shape[1] to \
+                                 be provided for shape %s, "
+			                     "but saw %s" % (shape, shape[1]))
+		    else:
+			    total_arg_size += shape[1].value
 
-    # Calculate the total size of arguments on dimension 1.
-    total_arg_size = 0
-    shapes = [a.get_shape() for a in args]
-    for shape in shapes:
-        if shape.ndims != 2:
-            raise ValueError("linear is expecting 2D arguments: %s" % shapes)
-        if shape[1].value is None:
-            raise ValueError("linear expects shape[1] to \
-                             be provided for shape %s, "
-                             "but saw %s" % (shape, shape[1]))
-        else:
-            total_arg_size += shape[1].value
+	    dtype = [a.dtype for a in args][0]
 
-    dtype = [a.dtype for a in args][0]
+	    # Now the computation.
+	    scope = vs.get_variable_scope()
+	    with vs.variable_scope(scope) as outer_scope:
 
-    # Now the computation.
-    scope = vs.get_variable_scope()
-    with vs.variable_scope(scope) as outer_scope:
+		    [x, h] = args
+		    x_size = x.get_shape().as_list()[1]
 
-        [x, h] = args
-        x_size = x.get_shape().as_list()[1]
+		    W_xh = tf.get_variable(
+			    'W_xh', [x_size, output_size]  # , initializer=tf.orthogonal_initializer
+		    )
+		    W_hh = tf.get_variable(
+			    'W_hh', [int(output_size / 4), output_size]  # ,initializer=identity_initializer(0.9)
+		    )
 
-        W_xh = tf.get_variable(
-	        'W_xh', [x_size, output_size]  # , initializer=tf.orthogonal_initializer
-        )
-        W_hh = tf.get_variable(
-	        'W_hh', [int(output_size / 4), output_size]  # ,initializer=identity_initializer(0.9)
-        )
+		    pcc_xh = self.pcc_norm(x, W_xh, 'pcc_xh')
+		    pcc_hh = self.pcc_norm(h, W_hh, 'pcc_hh')
+		    res = pcc_xh + pcc_hh
 
-        pcc_xh = pcc_norm(x, W_xh, 'pcc_xh')
-        pcc_hh = pcc_norm(h, W_hh, 'pcc_hh')
-        res = pcc_xh + pcc_hh
+		    if not bias:
+			    return res
+		    with vs.variable_scope(outer_scope) as inner_scope:
+			    inner_scope.set_partitioner(None)
+			    if bias_initializer is None:
+				    bias_initializer = init_ops.constant_initializer(
+					    0.0, dtype=dtype)
+			    biases = vs.get_variable(
+				    _BIAS_VARIABLE_NAME, [output_size],
+				    dtype=dtype,
+				    initializer=bias_initializer)
+		    return nn_ops.bias_add(res, biases)
 
-        if not bias:
-            return res
-        with vs.variable_scope(outer_scope) as inner_scope:
-            inner_scope.set_partitioner(None)
-            if bias_initializer is None:
-                bias_initializer = init_ops.constant_initializer(
-                    0.0, dtype=dtype)
-            biases = vs.get_variable(
-                _BIAS_VARIABLE_NAME, [output_size],
-                dtype=dtype,
-                initializer=bias_initializer)
-        return nn_ops.bias_add(res, biases)
+    def pcc_norm(self, x, w, name=None):
+	    with tf.name_scope(name + '_pcc_norm'):
+		    x = tf.concat([x, tf.fill([tf.shape(x)[0], 1], 1e-7)], axis=1)
 
+		    w = tf.concat([w, tf.fill([1, tf.shape(w)[1]], 1e-7)], axis=0)
 
-def pcc_norm(x, w, name=None):
-    with tf.name_scope(name + '_pcc_norm'):
-        x = tf.concat([x, tf.fill([tf.shape(x)[0], 1], 1e-7)], axis=1)
+		    x_mean, _ = tf.nn.moments(x, [1], keep_dims=True)
+		    w_mean, _ = tf.nn.moments(w, [0], keep_dims=True)
+		    if tf.equal(tf.shape(x)[1], tf.shape(w)[0]) is not None:
 
-        w = tf.concat([w, tf.fill([1, tf.shape(w)[1]], 1e-7)], axis=0)
+			    x_l2 = tf.nn.l2_normalize(x - x_mean, 1)
 
-        x_mean, _ = tf.nn.moments(x, [1], keep_dims=True)
-        w_mean, _ = tf.nn.moments(w, [0], keep_dims=True)
-        if tf.equal(tf.shape(x)[1], tf.shape(w)[0]) is not None:
+			    w_l2 = tf.nn.l2_normalize(w - w_mean, 0)
 
-            x_l2 = tf.nn.l2_normalize(x - x_mean, 1)
+			    cos_mat = tf.matmul(x_l2, w_l2)
 
-            w_l2 = tf.nn.l2_normalize(w - w_mean, 0)
+			    gamma = tf.get_variable(
+				    name + '_gamma', [cos_mat.get_shape().as_list()[1]],
+				    initializer=tf.truncated_normal_initializer(self._grain))
 
-            cos_mat = tf.matmul(x_l2, w_l2)
-
-            gamma = tf.get_variable(
-                name + '_gamma', [cos_mat.get_shape().as_list()[1]],
-                initializer=tf.truncated_normal_initializer(0.1))
-
-            return gamma * cos_mat
-        else:
-            raise Exception(
-                'Matrix shape does not match in cosine_norm Operation!')
+			    return gamma * cos_mat
+		    else:
+			    raise Exception(
+				    'Matrix shape does not match in cosine_norm Operation!')
 
 
 def identity_initializer(scale):

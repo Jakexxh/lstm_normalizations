@@ -63,13 +63,13 @@ import os
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + '..'))
 
-from normal_cells_ptb.lstm_bn_sep import BNLSTMCell
+from normal_cells_2.lstm_bn_sep import BNLSTMCell
 # from normal_cells.lstm_cn_scale_input import CNSCALELSTMCell
-from normal_cells_ptb.lstm_cn_sep import CNLSTMCell
-from normal_cells_ptb.lstm_ln_sep import LNLSTMCell
-from normal_cells_ptb.lstm_pcc_sep import PCCLSTMCell
-from normal_cells_ptb.lstm_wn_sep import WNLSTMCell
-from normal_cells_ptb.lstm_basic import BASICLSTMCell
+from normal_cells_2.lstm_cn_sep import CNLSTMCell
+from normal_cells_2.lstm_ln_sep import LNLSTMCell
+from normal_cells_2.lstm_pcc_sep import PCCLSTMCell
+from normal_cells_2.lstm_wn_sep import WNLSTMCell
+from normal_cells_2.lstm_basic import BASICLSTMCell
 
 import time
 import numpy as np
@@ -101,6 +101,8 @@ flags.DEFINE_string("rnn_mode", 'bn_sep',
                     "BASIC, and BLOCK, representing cudnn_lstm, basic_lstm, "
                     "and lstm_block_cell classes.")
 flags.DEFINE_float("lr", 1.0, "learning rate")
+flags.DEFINE_float("g", 1.0, "grain")
+
 
 FLAGS = flags.FLAGS
 BASIC = "base"
@@ -234,14 +236,15 @@ class PTBModel(object):
 
 		if config.rnn_mode == BLOCK:
 			return tf.contrib.rnn.LSTMBlockCell(
-				config.hidden_size, forget_bias=0.0)
+				config.hidden_size, forget_bias=0.0, grain=FLAGS.g)
 
 		if config.rnn_mode == BN_SEP:
 			return cell_dic[BN_SEP](
 				config.hidden_size,
 				self.num_steps,
 				forget_bias=0.0,
-				is_training_tensor=is_training)
+				is_training_tensor=is_training,
+				initial_scale=FLAGS.g)
 
 		else:
 			return cell_dic[config.rnn_mode](
@@ -533,6 +536,7 @@ def get_config():
 
 
 def main(_):
+	save_path = FLAGS.save_path + '/' + FLAGS.rnn_mode + '_g' + FLAGS.g + '_lr' + FLAGS.lr
 	if not FLAGS.data_path:
 		raise ValueError("Must set --data_path to PTB data directory")
 	gpus = [
@@ -601,7 +605,7 @@ def main(_):
 		tf.train.import_meta_graph(metagraph)
 		for model in models.values():
 			model.import_ops()
-		sv = tf.train.Supervisor(logdir=FLAGS.save_path)
+		sv = tf.train.Supervisor(logdir=save_path)
 		config_proto = tf.ConfigProto(allow_soft_placement=soft_placement)
 		with sv.managed_session(config=config_proto) as session:
 			# session = tf_debug.LocalCLIDebugWrapperSession(session)
@@ -622,7 +626,7 @@ def main(_):
 			test_perplexity = run_epoch(session, mtest)
 			print("Test Perplexity: %.3f" % test_perplexity)
 
-			with open(FLAGS.save_path + "/log.txt", "w+") as myfile:
+			with open(save_path + "/log.txt", "w+") as myfile:
 				myfile.write("\nlearning rate: " + str(FLAGS.lr) + '\n')
 				myfile.write("final Train Perplexity: " + str(train_perplexity)
 				             + '\n')
@@ -631,10 +635,10 @@ def main(_):
 				myfile.write("final Test Perplexity: " + str(test_perplexity) +
 				             '\n')
 
-			if FLAGS.save_path:
-				print("Saving model to %s." % FLAGS.save_path)
+			if save_path:
+				print("Saving model to %s." % save_path)
 				sv.saver.save(
-					session, FLAGS.save_path, global_step=sv.global_step)
+					session, save_path, global_step=sv.global_step)
 
 
 if __name__ == "__main__":

@@ -17,6 +17,7 @@ _WEIGHTS_VARIABLE_NAME = "kernel"
 class BASICLSTMCell(RNNCell):
     def __init__(self,
                  num_units,
+                 grain=0,
                  forget_bias=1.0,
                  state_is_tuple=True,
                  activation=None,
