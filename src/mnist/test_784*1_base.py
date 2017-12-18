@@ -7,13 +7,13 @@ import sys
 import os
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)  + '..'))
-from normal_cells.lstm_bn_sep import BNLSTMCell
+from normal_cells2.lstm_bn_sep import BNLSTMCell
 # from normal_cells_last.lstm_cn_scale_input import CNSCALELSTMCell
-from normal_cells.lstm_cn_sep import CNLSTMCell
-from normal_cells.lstm_ln_sep import LNLSTMCell
-from normal_cells.lstm_pcc_sep import PCCLSTMCell
-from normal_cells.lstm_wn_sep import WNLSTMCell
-from normal_cells.lstm_basic import BASICLSTMCell
+from normal_cells2.lstm_cn_sep import CNLSTMCell
+from normal_cells2.lstm_ln_sep import LNLSTMCell
+from normal_cells2.lstm_pcc_sep import PCCLSTMCell
+from normal_cells2.lstm_wn_sep import WNLSTMCell
+from normal_cells2.lstm_basic import BASICLSTMCell
 
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
@@ -33,7 +33,8 @@ num_classes = 10  # mnist total classes (0-9 digits)
 FLAGS = None
 
 
-def run():
+def run(save_path):
+
 	mnist = input_data.read_data_sets(FLAGS.data_dir, one_hot=True)
 
 	cell_dic = {
@@ -77,7 +78,7 @@ def run():
 			init_state = tf.contrib.rnn.LSTMStateTuple(
 				tf.truncated_normal([batch_size, num_hidden], stddev=0.1),
 				tf.truncated_normal([batch_size, num_hidden], stddev=0.1))
-			lstm_cell = cell_dic[FLAGS.cell](num_hidden, forget_bias=1.0)
+			lstm_cell = cell_dic[FLAGS.cell](num_hidden, grain=FLAGS.g, forget_bias=1.0)
 
 			# Get lstm cell output
 			outputs, states = tf.nn.static_rnn(
@@ -95,7 +96,8 @@ def run():
 				num_hidden,
 				FLAGS.max_steps,
 				forget_bias=1.0,
-				is_training_tensor=training)
+				is_training_tensor=training,
+				initial_scale=FLAGS.g)
 			outputs, states = tf.nn.static_rnn(
 				lstm_cell, x, initial_state=init_state, dtype=tf.float32)
 			_, final_hidden, _ = states
@@ -131,9 +133,10 @@ def run():
 			tf.summary.histogram('variable/{}'.format(var.name), var)
 
 	merged = tf.summary.merge_all()
-	train_writer = tf.summary.FileWriter(FLAGS.log_dir + '/train')
-	test_writer = tf.summary.FileWriter(FLAGS.log_dir + '/test')
-	valid_writer = tf.summary.FileWriter(FLAGS.log_dir + '/valid')
+
+	train_writer = tf.summary.FileWriter(save_path + '/train')
+	test_writer = tf.summary.FileWriter(save_path + '/test')
+	valid_writer = tf.summary.FileWriter(save_path + '/valid')
 
 	# Initialize the variables (i.e. assign their default value)
 	init = tf.global_variables_initializer()
@@ -200,7 +203,7 @@ def run():
 			test_writer.add_summary(summary, step)
 
 		print("Test Finished!")
-		with open(FLAGS.log_dir + '/final.txt','w+') as file:
+		with open(save_path + '/final.txt', 'w+') as file:
 			file.write("Test Ave_loss: " + str(test_loss / (1000)))
 			file.write("Test Ave_acc: " + str(test_acc / (1000)))
 
@@ -209,10 +212,11 @@ def run():
 
 
 def main(_):
-	if tf.gfile.Exists(FLAGS.log_dir):
-		tf.gfile.DeleteRecursively(FLAGS.log_dir)
-	tf.gfile.MakeDirs(FLAGS.log_dir)
-	run()
+	save_path = FLAGS.log_dir + '/' + FLAGS.cell + '_g' + str(FLAGS.g) + '_lr' + str(FLAGS.lr)
+	if tf.gfile.Exists(save_path):
+		tf.gfile.DeleteRecursively(save_path)
+	tf.gfile.MakeDirs(save_path)
+	run(save_path)
 
 
 if __name__ == '__main__':
@@ -224,6 +228,8 @@ if __name__ == '__main__':
 		help='Number of steps to run trainer.')
 	parser.add_argument(
 		'--lr', type=float, default=0.001, help='Learning rate')
+	parser.add_argument(
+		'--g', type=float, default=1.0, help='grain')
 	parser.add_argument(
 		'--data_dir',
 		type=str,

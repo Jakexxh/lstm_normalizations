@@ -140,7 +140,7 @@ class CNLSTMCell(RNNCell):
 				gamma = tf.get_variable(
 					name + '_gamma', [cos_mat.get_shape().as_list()[1]],
 					initializer=tf.truncated_normal_initializer(
-						self._grain))  # TODO: test1.0
+						self._grain))
 
 				return gamma * cos_mat
 
