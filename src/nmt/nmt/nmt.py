@@ -451,7 +451,7 @@ def run_main(flags, default_hparams, train_fn, inference_fn, target_session=""):
         np.random.seed(random_seed + jobid)
 
     ## Train / Decode
-    out_dir = flags.out_dir
+    out_dir = flags.out_dir + '/' + flags.unit_type + '_' + str(flags.grain) + '_' + str(flags.learning_rate)
     if not tf.gfile.Exists(out_dir): tf.gfile.MakeDirs(out_dir)
 
     # Load hparams.
