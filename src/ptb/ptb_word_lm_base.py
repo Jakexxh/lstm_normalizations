@@ -100,8 +100,8 @@ flags.DEFINE_string("rnn_mode", 'bn_sep',
                     "The low level implementation of lstm cell: one of CUDNN, "
                     "BASIC, and BLOCK, representing cudnn_lstm, basic_lstm, "
                     "and lstm_block_cell classes.")
-flags.DEFINE_float("lr", None, "learning rate")
-flags.DEFINE_float("g", None, "grain")
+flags.DEFINE_float("lr", 1.0, "learning rate")
+flags.DEFINE_float("g", 1.0, "grain")
 
 
 FLAGS = flags.FLAGS

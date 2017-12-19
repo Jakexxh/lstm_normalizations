@@ -10,13 +10,13 @@ import sys
 import os
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/../..'))
-from normal_cells.lstm_bn_sep import BNLSTMCell
+from normal_cells2.lstm_bn_sep import BNLSTMCell
 # from normal_cells_last.lstm_cn_scale_input import CNSCALELSTMCell
-from normal_cells.lstm_cn_sep import CNLSTMCell
-from normal_cells.lstm_ln_sep import LNLSTMCell
-from normal_cells.lstm_pcc_sep import PCCLSTMCell
-from normal_cells.lstm_wn_sep import WNLSTMCell
-from normal_cells.lstm_basic import BASICLSTMCell
+from normal_cells2.lstm_cn_sep import CNLSTMCell
+from normal_cells2.lstm_ln_sep import LNLSTMCell
+from normal_cells2.lstm_pcc_sep import PCCLSTMCell
+from normal_cells2.lstm_wn_sep import WNLSTMCell
+from normal_cells2.lstm_basic import BASICLSTMCell
 
 __all__ = [
 	"get_initializer",
@@ -114,7 +114,7 @@ def create_emb_for_encoder_and_decoder(share_vocab,
 	return embedding_encoder, embedding_decoder
 
 
-def _single_cell(unit_type, num_units, forget_bias, dropout,
+def _single_cell(unit_type, num_units, grain, forget_bias, dropout,
                  mode, residual_connection=False, device_str=None):
 	"""Create an instance of a single RNN cell."""
 	# dropout (= 1 - keep_prob) is set to 0 during eval and infer
@@ -131,6 +131,7 @@ def _single_cell(unit_type, num_units, forget_bias, dropout,
 		utils.print_out("  base LSTM, forget_bias=%g" % forget_bias, new_line=False)
 		single_cell = BASICLSTMCell(
 			num_units,
+			grain=grain,
 			forget_bias=forget_bias)
 	elif unit_type == "cn_sep":
 		utils.print_out("  cn_sep LSTM, forget_bias=%g" % forget_bias, new_line=False)
@@ -141,16 +142,19 @@ def _single_cell(unit_type, num_units, forget_bias, dropout,
 		utils.print_out("  wn_sep LSTM, forget_bias=%g" % forget_bias, new_line=False)
 		single_cell = WNLSTMCell(
 			num_units,
+			grain=grain,
 			forget_bias=forget_bias)
 	elif unit_type == "ln_sep":
 		utils.print_out("  ln_sep LSTM, forget_bias=%g" % forget_bias, new_line=False)
 		single_cell = LNLSTMCell(
 			num_units,
+			grain=grain,
 			forget_bias=forget_bias)
 	elif unit_type == "pcc_sep":
 		utils.print_out("  pcc_sep LSTM, forget_bias=%g" % forget_bias, new_line=False)
 		single_cell = PCCLSTMCell(
 			num_units,
+			grain=grain,
 			forget_bias=forget_bias)
 	elif unit_type == "bn_sep":
 		pass
@@ -188,7 +192,7 @@ def _single_cell(unit_type, num_units, forget_bias, dropout,
 	return single_cell
 
 
-def _cell_list(unit_type, num_units, num_layers, num_residual_layers,
+def _cell_list(unit_type, num_units, grain, num_layers, num_residual_layers,
                forget_bias, dropout, mode, num_gpus, base_gpu=0,
                single_cell_fn=None):
 	"""Create a list of RNN cells."""
@@ -202,6 +206,7 @@ def _cell_list(unit_type, num_units, num_layers, num_residual_layers,
 		single_cell = single_cell_fn(
 			unit_type=unit_type,
 			num_units=num_units,
+			grain=grain,
 			forget_bias=forget_bias,
 			dropout=dropout,
 			mode=mode,
@@ -214,7 +219,7 @@ def _cell_list(unit_type, num_units, num_layers, num_residual_layers,
 	return cell_list
 
 
-def create_rnn_cell(unit_type, num_units, num_layers, num_residual_layers,
+def create_rnn_cell(unit_type, num_units, grain, num_layers, num_residual_layers,
                     forget_bias, dropout, mode, num_gpus, base_gpu=0,
                     single_cell_fn=None):
 	"""Create multi-layer RNN cell.
@@ -242,6 +247,7 @@ def create_rnn_cell(unit_type, num_units, num_layers, num_residual_layers,
 	"""
 	cell_list = _cell_list(unit_type=unit_type,
 	                       num_units=num_units,
+	                       grain=grain,
 	                       num_layers=num_layers,
 	                       num_residual_layers=num_residual_layers,
 	                       forget_bias=forget_bias,

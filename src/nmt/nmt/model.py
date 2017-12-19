@@ -263,6 +263,7 @@ class BaseModel(object):
         return model_helper.create_rnn_cell(
             unit_type=hparams.unit_type,
             num_units=hparams.num_units,
+	        grain=hparams.grain,
             num_layers=num_layers,
             num_residual_layers=num_residual_layers,
             forget_bias=hparams.forget_bias,
@@ -580,6 +581,7 @@ class Model(BaseModel):
         cell = model_helper.create_rnn_cell(
             unit_type=hparams.unit_type,
             num_units=hparams.num_units,
+	        grain=hparams.grain,
             num_layers=num_layers,
             num_residual_layers=num_residual_layers,
             forget_bias=hparams.forget_bias,

@@ -1,6 +1,6 @@
 """adapted from https://github.com/OlavHN/bnlstm to store separate population statistics per state"""
 import tensorflow as tf, numpy as np
-
+from .__init__ import *
 RNNCell = tf.nn.rnn_cell.RNNCell
 
 
@@ -109,10 +109,10 @@ class BNLSTMCell(RNNCell):
 
             x_size = x.get_shape().as_list()[1]
             W_xh = tf.get_variable(
-	            'W_xh', [x_size, 4 * self._num_units]   ,initializer=tf.orthogonal_initializer
+                'W_xh', [x_size, 4 * self._num_units], initializer=weights_initializer
             )
             W_hh = tf.get_variable(
-	            'W_hh', [self._num_units, 4 * self._num_units] ,initializer=tf.orthogonal_initializer
+                'W_hh', [self._num_units, 4 * self._num_units], initializer=weights_initializer
 
 	    )
 

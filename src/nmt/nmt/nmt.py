@@ -154,6 +154,8 @@ def add_arguments(parser):
     # Default settings works well (rarely need to change)
     parser.add_argument("--unit_type", type=str, default="lstm",
                         help="lstm | gru | layer_norm_lstm")
+    parser.add_argument("--grain", type=float, default=1.0,
+                        help="grain size")
     parser.add_argument("--forget_bias", type=float, default=1.0,
                         help="Forget bias for BasicLSTMCell.")
     parser.add_argument("--dropout", type=float, default=0.2,
@@ -238,7 +240,7 @@ def create_hparams(flags):
         dev_prefix=flags.dev_prefix,
         test_prefix=flags.test_prefix,
         vocab_prefix=flags.vocab_prefix,
-        out_dir=flags.out_dir,
+        out_dir=flags.out_dir + '/' + flags.unit_type + '_' + str(flags.grain) + '_' + str(flags.learning_rate),
 
         # Networks
         num_units=flags.num_units,
@@ -297,6 +299,10 @@ def create_hparams(flags):
         metrics=flags.metrics.split(","),
         log_device_placement=flags.log_device_placement,
         random_seed=flags.random_seed,
+
+        # Normalization
+        grain=flags.grain
+
     )
 
 

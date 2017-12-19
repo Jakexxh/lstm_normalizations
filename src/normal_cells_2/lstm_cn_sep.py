@@ -11,6 +11,8 @@ from tensorflow.python.ops import nn_ops
 from tensorflow.python.ops import init_ops
 from tensorflow.python.platform import tf_logging as logging
 
+from .__init__ import *
+
 _BIAS_VARIABLE_NAME = "bias"
 _WEIGHTS_VARIABLE_NAME = "kernel"
 
@@ -102,10 +104,10 @@ class CNLSTMCell(RNNCell):
 
 			x_size = x.get_shape().as_list()[1]
 			W_xh = tf.get_variable(
-				'W_xh', [x_size, output_size],   initializer=tf.orthogonal_initializer
+				'W_xh', [x_size, output_size], initializer=weights_initializer
 			)
 			W_hh = tf.get_variable(
-				'W_hh', [int(output_size / 4), output_size]   ,  initializer=tf.orthogonal_initializer
+				'W_hh', [int(output_size / 4), output_size], initializer=weights_initializer
 			)
 			cn_xh = self.cosine_norm(x, W_xh, 'cn_xh')  # one hot vector
 			cn_hh = self.cosine_norm(h, W_hh, 'cn_hh')
