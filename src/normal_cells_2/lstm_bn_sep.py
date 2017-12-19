@@ -109,11 +109,12 @@ class BNLSTMCell(RNNCell):
 
             x_size = x.get_shape().as_list()[1]
             W_xh = tf.get_variable(
-	            'W_xh', [x_size, 4 * self._num_units]  # ,initializer=tf.orthogonal_initializer
+	            'W_xh', [x_size, 4 * self._num_units]   ,initializer=tf.orthogonal_initializer
             )
             W_hh = tf.get_variable(
-	            'W_hh', [self._num_units, 4 * self._num_units]  # ,initializer=identity_initializer(0.9)
-            )
+	            'W_hh', [self._num_units, 4 * self._num_units] ,initializer=tf.orthogonal_initializer
+
+	    )
 
             hh = tf.matmul(h, W_hh)
             xh = tf.matmul(x, W_xh)

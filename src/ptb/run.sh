@@ -19,34 +19,51 @@
 #python ptb_word_lm_base.py --lr=10.0 --rnn_mode=pcc_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig2/pcc_sep_g0.1_10.0
 
 
-python ptb_word_lm_base.py --lr=1.0 --g=0.001 --rnn_mode=bn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig3
-python ptb_word_lm_base.py --lr=10.0 --g=0.001 --rnn_mode=bn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig3
-python ptb_word_lm_base.py --lr=0.1 --g=0.001 --rnn_mode=bn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig3
+python ptb_word_lm_base.py --lr=1.0 --g=0.0 --rnn_mode=base --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig_orthogonal
 
-python ptb_word_lm_base.py --lr=1.0 --g=0.01 --rnn_mode=cn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig3
-python ptb_word_lm_base.py --lr=10.0 --g=0.01 --rnn_mode=cn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig3
-python ptb_word_lm_base.py --lr=0.1 --g=0.01 --rnn_mode=cn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig3
+python ptb_word_lm_base.py --lr=1.0 --g=0.01 --rnn_mode=bn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig_orthogonal
+python ptb_word_lm_base.py --lr=1.0 --g=0.1 --rnn_mode=bn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig_orthogonal
+python ptb_word_lm_base.py --lr=1.0 --g=1.0 --rnn_mode=bn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig_orthogonal
 
-python ptb_word_lm_base.py --lr=1.0 --g=0.01 --rnn_mode=pcc_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig3
-python ptb_word_lm_base.py --lr=10.0 --g=0.01 --rnn_mode=pcc_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig3
-python ptb_word_lm_base.py --lr=0.1 --g=0.01 --rnn_mode=pcc_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig3
+python ptb_word_lm_base.py --lr=1.0 --g=0.01 --rnn_mode=cn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig_orthogonal
+python ptb_word_lm_base.py --lr=1.0 --g=0.1 --rnn_mode=cn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig_orthogonal
+python ptb_word_lm_base.py --lr=1.0 --g=1.0 --rnn_mode=cn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig_orthogonal
+
+python ptb_word_lm_base.py --lr=1.0 --g=0.01 --rnn_mode=wn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig_orthogonal
+python ptb_word_lm_base.py --lr=1.0 --g=0.1 --rnn_mode=wn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig_orthogonal
+python ptb_word_lm_base.py --lr=1.0 --g=1.0 --rnn_mode=wn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig_orthogonal
+
+python ptb_word_lm_base.py --lr=1.0 --g=0.01 --rnn_mode=ln_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig_orthogonal
+python ptb_word_lm_base.py --lr=1.0 --g=0.1 --rnn_mode=ln_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig_orthogonal
+python ptb_word_lm_base.py --lr=1.0 --g=1.0 --rnn_mode=ln_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig_orthogonal
+
+python ptb_word_lm_base.py --lr=1.0 --g=0.01 --rnn_mode=pcc_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig_orthogonal
+python ptb_word_lm_base.py --lr=1.0 --g=0.1 --rnn_mode=pcc_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig_orthogonal
+python ptb_word_lm_base.py --lr=1.0 --g=1.0 --rnn_mode=pcc_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig_orthogonal
+
+#python ptb_word_lm_base.py --lr=10.0 --g=0.0001 --rnn_mode=bn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig4
+#python ptb_word_lm_base.py --lr=0.1 --g=0.0001 --rnn_mode=bn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig4
+#
+#python ptb_word_lm_base.py --lr=1.0 --g=0.001 --rnn_mode=cn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig4
+#python ptb_word_lm_base.py --lr=10.0 --g=0.001 --rnn_mode=cn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig4
+#python ptb_word_lm_base.py --lr=0.1 --g=0.001 --rnn_mode=cn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig4
+
+#python ptb_word_lm_base.py --lr=1.0 --g=10.0 --rnn_mode=cn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig4
+#
+#python ptb_word_lm_base.py --lr=1.0 --g=0.001 --rnn_mode=pcc_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig4
+#python ptb_word_lm_base.py --lr=10.0 --g=0.001 --rnn_mode=pcc_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig4
+#python ptb_word_lm_base.py --lr=0.1 --g=0.001 --rnn_mode=pcc_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig4
 
 
-python ptb_word_lm_base.py --lr=0.01 --g=0.01 --rnn_mode=ln_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig3
+#python ptb_word_lm_base.py --lr=0.01 --g=0.01 --rnn_mode=ln_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig4
 
-python ptb_word_lm_base.py --lr=1.0 --g=0.1 --rnn_mode=ln_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig3
+#python ptb_word_lm_base.py --lr=1.0 --g=0.1 --rnn_mode=ln_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig4
+#
+#python ptb_word_lm_base.py --lr=1.0 --g=1.0 --rnn_mode=ln_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig4
+#
+#
+#python ptb_word_lm_base.py --lr=1.0 --g=0.001 --rnn_mode=wn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig4
+#python ptb_word_lm_base.py --lr=10.0 --g=0.001 --rnn_mode=wn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig4
+#python ptb_word_lm_base.py --lr=0.1 --g=0.001 --rnn_mode=wn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig4
 
-python ptb_word_lm_base.py --lr=1.0 --g=1.0 --rnn_mode=ln_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig3
 
-
-python ptb_word_lm_base.py --lr=1.0 --g=0.01 --rnn_mode=wn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig3
-python ptb_word_lm_base.py --lr=10.0 --g=0.01 --rnn_mode=wn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig3
-python ptb_word_lm_base.py --lr=0.1 --g=0.01 --rnn_mode=wn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig3
-
-python ptb_word_lm_base.py --lr=1.0 --g=0.1 --rnn_mode=wn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig3
-python ptb_word_lm_base.py --lr=10.0 --g=0.1 --rnn_mode=wn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig3
-python ptb_word_lm_base.py --lr=0.1 --g=0.1 --rnn_mode=wn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig3
-
-python ptb_word_lm_base.py --lr=1.0 --g=1.0 --rnn_mode=wn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig3
-python ptb_word_lm_base.py --lr=10.0 --g=1.0 --rnn_mode=wn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig3
-python ptb_word_lm_base.py --lr=0.1 --g=1.0 --rnn_mode=wn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_orig3
