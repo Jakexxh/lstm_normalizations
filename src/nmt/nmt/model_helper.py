@@ -137,6 +137,7 @@ def _single_cell(unit_type, num_units, grain, forget_bias, dropout,
 		utils.print_out("  cn_sep LSTM, forget_bias=%g" % forget_bias, new_line=False)
 		single_cell = CNLSTMCell(
 			num_units,
+			grain=grain,
 			forget_bias=forget_bias)
 	elif unit_type == "wn_sep":
 		utils.print_out("  wn_sep LSTM, forget_bias=%g" % forget_bias, new_line=False)
