@@ -16,7 +16,7 @@ _BIAS_VARIABLE_NAME = "bias"
 _WEIGHTS_VARIABLE_NAME = "kernel"
 
 
-class CNLSTMCell(RNNCell):
+class SCALECNLSTMCell(RNNCell):
 	def __init__(self,
 	             num_units,
 	             grain,
@@ -25,7 +25,7 @@ class CNLSTMCell(RNNCell):
 	             activation=None,
 	             reuse=None):
 
-		super(CNLSTMCell, self).__init__(_reuse=reuse)
+		super(SCALECNLSTMCell, self).__init__(_reuse=reuse)
 		if not state_is_tuple:
 			logging.warn(
 				"%s: Using a concatenated state is slower and will soon be "
@@ -102,12 +102,14 @@ class CNLSTMCell(RNNCell):
 			[x, h] = args
 
 			x_size = x.get_shape().as_list()[1]
+
+			input_rescale = tf.get_variable(
+				'input_rescale', [x_size], initializer=tf.constant_initializer(1.0))
+
 			W_xh = tf.get_variable(
 				'W_xh', [x_size, h_size * 4], initializer=weights_initializer
 			)
-			# W_hh = tf.get_variable(
-			#     'W_hh', [h_size, h_size * 4],
-			#     initializer=identity_initializer(0.9))
+
 			W_ih = tf.get_variable(
 				'W_ih', [h_size, h_size], initializer=weights_initializer
 			)
@@ -121,7 +123,7 @@ class CNLSTMCell(RNNCell):
 				'W_oh', [h_size, h_size], initializer=weights_initializer
 			)
 
-			cn_xh = self.cosine_norm(x, W_xh, 'cn_xh')
+			cn_xh = self.cosine_norm(input_rescale * x, W_xh, 'cn_xh')
 
 			cn_ih = self.cosine_norm(h, W_ih, 'cn_ih') + cn_xh[:, :h_size]
 			cn_jh = self.cosine_norm(h, W_jh, 'cn_jh') + cn_xh[:, h_size:h_size * 2]

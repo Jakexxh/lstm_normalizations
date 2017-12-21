@@ -87,13 +87,13 @@ class LNLSTMCell(RNNCell):
         return self._num_units
 
     def _norm(self, inp, scope):
-        shape = inp.get_shape()[-1:]
-        gamma_init = init_ops.constant_initializer(self._grain)
-        beta_init = init_ops.constant_initializer(self._b)
-        #with vs.variable_scope(scope):
-        #    # Initialize beta and gamma for use by layer_norm.
-        #    vs.get_variable("gamma", shape=shape, initializer=gamma_init)
-        #    vs.get_variable("beta", shape=shape, initializer=beta_init)
+        # shape = inp.get_shape()[-1:]
+        # gamma_init = init_ops.constant_initializer(self._grain)
+        # beta_init = init_ops.constant_initializer(self._b)
+        # #with vs.variable_scope(scope):
+        # #    # Initialize beta and gamma for use by layer_norm.
+        # #    vs.get_variable("gamma", shape=shape, initializer=gamma_init)
+        # #    vs.get_variable("beta", shape=shape, initializer=beta_init)
         normalized = layer_norm(inp, scope=scope)
         return normalized
 
@@ -182,22 +182,21 @@ class LNLSTMCell(RNNCell):
         new_state = LSTMStateTuple(new_c, new_h)
         return new_h, new_state
 
+    def layer_norm(self, inputs, epsilon=1e-7, scope=None):
+        # TODO: may be optimized
+        mean, var = tf.nn.moments(inputs, [1], keep_dims=True)
+        with tf.variable_scope(scope + 'ln'):
+            scale = tf.get_variable(
+                'alpha',
+                shape=[inputs.get_shape()[1]],
+                initializer=tf.truncated_normal_initializer(self._grain))
+            shift = tf.get_variable(
+                'beta',
+                shape=[inputs.get_shape()[1]],
+                initializer=tf.zeros_initializer)
+        res = scale * (inputs - mean) / tf.sqrt(var + epsilon) + shift
 
-def layer_norm(inputs, epsilon=1e-7, scope=None):
-    # TODO: may be optimized
-    mean, var = tf.nn.moments(inputs, [1], keep_dims=True)
-    with tf.variable_scope(scope + 'ln'):
-        scale = tf.get_variable(
-            'alpha',
-            shape=[inputs.get_shape()[1]],
-            initializer=tf.truncated_normal_initializer(0.1))
-        shift = tf.get_variable(
-            'beta',
-            shape=[inputs.get_shape()[1]],
-            initializer=tf.zeros_initializer)
-    res = scale * (inputs - mean) / tf.sqrt(var + epsilon) + shift
-
-    return res
+        return res
 
 
 def identity_initializer(scale):

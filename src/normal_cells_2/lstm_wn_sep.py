@@ -138,11 +138,6 @@ class WNLSTMCell(RNNCell):
 				dtype=tf.float32,
 				initializer=tf.truncated_normal_initializer(self._grain))
 
-			# b = tf.get_variable(
-			#     name=scope + '_b',
-			#     shape=[shape[1]],
-			#     initializer=tf.zeros_initializer)
-
 			w = g * tf.nn.l2_normalize(V, 0)
 
 			return tf.matmul(x, w)
