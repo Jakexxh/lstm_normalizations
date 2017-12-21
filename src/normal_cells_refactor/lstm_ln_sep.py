@@ -10,6 +10,8 @@ from tensorflow.python.ops import nn_ops
 from tensorflow.python.ops import init_ops
 from tensorflow.python.platform import tf_logging as logging
 
+from .__init__ import weights_initializer
+
 _BIAS_VARIABLE_NAME = "bias"
 _WEIGHTS_VARIABLE_NAME = "kernel"
 
@@ -30,12 +32,12 @@ class LNLSTMCell(RNNCell):
 
     def __init__(self,
                  num_units,
+                 grain,
                  forget_bias=1.0,
                  state_is_tuple=True,
                  input_size=None,
                  activation=math_ops.tanh,
                  layer_norm=True,
-                 norm_gain=1.0,
                  norm_shift=0.0,
                  dropout_keep_prob=1.0,
                  dropout_prob_seed=None,
@@ -71,7 +73,7 @@ class LNLSTMCell(RNNCell):
         self._keep_prob = dropout_keep_prob
         self._seed = dropout_prob_seed
         self._layer_norm = layer_norm
-        self._g = norm_gain
+        self._grain = grain
         self._b = norm_shift
         self._reuse = reuse
 
@@ -86,7 +88,7 @@ class LNLSTMCell(RNNCell):
 
     def _norm(self, inp, scope):
         shape = inp.get_shape()[-1:]
-        gamma_init = init_ops.constant_initializer(self._g)
+        gamma_init = init_ops.constant_initializer(self._grain)
         beta_init = init_ops.constant_initializer(self._b)
         #with vs.variable_scope(scope):
         #    # Initialize beta and gamma for use by layer_norm.
@@ -129,10 +131,10 @@ class LNLSTMCell(RNNCell):
             [x, h] = args
             x_size = x.get_shape().as_list()[1]
             W_xh = tf.get_variable(
-                'W_xh', [x_size, output_size] #, initializer=tf.orthogonal_initializer
+                'W_xh', [x_size, output_size], initializer=weights_initializer
 		)
             W_hh = tf.get_variable(
-                'W_hh', [int(output_size / 4), output_size] #, initializer=identity_initializer(0.9)
+                'W_hh', [int(output_size / 4), output_size], initializer=weights_initializer
 		)
             cn_xh = tf.matmul(x, W_xh)  # one hot vector
             cn_hh = tf.matmul(h, W_hh)

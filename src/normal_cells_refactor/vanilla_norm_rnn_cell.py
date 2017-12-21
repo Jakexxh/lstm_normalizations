@@ -2,6 +2,8 @@ import tensorflow as tf
 import numpy as np
 from tensorflow.python.ops.rnn_cell import RNNCell
 
+from .__init__ import weights_initializer
+
 _BIAS_VARIABLE_NAME = "bias"
 _WEIGHTS_VARIABLE_NAME = "kernel"
 
@@ -52,7 +54,8 @@ Args:
 		input_depth = inputs_shape[1].value
 		self._kernel = self.add_variable(
 			_WEIGHTS_VARIABLE_NAME,
-			shape=[input_depth + self._num_units, self._num_units])
+			shape=[input_depth + self._num_units, self._num_units],
+			initializer=weights_initializer)
 		self._bias = self.add_variable(
 			_BIAS_VARIABLE_NAME,
 			shape=[self._num_units],

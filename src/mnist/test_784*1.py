@@ -8,7 +8,7 @@ import os
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)  + '..'))
 from normal_cells_refactor.lstm_bn_sep import BNLSTMCell
-# from normal_cells_last.lstm_cn_scale_input import CNSCALELSTMCell
+from normal_cells_refactor.lstm_scale_cn import SCALECNLSTMCell
 from normal_cells_refactor.lstm_cn_sep import CNLSTMCell
 from normal_cells_refactor.lstm_ln_sep import LNLSTMCell
 from normal_cells_refactor.lstm_pcc_sep import PCCLSTMCell
@@ -40,7 +40,7 @@ def run():
 		'base': BASICLSTMCell,
 		'bn_sep': BNLSTMCell,
 		'cn_sep': CNLSTMCell,
-		# 'cn_scale_sep': CNSCALELSTMCell,
+		'scale_cn': SCALECNLSTMCell,
 		'ln_sep': LNLSTMCell,
 		'wn_sep': WNLSTMCell,
 		'pcc_sep': PCCLSTMCell
@@ -77,7 +77,7 @@ def run():
 			init_state = tf.contrib.rnn.LSTMStateTuple(
 				tf.truncated_normal([batch_size, num_hidden], stddev=0.1),
 				tf.truncated_normal([batch_size, num_hidden], stddev=0.1))
-			lstm_cell = cell_dic[FLAGS.cell](num_hidden, forget_bias=1.0)
+			lstm_cell = cell_dic[FLAGS.cell](num_hidden, grain=FLAGS.g, forget_bias=1.0)
 
 			# Get lstm cell output
 			outputs, states = tf.nn.static_rnn(
@@ -95,7 +95,8 @@ def run():
 				num_hidden,
 				FLAGS.max_steps,
 				forget_bias=1.0,
-				is_training_tensor=training)
+				is_training_tensor=training,
+				initial_scale=FLAGS.g)
 			outputs, states = tf.nn.static_rnn(
 				lstm_cell, x, initial_state=init_state, dtype=tf.float32)
 			_, final_hidden, _ = states
@@ -224,6 +225,8 @@ if __name__ == '__main__':
 		help='Number of steps to run trainer.')
 	parser.add_argument(
 		'--lr', type=float, default=0.001, help='Learning rate')
+	parser.add_argument(
+		'--g', type=float, default=1.0, help='grain')
 	parser.add_argument(
 		'--data_dir',
 		type=str,

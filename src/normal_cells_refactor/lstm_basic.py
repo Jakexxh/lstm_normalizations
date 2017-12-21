@@ -10,6 +10,8 @@ from tensorflow.python.ops import nn_ops
 from tensorflow.python.ops import init_ops
 from tensorflow.python.platform import tf_logging as logging
 
+from .__init__ import weights_initializer
+
 _BIAS_VARIABLE_NAME = "bias"
 _WEIGHTS_VARIABLE_NAME = "kernel"
 
@@ -17,6 +19,7 @@ _WEIGHTS_VARIABLE_NAME = "kernel"
 class BASICLSTMCell(RNNCell):
     def __init__(self,
                  num_units,
+                 grain,
                  forget_bias=1.0,
                  state_is_tuple=True,
                  activation=None,
@@ -98,10 +101,10 @@ def _line_sep(args,
         [x, h] = args
         x_size = x.get_shape().as_list()[1]
         W_xh = tf.get_variable(
-            'W_xh', [x_size, output_size] #,initializer=tf.orthogonal_initializer
+            'W_xh', [x_size, output_size], initializer=weights_initializer
 	)
         W_hh = tf.get_variable(
-            'W_hh', [int(output_size / 4), output_size] #,initializer=identity_initializer(0.9)
+            'W_hh', [int(output_size / 4), output_size], initializer=weights_initializer
 	)
         cn_xh = tf.matmul(x, W_xh)  # one hot vector
         cn_hh = tf.matmul(h, W_hh)

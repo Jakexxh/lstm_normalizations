@@ -1,3 +1,3 @@
 import tensorflow as tf
 
-weights_initializer = tf.orthogonal_initializer
+weights_initializer = None  # tf.orthogonal_initializer

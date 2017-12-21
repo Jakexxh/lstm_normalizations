@@ -11,7 +11,7 @@ import os
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/../..'))
 from normal_cells_2.lstm_bn_sep import BNLSTMCell
-# from normal_cells_last.lstm_cn_scale_input import CNSCALELSTMCell
+from normal_cells_2.lstm_scale_cn import SCALECNLSTMCell
 from normal_cells_2.lstm_cn_sep import CNLSTMCell
 from normal_cells_2.lstm_ln_sep import LNLSTMCell
 from normal_cells_2.lstm_pcc_sep import PCCLSTMCell
@@ -154,6 +154,12 @@ def _single_cell(unit_type, num_units, grain, forget_bias, dropout,
 	elif unit_type == "pcc_sep":
 		utils.print_out("  pcc_sep LSTM, forget_bias=%g" % forget_bias, new_line=False)
 		single_cell = PCCLSTMCell(
+			num_units,
+			grain=grain,
+			forget_bias=forget_bias)
+	elif unit_type == "scale_cn":
+		utils.print_out("  scale_cn LSTM, forget_bias=%g" % forget_bias, new_line=False)
+		single_cell = SCALECNLSTMCell(
 			num_units,
 			grain=grain,
 			forget_bias=forget_bias)

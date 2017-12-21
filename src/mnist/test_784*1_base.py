@@ -8,7 +8,7 @@ import os
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)  + '..'))
 from normal_cells2.lstm_bn_sep import BNLSTMCell
-# from normal_cells_last.lstm_cn_scale_input import CNSCALELSTMCell
+from normal_cells_2.lstm_scale_cn import SCALECNLSTMCell
 from normal_cells2.lstm_cn_sep import CNLSTMCell
 from normal_cells2.lstm_ln_sep import LNLSTMCell
 from normal_cells2.lstm_pcc_sep import PCCLSTMCell
@@ -41,7 +41,7 @@ def run(save_path):
 		'base': BASICLSTMCell,
 		'bn_sep': BNLSTMCell,
 		'cn_sep': CNLSTMCell,
-		# 'cn_scale_sep': CNSCALELSTMCell,
+		'scale_cn': SCALECNLSTMCell,
 		'ln_sep': LNLSTMCell,
 		'wn_sep': WNLSTMCell,
 		'pcc_sep': PCCLSTMCell
