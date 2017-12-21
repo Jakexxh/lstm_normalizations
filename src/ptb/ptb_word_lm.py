@@ -101,6 +101,7 @@ flags.DEFINE_string("rnn_mode", 'bn_sep',
                     "BASIC, and BLOCK, representing cudnn_lstm, basic_lstm, "
                     "and lstm_block_cell classes.")
 flags.DEFINE_float("lr", 1.0, "learning rate")
+flags.DEFINE_float("g", 1.0, "grain")
 
 FLAGS = flags.FLAGS
 BASIC = "base"
@@ -241,11 +242,12 @@ class PTBModel(object):
                 config.hidden_size,
                 self.num_steps,
                 forget_bias=0.0,
-                is_training_tensor=is_training)
+                is_training_tensor=is_training,
+		initial_scale=FLAGS.g)
 
         else:
             return cell_dic[config.rnn_mode](
-                config.hidden_size, forget_bias=0.0, state_is_tuple=True)
+                config.hidden_size, grain=FLAGS.g,forget_bias=0.0, state_is_tuple=True)
 
         # raise ValueError("rnn_mode %s not supported" % config.rnn_mode)
 
