@@ -535,6 +535,7 @@ def get_config():
 
 
 def main(_):
+    save_path = FLAGS.save_path + '/' + FLAGS.rnn_mode + '_g' + str(FLAGS.g) + '_lr' + str(FLAGS.lr)
     if not FLAGS.data_path:
         raise ValueError("Must set --data_path to PTB data directory")
     gpus = [
@@ -603,7 +604,7 @@ def main(_):
         tf.train.import_meta_graph(metagraph)
         for model in models.values():
             model.import_ops()
-        sv = tf.train.Supervisor(logdir=FLAGS.save_path)
+        sv = tf.train.Supervisor(logdir=save_path)
         config_proto = tf.ConfigProto(allow_soft_placement=soft_placement)
         with sv.managed_session(config=config_proto) as session:
             # session = tf_debug.LocalCLIDebugWrapperSession(session)
@@ -624,7 +625,7 @@ def main(_):
             test_perplexity = run_epoch(session, mtest)
             print("Test Perplexity: %.3f" % test_perplexity)
 
-            with open(FLAGS.save_path + "/log.txt", "w+") as myfile:
+            with open(save_path + "/log.txt", "w+") as myfile:
                 myfile.write("\nlearning rate: " + str(FLAGS.lr) + '\n')
                 myfile.write("final Train Perplexity: " + str(train_perplexity)
                              + '\n')
@@ -633,10 +634,10 @@ def main(_):
                 myfile.write("final Test Perplexity: " + str(test_perplexity) +
                              '\n')
 
-            if FLAGS.save_path:
-                print("Saving model to %s." % FLAGS.save_path)
+            if save_path:
+                print("Saving model to %s." % save_path)
                 sv.saver.save(
-                    session, FLAGS.save_path, global_step=sv.global_step)
+                    session, save_path, global_step=sv.global_step)
 
 
 if __name__ == "__main__":

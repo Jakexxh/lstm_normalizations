@@ -36,7 +36,7 @@ FLAGS = None
 # Import mnist data
 
 
-def run():
+def run(save_path):
     mnist = input_data.read_data_sets(FLAGS.data_dir, one_hot=True)
 
     cell_dic = {
@@ -134,9 +134,9 @@ def run():
     tf.summary.scalar("xe_loss", loss_op)
 
     merged = tf.summary.merge_all()
-    train_writer = tf.summary.FileWriter(FLAGS.log_dir + '/train')
-    test_writer = tf.summary.FileWriter(FLAGS.log_dir + '/test')
-    valid_writer = tf.summary.FileWriter(FLAGS.log_dir + '/valid')
+    train_writer = tf.summary.FileWriter(save_path + '/train')
+    test_writer = tf.summary.FileWriter(save_path + '/test')
+    valid_writer = tf.summary.FileWriter(save_path + '/valid')
 
     # Initialize the variables (i.e. assign their default value)
     init = tf.global_variables_initializer()
@@ -204,7 +204,7 @@ def run():
 
         print("Test Finished!")
         print("Test Finished!")
-        with open(FLAGS.log_dir + '/final.txt','w+') as file:
+        with open(save_path + '/final.txt','w+') as file:
             file.write("Test Ave_loss: " + str(test_loss / (1000)))
             file.write("Test Ave_acc: " + str(test_acc / (1000)))
 
@@ -213,9 +213,10 @@ def run():
 
 
 def main(_):
-    if tf.gfile.Exists(FLAGS.log_dir):
-        tf.gfile.DeleteRecursively(FLAGS.log_dir)
-    tf.gfile.MakeDirs(FLAGS.log_dir)
+    save_path = FLAGS.log_dir + '/' + FLAGS.cell + '_g' + str(FLAGS.g) + '_lr' + str(FLAGS.lr)
+    if tf.gfile.Exists(save_path):
+        tf.gfile.DeleteRecursively(save_path)
+    tf.gfile.MakeDirs(save_path)
     run()
 
 
