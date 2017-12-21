@@ -111,14 +111,14 @@ CN_SEP = "cn_sep"
 LN_SEP = "ln_sep"
 WN_SEP = "wn_sep"
 PCC_SEP = "pcc_sep"
-SCALECNLSTMCell = "scale_cn"
+SCALE_CN= "scale_cn"
 CUDNN = "cudnn"
 BLOCK = "block"
 cell_dic = {
 	BASIC: BASICLSTMCell,
 	BN_SEP: BNLSTMCell,
 	CN_SEP: CNLSTMCell,
-	#    CN_SCALE_SEP: CNSCALELSTMCell,
+        SCALE_CN: SCALECNLSTMCell, 
 	LN_SEP: LNLSTMCell,
 	WN_SEP: WNLSTMCell,
 	PCC_SEP: PCCLSTMCell
