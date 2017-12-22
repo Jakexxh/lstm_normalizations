@@ -94,7 +94,7 @@ class LNLSTMCell(RNNCell):
         # #    # Initialize beta and gamma for use by layer_norm.
         # #    vs.get_variable("gamma", shape=shape, initializer=gamma_init)
         # #    vs.get_variable("beta", shape=shape, initializer=beta_init)
-        normalized = layer_norm(inp, scope=scope)
+        normalized = self.layer_norm(inp, scope=scope)
         return normalized
 
     def _linear(self,
