@@ -71,6 +71,8 @@ from normal_cells_2.lstm_pcc_sep import PCCLSTMCell
 from normal_cells_2.lstm_wn_sep import WNLSTMCell
 from normal_cells_2.lstm_basic import BASICLSTMCell
 
+from normal_cells_2.lstm_cn_norm_cn import CNNROMLSTMCell
+
 import time
 import numpy as np
 import tensorflow as tf
@@ -112,6 +114,7 @@ LN_SEP = "ln_sep"
 WN_SEP = "wn_sep"
 PCC_SEP = "pcc_sep"
 SCALE_CN= "scale_cn"
+NORM_CN = "norm_cn"
 CUDNN = "cudnn"
 BLOCK = "block"
 cell_dic = {
@@ -121,7 +124,8 @@ cell_dic = {
         SCALE_CN: SCALECNLSTMCell, 
 	LN_SEP: LNLSTMCell,
 	WN_SEP: WNLSTMCell,
-	PCC_SEP: PCCLSTMCell
+	PCC_SEP: PCCLSTMCell,
+	NORM_CN: CNNROMLSTMCell
 }
 
 
