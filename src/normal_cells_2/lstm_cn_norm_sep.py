@@ -153,7 +153,6 @@ class CNNROMLSTMCell(RNNCell):
 
 	def newc_norm(self, x, name='newc_norm'):
 		with tf.name_scope(name):
-			x = tf.concat([x, tf.fill([tf.shape(x)[0], 1], 1e-7)], axis=1)
 			x_l2 = tf.nn.l2_normalize(x, 1)
 			gamma = tf.get_variable(
 				name + '_gamma', [x_l2.get_shape().as_list()[1]],
