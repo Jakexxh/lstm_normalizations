@@ -71,7 +71,7 @@ from normal_cells_2.lstm_pcc_sep import PCCLSTMCell
 from normal_cells_2.lstm_wn_sep import WNLSTMCell
 from normal_cells_2.lstm_basic import BASICLSTMCell
 
-from normal_cells_2.lstm_cn_norm_cn import CNNROMLSTMCell
+from normal_cells_2.lstm_cn_norm_sep import CNNROMLSTMCell
 
 import time
 import numpy as np
