@@ -3,9 +3,9 @@
 #python ptb_word_lm_base.py --lr=1.0 --g=1.0--rnn_mode=scale_cn --num_gpus=1 --save_path=/tmp/log/ptb_base
 #python ptb_word_lm_base.py ---lr=1.0 --g=10.0 --rnn_mode=scale_cn --num_gpus=1 --save_path=/tmp/log/ptb_base
 
-python ptb_word_lm_base.py --lr=1.0 --g=0.1 --rnn_mode=norm_cn --num_gpus=1 --save_path=/tmp/log/ptb_base
-python ptb_word_lm_base.py --lr=1.0 --g=1.0--rnn_mode=norm_cn --num_gpus=1 --save_path=/tmp/log/ptb_base
-python ptb_word_lm_base.py ---lr=1.0 --g=10.0 --rnn_mode=norm_cn --num_gpus=1 --save_path=/tmp/log/ptb_base
+#python ptb_word_lm_base.py --lr=1.0 --g=0.1 --rnn_mode=norm_cn --num_gpus=1 --save_path=/tmp/log/ptb_base
+python ptb_word_lm_base.py --lr=1.0 --g=1.0 --rnn_mode=norm_cn --num_gpus=1 --save_path=/tmp/log/ptb_base
+#python ptb_word_lm_base.py ---lr=1.0 --g=10.0 --rnn_mode=norm_cn --num_gpus=1 --save_path=/tmp/log/ptb_base
 
 #python ptb_word_lm.py --lr=1.0 --g=0.1 --rnn_mode=cn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_new
 #python ptb_word_lm.py --lr=1.0 --g=1.0 --rnn_mode=cn_sep --num_gpus=1 --save_path=/tmp/log/ptb_ref_new
