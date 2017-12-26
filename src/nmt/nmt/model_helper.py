@@ -17,6 +17,7 @@ from normal_cells_2.lstm_ln_sep import LNLSTMCell
 from normal_cells_2.lstm_pcc_sep import PCCLSTMCell
 from normal_cells_2.lstm_wn_sep import WNLSTMCell
 from normal_cells_2.lstm_basic import BASICLSTMCell
+from normal_cells_2.lstm_hid_cn import HIDCNLSTMCell
 
 __all__ = [
 	"get_initializer",
@@ -160,6 +161,12 @@ def _single_cell(unit_type, num_units, grain, forget_bias, dropout,
 	elif unit_type == "scale_cn":
 		utils.print_out("  scale_cn LSTM, forget_bias=%g" % forget_bias, new_line=False)
 		single_cell = SCALECNLSTMCell(
+			num_units,
+			grain=grain,
+			forget_bias=forget_bias)
+	elif unit_type == "hid_cn":
+		utils.print_out("  hid_cn LSTM, forget_bias=%g" % forget_bias, new_line=False)
+		single_cell = HIDCNLSTMCell(
 			num_units,
 			grain=grain,
 			forget_bias=forget_bias)

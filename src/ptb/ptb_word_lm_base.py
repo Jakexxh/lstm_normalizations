@@ -72,6 +72,7 @@ from normal_cells_2.lstm_wn_sep import WNLSTMCell
 from normal_cells_2.lstm_basic import BASICLSTMCell
 
 from normal_cells_2.lstm_cn_norm_sep import CNNROMLSTMCell
+from normal_cells_2.lstm_hid_cn import HIDCNLSTMCell
 
 import time
 import numpy as np
@@ -117,15 +118,17 @@ SCALE_CN= "scale_cn"
 NORM_CN = "norm_cn"
 CUDNN = "cudnn"
 BLOCK = "block"
+HIDCN = "hid_cn"
 cell_dic = {
 	BASIC: BASICLSTMCell,
 	BN_SEP: BNLSTMCell,
 	CN_SEP: CNLSTMCell,
-        SCALE_CN: SCALECNLSTMCell, 
+	SCALE_CN: SCALECNLSTMCell,
 	LN_SEP: LNLSTMCell,
 	WN_SEP: WNLSTMCell,
 	PCC_SEP: PCCLSTMCell,
-	NORM_CN: CNNROMLSTMCell
+	NORM_CN: CNNROMLSTMCell,
+	HIDCN: HIDCNLSTMCell
 }
 
 
