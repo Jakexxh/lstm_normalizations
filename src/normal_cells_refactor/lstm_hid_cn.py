@@ -58,7 +58,7 @@ class HIDCNLSTMCell(RNNCell):
 		hidden_weight = tf.get_variable('W_hid_input',
 		                                [input_size, input_size],
 		                                initializer=weights_initializer)
-		inputs = tf.nn.relu(self.cosine_norm(inputs, hidden_weight, 'hidden_inputs'))
+		inputs = tf.tanh(self.cosine_norm(inputs, hidden_weight, 'hidden_inputs'))
 
 		i, j, f, o = self._line_sep([inputs, h], self._num_units, bias=True)
 

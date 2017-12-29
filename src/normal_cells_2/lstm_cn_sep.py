@@ -54,7 +54,7 @@ class CNLSTMCell(RNNCell):
 			c, h = state
 		else:
 			c, h = array_ops.split(value=state, num_or_size_splits=2, axis=1)
-		concat = self._line_sep([inputs, h], 4 * self._num_units, bias=True)
+		concat = self._line_sep([inputs, h], 4 * self._num_units, bias=False)
 
 		# i = input_gate, j = new_input, f = forget_gate, o = output_gate
 		i, j, f, o = array_ops.split(
@@ -107,10 +107,21 @@ class CNLSTMCell(RNNCell):
 				'W_xh', [x_size, output_size], initializer=weights_initializer
 			)
 			W_hh = tf.get_variable(
-				'W_hh', [int(output_size / 4), output_size], initializer=weights_initializer
+				'W_hh', [int(output_size / 4), output_size], initializer= weights_initializer
 			)
+			
+			#x = tf.Print(x,[tf.reduce_mean(x)], str(scope)+'x: ')
+			#h = tf.Print(h,[tf.reduce_mean(h)], str(scope)+'h: ')
+			
+			#W_xh = tf.Print(W_xh,[tf.reduce_mean(W_xh)], str(scope)+'W_xh: ')
+			#W_hh = tf.Print(W_hh,[tf.reduce_mean(W_hh)], str(scope)+'W_hh: ')
+			
 			cn_xh = self.cosine_norm(x, W_xh, 'cn_xh')  # one hot vector
 			cn_hh = self.cosine_norm(h, W_hh, 'cn_hh')
+			
+			#cn_xh = tf.Print(cn_xh,[tf.reduce_mean(cn_xh)], str(scope)+'cn_xh: ')
+			#cn_hh = tf.Print(cn_hh,[tf.reduce_mean(cn_hh)], str(scope)+'cn_hh: ')
+
 			res = cn_xh + cn_hh
 
 			if not bias:
@@ -143,15 +154,29 @@ class CNLSTMCell(RNNCell):
 					name + '_gamma', [cos_mat.get_shape().as_list()[1]],
 					initializer=tf.truncated_normal_initializer(
 						self._grain))
-
-				return gamma * cos_mat
+				beta = tf.get_variable(
+					name + '_beta', [cos_mat.get_shape().as_list()[1]],
+					initializer=tf.zeros_initializer)
+				return gamma * cos_mat + beta
 
 			else:
 				raise Exception(
 					'Matrix shape does not match in cosine_norm Operation!')
 
+def identity_initializer_xh(scale):
+	def _initializer(shape, dtype=tf.float32, partition_info=None):
+		size = shape[0]
+		# gate (j) is identity
+		#t = np.zeros(shape)
+		t = np.identity(size) * scale
+		#t[:, :size] = np.identity(size) * scale
+		#t[:, size * 2:size * 3] = np.identity(size) * scale
+		#t[:, size * 3:] = np.identity(size) * scale
+		return tf.constant(t, dtype)
 
-def identity_initializer(scale):
+	return _initializer
+
+def identity_initializer_hh(scale):
 	def _initializer(shape, dtype=tf.float32, partition_info=None):
 		size = shape[0]
 		# gate (j) is identity
