@@ -54,7 +54,7 @@ class WNLSTMCell(RNNCell):
 		else:
 			c, h = array_ops.split(value=state, num_or_size_splits=2, axis=1)
 
-		concat = self._line_sep([inputs, h], 4 * self._num_units, bias=True)
+		concat = self._line_sep([inputs, h], 4 * self._num_units, bias=False)
 
 		# i = input_gate, j = new_input, f = forget_gate, o = output_gate
 		i, j, f, o = array_ops.split(
