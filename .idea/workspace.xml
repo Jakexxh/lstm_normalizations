@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0754ad83-7524-4d9e-ac27-6f7b38ce1b37" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/normal_cells_2/lstm_pcc_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_2/lstm_pcc_sep.py" />
-      <change beforePath="$PROJECT_DIR$/src/normal_cells_2/lstm_wn_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_2/lstm_wn_sep.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/run.sh" afterPath="$PROJECT_DIR$/src/nmt/run.sh" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,6 +38,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="run.sh" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/nmt/run.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2700">
+              <caret line="180" column="23" lean-forward="false" selection-start-line="180" selection-start-column="23" selection-end-line="180" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="lstm_cn_sep.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_cn_sep.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -61,7 +70,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lstm_wn_sep.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="lstm_wn_sep.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_wn_sep.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="570">
@@ -177,7 +186,6 @@
         <option value="$PROJECT_DIR$/src/nmt/nmt/model_helper.py" />
         <option value="$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py" />
         <option value="$PROJECT_DIR$/src/ptb/ptb_word_lm.py" />
-        <option value="$PROJECT_DIR$/src/nmt/run.sh" />
         <option value="$PROJECT_DIR$/src/normal_cells_2/lstm_hid_cn.py" />
         <option value="$PROJECT_DIR$/src/nmt/nmt/model.py" />
         <option value="$PROJECT_DIR$/src/mnist/test_784*1.py" />
@@ -188,6 +196,7 @@
         <option value="$PROJECT_DIR$/src/draw/draw.py" />
         <option value="$PROJECT_DIR$/src/normal_cells_2/lstm_pcc_sep.py" />
         <option value="$PROJECT_DIR$/src/normal_cells_2/lstm_wn_sep.py" />
+        <option value="$PROJECT_DIR$/src/nmt/run.sh" />
       </list>
     </option>
   </component>
@@ -308,6 +317,12 @@
               <item name="lstm_normalizations" type="b2602c69:ProjectViewProjectNode" />
               <item name="lstm_normalizations" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lstm_normalizations" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lstm_normalizations" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="nmt" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lstm_normalizations" type="b2602c69:ProjectViewProjectNode" />
@@ -614,13 +629,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1509936427866</updated>
-    </task>
-    <task id="LOCAL-00015" summary="prepare to run char">
-      <created>1511510797276</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1511510797276</updated>
     </task>
     <task id="LOCAL-00016" summary="fix char">
       <created>1511511106913</created>
@@ -958,7 +966,14 @@
       <option name="project" value="LOCAL" />
       <updated>1514536366513</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="add beta to cn, wn, pcc in cell_2">
+      <created>1514536648246</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1514536648246</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1043,7 +1058,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="use new embedding_attention_seq2seq" />
     <MESSAGE value="fix seq2seq parameter bug" />
     <MESSAGE value="add vanilla cell&#10;add nmt data" />
     <MESSAGE value="prepare test vani mnist" />
@@ -1068,7 +1082,8 @@
     <MESSAGE value="add hid_cn" />
     <MESSAGE value="add draw" />
     <MESSAGE value="up" />
-    <option name="LAST_COMMIT_MESSAGE" value="up" />
+    <MESSAGE value="add beta to cn, wn, pcc in cell_2" />
+    <option name="LAST_COMMIT_MESSAGE" value="add beta to cn, wn, pcc in cell_2" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1380,14 +1395,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/nmt/run.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="147" column="14" lean-forward="false" selection-start-line="147" selection-start-column="14" selection-end-line="147" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_hid_cn.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1498,6 +1505,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nmt/run.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2700">
+          <caret line="180" column="23" lean-forward="false" selection-start-line="180" selection-start-column="23" selection-end-line="180" selection-end-column="23" />
           <folding />
         </state>
       </provider>
