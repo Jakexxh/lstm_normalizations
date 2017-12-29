@@ -147,7 +147,11 @@ class PCCLSTMCell(RNNCell):
 					name + '_gamma', [cos_mat.get_shape().as_list()[1]],
 					initializer=tf.truncated_normal_initializer(self._grain))
 
-				return gamma * cos_mat
+				beta = tf.get_variable(
+					name + '_beta', [cos_mat.get_shape().as_list()[1]],
+					initializer=tf.zeros_initializer)
+
+				return gamma * cos_mat + beta
 			else:
 				raise Exception(
 					'Matrix shape does not match in cosine_norm Operation!')

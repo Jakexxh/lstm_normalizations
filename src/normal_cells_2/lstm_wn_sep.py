@@ -39,7 +39,7 @@ class WNLSTMCell(RNNCell):
 	@property
 	def state_size(self):
 		return (LSTMStateTuple(self._num_units, self._num_units)
-		        if self._state_is_tuple else 2 * self._num_units)
+		if self._state_is_tuple else 2 * self._num_units)
 
 	@property
 	def output_size(self):
@@ -129,18 +129,20 @@ class WNLSTMCell(RNNCell):
 
 	def weight_norm(self, x, V, scope='weight_norm'):
 		with tf.name_scope(scope):
-			shape = V.get_shape().as_list()
+			shape = V.get_shape().as_list()[1]
 			g = tf.get_variable(
 				name=scope + '_g',
-				shape=[
-					shape[1],
-				],
+				shape=[shape, ],
 				dtype=tf.float32,
 				initializer=tf.truncated_normal_initializer(self._grain))
 
+			beta = tf.get_variable(
+				scope + '_beta', shape=[shape, ],
+				initializer=tf.zeros_initializer)
+
 			w = g * tf.nn.l2_normalize(V, 0)
 
-			return tf.matmul(x, w)
+			return tf.matmul(x, w) + beta
 
 
 def identity_initializer(scale):
