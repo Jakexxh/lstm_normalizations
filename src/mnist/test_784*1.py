@@ -210,11 +210,11 @@ def run(save_path):
 
 
 def main(_):
-    save_path = FLAGS.log_dir + '/' + FLAGS.cell + '_g' + str(FLAGS.g) + '_lr' + str(FLAGS.lr)
+	save_path = FLAGS.log_dir + '/' + FLAGS.cell + '_g' + str(FLAGS.g) + '_lr' + str(FLAGS.lr)
 	if tf.gfile.Exists(save_path):
 		tf.gfile.DeleteRecursively(save_path)
 	tf.gfile.MakeDirs(save_path)
-	run()
+	run(save_path)
 
 
 if __name__ == '__main__':
