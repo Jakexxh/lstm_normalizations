@@ -293,10 +293,9 @@ class PTBModel(object):
 			outputs, state = tf.contrib.rnn.static_rnn(cell, inputs, initial_state=state)
 
 		else:
-			self._initial_state = tf.zeros \
-				(tf.truncated_normal([config.batch_size, config.hidden_size]),
-				 tf.truncated_normal([config.batch_size, config.hidden_size]),
-				 tf.constant(0.0, shape=[1]))
+			self._initial_state = (tf.zeros([config.batch_size, config.hidden_size]),
+			                       tf.zeros([config.batch_size, config.hidden_size]),
+			                       tf.constant(0.0, shape=[1]))
 			inputs = tf.unstack(inputs, num=self.num_steps, axis=1)
 			state = self._initial_state
 			outputs, state = tf.contrib.rnn.static_rnn(cell, inputs, initial_state=state, dtype=tf.float32)
