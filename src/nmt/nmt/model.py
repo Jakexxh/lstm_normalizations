@@ -40,6 +40,7 @@ class BaseModel(object):
 	def __init__(self,
 	             hparams,
 	             mode,
+	             is_training,
 	             iterator,
 	             source_vocab_table,
 	             target_vocab_table,
@@ -65,6 +66,8 @@ class BaseModel(object):
 		self.mode = mode
 		self.src_vocab_table = source_vocab_table
 		self.tgt_vocab_table = target_vocab_table
+
+		self.is_training = is_training
 
 		self.src_vocab_size = hparams.src_vocab_size
 		self.tgt_vocab_size = hparams.tgt_vocab_size
@@ -262,6 +265,7 @@ class BaseModel(object):
 
 		return model_helper.create_rnn_cell(
 			unit_type=hparams.unit_type,
+			is_training=self.is_training,
 			num_units=hparams.num_units,
 			grain=hparams.grain,
 			num_steps=hparams.num_train_steps,
@@ -594,6 +598,7 @@ class Model(BaseModel):
 
 		cell = model_helper.create_rnn_cell(
 			unit_type=hparams.unit_type,
+			is_training=self.is_training,
 			num_units=hparams.num_units,
 			grain=hparams.grain,
 			num_layers=num_layers,

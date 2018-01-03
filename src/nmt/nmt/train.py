@@ -86,6 +86,7 @@ def create_train_model(
 		with tf.device(model_device_fn):
 			model = model_creator(
 				hparams,
+				is_training=True,
 				iterator=iterator,
 				mode=tf.contrib.learn.ModeKeys.TRAIN,
 				source_vocab_table=src_vocab_table,
@@ -135,6 +136,7 @@ def create_eval_model(model_creator, hparams, scope=None, single_cell_fn=None):
 			tgt_max_len=hparams.tgt_max_len_infer)
 		model = model_creator(
 			hparams,
+			is_training=False,
 			iterator=iterator,
 			mode=tf.contrib.learn.ModeKeys.EVAL,
 			source_vocab_table=src_vocab_table,
