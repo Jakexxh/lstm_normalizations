@@ -19,7 +19,7 @@ import numpy as np
 import os
 import sys
 
-sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/..'))
+sys.path.append(os.path.abspath(os.path.dirname(__file__) + '..'))
 from normal_cells_2.lstm_bn_sep import BNLSTMCell
 from normal_cells_2.lstm_scale_cn import SCALECNLSTMCell
 from normal_cells_2.lstm_cn_sep import CNLSTMCell
@@ -32,9 +32,9 @@ tf.flags.DEFINE_string("data_dir", "../../data", "")
 tf.flags.DEFINE_string("save_path", "/tmp/draw", "")
 tf.flags.DEFINE_boolean("read_attn", True, "enable attention for reader")
 tf.flags.DEFINE_boolean("write_attn", True, "enable attention for writer")
-tf.flags.DEFINE_float('--lr', 1e-3, 'Learning rate')
-tf.flags.DEFINE_float('--g', 0.0, 'grain')
-tf.flags.DEFINE_string('--cell', 'cn_sep', 'RNN Cell')
+tf.flags.DEFINE_float('lr', 1e-3, 'Learning rate')
+tf.flags.DEFINE_float('g', 0.0, 'grain')
+tf.flags.DEFINE_string('cell', '', 'RNN Cell')
 
 FLAGS = tf.flags.FLAGS
 
@@ -276,11 +276,11 @@ train_op = optimizer.apply_gradients(grads)
 
 merged = tf.summary.merge_all()
 train_writer = tf.summary.FileWriter(
-	FLAGS.save_path + '/' + FLAGS.cell + '/train/_' + str(FLAGS.g) + '_' + str(FLAGS.lr))
+	FLAGS.save_path + '/' + FLAGS.cell + '_' + str(FLAGS.g) + '_' + str(FLAGS.lr) + '/train/')
 valid_writer = tf.summary.FileWriter(
-	FLAGS.save_path + '/' + FLAGS.cell + '/valid/_' + str(FLAGS.g) + '_' + str(FLAGS.lr))
-test_writer = tf.summary.FileWriter(FLAGS.save_path + '/' + FLAGS.cell + '/test/_' + str(FLAGS.g) + '_' + str(FLAGS.lr))
-
+	FLAGS.save_path + '/' + FLAGS.cell + '_' + str(FLAGS.g) + '_' + str(FLAGS.lr) + '/valid/')
+test_writer = tf.summary.FileWriter(
+	FLAGS.save_path + '/' + FLAGS.cell + '_' + str(FLAGS.g) + '_' + str(FLAGS.lr) + '/test/')
 ## RUN TRAINING ## 
 
 data_directory = os.path.join(FLAGS.data_dir, "mnist")
