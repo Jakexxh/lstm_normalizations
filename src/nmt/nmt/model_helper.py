@@ -115,7 +115,7 @@ def create_emb_for_encoder_and_decoder(share_vocab,
 	return embedding_encoder, embedding_decoder
 
 
-def _single_cell(unit_type, num_units, grain, num_steps, forget_bias, dropout,
+def _single_cell(unit_type, is_training, num_units, grain, num_steps, forget_bias, dropout,
                  mode, residual_connection=False, device_str=None):
 	"""Create an instance of a single RNN cell."""
 	# dropout (= 1 - keep_prob) is set to 0 during eval and infer
@@ -175,7 +175,7 @@ def _single_cell(unit_type, num_units, grain, num_steps, forget_bias, dropout,
 		single_cell = BNLSTMCell(
 			num_units,
 			max_bn_steps=num_steps,
-			is_training_tensor=,
+			is_training_tensor=is_training,
 			initial_scale=grain,
 			forget_bias=forget_bias)
 	elif unit_type == "gru":
@@ -212,7 +212,7 @@ def _single_cell(unit_type, num_units, grain, num_steps, forget_bias, dropout,
 	return single_cell
 
 
-def _cell_list(unit_type, num_units, grain, num_layers, num_steps, num_residual_layers,
+def _cell_list(unit_type, is_training, num_units, grain, num_layers, num_steps, num_residual_layers,
                forget_bias, dropout, mode, num_gpus, base_gpu=0,
                single_cell_fn=None):
 	"""Create a list of RNN cells."""
@@ -225,6 +225,7 @@ def _cell_list(unit_type, num_units, grain, num_layers, num_steps, num_residual_
 		utils.print_out("  cell %d" % i, new_line=False)
 		single_cell = single_cell_fn(
 			unit_type=unit_type,
+			is_training=is_training,
 			num_units=num_units,
 			grain=grain,
 			num_steps=num_steps,
@@ -240,7 +241,7 @@ def _cell_list(unit_type, num_units, grain, num_layers, num_steps, num_residual_
 	return cell_list
 
 
-def create_rnn_cell(unit_type, num_units, grain, num_steps, num_layers, num_residual_layers,
+def create_rnn_cell(unit_type, is_training, num_units, grain, num_steps, num_layers, num_residual_layers,
                     forget_bias, dropout, mode, num_gpus, base_gpu=0,
                     single_cell_fn=None):
 	"""Create multi-layer RNN cell.
@@ -267,6 +268,7 @@ def create_rnn_cell(unit_type, num_units, grain, num_steps, num_layers, num_resi
 	  An `RNNCell` instance.
 	"""
 	cell_list = _cell_list(unit_type=unit_type,
+	                       is_training=is_training,
 	                       num_units=num_units,
 	                       grain=grain,
 	                       num_layers=num_layers,

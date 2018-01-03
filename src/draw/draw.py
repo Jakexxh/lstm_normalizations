@@ -279,7 +279,8 @@ train_writer = tf.summary.FileWriter(
 	FLAGS.save_path + '/' + FLAGS.cell + '/train/_' + str(FLAGS.g) + '_' + str(FLAGS.lr))
 valid_writer = tf.summary.FileWriter(
 	FLAGS.save_path + '/' + FLAGS.cell + '/valid/_' + str(FLAGS.g) + '_' + str(FLAGS.lr))
-test_writer = tf.summary.FileWriter(FLAGS.save_path + '/' + FLAGS.cell + '/test/_' + str(FLAGS.g) + '_' + str(FLAGS.lr))
+test_writer = tf.summary.FileWriter(
+	FLAGS.save_path + '/' + FLAGS.cell + '/test/_' + str(FLAGS.g) + '_' + str(FLAGS.lr))
 
 ## RUN TRAINING ## 
 

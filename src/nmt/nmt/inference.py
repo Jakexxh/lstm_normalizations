@@ -70,6 +70,7 @@ def create_infer_model(model_creator, hparams, scope=None, single_cell_fn=None):
 			src_max_len=hparams.src_max_len_infer)
 		model = model_creator(
 			hparams,
+			is_training=False,
 			iterator=iterator,
 			mode=tf.contrib.learn.ModeKeys.INFER,
 			source_vocab_table=src_vocab_table,
