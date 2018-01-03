@@ -71,10 +71,19 @@ eps = 1e-8  # epsilon for numerical stability
 DO_SHARE = None  # workaround for variable_scope(reuse=True)
 
 x = tf.placeholder(tf.float32, shape=(batch_size, img_size))  # input (batch_size * img_size)
+is_training = tf.placeholder(tf.bool)  # input (batch_size * img_size)
+
 e = tf.random_normal((batch_size, z_size), mean=0, stddev=1)  # Qsampler noise
 
-lstm_enc = cell_dic[FLAGS.cell](enc_size, grain=FLAGS.g, state_is_tuple=True)  # encoder Op
-lstm_dec = cell_dic[FLAGS.cell](dec_size, grain=FLAGS.g, state_is_tuple=True)  # decoder Op
+if FLAGS.cell != 'bn_sep':
+	lstm_enc = cell_dic[FLAGS.cell](enc_size, grain=FLAGS.g, state_is_tuple=True)  # encoder Op
+	lstm_dec = cell_dic[FLAGS.cell](dec_size, grain=FLAGS.g, state_is_tuple=True)  # decoder Op
+
+else:
+	lstm_enc = cell_dic[FLAGS.cell](enc_size, max_bn_steps=T, is_training_tensor=is_training,
+	                                grain=FLAGS.g, state_is_tuple=True)  # encoder Op
+	lstm_dec = cell_dic[FLAGS.cell](dec_size, max_bn_steps=T, is_training_tensor=is_training,
+	                                grain=FLAGS.g, state_is_tuple=True)  # decoder Op
 
 
 def linear(x, output_dim):
@@ -294,12 +303,12 @@ tf.global_variables_initializer().run()
 
 for i in range(train_iters):
 	xtrain, _ = train_data.next_batch(batch_size)  # xtrain is (batch_size x img_size)
-	feed_dict = {x: xtrain}
+	feed_dict = {x: xtrain, is_training: True}
 	train_results = sess.run(fetches, feed_dict)
 	Lxs[i], Lzs[i], _, train_summary = train_results
 
 	xvalid, _ = valid_data.next_batch(batch_size)
-	feed_dict = {x: xvalid}
+	feed_dict = {x: xvalid, is_training: False}
 	_, valid_summary = sess.run([cost, merged], feed_dict)
 
 	if i % 100 == 0:
@@ -310,7 +319,7 @@ for i in range(train_iters):
 
 for i in range(test_iters):
 	xtest, _ = test_data.next_batch(batch_size)
-	feed_dict = {x: xtest}
+	feed_dict = {x: xtest, is_training: False}
 	_, test_summary = sess.run([cost, merged], feed_dict)
 	train_writer.add_summary(test_summary, i)
 

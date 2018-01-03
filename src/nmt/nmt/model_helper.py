@@ -175,6 +175,7 @@ def _single_cell(unit_type, num_units, grain, num_steps, forget_bias, dropout,
 		single_cell = BNLSTMCell(
 			num_units,
 			max_bn_steps=num_steps,
+			is_training_tensor=,
 			initial_scale=grain,
 			forget_bias=forget_bias)
 	elif unit_type == "gru":

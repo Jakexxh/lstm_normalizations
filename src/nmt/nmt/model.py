@@ -561,6 +561,7 @@ class Model(BaseModel):
 		  The concatenated bidirectional output and the bidirectional RNN cell"s
 		  state.
 		"""
+		##TODO: not test bid-rnn yet
 		# Construct forward and backward cells
 		fw_cell = self._build_encoder_cell(hparams,
 		                                   num_bi_layers,
