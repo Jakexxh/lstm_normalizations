@@ -321,8 +321,8 @@ all_cost = 0
 for i in range(test_iters):
 	xtest, _ = test_data.next_batch(batch_size)
 	feed_dict = {x: xtest, is_training: False}
-	cost, test_summary = sess.run([cost, merged], feed_dict)
-	all_cost += cost
+	c, test_summary = sess.run([cost, merged], feed_dict)
+	all_cost += c
 	test_writer.add_summary(test_summary, i)
 
 
