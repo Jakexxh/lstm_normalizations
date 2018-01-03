@@ -275,12 +275,12 @@ for i, (g, v) in enumerate(grads):
 train_op = optimizer.apply_gradients(grads)
 
 merged = tf.summary.merge_all()
-train_writer = tf.summary.FileWriter(
-	FLAGS.save_path + '/' + FLAGS.cell + '_' + str(FLAGS.g) + '_' + str(FLAGS.lr) + '/train/')
-valid_writer = tf.summary.FileWriter(
-	FLAGS.save_path + '/' + FLAGS.cell + '_' + str(FLAGS.g) + '_' + str(FLAGS.lr) + '/valid/')
-test_writer = tf.summary.FileWriter(
-	FLAGS.save_path + '/' + FLAGS.cell + '_' + str(FLAGS.g) + '_' + str(FLAGS.lr) + '/test/')
+
+log_path = FLAGS.save_path + '/' + FLAGS.cell + '_' + str(FLAGS.g) + '_' + str(FLAGS.lr) 
+
+train_writer = tf.summary.FileWriter(log_path + '/train/')
+valid_writer = tf.summary.FileWriter(log_path + '/valid/')
+test_writer = tf.summary.FileWriter(log_path + '/test/')
 ## RUN TRAINING ## 
 
 data_directory = os.path.join(FLAGS.data_dir, "mnist")
@@ -317,12 +317,18 @@ for i in range(train_iters):
 	train_writer.add_summary(train_summary, i)
 	valid_writer.add_summary(valid_summary, i)
 
+all_cost = 0
 for i in range(test_iters):
 	xtest, _ = test_data.next_batch(batch_size)
 	feed_dict = {x: xtest, is_training: False}
-	_, test_summary = sess.run([cost, merged], feed_dict)
-	train_writer.add_summary(test_summary, i)
+	cost, test_summary = sess.run([cost, merged], feed_dict)
+	all_cost += cost
+	test_writer.add_summary(test_summary, i)
 
+
+with open(log_path + "/log.txt", "w+") as myfile:
+	myfile.write("ave cost: " + str(all_cost/test_iters))
+	
 print('test finished')
 ## TRAINING FINISHED ##
 
