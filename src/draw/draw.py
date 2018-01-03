@@ -19,7 +19,7 @@ import numpy as np
 import os
 import sys
 
-sys.path.append(os.path.abspath(os.path.dirname(__file__) + '..'))
+sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/..'))
 from normal_cells_2.lstm_bn_sep import BNLSTMCell
 from normal_cells_2.lstm_scale_cn import SCALECNLSTMCell
 from normal_cells_2.lstm_cn_sep import CNLSTMCell
@@ -34,7 +34,8 @@ tf.flags.DEFINE_boolean("read_attn", True, "enable attention for reader")
 tf.flags.DEFINE_boolean("write_attn", True, "enable attention for writer")
 tf.flags.DEFINE_float('lr', 1e-3, 'Learning rate')
 tf.flags.DEFINE_float('g', 0.0, 'grain')
-tf.flags.DEFINE_string('cell', '', 'RNN Cell')
+tf.flags.DEFINE_string('cell', 'base', 'RNN Cell')
+
 
 FLAGS = tf.flags.FLAGS
 
@@ -61,8 +62,8 @@ write_size = write_n * write_n if FLAGS.write_attn else img_size
 z_size = 10  # QSampler output size
 T = 10  # MNIST generation sequence length
 batch_size = 100  # training minibatch size
-train_iters = 10000
-test_iters = 1000
+train_iters = 200
+test_iters = 10
 # FLAGS.lr=1e-3 # learning rate for optimizer
 eps = 1e-8  # epsilon for numerical stability
 
@@ -276,7 +277,7 @@ train_op = optimizer.apply_gradients(grads)
 
 merged = tf.summary.merge_all()
 
-log_path = FLAGS.save_path + '/' + FLAGS.cell + '_' + str(FLAGS.g) + '_' + str(FLAGS.lr) 
+log_path = FLAGS.save_path + '/' + FLAGS.cell + '_' + str(FLAGS.g) + '_' + str(FLAGS.lr)
 
 train_writer = tf.summary.FileWriter(log_path + '/train/')
 valid_writer = tf.summary.FileWriter(log_path + '/valid/')
@@ -324,7 +325,6 @@ for i in range(test_iters):
 	c, test_summary = sess.run([cost, merged], feed_dict)
 	all_cost += c
 	test_writer.add_summary(test_summary, i)
-
 
 with open(log_path + "/log.txt", "w+") as myfile:
 	myfile.write("ave cost: " + str(all_cost/test_iters))
