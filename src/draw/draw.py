@@ -82,9 +82,9 @@ if FLAGS.cell != 'bn_sep':
 
 else:
 	lstm_enc = cell_dic[FLAGS.cell](enc_size, max_bn_steps=T, is_training_tensor=is_training,
-	                                grain=FLAGS.g, state_is_tuple=True)  # encoder Op
+	                                initial_scale=FLAGS.g)  # encoder Op
 	lstm_dec = cell_dic[FLAGS.cell](dec_size, max_bn_steps=T, is_training_tensor=is_training,
-	                                grain=FLAGS.g, state_is_tuple=True)  # decoder Op
+	                                initial_scale=FLAGS.g)  # decoder Op
 
 
 def linear(x, output_dim):
