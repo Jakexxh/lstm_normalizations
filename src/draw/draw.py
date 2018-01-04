@@ -19,7 +19,7 @@ import numpy as np
 import os
 import sys
 
-sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/..'))
+sys.path.append(os.path.abspath(os.path.dirname(__file__) + '..'))
 from normal_cells_2.lstm_bn_sep import BNLSTMCell
 from normal_cells_2.lstm_scale_cn import SCALECNLSTMCell
 from normal_cells_2.lstm_cn_sep import CNLSTMCell
@@ -62,8 +62,8 @@ write_size = write_n * write_n if FLAGS.write_attn else img_size
 z_size = 10  # QSampler output size
 T = 10  # MNIST generation sequence length
 batch_size = 100  # training minibatch size
-train_iters = 200
-test_iters = 10
+train_iters = 10000
+test_iters = 1000
 # FLAGS.lr=1e-3 # learning rate for optimizer
 eps = 1e-8  # epsilon for numerical stability
 

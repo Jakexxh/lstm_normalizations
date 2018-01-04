@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-python draw.py --cell=base --g=0.0
+#python draw.py --cell=base --g=0.0
 
 python draw.py --cell=cn_sep --g=1.0
 python draw.py --cell=cn_sep --g=5.0
