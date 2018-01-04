@@ -72,7 +72,7 @@ def run(save_path):
         # Required shape: 'timesteps' tensors list of shape (batch_size, n_input)
 
         # Unstack to get a list of 'timesteps' tensors of shape (batch_size, n_input)
-        x = tf.unstack(x, timesteps, 1)
+        # x = tf.unstack(x, timesteps, 1)
         if FLAGS.cell != 'bn_sep':
             # Define a lstm cell with tensorflow
             init_state = tf.contrib.rnn.LSTMStateTuple(
@@ -81,7 +81,7 @@ def run(save_path):
             lstm_cell = cell_dic[FLAGS.cell](num_hidden, grain=FLAGS.g, forget_bias=1.0)
 
             # Get lstm cell output
-            outputs, states = tf.nn.static_rnn(
+            outputs, states = tf.nn.dynamic_rnn(
                 lstm_cell, x, initial_state=init_state, dtype=tf.float32)
 
             # Linear activation, using rnn inner loop last output
@@ -98,7 +98,7 @@ def run(save_path):
                 forget_bias=1.0,
                 is_training_tensor=training,
                 initial_scale=FLAGS.g)
-            outputs, states = tf.nn.static_rnn(
+            outputs, states = tf.nn.dynamic_rnn(
                 lstm_cell, x, initial_state=init_state, dtype=tf.float32)
             _, final_hidden, _ = states
 
@@ -217,7 +217,7 @@ def main(_):
     if tf.gfile.Exists(save_path):
         tf.gfile.DeleteRecursively(save_path)
     tf.gfile.MakeDirs(save_path)
-    run()
+    run(save_path)
 
 
 if __name__ == '__main__':

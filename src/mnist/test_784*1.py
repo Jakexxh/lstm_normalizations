@@ -25,8 +25,8 @@ batch_size = 128
 display_step = 200
 
 # Network Parameters
-num_input = 1  # mnist data input (img shape: 28*28)
-timesteps = 784  # timesteps
+num_input = 7  # mnist data input (img shape: 28*28)
+timesteps = 112  # timesteps
 num_hidden = 128  # hidden layer num of features
 num_classes = 10  # mnist total classes (0-9 digits)
 
@@ -69,8 +69,6 @@ def run(save_path):
 		# Current data input shape: (batch_size, timesteps, n_input)
 		# Required shape: 'timesteps' tensors list of shape (batch_size, n_input)
 
-		# Unstack to get a list of 'timesteps' tensors of shape (batch_size, n_input)
-		x = tf.unstack(x, timesteps, 1)
 		# x = tf.convert_to_tensor(x)
 		if FLAGS.cell != 'bn_sep':
 			# Define a lstm cell with tensorflow
@@ -80,7 +78,7 @@ def run(save_path):
 			lstm_cell = cell_dic[FLAGS.cell](num_hidden, grain=FLAGS.g, forget_bias=1.0)
 
 			# Get lstm cell output
-			outputs, states = tf.nn.static_rnn(
+			outputs, states = tf.nn.dynamic_rnn(
 				lstm_cell, x, initial_state=init_state, dtype=tf.float32)
 
 			# Linear activation, using rnn inner loop last output
@@ -97,7 +95,7 @@ def run(save_path):
 				forget_bias=1.0,
 				is_training_tensor=training,
 				initial_scale=FLAGS.g)
-			outputs, states = tf.nn.static_rnn(
+			outputs, states = tf.nn.dynamic_rnn(
 				lstm_cell, x, initial_state=init_state, dtype=tf.float32)
 			_, final_hidden, _ = states
 
@@ -238,7 +236,7 @@ if __name__ == '__main__':
 		type=str,
 		default='/tmp/logs/mnist/',
 		help='Summaries log directory')
-	parser.add_argument('--cell', type=str, default='wn_sep', help='RNN Cell')
+	parser.add_argument('--cell', type=str, default='base', help='RNN Cell')
 
 	FLAGS, unparsed = parser.parse_known_args()
 	tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
