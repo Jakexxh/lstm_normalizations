@@ -191,6 +191,14 @@ class PTBModel(object):
 		self._cost = tf.reduce_sum(loss)
 		self._final_state = state
 
+		if config.rnn_mode != 'bn_sep':
+			c, h = self.final_state
+		else:
+			c, h, _ = self.final_state
+
+		tf.summary.histogram('final_cell', c)
+		tf.summary.histogram('final_hidden', h)
+
 		if not is_training:
 			return
 
@@ -255,19 +263,6 @@ class PTBModel(object):
 			[cell for _ in range(config.num_layers)], state_is_tuple=True)
 
 		if config.rnn_mode != BNLSTMCell:
-			# self._initial_state = tf.contrib.rnn.LSTMStateTuple\
-			#                       (tf.truncated_normal([config.batch_size, config.hidden_size]),
-			#                    tf.truncated_normal([config.batch_size, config.hidden_size]))
-			# inputs = tf.unstack(inputs, num=self.num_steps, axis=1)
-			# state = self._initial_state
-			# outputs, state = tf.contrib.rnn.static_rnn(cell, inputs, initial_state=state)
-			# outputs = []
-			# with tf.variable_scope("RNN"):
-			#     for time_step in range(self.num_steps):
-			#         if time_step > 0: tf.get_variable_scope().reuse_variables()
-			#         (cell_output, state) = cell(inputs[:, time_step, :], state)
-			#         outputs.append(cell_output)
-
 			self._initial_state = cell.zero_state(config.batch_size, data_type())
 			inputs = tf.unstack(inputs, num=self.num_steps, axis=1)
 			state = self._initial_state

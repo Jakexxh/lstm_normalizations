@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0754ad83-7524-4d9e-ac27-6f7b38ce1b37" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/mnist/test_784*1_base.py" afterPath="$PROJECT_DIR$/src/mnist/test_784*1_base.py" />
       <change beforePath="$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py" afterPath="$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,24 +38,37 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.7096327">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="ptb_word_lm_base.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="ptb_word_lm_base.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="691">
-                  <caret line="220" column="70" lean-forward="false" selection-start-line="220" selection-start-column="70" selection-end-line="220" selection-end-column="70" />
+                <state relative-caret-position="411">
+                  <caret line="197" column="0" lean-forward="true" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#7540#7782#0" expanded="false" />
+                    <element signature="e#7835#8256#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="test_784*1_base.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/mnist/test_784*1_base.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="131">
+                  <caret line="106" column="0" lean-forward="true" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="test_784*1_base.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/mnist/test_784*1_base.py">
+          <file leaf-file-name="lstm_cn_sep.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_cn_sep.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="476">
-                  <caret line="129" column="12" lean-forward="false" selection-start-line="129" selection-start-column="12" selection-end-line="129" selection-end-column="69" />
+                <state relative-caret-position="615">
+                  <caret line="54" column="13" lean-forward="true" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
                   <folding />
                 </state>
               </provider>
@@ -69,15 +81,15 @@
           <file leaf-file-name="ptb_word_lm_base.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="240">
-                  <caret line="193" column="27" lean-forward="true" selection-start-line="193" selection-start-column="27" selection-end-line="193" selection-end-column="27" />
+                <state relative-caret-position="615">
+                  <caret line="247" column="0" lean-forward="true" selection-start-line="247" selection-start-column="0" selection-end-line="247" selection-end-column="0" />
                   <folding>
-                    <element signature="e#7358#7600#0" expanded="false" />
-                    <element signature="e#7653#8074#0" expanded="false" />
-                    <element signature="e#8209#10481#0" expanded="false" />
-                    <element signature="e#10526#10590#0" expanded="false" />
-                    <element signature="e#10623#11326#0" expanded="false" />
-                    <element signature="e#11353#12410#0" expanded="false" />
+                    <element signature="e#7540#7782#0" expanded="false" />
+                    <element signature="e#7835#8256#0" expanded="false" />
+                    <element signature="e#8391#9961#0" expanded="false" />
+                    <element signature="e#10006#10070#0" expanded="false" />
+                    <element signature="e#10103#10806#0" expanded="false" />
+                    <element signature="e#10833#11890#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -328,6 +340,12 @@
               <item name="lstm_normalizations" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="mnist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lstm_normalizations" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lstm_normalizations" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="normal_cells_2" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lstm_normalizations" type="b2602c69:ProjectViewProjectNode" />
@@ -634,13 +652,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1509936427866</updated>
-    </task>
-    <task id="LOCAL-00024" summary="up">
-      <created>1512628019140</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1512628019140</updated>
     </task>
     <task id="LOCAL-00025" summary="add vanilla cell&#10;add nmt data">
       <created>1512708023382</created>
@@ -978,7 +989,14 @@
       <option name="project" value="LOCAL" />
       <updated>1515055916588</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="add histogram for grad in ptb">
+      <created>1515142241542</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1515142241542</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1012,7 +1030,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265097" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30808598" sideWeight="0.4908425" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23029682" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11904762" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22100122" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3285568" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1066,7 +1084,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="prepare for ptb_ref_base" />
     <MESSAGE value="fix bug in ptb for bn_se=" />
     <MESSAGE value="fix bug in ptb" />
     <MESSAGE value="fix vani rnn" />
@@ -1091,7 +1108,8 @@
     <MESSAGE value="fix bug in draw" />
     <MESSAGE value="complete att_model and gnmt_model" />
     <MESSAGE value="change static rnn to dynamic rnn in mnist" />
-    <option name="LAST_COMMIT_MESSAGE" value="change static rnn to dynamic rnn in mnist" />
+    <MESSAGE value="add histogram for grad in ptb" />
+    <option name="LAST_COMMIT_MESSAGE" value="add histogram for grad in ptb" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1498,33 +1516,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_cn_sep.py">
+    <entry file="file://$PROJECT_DIR$/src/mnist/test_784*1_base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="639">
-          <caret line="118" column="36" lean-forward="false" selection-start-line="118" selection-start-column="25" selection-end-line="118" selection-end-column="36" />
+        <state relative-caret-position="131">
+          <caret line="106" column="0" lean-forward="true" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mnist/test_784*1_base.py">
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_cn_sep.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="129" column="12" lean-forward="false" selection-start-line="129" selection-start-column="12" selection-end-line="129" selection-end-column="69" />
+        <state relative-caret-position="615">
+          <caret line="54" column="13" lean-forward="true" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="193" column="27" lean-forward="true" selection-start-line="193" selection-start-column="27" selection-end-line="193" selection-end-column="27" />
+        <state relative-caret-position="411">
+          <caret line="197" column="0" lean-forward="true" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
           <folding>
-            <element signature="e#7358#7600#0" expanded="false" />
-            <element signature="e#7653#8074#0" expanded="false" />
-            <element signature="e#8209#10481#0" expanded="false" />
-            <element signature="e#10526#10590#0" expanded="false" />
-            <element signature="e#10623#11326#0" expanded="false" />
-            <element signature="e#11353#12410#0" expanded="false" />
+            <element signature="e#7540#7782#0" expanded="false" />
+            <element signature="e#7835#8256#0" expanded="false" />
           </folding>
         </state>
       </provider>
