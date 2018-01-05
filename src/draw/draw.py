@@ -29,10 +29,10 @@ from normal_cells_2.lstm_wn_sep import WNLSTMCell
 from normal_cells_2.lstm_basic import BASICLSTMCell
 
 tf.flags.DEFINE_string("data_dir", "../../data", "")
-tf.flags.DEFINE_string("save_path", "/tmp/draw", "")
+tf.flags.DEFINE_string("save_path", "/tmp/draw2", "")
 tf.flags.DEFINE_boolean("read_attn", True, "enable attention for reader")
 tf.flags.DEFINE_boolean("write_attn", True, "enable attention for writer")
-tf.flags.DEFINE_float('lr', 1e-3, 'Learning rate')
+tf.flags.DEFINE_float('lr', 1e-2, 'Learning rate')
 tf.flags.DEFINE_float('g', 0.0, 'grain')
 tf.flags.DEFINE_string('cell', 'base', 'RNN Cell')
 
@@ -219,7 +219,7 @@ else:
 	             tf.zeros([batch_size, enc_size]),
 	             tf.constant(0.0, shape=[1]))
 
-	enc_state = (tf.zeros([batch_size, dec_size]),
+	dec_state = (tf.zeros([batch_size, dec_size]),
 	             tf.zeros([batch_size, dec_size]),
 	             tf.constant(0.0, shape=[1]))
 

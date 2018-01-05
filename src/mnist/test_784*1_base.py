@@ -78,11 +78,11 @@ def run(save_path):
 			lstm_cell = cell_dic[FLAGS.cell](num_hidden, grain=FLAGS.g, forget_bias=1.0)
 
 			# Get lstm cell output
-			outputs, states = tf.nn.dynamic_rnn(
+			_, states = tf.nn.dynamic_rnn(
 				lstm_cell, x, initial_state=init_state, dtype=tf.float32)
-
+			_, final_hidden = states
 			# Linear activation, using rnn inner loop last output
-			return tf.matmul(outputs[-1], weights) + biases
+			return tf.matmul(final_hidden, weights) + biases
 
 		else:
 			init_state = (tf.truncated_normal(
