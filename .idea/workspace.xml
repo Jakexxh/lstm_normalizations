@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0754ad83-7524-4d9e-ac27-6f7b38ce1b37" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/mnist/test_28*28.py" afterPath="$PROJECT_DIR$/src/mnist/test_28*28.py" />
-      <change beforePath="$PROJECT_DIR$/src/mnist/test_784*1.py" afterPath="$PROJECT_DIR$/src/mnist/test_784*1.py" />
       <change beforePath="$PROJECT_DIR$/src/mnist/test_784*1_base.py" afterPath="$PROJECT_DIR$/src/mnist/test_784*1_base.py" />
+      <change beforePath="$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py" afterPath="$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,7 +15,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/lstm_normalizations$ptb_word_lm__1_.coverage" NAME="ptb_word_lm (1) Coverage Results" MODIFIED="1510135664816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/ptb" />
-    <SUITE FILE_PATH="coverage/lstm_normalizations$ptb_word_lm_base.coverage" NAME="ptb_word_lm_base Coverage Results" MODIFIED="1513825591554" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/ptb" />
+    <SUITE FILE_PATH="coverage/lstm_normalizations$ptb_word_lm_base.coverage" NAME="ptb_word_lm_base Coverage Results" MODIFIED="1515131782309" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/ptb" />
     <SUITE FILE_PATH="coverage/lstm_normalizations$vanilla_norm_rnn_cell.coverage" NAME="vanilla_norm_rnn_cell Coverage Results" MODIFIED="1512710687576" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/normal_vani_cells_refactor" />
     <SUITE FILE_PATH="coverage/lstm_normalizations$Nosetests_in_test_28_28_py.coverage" NAME="Nosetests in test_28*28.py Coverage Results" MODIFIED="1513825266042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/mnist" />
     <SUITE FILE_PATH="coverage/lstm_normalizations$test_28_28.coverage" NAME="test_28*28 Coverage Results" MODIFIED="1515055724886" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/mnist" />
@@ -40,50 +39,53 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ptb_word_lm_base.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2432">
-              <caret line="634" column="62" lean-forward="false" selection-start-line="634" selection-start-column="62" selection-end-line="634" selection-end-column="62" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_784*1_base.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mnist/test_784*1_base.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="8" column="66" lean-forward="true" selection-start-line="8" selection-start-column="66" selection-end-line="8" selection-end-column="66" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_784*1.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mnist/test_784*1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_28*28.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/mnist/test_28*28.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="ptb_word_lm_base.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="691">
+                  <caret line="220" column="70" lean-forward="false" selection-start-line="220" selection-start-column="70" selection-end-line="220" selection-end-column="70" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="test_784*1_base.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/mnist/test_784*1_base.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="476">
+                  <caret line="129" column="12" lean-forward="false" selection-start-line="129" selection-start-column="12" selection-end-line="129" selection-end-column="69" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="ptb_word_lm_base.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="240">
+                  <caret line="193" column="27" lean-forward="true" selection-start-line="193" selection-start-column="27" selection-end-line="193" selection-end-column="27" />
+                  <folding>
+                    <element signature="e#7358#7600#0" expanded="false" />
+                    <element signature="e#7653#8074#0" expanded="false" />
+                    <element signature="e#8209#10481#0" expanded="false" />
+                    <element signature="e#10526#10590#0" expanded="false" />
+                    <element signature="e#10623#11326#0" expanded="false" />
+                    <element signature="e#11353#12410#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -94,7 +96,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>rnn</find>
       <find>lstm_enc</find>
       <find>encode</find>
       <find>num_steps</find>
@@ -124,6 +125,7 @@
       <find>infer_sess</find>
       <find>create_rnn_cell</find>
       <find>model_creator</find>
+      <find>scalar</find>
     </findStrings>
     <replaceStrings>
       <replace>lr</replace>
@@ -189,7 +191,6 @@
         <option value="$PROJECT_DIR$/src/normal_cells_2/lstm_pcc_sep.py" />
         <option value="$PROJECT_DIR$/src/normal_cells_2/lstm_wn_sep.py" />
         <option value="$PROJECT_DIR$/src/nmt/run.sh" />
-        <option value="$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py" />
         <option value="$PROJECT_DIR$/src/nmt/nmt/model_helper.py" />
         <option value="$PROJECT_DIR$/src/nmt/nmt/model.py" />
         <option value="$PROJECT_DIR$/src/nmt/nmt/inference.py" />
@@ -197,9 +198,10 @@
         <option value="$PROJECT_DIR$/src/draw/draw.py" />
         <option value="$PROJECT_DIR$/src/nmt/nmt/attention_model.py" />
         <option value="$PROJECT_DIR$/src/nmt/nmt/gnmt_model.py" />
-        <option value="$PROJECT_DIR$/src/mnist/test_784*1_base.py" />
         <option value="$PROJECT_DIR$/src/mnist/test_784*1.py" />
         <option value="$PROJECT_DIR$/src/mnist/test_28*28.py" />
+        <option value="$PROJECT_DIR$/src/mnist/test_784*1_base.py" />
+        <option value="$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py" />
       </list>
     </option>
   </component>
@@ -304,7 +306,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -340,6 +341,7 @@
       </pane>
       <pane id="Scope" />
       <pane id="NBKnowledgePane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -380,6 +382,8 @@
           <option name="myId" value="UPDATED" />
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/draw/draw.py</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/draw/run.sh</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/mnist/run.sh</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/mnist/test_784*1_base.py</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -487,7 +491,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test_28*28">
+  <component name="RunManager" selected="Python.ptb_word_lm_base">
     <configuration name="draw" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -609,10 +613,10 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.test_784*1 (1)" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Nosetests in test_784*1.py" />
-        <item index="2" class="java.lang.String" itemvalue="Python.draw" />
-        <item index="3" class="java.lang.String" itemvalue="Python.ptb_word_lm_base" />
+        <item index="0" class="java.lang.String" itemvalue="Python.ptb_word_lm_base" />
+        <item index="1" class="java.lang.String" itemvalue="Python.test_784*1 (1)" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Nosetests in test_784*1.py" />
+        <item index="3" class="java.lang.String" itemvalue="Python.draw" />
         <item index="4" class="java.lang.String" itemvalue="Python.ptb_word_lm" />
       </list>
     </recent_temporary>
@@ -630,13 +634,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1509936427866</updated>
-    </task>
-    <task id="LOCAL-00023" summary="fix seq2seq parameter bug">
-      <created>1512627959265</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1512627959265</updated>
     </task>
     <task id="LOCAL-00024" summary="up">
       <created>1512628019140</created>
@@ -974,7 +971,14 @@
       <option name="project" value="LOCAL" />
       <updated>1515034798056</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="change static rnn to dynamic rnn in mnist">
+      <created>1515055916588</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1515055916588</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1004,17 +1008,17 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32907802" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32753327" sideWeight="0.50915754" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="0" y="0" width="370" height="850" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30808598" sideWeight="0.4908425" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265097" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265097" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30808598" sideWeight="0.4908425" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23029682" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15934066" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11904762" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3285568" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2045177" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34902763" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26509723" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1062,7 +1066,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="prepare for nmt" />
     <MESSAGE value="prepare for ptb_ref_base" />
     <MESSAGE value="fix bug in ptb for bn_se=" />
     <MESSAGE value="fix bug in ptb" />
@@ -1087,7 +1090,8 @@
     <MESSAGE value="improve bn_sep to nmt and draw" />
     <MESSAGE value="fix bug in draw" />
     <MESSAGE value="complete att_model and gnmt_model" />
-    <option name="LAST_COMMIT_MESSAGE" value="complete att_model and gnmt_model" />
+    <MESSAGE value="change static rnn to dynamic rnn in mnist" />
+    <option name="LAST_COMMIT_MESSAGE" value="change static rnn to dynamic rnn in mnist" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1153,8 +1157,13 @@
           <line>74</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/mnist/test_784*1_base.py</url>
+          <line>108</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="41" />
+      <option name="time" value="42" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1404,7 +1413,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="51" lean-forward="false" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1420,7 +1428,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2430">
           <caret line="70" column="29" lean-forward="false" selection-start-line="70" selection-start-column="16" selection-end-line="70" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1428,7 +1435,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1305">
           <caret line="98" column="45" lean-forward="false" selection-start-line="98" selection-start-column="45" selection-end-line="98" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1436,7 +1442,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1440">
           <caret line="103" column="12" lean-forward="false" selection-start-line="103" selection-start-column="12" selection-end-line="103" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1444,7 +1449,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="682">
           <caret line="176" column="0" lean-forward="false" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1452,12 +1456,45 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
           <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="261" column="0" lean-forward="true" selection-start-line="261" selection-start-column="0" selection-end-line="261" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/model_helper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1035">
+          <caret line="298" column="0" lean-forward="false" selection-start-line="298" selection-start-column="0" selection-end-line="298" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="35" column="15" lean-forward="false" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mnist/test_28*28.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="41" column="16" lean-forward="false" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
           <folding>
-            <element signature="e#10887#13467#0" expanded="false" />
-            <element signature="e#13503#16587#0" expanded="false" />
-            <element signature="e#16665#17721#0" expanded="false" />
-            <element signature="e#17796#18418#0" expanded="false" />
+            <element signature="e#0#38#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mnist/test_784*1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1469,87 +1506,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/train.py">
+    <entry file="file://$PROJECT_DIR$/src/mnist/test_784*1_base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="261" column="0" lean-forward="true" selection-start-line="261" selection-start-column="0" selection-end-line="261" selection-end-column="0" />
-          <folding>
-            <element signature="e#6787#8151#0" expanded="false" />
-            <element signature="e#16832#17016#0" expanded="false" />
-            <element signature="e#17052#17239#0" expanded="false" />
-            <element signature="e#17794#18634#0" expanded="false" />
-            <element signature="e#18808#19912#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/model_helper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1035">
-          <caret line="298" column="0" lean-forward="false" selection-start-line="298" selection-start-column="0" selection-end-line="298" selection-end-column="0" />
-          <folding>
-            <element signature="e#2026#4176#0" expanded="false" />
-            <element signature="e#4340#7512#0" expanded="false" />
-            <element signature="e#7719#8323#0" expanded="false" />
-            <element signature="e#8545#10319#0" expanded="false" />
-            <element signature="e#10372#10730#0" expanded="false" />
-            <element signature="e#10778#11005#0" expanded="false" />
-            <element signature="e#11649#12309#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="35" column="15" lean-forward="false" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="15" />
-          <folding>
-            <element signature="e#6410#6804#0" expanded="false" />
-            <element signature="e#6832#7139#0" expanded="false" />
-            <element signature="e#7166#7327#0" expanded="false" />
-            <element signature="e#7376#8688#0" expanded="false" />
-            <element signature="e#8749#8943#0" expanded="false" />
-            <element signature="e#9636#13805#0" expanded="false" />
-            <element signature="e#13842#13951#0" expanded="false" />
-            <element signature="e#14098#14487#0" expanded="false" />
-            <element signature="e#14525#15098#0" expanded="false" />
-            <element signature="e#15142#15159#0" expanded="false" />
-            <element signature="e#15187#15339#0" expanded="false" />
-            <element signature="e#15368#15749#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="476">
+          <caret line="129" column="12" lean-forward="false" selection-start-line="129" selection-start-column="12" selection-end-line="129" selection-end-column="69" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2432">
-          <caret line="634" column="62" lean-forward="false" selection-start-line="634" selection-start-column="62" selection-end-line="634" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mnist/test_784*1_base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="8" column="66" lean-forward="true" selection-start-line="8" selection-start-column="66" selection-end-line="8" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mnist/test_784*1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mnist/test_28*28.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state relative-caret-position="240">
+          <caret line="193" column="27" lean-forward="true" selection-start-line="193" selection-start-column="27" selection-end-line="193" selection-end-column="27" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#7358#7600#0" expanded="false" />
+            <element signature="e#7653#8074#0" expanded="false" />
+            <element signature="e#8209#10481#0" expanded="false" />
+            <element signature="e#10526#10590#0" expanded="false" />
+            <element signature="e#10623#11326#0" expanded="false" />
+            <element signature="e#11353#12410#0" expanded="false" />
           </folding>
         </state>
       </provider>

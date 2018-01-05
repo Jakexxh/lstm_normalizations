@@ -61,7 +61,7 @@ from __future__ import print_function
 import sys
 import os
 
-sys.path.append(os.path.abspath(os.path.dirname(__file__) + '..'))
+sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/..'))
 
 from normal_cells_2.lstm_bn_sep import BNLSTMCell
 from normal_cells_2.lstm_scale_cn import SCALECNLSTMCell
@@ -106,7 +106,6 @@ flags.DEFINE_string("rnn_mode", 'bn_sep',
 flags.DEFINE_float("lr", 1.0, "learning rate")
 flags.DEFINE_float("g", 1.0, "grain")
 
-
 FLAGS = flags.FLAGS
 BASIC = "base"
 BN_SEP = "bn_sep"
@@ -114,7 +113,7 @@ CN_SEP = "cn_sep"
 LN_SEP = "ln_sep"
 WN_SEP = "wn_sep"
 PCC_SEP = "pcc_sep"
-SCALE_CN= "scale_cn"
+SCALE_CN = "scale_cn"
 NORM_CN = "norm_cn"
 CUDNN = "cudnn"
 BLOCK = "block"
@@ -199,6 +198,12 @@ class PTBModel(object):
 		tvars = tf.trainable_variables()
 		grads, _ = tf.clip_by_global_norm(
 			tf.gradients(self._cost, tvars), config.max_grad_norm)
+
+		for (grad, tar) in zip(grads, tvars):
+			if grad is not None:
+				tf.summary.histogram('clipped_grad/{}'.format(tar.name), tar)
+				tf.summary.histogram('clipped_variable/{}'.format(tar.name), tar)
+
 		optimizer = tf.train.GradientDescentOptimizer(self._lr)
 		self._train_op = optimizer.apply_gradients(
 			zip(grads, tvars),
@@ -214,30 +219,6 @@ class PTBModel(object):
 		# else:
 		# 	return self._build_rnn_graph_lstm(inputs, config, is_training)
 		return self._build_rnn_graph_lstm(inputs, config, is_training)
-
-	# def _build_rnn_graph_cudnn(self, inputs, config, is_training):
-	# 	"""Build the inference graph using CUDNN cell."""
-	# 	inputs = tf.transpose(inputs, [1, 0, 2])
-	# 	self._cell = tf.contrib.cudnn_rnn.CudnnLSTM(
-	# 		num_layers=config.num_layers,
-	# 		num_units=config.hidden_size,
-	# 		input_size=config.hidden_size,
-	# 		dropout=1 - config.keep_prob if is_training else 0)
-	# 	params_size_t = self._cell.params_size()
-	# 	self._rnn_params = tf.get_variable(
-	# 		"lstm_params",
-	# 		initializer=tf.random_uniform([params_size_t], -config.init_scale,
-	# 		                              config.init_scale),
-	# 		validate_shape=False)
-	# 	c = tf.zeros([config.num_layers, self.batch_size, config.hidden_size],
-	# 	             tf.float32)
-	# 	h = tf.zeros([config.num_layers, self.batch_size, config.hidden_size],
-	# 	             tf.float32)
-	# 	self._initial_state = (tf.contrib.rnn.LSTMStateTuple(h=h, c=c),)
-	# 	outputs, h, c = self._cell(inputs, h, c, self._rnn_params, is_training)
-	# 	outputs = tf.transpose(outputs, [1, 0, 2])
-	# 	outputs = tf.reshape(outputs, [-1, config.hidden_size])
-	# 	return outputs, (tf.contrib.rnn.LSTMStateTuple(h=h, c=c),)
 
 	def _get_lstm_cell(self, config, is_training):
 
@@ -257,7 +238,7 @@ class PTBModel(object):
 			return cell_dic[config.rnn_mode](
 				config.hidden_size, grain=FLAGS.g, forget_bias=0.0, state_is_tuple=True)
 
-		# raise ValueError("rnn_mode %s not supported" % config.rnn_mode)
+	# raise ValueError("rnn_mode %s not supported" % config.rnn_mode)
 
 	def _build_rnn_graph_lstm(self, inputs, config, is_training):
 		"""Build the inference graph using canonical LSTM cells."""
