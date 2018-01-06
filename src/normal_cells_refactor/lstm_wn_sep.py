@@ -53,7 +53,7 @@ class WNLSTMCell(RNNCell):
             c, h = state
         else:
             c, h = array_ops.split(value=state, num_or_size_splits=2, axis=1)
-        i, j, f, o = self._line_sep([inputs, h], self._num_units, bias=True)
+        i, j, f, o = self._line_sep([inputs, h], self._num_units, bias=False)
 
         # i = input_gate, j = new_input, f = forget_gate, o = output_gate
         # i, j, f, o = array_ops.split(
