@@ -53,7 +53,7 @@ class CNLSTMCell(RNNCell):
             c, h = state
         else:
             c, h = array_ops.split(value=state, num_or_size_splits=2, axis=1)
-        i, j, f, o = self._line_sep([inputs, h], self._num_units, bias=True)
+        i, j, f, o = self._line_sep([inputs, h], self._num_units, bias=False)
 
 
         new_c = (c * sigmoid(f + self._forget_bias) +
@@ -102,9 +102,6 @@ class CNLSTMCell(RNNCell):
             W_xh = tf.get_variable(
                 'W_xh', [x_size, h_size * 4], initializer=weights_initializer
             )
-            # W_hh = tf.get_variable(
-            #     'W_hh', [h_size, h_size * 4],
-            #     initializer=identity_initializer(0.9))
             W_ih = tf.get_variable(
                 'W_ih', [h_size, h_size], initializer=weights_initializer
             )
@@ -167,10 +164,13 @@ class CNLSTMCell(RNNCell):
 
                 cos_mat = tf.matmul(x_l2, w_l2)
                 gamma = tf.get_variable(
-                    name + '_gamma', [cos_mat.get_shape().as_list()[1]],
-                    initializer=tf.truncated_normal_initializer(self._grain))
-
-                return gamma * cos_mat
+                	name + '_gamma', [cos_mat.get_shape().as_list()[1]],
+                    	initializer=tf.truncated_normal_initializer(self._grain))
+		beta = tf.get_variable(
+               		name + '_beta', [cos_mat.get_shape().as_list()[1]],
+                	initializer=tf.zeros_initializer)
+                
+		return gamma * cos_mat + beta
 
             else:
                 raise Exception(

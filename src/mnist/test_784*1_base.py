@@ -80,9 +80,11 @@ def run(save_path):
 			# Get lstm cell output
 			_, states = tf.nn.dynamic_rnn(
 				lstm_cell, x, initial_state=init_state, dtype=tf.float32)
-			_, final_hidden = states
+			c, h = states
 			# Linear activation, using rnn inner loop last output
-			return tf.matmul(final_hidden, weights) + biases
+			tf.summary.histogram('final_cell', c)		
+			tf.summary.histogram('final_hidden', h)		
+			return tf.matmul(h, weights) + biases
 
 		else:
 			init_state = (tf.truncated_normal(
@@ -97,8 +99,9 @@ def run(save_path):
 				initial_scale=FLAGS.g)
 			outputs, states = tf.nn.dynamic_rnn(
 				lstm_cell, x, initial_state=init_state, dtype=tf.float32)
-			_, final_hidden, _ = states
-
+			c, h, _ = states
+			tf.summary.histogram('final_cell', c)		
+			tf.summary.histogram('final_hidden', h)		
 			return tf.matmul(final_hidden, weights) + biases
 
 	logits = RNN(X, w, b)

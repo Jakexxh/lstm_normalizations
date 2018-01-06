@@ -168,8 +168,11 @@ class WNLSTMCell(RNNCell):
                 initializer=tf.truncated_normal_initializer(self._grain))
 
             w = g * tf.nn.l2_normalize(V, 0)
-
-            return tf.matmul(x, w)
+	    beta = tf.get_variable(
+                        name + '_beta',shape=[shape[1],], 
+                        initializer=tf.zeros_initializer)
+                
+	return tf.matmul(x, w)+beta
 
 
 def identity_initializer(scale):

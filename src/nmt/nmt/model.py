@@ -498,7 +498,7 @@ class Model(BaseModel):
 				                (num_layers, num_residual_layers))
 				cell = self._build_encoder_cell(
 					hparams, num_layers, num_residual_layers)
-				if hparams.unitype != 'bn_sep':
+				if hparams.unit_type != 'bn_sep':
 					encoder_outputs, encoder_state = tf.nn.dynamic_rnn(
 						cell,
 						encoder_emb_inp,
