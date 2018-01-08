@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0754ad83-7524-4d9e-ac27-6f7b38ce1b37" name="Default" comment="fix bugs">
+    <list default="true" id="0754ad83-7524-4d9e-ac27-6f7b38ce1b37" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/data/MNIST/t10k-labels-idx1-ubyte.gz" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/data/MNIST/train-labels-idx1-ubyte.gz" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/data/mnist/t10k-images-idx3-ubyte.gz" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/data/mnist/train-images-idx3-ubyte.gz" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/mnist/test_28*28.py" afterPath="$PROJECT_DIR$/src/mnist/test_28*28.py" />
-      <change beforePath="$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py" afterPath="$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,8 +41,8 @@
       <file leaf-file-name="ptb_word_lm_base.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+            <state relative-caret-position="541">
+              <caret line="624" column="0" lean-forward="true" selection-start-line="624" selection-start-column="0" selection-end-line="624" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -303,13 +297,13 @@
             <path>
               <item name="lstm_normalizations" type="b2602c69:ProjectViewProjectNode" />
               <item name="lstm_normalizations" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="mnist" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lstm_normalizations" type="b2602c69:ProjectViewProjectNode" />
               <item name="lstm_normalizations" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="draw" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lstm_normalizations" type="b2602c69:ProjectViewProjectNode" />
@@ -630,13 +624,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1509936427866</updated>
-    </task>
-    <task id="LOCAL-00026" summary="prepare test vani mnist">
-      <created>1512714393371</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1512714393371</updated>
     </task>
     <task id="LOCAL-00027" summary="up">
       <created>1512714770990</created>
@@ -974,7 +961,14 @@
       <option name="project" value="LOCAL" />
       <updated>1515395401149</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="add data">
+      <created>1515399334316</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1515399334316</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1006,7 +1000,7 @@
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="0" y="0" width="370" height="850" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265097" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265097" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30808598" sideWeight="0.4908425" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23234391" sideWeight="0.4908425" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23029682" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22344323" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3285568" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1062,7 +1056,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="fix bug in ptb" />
     <MESSAGE value="fix vani rnn" />
     <MESSAGE value="add textsum" />
     <MESSAGE value="change tf.data" />
@@ -1087,7 +1080,8 @@
     <MESSAGE value="change static rnn to dynamic rnn in mnist" />
     <MESSAGE value="add histogram for grad in ptb" />
     <MESSAGE value="fix bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bugs" />
+    <MESSAGE value="add data" />
+    <option name="LAST_COMMIT_MESSAGE" value="add data" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1518,8 +1512,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+        <state relative-caret-position="541">
+          <caret line="624" column="0" lean-forward="true" selection-start-line="624" selection-start-column="0" selection-end-line="624" selection-end-column="0" />
           <folding />
         </state>
       </provider>
