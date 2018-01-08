@@ -175,7 +175,7 @@ class PCCLSTMCell(RNNCell):
                 gamma = tf.get_variable(
                     name + '_gamma', [cos_mat.get_shape().as_list()[1]],
                     initializer=tf.truncated_normal_initializer(self._grain))
-		beta = tf.get_variable(
+                beta = tf.get_variable(
                         name + '_beta', [cos_mat.get_shape().as_list()[1]],
                         initializer=tf.zeros_initializer)
                 
