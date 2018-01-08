@@ -99,7 +99,7 @@ flags.DEFINE_integer("num_gpus", 0,
                      "If larger than 1, Grappler AutoParallel optimizer "
                      "will create multiple training replicas with each GPU "
                      "running one replica.")
-flags.DEFINE_string("rnn_mode", 'base',
+flags.DEFINE_string("rnn_mode", 'bn_sep',
                     "The low level implementation of lstm cell: one of CUDNN, "
                     "BASIC, and BLOCK, representing cudnn_lstm, basic_lstm, "
                     "and lstm_block_cell classes.")
@@ -191,13 +191,13 @@ class PTBModel(object):
 		self._cost = tf.reduce_sum(loss)
 		self._final_state = state
 
-		if config.rnn_mode != 'bn_sep':
-			c, h = self.final_state
-		else:
-			c, h, _ = self.final_state
-
-		tf.summary.histogram('final_cell', c)
-		tf.summary.histogram('final_hidden', h)
+		# if config.rnn_mode != 'bn_sep':
+		# 	c, h = self._final_state
+		# else:
+		# 	c, h, _ = self._final_state
+		#
+		# tf.summary.histogram('final_cell', c)
+		# tf.summary.histogram('final_hidden', h)
 
 		if not is_training:
 			return
