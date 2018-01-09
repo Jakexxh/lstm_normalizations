@@ -9,11 +9,14 @@ import os
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + '..'))
 from normal_cells_2.lstm_bn_sep import BNLSTMCell
 from normal_cells_2.lstm_scale_cn import SCALECNLSTMCell
-from normal_cells_2.lstm_cn_sep import CNLSTMCell
+#from normal_cells_2.lstm_cn_sep import CNLSTMCell
 from normal_cells_2.lstm_ln_sep import LNLSTMCell
 from normal_cells_2.lstm_pcc_sep import PCCLSTMCell
-from normal_cells_2.lstm_wn_sep import WNLSTMCell
+#from normal_cells_2.lstm_wn_sep import WNLSTMCell
 from normal_cells_2.lstm_basic import BASICLSTMCell
+
+from normal_cells_refactor.lstm_cn_sep import CNLSTMCell
+from normal_cells_refactor.lstm_wn_sep import WNLSTMCell
 
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
