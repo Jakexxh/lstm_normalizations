@@ -289,13 +289,12 @@ if not os.path.exists(data_directory):
 	os.makedirs(data_directory)
 train_data = mnist.input_data.read_data_sets(data_directory, one_hot=True).train  # binarized (0-1) mnist data
 valid_data = mnist.input_data.read_data_sets(data_directory, one_hot=True).validation
-test_data = mnist.input_data.read_data_sets(data_directory, one_hot=True).validation
+test_data = mnist.input_data.read_data_sets(data_directory, one_hot=True).test
 
 fetches = []
 fetches.extend([Lx, Lz, train_op, merged])
 Lxs = [0] * train_iters
 Lzs = [0] * train_iters
-
 sess = tf.InteractiveSession()
 
 saver = tf.train.Saver()  # saves variables learned during training
