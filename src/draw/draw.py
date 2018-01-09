@@ -20,19 +20,19 @@ import os
 import sys
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + '..'))
-from normal_cells_2.lstm_bn_sep import BNLSTMCell
-from normal_cells_2.lstm_scale_cn import SCALECNLSTMCell
-from normal_cells_2.lstm_cn_sep import CNLSTMCell
-from normal_cells_2.lstm_ln_sep import LNLSTMCell
-from normal_cells_2.lstm_pcc_sep import PCCLSTMCell
-from normal_cells_2.lstm_wn_sep import WNLSTMCell
-from normal_cells_2.lstm_basic import BASICLSTMCell
+from normal_cells_refactor.lstm_bn_sep import BNLSTMCell
+from normal_cells_refactor.lstm_scale_cn import SCALECNLSTMCell
+from normal_cells_refactor.lstm_cn_sep import CNLSTMCell
+from normal_cells_refactor.lstm_ln_sep import LNLSTMCell
+from normal_cells_refactor.lstm_pcc_sep import PCCLSTMCell
+from normal_cells_refactor.lstm_wn_sep import WNLSTMCell
+from normal_cells_refactor.lstm_basic import BASICLSTMCell
 
 tf.flags.DEFINE_string("data_dir", "../../data", "")
-tf.flags.DEFINE_string("save_path", "/tmp/draw2", "")
+tf.flags.DEFINE_string("save_path", "/tmp/draw/draw_ref", "")
 tf.flags.DEFINE_boolean("read_attn", True, "enable attention for reader")
 tf.flags.DEFINE_boolean("write_attn", True, "enable attention for writer")
-tf.flags.DEFINE_float('lr', 1e-2, 'Learning rate')
+tf.flags.DEFINE_float('lr', 1e-3, 'Learning rate')
 tf.flags.DEFINE_float('g', 0.0, 'grain')
 tf.flags.DEFINE_string('cell', 'base', 'RNN Cell')
 
