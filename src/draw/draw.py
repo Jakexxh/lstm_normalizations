@@ -19,7 +19,7 @@ import numpy as np
 import os
 import sys
 
-sys.path.append(os.path.abspath(os.path.dirname(__file__) + '..'))
+sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/..'))
 from normal_cells_2.lstm_bn_sep import BNLSTMCell
 from normal_cells_2.lstm_scale_cn import SCALECNLSTMCell
 from normal_cells_2.lstm_cn_sep import CNLSTMCell
@@ -34,7 +34,7 @@ tf.flags.DEFINE_boolean("read_attn", True, "enable attention for reader")
 tf.flags.DEFINE_boolean("write_attn", True, "enable attention for writer")
 tf.flags.DEFINE_float('lr', 1e-2, 'Learning rate')
 tf.flags.DEFINE_float('g', 0.0, 'grain')
-tf.flags.DEFINE_string('cell', 'base', 'RNN Cell')
+tf.flags.DEFINE_string('cell', 'cn_sep', 'RNN Cell')
 
 
 FLAGS = tf.flags.FLAGS

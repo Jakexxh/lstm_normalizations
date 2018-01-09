@@ -124,13 +124,14 @@ class BNLSTMCell(RNNCell):
             hh = tf.matmul(h, W_hh)
             xh = tf.matmul(x, W_xh)
 
-            bn_hh = self._batch_norm(
-                hh, 'hh', _step, set_forget_gate_bias=True)
-            bn_xh = self._batch_norm(xh, 'xh', _step, no_offset=True)
-
-            hidden = bn_xh + bn_hh
+            hidden = hh + xh
 
             f, i, o, j = tf.split(hidden, 4, 1)
+
+            f = self._batch_norm(f, 'f', _step)
+            i = self._batch_norm(i, 'i', _step)
+            o = self._batch_norm(o, 'o', _step)
+            j = self._batch_norm(j, 'j', _step)
 
             new_c = c * tf.sigmoid(f + self._forget_bias) + tf.sigmoid(
                 i) * self._activation(j)
