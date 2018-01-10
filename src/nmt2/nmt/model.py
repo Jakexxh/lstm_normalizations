@@ -506,9 +506,13 @@ class Model(BaseModel):
 						sequence_length=iterator.source_sequence_length,
 						time_major=self.time_major)
 				else:
+					#initial_state = (tf.zeros([self.batch_size, hparams.num_units]),
+					#                 tf.zeros([self.batch_size, hparams.num_units]),
+					#                 tf.constant(0.0, shape=[1]))
 					encoder_outputs, encoder_state = tf.nn.dynamic_rnn(
 						cell,
 						encoder_emb_inp,
+					#	initial_state=initial_state,
 						dtype=dtype,
 						sequence_length=iterator.source_sequence_length,
 						time_major=self.time_major)
