@@ -158,10 +158,9 @@ class BaseModel(object):
 				zip(clipped_gradients, params), global_step=self.global_step)
 
 			# Summary
-			self.train_summary = tf.summary.merge([
-				                                      tf.summary.scalar("lr", self.learning_rate),
-				                                      tf.summary.scalar("train_loss", self.train_loss),
-			                                      ] + gradient_norm_summary)
+			self.train_summary = tf.summary.merge([tf.summary.scalar("lr", self.learning_rate),
+			                                       tf.summary.scalar("train_loss", self.train_loss),
+			                                       ] + gradient_norm_summary)
 
 		if self.mode == tf.contrib.learn.ModeKeys.INFER:
 			self.infer_summary = self._get_infer_summary(hparams)
@@ -498,20 +497,13 @@ class Model(BaseModel):
 				                (num_layers, num_residual_layers))
 				cell = self._build_encoder_cell(
 					hparams, num_layers, num_residual_layers)
-				if hparams.unit_type != 'bn_sep':
-					encoder_outputs, encoder_state = tf.nn.dynamic_rnn(
-						cell,
-						encoder_emb_inp,
-						dtype=dtype,
-						sequence_length=iterator.source_sequence_length,
-						time_major=self.time_major)
-				else:
-					encoder_outputs, encoder_state = tf.nn.dynamic_rnn(
-						cell,
-						encoder_emb_inp,
-						dtype=dtype,
-						sequence_length=iterator.source_sequence_length,
-						time_major=self.time_major)
+
+				encoder_outputs, encoder_state = tf.nn.dynamic_rnn(
+					cell,
+					encoder_emb_inp,
+					dtype=dtype,
+					sequence_length=iterator.source_sequence_length,
+					time_major=self.time_major)
 
 			elif hparams.encoder_type == "bi":
 				num_bi_layers = int(num_layers / 2)
@@ -598,7 +590,7 @@ class Model(BaseModel):
 			num_units=hparams.num_units,
 			grain=hparams.grain,
 			num_layers=num_layers,
-			num_steps=hparams.num_train_steps,
+			num_steps=hparams.num_train_steps * 2,  # TODO: not sure
 			num_residual_layers=num_residual_layers,
 			forget_bias=hparams.forget_bias,
 			dropout=hparams.dropout,
