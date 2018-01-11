@@ -38,7 +38,6 @@ class AttentionModel(model.Model):
     def __init__(self,
                  hparams,
                  mode,
-                 is_training,
                  iterator,
                  source_vocab_table,
                  target_vocab_table,
@@ -48,14 +47,12 @@ class AttentionModel(model.Model):
         super(AttentionModel, self).__init__(
             hparams=hparams,
             mode=mode,
-            is_training=is_training,
             iterator=iterator,
             source_vocab_table=source_vocab_table,
             target_vocab_table=target_vocab_table,
             reverse_target_vocab_table=reverse_target_vocab_table,
             scope=scope,
             single_cell_fn=single_cell_fn)
-
         if self.mode == tf.contrib.learn.ModeKeys.INFER:
             self.infer_summary = self._get_infer_summary(hparams)
 
@@ -98,11 +95,8 @@ class AttentionModel(model.Model):
 
         cell = model_helper.create_rnn_cell(
             unit_type=hparams.unit_type,
-            is_training=self.is_training,
             num_units=num_units,
-            grain=hparams.grain,
             num_layers=num_layers,
-            num_steps=hparams.num_train_steps,
             num_residual_layers=num_residual_layers,
             forget_bias=hparams.forget_bias,
             dropout=hparams.dropout,
