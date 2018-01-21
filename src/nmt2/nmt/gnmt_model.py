@@ -37,7 +37,6 @@ class GNMTModel(attention_model.AttentionModel):
 	def __init__(self,
 	             hparams,
 	             mode,
-	             is_training,
 	             iterator,
 	             source_vocab_table,
 	             target_vocab_table,
@@ -47,7 +46,6 @@ class GNMTModel(attention_model.AttentionModel):
 		super(GNMTModel, self).__init__(
 			hparams=hparams,
 			mode=mode,
-			is_training=is_training,
 			iterator=iterator,
 			source_vocab_table=source_vocab_table,
 			target_vocab_table=target_vocab_table,
@@ -96,10 +94,7 @@ class GNMTModel(attention_model.AttentionModel):
 
 			uni_cell = model_helper.create_rnn_cell(
 				unit_type=hparams.unit_type,
-				is_training=self.is_training,
 				num_units=hparams.num_units,
-				grain=hparams.grain,
-				num_steps=hparams.num_train_steps,
 				num_layers=num_uni_layers,
 				num_residual_layers=num_residual_layers,
 				forget_bias=hparams.forget_bias,
@@ -158,11 +153,8 @@ class GNMTModel(attention_model.AttentionModel):
 
 		cell_list = model_helper._cell_list(  # pylint: disable=protected-access
 			unit_type=hparams.unit_type,
-			is_training=self.is_training,
-			num_steps=hparams.num_train_steps,
 			num_units=num_units,
 			num_layers=num_layers,
-			grain=hparams.grain,
 			num_residual_layers=num_residual_layers,
 			forget_bias=hparams.forget_bias,
 			dropout=hparams.dropout,

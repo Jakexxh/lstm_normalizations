@@ -19,7 +19,6 @@ from normal_cells_2.lstm_wn_sep import WNLSTMCell
 from normal_cells_2.lstm_basic import BASICLSTMCell
 from normal_cells_2.lstm_hid_cn import HIDCNLSTMCell
 
-
 __all__ = [
 	"get_initializer",
 	"get_device_str", "create_emb_for_encoder_and_decoder", "create_rnn_cell",
@@ -116,7 +115,7 @@ def create_emb_for_encoder_and_decoder(share_vocab,
 	return embedding_encoder, embedding_decoder
 
 
-def _single_cell(unit_type, is_training, num_units, grain, num_steps, forget_bias, dropout,
+def _single_cell(unit_type, num_units, grain, forget_bias, dropout,
                  mode, residual_connection=False, device_str=None):
 	"""Create an instance of a single RNN cell."""
 	# dropout (= 1 - keep_prob) is set to 0 during eval and infer
@@ -172,13 +171,7 @@ def _single_cell(unit_type, is_training, num_units, grain, num_steps, forget_bia
 			grain=grain,
 			forget_bias=forget_bias)
 	elif unit_type == "bn_sep":
-		utils.print_out("  hid_cn LSTM, forget_bias=%g" % forget_bias, new_line=False)
-		single_cell = BNLSTMCell(
-			num_units,
-			max_bn_steps=num_steps,
-			is_training_tensor=is_training,
-			initial_scale=grain,
-			forget_bias=forget_bias)
+		pass
 	elif unit_type == "gru":
 		utils.print_out("  GRU", new_line=False)
 		single_cell = tf.contrib.rnn.GRUCell(num_units)
@@ -213,7 +206,7 @@ def _single_cell(unit_type, is_training, num_units, grain, num_steps, forget_bia
 	return single_cell
 
 
-def _cell_list(unit_type, is_training, num_units, grain, num_layers, num_steps, num_residual_layers,
+def _cell_list(unit_type, num_units, grain, num_layers, num_residual_layers,
                forget_bias, dropout, mode, num_gpus, base_gpu=0,
                single_cell_fn=None):
 	"""Create a list of RNN cells."""
@@ -226,10 +219,8 @@ def _cell_list(unit_type, is_training, num_units, grain, num_layers, num_steps, 
 		utils.print_out("  cell %d" % i, new_line=False)
 		single_cell = single_cell_fn(
 			unit_type=unit_type,
-			is_training=is_training,
 			num_units=num_units,
 			grain=grain,
-			num_steps=num_steps,
 			forget_bias=forget_bias,
 			dropout=dropout,
 			mode=mode,
@@ -242,7 +233,7 @@ def _cell_list(unit_type, is_training, num_units, grain, num_layers, num_steps, 
 	return cell_list
 
 
-def create_rnn_cell(unit_type, is_training, num_units, grain, num_steps, num_layers, num_residual_layers,
+def create_rnn_cell(unit_type, num_units, grain, num_layers, num_residual_layers,
                     forget_bias, dropout, mode, num_gpus, base_gpu=0,
                     single_cell_fn=None):
 	"""Create multi-layer RNN cell.
@@ -269,11 +260,9 @@ def create_rnn_cell(unit_type, is_training, num_units, grain, num_steps, num_lay
 	  An `RNNCell` instance.
 	"""
 	cell_list = _cell_list(unit_type=unit_type,
-	                       is_training=is_training,
 	                       num_units=num_units,
 	                       grain=grain,
 	                       num_layers=num_layers,
-	                       num_steps=num_steps,
 	                       num_residual_layers=num_residual_layers,
 	                       forget_bias=forget_bias,
 	                       dropout=dropout,
