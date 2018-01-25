@@ -18,7 +18,7 @@
 #    --dropout=0.2 \
 #    --metrics=bleu
 
-
+export CUDA_VISIBLE_DEVICES=1
 python -m nmt.nmt \
     --attention=scaled_luong \
     --unit_type=base \
@@ -30,6 +30,7 @@ python -m nmt.nmt \
     --test_prefix=../../data/nmt_data/tst2013 \
     --out_dir=$HOME/log/nmt_attention_model \
     --learning_rate=1.0 \
+    --grain=5.0 \
     --start_decay_step=8000 \
     --decay_steps=1000 \
     --decay_facto=0.5 \
