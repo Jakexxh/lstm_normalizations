@@ -152,8 +152,8 @@ def add_arguments(parser):
       """)
 
     # Default settings works well (rarely need to change)
-    parser.add_argument("--unit_type", type=str, default="lstm",
-                        help="lstm | gru | layer_norm_lstm")
+    parser.add_argument("--unit_type", type=str, default="base",
+                        help="base_lstm | gru | layer_norm_lstm")
     parser.add_argument("--grain", type=float, default=1.0,
                         help="grain size")
     parser.add_argument("--forget_bias", type=float, default=1.0,

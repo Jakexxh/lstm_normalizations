@@ -471,6 +471,12 @@ def train(hparams, scope=None, target_session="", single_cell_fn=None):
 		                (metric, best_global_step, avg_step_time, speed,
 		                 result_summary, time.ctime()), log_f)
 
+		with open(hparams.out_dir + '/log.txt', 'w') as f:
+			f.write("# Best %s, step %d "
+			        "step-time %.2f wps %.2fK, %s, %s" %
+			        (metric, best_global_step, avg_step_time, speed,
+			         result_summary, time.ctime()))
+
 	summary_writer.close()
 	return (dev_scores, test_scores, dev_ppl, test_ppl, global_step)
 
