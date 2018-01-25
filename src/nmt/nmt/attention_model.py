@@ -96,6 +96,7 @@ class AttentionModel(model.Model):
         cell = model_helper.create_rnn_cell(
             unit_type=hparams.unit_type,
             num_units=num_units,
+            grain=hparams.grain,
             num_layers=num_layers,
             num_residual_layers=num_residual_layers,
             forget_bias=hparams.forget_bias,
