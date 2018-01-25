@@ -28,7 +28,7 @@ python -m nmt.nmt \
     --train_prefix=../../data/nmt_data/train \
     --dev_prefix=../../data/nmt_data/tst2012  \
     --test_prefix=../../data/nmt_data/tst2013 \
-    --out_dir=~/log/nmt_attention_model \
+    --out_dir=$HOME/log/nmt_attention_model \
     --learning_rate=1.0 \
     --start_decay_step=8000 \
     --decay_steps=1000 \
