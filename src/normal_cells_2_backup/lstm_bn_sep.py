@@ -106,18 +106,24 @@ class BNLSTMCell(RNNCell):
             c, h, step = state
 
             _step = tf.squeeze(tf.gather(tf.cast(step, tf.int32), 0))
-	    
-	    input = tf.concat([x,h],1)
-            x_size = input.get_shape().as_list()[1]
+
+            x_size = x.get_shape().as_list()[1]
             W_xh = tf.get_variable(
                 'W_xh', [x_size, 4 * self._num_units], initializer=weights_initializer
             )
+            W_hh = tf.get_variable(
+                'W_hh', [self._num_units, 4 * self._num_units], initializer=weights_initializer
 
-            xh = tf.matmul(input, W_xh)
+	    )
 
+            hh = tf.matmul(h, W_hh)
+            xh = tf.matmul(x, W_xh)
+
+            bn_hh = self._batch_norm(
+                hh, 'hh', _step, set_forget_gate_bias=True)
             bn_xh = self._batch_norm(xh, 'xh', _step, no_offset=True)
 
-            hidden = bn_xh 
+            hidden = bn_xh + bn_hh
 
             f, i, o, j = tf.split(hidden, 4, 1)
 

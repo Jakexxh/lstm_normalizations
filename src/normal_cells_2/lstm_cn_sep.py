@@ -101,14 +101,21 @@ class CNLSTMCell(RNNCell):
 		with vs.variable_scope(scope) as outer_scope:
 
 			[x, h] = args
+                        input=tf.concat([x,h],1)
 
-			x_size = x.get_shape().as_list()[1]
+			x_size = input.get_shape().as_list()[1]
 			W_xh = tf.get_variable(
 				'W_xh', [x_size, output_size], initializer=weights_initializer
 			)
-			W_hh = tf.get_variable(
-				'W_hh', [int(output_size / 4), output_size], initializer= weights_initializer
-			)
+
+
+			#x_size = x.get_shape().as_list()[1]
+			#W_xh = tf.get_variable(
+			#	'W_xh', [x_size, output_size], initializer=weights_initializer
+			#)
+			#W_hh = tf.get_variable(
+			#	'W_hh', [int(output_size / 4), output_size], initializer= weights_initializer
+			#)
 			
 			#x = tf.Print(x,[tf.reduce_mean(x)], str(scope)+'x: ')
 			#h = tf.Print(h,[tf.reduce_mean(h)], str(scope)+'h: ')
@@ -116,13 +123,13 @@ class CNLSTMCell(RNNCell):
 			#W_xh = tf.Print(W_xh,[tf.reduce_mean(W_xh)], str(scope)+'W_xh: ')
 			#W_hh = tf.Print(W_hh,[tf.reduce_mean(W_hh)], str(scope)+'W_hh: ')
 			
-			cn_xh = self.cosine_norm(x, W_xh, 'cn_xh')  # one hot vector
-			cn_hh = self.cosine_norm(h, W_hh, 'cn_hh')
+			cn_xh = self.cosine_norm(input, W_xh, 'cn_xh')  # one hot vector
+			#cn_hh = self.cosine_norm(h, W_hh, 'cn_hh')
 			
 			#cn_xh = tf.Print(cn_xh,[tf.reduce_mean(cn_xh)], str(scope)+'cn_xh: ')
 			#cn_hh = tf.Print(cn_hh,[tf.reduce_mean(cn_hh)], str(scope)+'cn_hh: ')
 
-			res = cn_xh + cn_hh
+			res = cn_xh 
 
 			if not bias:
 				return res

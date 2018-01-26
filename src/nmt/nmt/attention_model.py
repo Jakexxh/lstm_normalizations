@@ -76,8 +76,10 @@ class AttentionModel(model.Model):
 
         if self.time_major:
             memory = tf.transpose(encoder_outputs, [1, 0, 2])
+            max_time = tf.get_shape(memory).as_list()[0]
         else:
             memory = encoder_outputs
+            max_time = tf.get_shape(memory),as_list()[1]
 
         if self.mode == tf.contrib.learn.ModeKeys.INFER and beam_width > 0:
             memory = tf.contrib.seq2seq.tile_batch(
@@ -97,7 +99,8 @@ class AttentionModel(model.Model):
             unit_type=hparams.unit_type,
             num_units=num_units,
             grain=hparams.grain,
-            num_layers=num_layers,
+            step_length=max_time,
+	    num_layers=num_layers,
             num_residual_layers=num_residual_layers,
             forget_bias=hparams.forget_bias,
             dropout=hparams.dropout,

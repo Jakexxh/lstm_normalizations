@@ -256,7 +256,7 @@ class BaseModel(object):
 		"""
         pass
 
-    def _build_encoder_cell(self, hparams, num_layers, num_residual_layers,
+    def _build_encoder_cell(self, hparams, num_layers, num_residual_layers, max_time,
                             base_gpu=0):
         """Build a multi-layer RNN cell that can be used by encoder."""
 
@@ -264,6 +264,7 @@ class BaseModel(object):
             unit_type=hparams.unit_type,
             num_units=hparams.num_units,
 	        grain=hparams.grain,
+	    step_length=max_time,
             num_layers=num_layers,
             num_residual_layers=num_residual_layers,
             forget_bias=hparams.forget_bias,
@@ -478,7 +479,7 @@ class Model(BaseModel):
         iterator = self.iterator
 
         source = iterator.source
-        if self.time_major:
+	if self.time_major:
             source = tf.transpose(source)
 
         with tf.variable_scope("encoder") as scope:
@@ -491,8 +492,13 @@ class Model(BaseModel):
             if hparams.encoder_type == "uni":
                 utils.print_out("  num_layers = %d, num_residual_layers=%d" %
                                 (num_layers, num_residual_layers))
-                cell = self._build_encoder_cell(
-                    hparams, num_layers, num_residual_layers)
+                if self.time_major: 
+			max_time = encoder_emb_inp.get_shape().as_list()[0]
+		else:
+			max_time = encoder_emb_inp.get_shape().as_list()[1]
+
+		cell = self._build_encoder_cell(
+                    hparams, num_layers, num_residual_layers, max_time)
 
                 encoder_outputs, encoder_state = tf.nn.dynamic_rnn(
                     cell,
@@ -548,14 +554,22 @@ class Model(BaseModel):
 		  The concatenated bidirectional output and the bidirectional RNN cell"s
 		  state.
 		"""
+	if self.time_major: 
+	    max_time = inputs.get_shape().as_list()[0]
+	else:
+	    max_time = inputs.get_shape().as_list()[1]
+
+
         # Construct forward and backward cells
         fw_cell = self._build_encoder_cell(hparams,
                                            num_bi_layers,
                                            num_bi_residual_layers,
+				           max_time,
                                            base_gpu=base_gpu)
         bw_cell = self._build_encoder_cell(hparams,
                                            num_bi_layers,
                                            num_bi_residual_layers,
+				           max_time,
                                            base_gpu=(base_gpu + num_bi_layers))
 
         bi_outputs, bi_state = tf.nn.bidirectional_dynamic_rnn(
@@ -577,11 +591,24 @@ class Model(BaseModel):
 
         num_layers = hparams.num_layers
         num_residual_layers = hparams.num_residual_layers
+	
+	# For beam search, we need to replicate encoder infos beam_width times
+        if self.mode == tf.contrib.learn.ModeKeys.INFER and hparams.beam_width > 0:
+            decoder_initial_state = tf.contrib.seq2seq.tile_batch(
+                encoder_state, multiplier=hparams.beam_width)
+        else:
+            decoder_initial_state = encoder_state
+	
+	if self.time_major: 
+	    max_time = encoder_state.get_shape().as_list()[0]
+	else:
+	    max_time = encoder_state.get_shape().as_list()[1]
 
         cell = model_helper.create_rnn_cell(
             unit_type=hparams.unit_type,
             num_units=hparams.num_units,
 	        grain=hparams.grain,
+		step_length=max_time,
             num_layers=num_layers,
             num_residual_layers=num_residual_layers,
             forget_bias=hparams.forget_bias,
@@ -590,11 +617,4 @@ class Model(BaseModel):
             mode=self.mode,
             single_cell_fn=self.single_cell_fn)
 
-        # For beam search, we need to replicate encoder infos beam_width times
-        if self.mode == tf.contrib.learn.ModeKeys.INFER and hparams.beam_width > 0:
-            decoder_initial_state = tf.contrib.seq2seq.tile_batch(
-                encoder_state, multiplier=hparams.beam_width)
-        else:
-            decoder_initial_state = encoder_state
-
-        return cell, decoder_initial_state
+	return cell, decoder_initial_state

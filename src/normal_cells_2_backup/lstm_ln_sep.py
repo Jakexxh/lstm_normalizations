@@ -1,6 +1,6 @@
 import numpy as np
 import tensorflow as tf
-from tensorflow.python.ops.rnn_cell import RNNCell, LSTMStateTuple
+from tensorflow.python.ops.rnn_cell_impl import RNNCell, LSTMStateTuple
 
 from tensorflow.python.ops import math_ops
 from tensorflow.python.ops import array_ops
@@ -16,7 +16,7 @@ _BIAS_VARIABLE_NAME = "bias"
 _WEIGHTS_VARIABLE_NAME = "kernel"
 
 
-class WNLSTMCell(RNNCell):
+class LNLSTMCell(RNNCell):
 	def __init__(self,
 	             num_units,
 	             grain,
@@ -25,7 +25,7 @@ class WNLSTMCell(RNNCell):
 	             activation=None,
 	             reuse=None):
 
-		super(WNLSTMCell, self).__init__(_reuse=reuse)
+		super(LNLSTMCell, self).__init__(_reuse=reuse)
 		if not state_is_tuple:
 			logging.warn(
 				"%s: Using a concatenated state is slower and will soon be "
@@ -62,7 +62,8 @@ class WNLSTMCell(RNNCell):
 
 		new_c = (c * sigmoid(f + self._forget_bias) +
 		         sigmoid(i) * self._activation(j))
-		new_h = self._activation(new_c) * sigmoid(o)
+		bn_new_c = self.layer_norm(new_c, scope='c')
+		new_h = self._activation(bn_new_c) * sigmoid(o)
 
 		if self._state_is_tuple:
 			new_state = LSTMStateTuple(new_c, new_h)
@@ -89,7 +90,7 @@ class WNLSTMCell(RNNCell):
 				raise ValueError("linear is expecting 2D arguments: %s" % shapes)
 			if shape[1].value is None:
 				raise ValueError("linear expects shape[1] to \
-	                             be provided for shape %s, "
+                                 be provided for shape %s, "
 				                 "but saw %s" % (shape, shape[1]))
 			else:
 				total_arg_size += shape[1].value
@@ -101,15 +102,21 @@ class WNLSTMCell(RNNCell):
 		with vs.variable_scope(scope) as outer_scope:
 
 			[x, h] = args
-                        input = tf.concat([x,h],1)
-			x_size = input.get_shape().as_list()[1]
-
+			x_size = x.get_shape().as_list()[1]
 			W_xh = tf.get_variable(
 				'W_xh', [x_size, output_size], initializer=weights_initializer
 			)
+			W_hh = tf.get_variable(
+				'W_hh', [int(output_size / 4), output_size], initializer=weights_initializer
 
-			wn_xh = self.weight_norm(input, W_xh, 'wn_xh')
-			res = wn_xh 
+			)
+
+			xh = tf.matmul(x, W_xh)
+			hh = tf.matmul(h, W_hh)
+
+			ln_xh = self.layer_norm(xh, scope='ln_xh')
+			ln_hh = self.layer_norm(hh, scope='ln_hh')
+			res = ln_xh + ln_hh
 
 			if not bias:
 				return res
@@ -124,22 +131,22 @@ class WNLSTMCell(RNNCell):
 					initializer=bias_initializer)
 			return nn_ops.bias_add(res, biases)
 
-	def weight_norm(self, x, V, scope='weight_norm'):
-		with tf.name_scope(scope):
-			shape = V.get_shape().as_list()[1]
-			g = tf.get_variable(
-				name=scope + '_g',
-				shape=[shape, ],
-				dtype=tf.float32,
+	# LN funcition
+	def layer_norm(self, inputs, epsilon=1e-7, scope=None):
+		# TODO: may be optimized
+		mean, var = tf.nn.moments(inputs, [1], keep_dims=True)
+		with tf.variable_scope(scope + 'LN'):
+			scale = tf.get_variable(
+				'alpha',
+				shape=[inputs.get_shape()[1]],
 				initializer=tf.truncated_normal_initializer(self._grain))
-
-			beta = tf.get_variable(
-				scope + '_beta', shape=[shape, ],
+			shift = tf.get_variable(
+				'beta',
+				shape=[inputs.get_shape()[1]],
 				initializer=tf.zeros_initializer)
+		LN = scale * (inputs - mean) / tf.sqrt(var + epsilon) + shift
 
-			w = g * tf.nn.l2_normalize(V, 0)
-
-			return tf.matmul(x, w) + beta
+		return LN
 
 
 def identity_initializer(scale):

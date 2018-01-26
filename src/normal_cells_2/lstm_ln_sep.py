@@ -102,21 +102,17 @@ class LNLSTMCell(RNNCell):
 		with vs.variable_scope(scope) as outer_scope:
 
 			[x, h] = args
-			x_size = x.get_shape().as_list()[1]
+                        input=tf.concat([x,h],1)
+
+			x_size = input.get_shape().as_list()[1]
 			W_xh = tf.get_variable(
 				'W_xh', [x_size, output_size], initializer=weights_initializer
 			)
-			W_hh = tf.get_variable(
-				'W_hh', [int(output_size / 4), output_size], initializer=weights_initializer
 
-			)
-
-			xh = tf.matmul(x, W_xh)
-			hh = tf.matmul(h, W_hh)
+			xh = tf.matmul(input, W_xh)
 
 			ln_xh = self.layer_norm(xh, scope='ln_xh')
-			ln_hh = self.layer_norm(hh, scope='ln_hh')
-			res = ln_xh + ln_hh
+			res = ln_xh 
 
 			if not bias:
 				return res

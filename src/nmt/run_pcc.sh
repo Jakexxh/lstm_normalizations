@@ -21,7 +21,7 @@
 export CUDA_VISIBLE_DEVICES=2
 python -m nmt.nmt \
     --attention=scaled_luong \
-    --unit_type=base \
+    --unit_type=pcc_sep \
     --src=vi --tgt=en \
     --encoder_type=bi \
     --vocab_prefix=../../data/nmt_data/vocab  \

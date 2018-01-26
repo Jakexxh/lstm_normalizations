@@ -16,7 +16,7 @@ _BIAS_VARIABLE_NAME = "bias"
 _WEIGHTS_VARIABLE_NAME = "kernel"
 
 
-class WNLSTMCell(RNNCell):
+class PCCLSTMCell(RNNCell):
 	def __init__(self,
 	             num_units,
 	             grain,
@@ -25,7 +25,7 @@ class WNLSTMCell(RNNCell):
 	             activation=None,
 	             reuse=None):
 
-		super(WNLSTMCell, self).__init__(_reuse=reuse)
+		super(PCCLSTMCell, self).__init__(_reuse=reuse)
 		if not state_is_tuple:
 			logging.warn(
 				"%s: Using a concatenated state is slower and will soon be "
@@ -89,7 +89,7 @@ class WNLSTMCell(RNNCell):
 				raise ValueError("linear is expecting 2D arguments: %s" % shapes)
 			if shape[1].value is None:
 				raise ValueError("linear expects shape[1] to \
-	                             be provided for shape %s, "
+                                 be provided for shape %s, "
 				                 "but saw %s" % (shape, shape[1]))
 			else:
 				total_arg_size += shape[1].value
@@ -101,15 +101,18 @@ class WNLSTMCell(RNNCell):
 		with vs.variable_scope(scope) as outer_scope:
 
 			[x, h] = args
-                        input = tf.concat([x,h],1)
-			x_size = input.get_shape().as_list()[1]
+			x_size = x.get_shape().as_list()[1]
 
 			W_xh = tf.get_variable(
 				'W_xh', [x_size, output_size], initializer=weights_initializer
 			)
+			W_hh = tf.get_variable(
+				'W_hh', [int(output_size / 4), output_size], initializer=weights_initializer
+			)
 
-			wn_xh = self.weight_norm(input, W_xh, 'wn_xh')
-			res = wn_xh 
+			pcc_xh = self.pcc_norm(x, W_xh, 'pcc_xh')
+			pcc_hh = self.pcc_norm(h, W_hh, 'pcc_hh')
+			res = pcc_xh + pcc_hh
 
 			if not bias:
 				return res
@@ -124,22 +127,34 @@ class WNLSTMCell(RNNCell):
 					initializer=bias_initializer)
 			return nn_ops.bias_add(res, biases)
 
-	def weight_norm(self, x, V, scope='weight_norm'):
-		with tf.name_scope(scope):
-			shape = V.get_shape().as_list()[1]
-			g = tf.get_variable(
-				name=scope + '_g',
-				shape=[shape, ],
-				dtype=tf.float32,
-				initializer=tf.truncated_normal_initializer(self._grain))
+	def pcc_norm(self, x, w, name=None):
+		with tf.name_scope(name + '_pcc_norm'):
+			x = tf.concat([x, tf.fill([tf.shape(x)[0], 1], 1e-7)], axis=1)
 
-			beta = tf.get_variable(
-				scope + '_beta', shape=[shape, ],
-				initializer=tf.zeros_initializer)
+			w = tf.concat([w, tf.fill([1, tf.shape(w)[1]], 1e-7)], axis=0)
 
-			w = g * tf.nn.l2_normalize(V, 0)
+			x_mean, _ = tf.nn.moments(x, [1], keep_dims=True)
+			w_mean, _ = tf.nn.moments(w, [0], keep_dims=True)
+			if tf.equal(tf.shape(x)[1], tf.shape(w)[0]) is not None:
 
-			return tf.matmul(x, w) + beta
+				x_l2 = tf.nn.l2_normalize(x - x_mean, 1)
+
+				w_l2 = tf.nn.l2_normalize(w - w_mean, 0)
+
+				cos_mat = tf.matmul(x_l2, w_l2)
+
+				gamma = tf.get_variable(
+					name + '_gamma', [cos_mat.get_shape().as_list()[1]],
+					initializer=tf.truncated_normal_initializer(self._grain))
+
+				beta = tf.get_variable(
+					name + '_beta', [cos_mat.get_shape().as_list()[1]],
+					initializer=tf.zeros_initializer)
+
+				return gamma * cos_mat + beta
+			else:
+				raise Exception(
+					'Matrix shape does not match in cosine_norm Operation!')
 
 
 def identity_initializer(scale):

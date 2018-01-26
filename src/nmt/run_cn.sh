@@ -21,19 +21,19 @@
 export CUDA_VISIBLE_DEVICES=1
 python -m nmt.nmt \
     --attention=scaled_luong \
-    --unit_type=base \
+    --unit_type=bn_sep \
     --src=vi --tgt=en \
     --encoder_type=bi \
     --vocab_prefix=../../data/nmt_data/vocab  \
     --train_prefix=../../data/nmt_data/train \
     --dev_prefix=../../data/nmt_data/tst2012  \
     --test_prefix=../../data/nmt_data/tst2013 \
-    --out_dir=$HOME/log/nmt_attention_model \
+    --out_dir=$HOME/log/nmt_attention_model_bn \
     --learning_rate=1.0 \
     --grain=5.0 \
     --start_decay_step=8000 \
     --decay_steps=1000 \
-    --decay_facto=0.5 \
+    --decay_factor=0.5 \
     --num_train_steps=12000 \
     --steps_per_stats=100 \
     --num_layers=2 \

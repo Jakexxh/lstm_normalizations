@@ -101,15 +101,18 @@ class WNLSTMCell(RNNCell):
 		with vs.variable_scope(scope) as outer_scope:
 
 			[x, h] = args
-                        input = tf.concat([x,h],1)
-			x_size = input.get_shape().as_list()[1]
+			x_size = x.get_shape().as_list()[1]
 
 			W_xh = tf.get_variable(
 				'W_xh', [x_size, output_size], initializer=weights_initializer
 			)
+			W_hh = tf.get_variable(
+				'W_hh', [int(output_size / 4), output_size], initializer=weights_initializer
+			)
 
-			wn_xh = self.weight_norm(input, W_xh, 'wn_xh')
-			res = wn_xh 
+			wn_xh = self.weight_norm(x, W_xh, 'wn_xh')
+			wn_hh = self.weight_norm(h, W_hh, 'wn_hh')
+			res = wn_xh + wn_hh
 
 			if not bias:
 				return res

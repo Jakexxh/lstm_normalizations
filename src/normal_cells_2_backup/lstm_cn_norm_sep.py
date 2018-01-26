@@ -1,5 +1,6 @@
-import numpy as np
 import tensorflow as tf
+import numpy as np
+# import time
 from tensorflow.python.ops.rnn_cell import RNNCell, LSTMStateTuple
 
 from tensorflow.python.ops import math_ops
@@ -16,7 +17,7 @@ _BIAS_VARIABLE_NAME = "bias"
 _WEIGHTS_VARIABLE_NAME = "kernel"
 
 
-class WNLSTMCell(RNNCell):
+class CNNROMLSTMCell(RNNCell):
 	def __init__(self,
 	             num_units,
 	             grain,
@@ -25,7 +26,7 @@ class WNLSTMCell(RNNCell):
 	             activation=None,
 	             reuse=None):
 
-		super(WNLSTMCell, self).__init__(_reuse=reuse)
+		super(CNNROMLSTMCell, self).__init__(_reuse=reuse)
 		if not state_is_tuple:
 			logging.warn(
 				"%s: Using a concatenated state is slower and will soon be "
@@ -53,8 +54,7 @@ class WNLSTMCell(RNNCell):
 			c, h = state
 		else:
 			c, h = array_ops.split(value=state, num_or_size_splits=2, axis=1)
-
-		concat = self._line_sep([inputs, h], 4 * self._num_units, bias=False)
+		concat = self._line_sep([inputs, h], 4 * self._num_units, bias=True)
 
 		# i = input_gate, j = new_input, f = forget_gate, o = output_gate
 		i, j, f, o = array_ops.split(
@@ -62,6 +62,7 @@ class WNLSTMCell(RNNCell):
 
 		new_c = (c * sigmoid(f + self._forget_bias) +
 		         sigmoid(i) * self._activation(j))
+		new_c = self.newc_norm(new_c, "newc_norm")
 		new_h = self._activation(new_c) * sigmoid(o)
 
 		if self._state_is_tuple:
@@ -89,7 +90,7 @@ class WNLSTMCell(RNNCell):
 				raise ValueError("linear is expecting 2D arguments: %s" % shapes)
 			if shape[1].value is None:
 				raise ValueError("linear expects shape[1] to \
-	                             be provided for shape %s, "
+	                            be provided for shape %s, "
 				                 "but saw %s" % (shape, shape[1]))
 			else:
 				total_arg_size += shape[1].value
@@ -101,15 +102,17 @@ class WNLSTMCell(RNNCell):
 		with vs.variable_scope(scope) as outer_scope:
 
 			[x, h] = args
-                        input = tf.concat([x,h],1)
-			x_size = input.get_shape().as_list()[1]
 
+			x_size = x.get_shape().as_list()[1]
 			W_xh = tf.get_variable(
 				'W_xh', [x_size, output_size], initializer=weights_initializer
 			)
-
-			wn_xh = self.weight_norm(input, W_xh, 'wn_xh')
-			res = wn_xh 
+			W_hh = tf.get_variable(
+				'W_hh', [int(output_size / 4), output_size], initializer=weights_initializer
+			)
+			cn_xh = self.cosine_norm(x, W_xh, 'cn_xh')  # one hot vector
+			cn_hh = self.cosine_norm(h, W_hh, 'cn_hh')
+			res = cn_xh + cn_hh
 
 			if not bias:
 				return res
@@ -124,22 +127,39 @@ class WNLSTMCell(RNNCell):
 					initializer=bias_initializer)
 			return nn_ops.bias_add(res, biases)
 
-	def weight_norm(self, x, V, scope='weight_norm'):
-		with tf.name_scope(scope):
-			shape = V.get_shape().as_list()[1]
-			g = tf.get_variable(
-				name=scope + '_g',
-				shape=[shape, ],
-				dtype=tf.float32,
-				initializer=tf.truncated_normal_initializer(self._grain))
+	def cosine_norm(self, x, w, name='cosine_norm'):
+		with tf.name_scope(name):
+			x = tf.concat([x, tf.fill([tf.shape(x)[0], 1], 1e-7)], axis=1)
 
-			beta = tf.get_variable(
-				scope + '_beta', shape=[shape, ],
-				initializer=tf.zeros_initializer)
+			w = tf.concat([w, tf.fill([1, tf.shape(w)[1]], 1e-7)], axis=0)
 
-			w = g * tf.nn.l2_normalize(V, 0)
+			if tf.equal(tf.shape(x)[1], tf.shape(w)[0]) is not None:
 
-			return tf.matmul(x, w) + beta
+				x_l2 = tf.nn.l2_normalize(x, 1)
+
+				w_l2 = tf.nn.l2_normalize(w, 0)
+
+				cos_mat = tf.matmul(x_l2, w_l2)
+				gamma = tf.get_variable(
+					name + '_gamma', [cos_mat.get_shape().as_list()[1]],
+					initializer=tf.truncated_normal_initializer(
+						self._grain))
+
+				return gamma * cos_mat
+
+			else:
+				raise Exception(
+					'Matrix shape does not match in cosine_norm Operation!')
+
+	def newc_norm(self, x, name='newc_norm'):
+		with tf.name_scope(name):
+			x_l2 = tf.nn.l2_normalize(x, 1)
+			gamma = tf.get_variable(
+				name + '_gamma', [x_l2.get_shape().as_list()[1]],
+				initializer=tf.truncated_normal_initializer(
+					self._grain))  # TODO: may change
+
+			return gamma * x_l2
 
 
 def identity_initializer(scale):
