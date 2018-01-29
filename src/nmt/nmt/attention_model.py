@@ -57,11 +57,16 @@ class AttentionModel(model.Model):
             self.infer_summary = self._get_infer_summary(hparams)
 
     def _build_decoder_cell(self, hparams, encoder_outputs, encoder_state,
-                            source_sequence_length):
+                            source_sequence_length, max_time):
         """Build a RNN cell with attention mechanism that can be used by decoder."""
         attention_option = hparams.attention
         attention_architecture = hparams.attention_architecture
 
+        if self.time_major:
+            max_time = self.embedding_decoder.get_shape()[0]
+        else:
+            max_time = self.embedding_decoder.get_shape()[1]
+            
         if attention_architecture != "standard":
             raise ValueError(
                 "Unknown attention architecture %s" % attention_architecture)
@@ -76,10 +81,8 @@ class AttentionModel(model.Model):
 
         if self.time_major:
             memory = tf.transpose(encoder_outputs, [1, 0, 2])
-            max_time = tf.get_shape(memory).as_list()[0]
         else:
             memory = encoder_outputs
-            max_time = tf.get_shape(memory),as_list()[1]
 
         if self.mode == tf.contrib.learn.ModeKeys.INFER and beam_width > 0:
             memory = tf.contrib.seq2seq.tile_batch(
@@ -100,7 +103,7 @@ class AttentionModel(model.Model):
             num_units=num_units,
             grain=hparams.grain,
             step_length=max_time,
-	    num_layers=num_layers,
+            num_layers=num_layers,
             num_residual_layers=num_residual_layers,
             forget_bias=hparams.forget_bias,
             dropout=hparams.dropout,

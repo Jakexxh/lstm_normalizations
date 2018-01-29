@@ -18,7 +18,7 @@
 #    --dropout=0.2 \
 #    --metrics=bleu
 
-export CUDA_VISIBLE_DEVICES=2
+#export CUDA_VISIBLE_DEVICES=2
 python -m nmt.nmt \
     --unit_type=bn_sep \
     --encoder_type=bi \

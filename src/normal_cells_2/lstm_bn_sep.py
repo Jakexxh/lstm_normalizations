@@ -1,6 +1,7 @@
 """adapted from https://github.com/OlavHN/bnlstm to store separate population statistics per state"""
 import tensorflow as tf, numpy as np
 from .__init__ import *
+
 RNNCell = tf.nn.rnn_cell.RNNCell
 
 
@@ -16,8 +17,8 @@ class BNLSTMCell(RNNCell):
                  activation=tf.tanh,
                  decay=0.95):
         """
-		* max bn steps is the maximum number of steps for which to store separate population stats
-		"""
+        * max bn steps is the maximum number of steps for which to store separate population stats
+        """
         self._num_units = num_units
         self._training = is_training_tensor
         self._max_bn_steps = max_bn_steps
@@ -77,12 +78,12 @@ class BNLSTMCell(RNNCell):
 
             def batch_statistics():
                 pop_mean_new = pop_mean * self._decay + batch_mean * (
-                    1 - self._decay)
+                        1 - self._decay)
                 pop_var_new = pop_var * self._decay + batch_var * (
-                    1 - self._decay)
+                        1 - self._decay)
                 with tf.control_dependencies([
-                        pop_mean.assign(pop_mean_new),
-                        pop_var.assign(pop_var_new)
+                    pop_mean.assign(pop_mean_new),
+                    pop_var.assign(pop_var_new)
                 ]):
                     return tf.nn.batch_normalization(x, batch_mean, batch_var,
                                                      offset, scale, epsilon)
@@ -102,12 +103,10 @@ class BNLSTMCell(RNNCell):
 
     def __call__(self, x, state, scope=None):
         with tf.variable_scope(scope or type(self).__name__):
-
             c, h, step = state
 
             _step = tf.squeeze(tf.gather(tf.cast(step, tf.int32), 0))
-	    
-	    input = tf.concat([x,h],1)
+            input = tf.concat([x, h], 1)
             x_size = input.get_shape().as_list()[1]
             W_xh = tf.get_variable(
                 'W_xh', [x_size, 4 * self._num_units], initializer=weights_initializer
@@ -117,7 +116,7 @@ class BNLSTMCell(RNNCell):
 
             bn_xh = self._batch_norm(xh, 'xh', _step, no_offset=True)
 
-            hidden = bn_xh 
+            hidden = bn_xh
 
             f, i, o, j = tf.split(hidden, 4, 1)
 

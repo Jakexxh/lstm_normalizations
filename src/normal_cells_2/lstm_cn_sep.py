@@ -25,7 +25,7 @@ class CNLSTMCell(RNNCell):
 	             state_is_tuple=True,
 	             activation=None,
 	             reuse=None):
-
+		
 		super(CNLSTMCell, self).__init__(_reuse=reuse)
 		if not state_is_tuple:
 			logging.warn(
@@ -36,16 +36,16 @@ class CNLSTMCell(RNNCell):
 		self._forget_bias = forget_bias
 		self._state_is_tuple = state_is_tuple
 		self._activation = activation or math_ops.tanh
-
+	
 	@property
 	def state_size(self):
 		return (LSTMStateTuple(self._num_units, self._num_units)
 		if self._state_is_tuple else 2 * self._num_units)
-
+	
 	@property
 	def output_size(self):
 		return self._num_units
-
+	
 	def call(self, inputs, state):
 		"""Long short-term memory cell (LSTM)."""
 		sigmoid = math_ops.sigmoid
@@ -55,21 +55,21 @@ class CNLSTMCell(RNNCell):
 		else:
 			c, h = array_ops.split(value=state, num_or_size_splits=2, axis=1)
 		concat = self._line_sep([inputs, h], 4 * self._num_units, bias=False)
-
+		
 		# i = input_gate, j = new_input, f = forget_gate, o = output_gate
 		i, j, f, o = array_ops.split(
 			value=concat, num_or_size_splits=4, axis=1)
-
+		
 		new_c = (c * sigmoid(f + self._forget_bias) +
 		         sigmoid(i) * self._activation(j))
 		new_h = self._activation(new_c) * sigmoid(o)
-
+		
 		if self._state_is_tuple:
 			new_state = LSTMStateTuple(new_c, new_h)
 		else:
 			new_state = array_ops.concat([new_c, new_h], 1)
 		return new_h, new_state
-
+	
 	def _line_sep(self,
 	              args,
 	              output_size,
@@ -80,7 +80,7 @@ class CNLSTMCell(RNNCell):
 			raise ValueError("`args` must be specified")
 		if not nest.is_sequence(args):
 			args = [args]
-
+		
 		# Calculate the total size of arguments on dimension 1.
 		total_arg_size = 0
 		shapes = [a.get_shape() for a in args]
@@ -89,48 +89,46 @@ class CNLSTMCell(RNNCell):
 				raise ValueError("linear is expecting 2D arguments: %s" % shapes)
 			if shape[1].value is None:
 				raise ValueError("linear expects shape[1] to \
-	                            be provided for shape %s, "
+                                be provided for shape %s, "
 				                 "but saw %s" % (shape, shape[1]))
 			else:
 				total_arg_size += shape[1].value
-
+		
 		dtype = [a.dtype for a in args][0]
-
+		
 		# Now the computation.
 		scope = vs.get_variable_scope()
 		with vs.variable_scope(scope) as outer_scope:
-
+			
 			[x, h] = args
-                        input=tf.concat([x,h],1)
-
+			input = tf.concat([x, h], 1)
 			x_size = input.get_shape().as_list()[1]
 			W_xh = tf.get_variable(
 				'W_xh', [x_size, output_size], initializer=weights_initializer
 			)
-
-
-			#x_size = x.get_shape().as_list()[1]
-			#W_xh = tf.get_variable(
+			
+			# x_size = x.get_shape().as_list()[1]
+			# W_xh = tf.get_variable(
 			#	'W_xh', [x_size, output_size], initializer=weights_initializer
-			#)
-			#W_hh = tf.get_variable(
+			# )
+			# W_hh = tf.get_variable(
 			#	'W_hh', [int(output_size / 4), output_size], initializer= weights_initializer
-			#)
+			# )
 			
-			#x = tf.Print(x,[tf.reduce_mean(x)], str(scope)+'x: ')
-			#h = tf.Print(h,[tf.reduce_mean(h)], str(scope)+'h: ')
+			# x = tf.Print(x,[tf.reduce_mean(x)], str(scope)+'x: ')
+			# h = tf.Print(h,[tf.reduce_mean(h)], str(scope)+'h: ')
 			
-			#W_xh = tf.Print(W_xh,[tf.reduce_mean(W_xh)], str(scope)+'W_xh: ')
-			#W_hh = tf.Print(W_hh,[tf.reduce_mean(W_hh)], str(scope)+'W_hh: ')
+			# W_xh = tf.Print(W_xh,[tf.reduce_mean(W_xh)], str(scope)+'W_xh: ')
+			# W_hh = tf.Print(W_hh,[tf.reduce_mean(W_hh)], str(scope)+'W_hh: ')
 			
 			cn_xh = self.cosine_norm(input, W_xh, 'cn_xh')  # one hot vector
-			#cn_hh = self.cosine_norm(h, W_hh, 'cn_hh')
+			# cn_hh = self.cosine_norm(h, W_hh, 'cn_hh')
 			
-			#cn_xh = tf.Print(cn_xh,[tf.reduce_mean(cn_xh)], str(scope)+'cn_xh: ')
-			#cn_hh = tf.Print(cn_hh,[tf.reduce_mean(cn_hh)], str(scope)+'cn_hh: ')
-
-			res = cn_xh 
-
+			# cn_xh = tf.Print(cn_xh,[tf.reduce_mean(cn_xh)], str(scope)+'cn_xh: ')
+			# cn_hh = tf.Print(cn_hh,[tf.reduce_mean(cn_hh)], str(scope)+'cn_hh: ')
+			
+			res = cn_xh
+			
 			if not bias:
 				return res
 			with vs.variable_scope(outer_scope) as inner_scope:
@@ -143,19 +141,19 @@ class CNLSTMCell(RNNCell):
 					dtype=dtype,
 					initializer=bias_initializer)
 			return nn_ops.bias_add(res, biases)
-
+	
 	def cosine_norm(self, x, w, name='cosine_norm'):
 		with tf.name_scope(name):
 			x = tf.concat([x, tf.fill([tf.shape(x)[0], 1], 1e-7)], axis=1)
-
+			
 			w = tf.concat([w, tf.fill([1, tf.shape(w)[1]], 1e-7)], axis=0)
-
+			
 			if tf.equal(tf.shape(x)[1], tf.shape(w)[0]) is not None:
-
+				
 				x_l2 = tf.nn.l2_normalize(x, 1)
-
+				
 				w_l2 = tf.nn.l2_normalize(w, 0)
-
+				
 				cos_mat = tf.matmul(x_l2, w_l2)
 				gamma = tf.get_variable(
 					name + '_gamma', [cos_mat.get_shape().as_list()[1]],
@@ -165,7 +163,7 @@ class CNLSTMCell(RNNCell):
 					name + '_beta', [cos_mat.get_shape().as_list()[1]],
 					initializer=tf.zeros_initializer)
 				return gamma * cos_mat + beta
-
+			
 			else:
 				raise Exception(
 					'Matrix shape does not match in cosine_norm Operation!')
@@ -174,13 +172,13 @@ def identity_initializer_xh(scale):
 	def _initializer(shape, dtype=tf.float32, partition_info=None):
 		size = shape[0]
 		# gate (j) is identity
-		#t = np.zeros(shape)
+		# t = np.zeros(shape)
 		t = np.identity(size) * scale
-		#t[:, :size] = np.identity(size) * scale
-		#t[:, size * 2:size * 3] = np.identity(size) * scale
-		#t[:, size * 3:] = np.identity(size) * scale
+		# t[:, :size] = np.identity(size) * scale
+		# t[:, size * 2:size * 3] = np.identity(size) * scale
+		# t[:, size * 3:] = np.identity(size) * scale
 		return tf.constant(t, dtype)
-
+	
 	return _initializer
 
 def identity_initializer_hh(scale):
@@ -193,5 +191,5 @@ def identity_initializer_hh(scale):
 		t[:, size * 2:size * 3] = np.identity(size) * scale
 		t[:, size * 3:] = np.identity(size) * scale
 		return tf.constant(t, dtype)
-
+	
 	return _initializer

@@ -24,7 +24,7 @@ class PCCLSTMCell(RNNCell):
 	             state_is_tuple=True,
 	             activation=None,
 	             reuse=None):
-
+		
 		super(PCCLSTMCell, self).__init__(_reuse=reuse)
 		if not state_is_tuple:
 			logging.warn(
@@ -35,16 +35,16 @@ class PCCLSTMCell(RNNCell):
 		self._forget_bias = forget_bias
 		self._state_is_tuple = state_is_tuple
 		self._activation = activation or math_ops.tanh
-
+	
 	@property
 	def state_size(self):
 		return (LSTMStateTuple(self._num_units, self._num_units)
 		if self._state_is_tuple else 2 * self._num_units)
-
+	
 	@property
 	def output_size(self):
 		return self._num_units
-
+	
 	def call(self, inputs, state):
 		"""Long short-term memory cell (LSTM)."""
 		sigmoid = math_ops.sigmoid
@@ -53,23 +53,23 @@ class PCCLSTMCell(RNNCell):
 			c, h = state
 		else:
 			c, h = array_ops.split(value=state, num_or_size_splits=2, axis=1)
-
+		
 		concat = self._line_sep([inputs, h], 4 * self._num_units, bias=False)
-
+		
 		# i = input_gate, j = new_input, f = forget_gate, o = output_gate
 		i, j, f, o = array_ops.split(
 			value=concat, num_or_size_splits=4, axis=1)
-
+		
 		new_c = (c * sigmoid(f + self._forget_bias) +
 		         sigmoid(i) * self._activation(j))
 		new_h = self._activation(new_c) * sigmoid(o)
-
+		
 		if self._state_is_tuple:
 			new_state = LSTMStateTuple(new_c, new_h)
 		else:
 			new_state = array_ops.concat([new_c, new_h], 1)
 		return new_h, new_state
-
+	
 	def _line_sep(self,
 	              args,
 	              output_size,
@@ -80,7 +80,7 @@ class PCCLSTMCell(RNNCell):
 			raise ValueError("`args` must be specified")
 		if not nest.is_sequence(args):
 			args = [args]
-
+		
 		# Calculate the total size of arguments on dimension 1.
 		total_arg_size = 0
 		shapes = [a.get_shape() for a in args]
@@ -93,24 +93,24 @@ class PCCLSTMCell(RNNCell):
 				                 "but saw %s" % (shape, shape[1]))
 			else:
 				total_arg_size += shape[1].value
-
+		
 		dtype = [a.dtype for a in args][0]
-
+		
 		# Now the computation.
 		scope = vs.get_variable_scope()
 		with vs.variable_scope(scope) as outer_scope:
-
+			
 			[x, h] = args
-                        input=tf.concat([x,h],1)
+			input = tf.concat([x, h], 1)
 			x_size = input.get_shape().as_list()[1]
-
+			
 			W_xh = tf.get_variable(
 				'W_xh', [x_size, output_size], initializer=weights_initializer
 			)
-
+			
 			pcc_xh = self.pcc_norm(input, W_xh, 'pcc_xh')
-			res = pcc_xh 
-
+			res = pcc_xh
+			
 			if not bias:
 				return res
 			with vs.variable_scope(outer_scope) as inner_scope:
@@ -123,31 +123,31 @@ class PCCLSTMCell(RNNCell):
 					dtype=dtype,
 					initializer=bias_initializer)
 			return nn_ops.bias_add(res, biases)
-
+	
 	def pcc_norm(self, x, w, name=None):
 		with tf.name_scope(name + '_pcc_norm'):
 			x = tf.concat([x, tf.fill([tf.shape(x)[0], 1], 1e-7)], axis=1)
-
+			
 			w = tf.concat([w, tf.fill([1, tf.shape(w)[1]], 1e-7)], axis=0)
-
+			
 			x_mean, _ = tf.nn.moments(x, [1], keep_dims=True)
 			w_mean, _ = tf.nn.moments(w, [0], keep_dims=True)
 			if tf.equal(tf.shape(x)[1], tf.shape(w)[0]) is not None:
-
+				
 				x_l2 = tf.nn.l2_normalize(x - x_mean, 1)
-
+				
 				w_l2 = tf.nn.l2_normalize(w - w_mean, 0)
-
+				
 				cos_mat = tf.matmul(x_l2, w_l2)
-
+				
 				gamma = tf.get_variable(
 					name + '_gamma', [cos_mat.get_shape().as_list()[1]],
 					initializer=tf.truncated_normal_initializer(self._grain))
-
+				
 				beta = tf.get_variable(
 					name + '_beta', [cos_mat.get_shape().as_list()[1]],
 					initializer=tf.zeros_initializer)
-
+				
 				return gamma * cos_mat + beta
 			else:
 				raise Exception(
@@ -164,5 +164,5 @@ def identity_initializer(scale):
 		t[:, size * 2:size * 3] = np.identity(size) * scale
 		t[:, size * 3:] = np.identity(size) * scale
 		return tf.constant(t, dtype)
-
+	
 	return _initializer

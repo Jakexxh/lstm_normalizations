@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0754ad83-7524-4d9e-ac27-6f7b38ce1b37" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/nmt/run_base.sh" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/nmt/run_pcc.sh" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/nmt/run.sh" afterPath="$PROJECT_DIR$/src/nmt/run_cn.sh" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/.run_bn.sh.swp" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/attention_model.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/attention_model.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/model.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/model.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/run_bn.sh" afterPath="$PROJECT_DIR$/src/nmt/run_bn.sh" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2/lstm_bn_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_2/lstm_bn_sep.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2/lstm_cn_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_2/lstm_cn_sep.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2/lstm_ln_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_2/lstm_ln_sep.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2/lstm_pcc_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_2/lstm_pcc_sep.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2/lstm_wn_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_2/lstm_wn_sep.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,16 +22,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/lstm_normalizations$ptb_word_lm__1_.coverage" NAME="ptb_word_lm (1) Coverage Results" MODIFIED="1510135664816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/ptb" />
     <SUITE FILE_PATH="coverage/lstm_normalizations$ptb_word_lm_base.coverage" NAME="ptb_word_lm_base Coverage Results" MODIFIED="1515400030094" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/ptb" />
-    <SUITE FILE_PATH="coverage/lstm_normalizations$vanilla_norm_rnn_cell.coverage" NAME="vanilla_norm_rnn_cell Coverage Results" MODIFIED="1512710687576" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/normal_vani_cells_refactor" />
-    <SUITE FILE_PATH="coverage/lstm_normalizations$Nosetests_in_test_28_28_py.coverage" NAME="Nosetests in test_28*28.py Coverage Results" MODIFIED="1513825266042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/mnist" />
     <SUITE FILE_PATH="coverage/lstm_normalizations$test_28_28.coverage" NAME="test_28*28 Coverage Results" MODIFIED="1515399848764" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/mnist" />
     <SUITE FILE_PATH="coverage/lstm_normalizations$draw.coverage" NAME="draw Coverage Results" MODIFIED="1515479695688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/draw" />
-    <SUITE FILE_PATH="coverage/lstm_normalizations$train.coverage" NAME="train Coverage Results" MODIFIED="1512376851150" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/char-rnn-tensorflow" />
     <SUITE FILE_PATH="coverage/lstm_normalizations$test_28_28__1_.coverage" NAME="test_28*28 (1) Coverage Results" MODIFIED="1510026427171" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/mnist" />
     <SUITE FILE_PATH="coverage/lstm_normalizations$ptb_word_lm.coverage" NAME="ptb_word_lm Coverage Results" MODIFIED="1513048329018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/ptb" />
     <SUITE FILE_PATH="coverage/lstm_normalizations$Nosetests_in_test_784_1_py.coverage" NAME="Nosetests in test_784*1.py Coverage Results" MODIFIED="1515054339938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/mnist" />
+    <SUITE FILE_PATH="coverage/lstm_normalizations$nmt.coverage" NAME="nmt Coverage Results" MODIFIED="1517192645884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/nmt/nmt" />
+    <SUITE FILE_PATH="coverage/lstm_normalizations$ptb_word_lm__1_.coverage" NAME="ptb_word_lm (1) Coverage Results" MODIFIED="1510135664816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/ptb" />
+    <SUITE FILE_PATH="coverage/lstm_normalizations$vanilla_norm_rnn_cell.coverage" NAME="vanilla_norm_rnn_cell Coverage Results" MODIFIED="1512710687576" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/normal_vani_cells_refactor" />
+    <SUITE FILE_PATH="coverage/lstm_normalizations$Nosetests_in_test_28_28_py.coverage" NAME="Nosetests in test_28*28.py Coverage Results" MODIFIED="1513825266042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/mnist" />
+    <SUITE FILE_PATH="coverage/lstm_normalizations$train.coverage" NAME="train Coverage Results" MODIFIED="1512376851150" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/char-rnn-tensorflow" />
     <SUITE FILE_PATH="coverage/lstm_normalizations$test_784_1.coverage" NAME="test_784*1 Coverage Results" MODIFIED="1510645535875" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/mnist" />
     <SUITE FILE_PATH="coverage/lstm_normalizations$test_784_1__1_.coverage" NAME="test_784*1 (1) Coverage Results" MODIFIED="1515054688568" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/vani_mnist" />
   </component>
@@ -41,41 +49,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="run_base.sh" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/nmt/run_base.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="41" column="18" lean-forward="true" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="run_cn.sh" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nmt/run_cn.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="29" lean-forward="false" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="run_pcc.sh" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nmt/run_pcc.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="model_helper.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nmt/nmt/model_helper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+            <state relative-caret-position="513">
+              <caret line="108" column="56" lean-forward="false" selection-start-line="108" selection-start-column="42" selection-end-line="108" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -84,32 +62,24 @@
       <file leaf-file-name="attention_model.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nmt/nmt/attention_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="521">
-              <caret line="106" column="0" lean-forward="true" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+            <state relative-caret-position="434">
+              <caret line="81" column="27" lean-forward="true" selection-start-line="81" selection-start-column="27" selection-end-line="81" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="model.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="model.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/nmt/nmt/model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="493" column="47" lean-forward="false" selection-start-line="493" selection-start-column="28" selection-end-line="493" selection-end-column="47" />
+            <state relative-caret-position="319">
+              <caret line="332" column="0" lean-forward="true" selection-start-line="332" selection-start-column="0" selection-end-line="332" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="false" />
                 <element signature="e#743#781#0" expanded="true" />
+                <element signature="e#16064#18229#0" expanded="false" />
+                <element signature="e#18522#19938#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="train.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nmt/nmt/train.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7155">
-              <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -117,8 +87,50 @@
       <file leaf-file-name="nmt.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nmt/nmt/nmt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="564">
-              <caret line="221" column="11" lean-forward="false" selection-start-line="221" selection-start-column="11" selection-end-line="221" selection-end-column="11" />
+            <state relative-caret-position="314">
+              <caret line="61" column="70" lean-forward="true" selection-start-line="61" selection-start-column="70" selection-end-line="61" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lstm_bn_sep.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_bn_sep.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="584">
+              <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="train.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nmt/nmt/train.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="434">
+              <caret line="150" column="0" lean-forward="true" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="iterator_utils.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nmt/nmt/utils/iterator_utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2655">
+              <caret line="177" column="0" lean-forward="true" selection-start-line="177" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
+              <folding>
+                <element signature="e#718#755#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="run_bn.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nmt/run_bn.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -135,36 +147,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>PTBInput</find>
-      <find>final_hidden</find>
-      <find>final_state</find>
-      <find>varia</find>
-      <find>T</find>
-      <find>read</find>
-      <find>sampleQ</find>
-      <find>write</find>
-      <find>lstm_dec</find>
-      <find>decode</find>
-      <find>write_size</find>
-      <find>read_size</find>
-      <find>_norm</find>
-      <find>_decode_inference_indices</find>
-      <find>_build_decoder_cell</find>
-      <find>cell</find>
-      <find>_single_cell</find>
-      <find>_cell_list</find>
-      <find>uni</find>
-      <find>uni-</find>
-      <find>unit_type</find>
-      <find>dim</find>
-      <find>ada</find>
       <find>gpu</find>
       <find>bid</find>
-      <find>embedding_encoder</find>
-      <find>search</find>
       <find>AttentionWrapper</find>
-      <find>create_rnn_cell</find>
+      <find>search</find>
+      <find>mtest</find>
+      <find>_single_cell</find>
+      <find>single_cell_fn</find>
+      <find>_cell_list</find>
+      <find>create_</find>
+      <find>iterator</find>
+      <find>step</find>
+      <find>iterator_utils</find>
       <find>_build_encoder_cell</find>
+      <find>time_major</find>
+      <find>_max_bn_steps</find>
+      <find>BatchedInput</find>
+      <find>src_max_len_infer</find>
+      <find>create_rnn_cell</find>
+      <find>_build_bidirectional_rnn</find>
+      <find>src_vocab_size</find>
+      <find>embedding_encoder</find>
+      <find>time</find>
+      <find>encoder_emb_inp</find>
+      <find>max_time</find>
+      <find>encoder_outputs</find>
+      <find>encoder_state</find>
+      <find>cell</find>
+      <find>rnn</find>
+      <find>_build_decoder_cell</find>
+      <find>embedding_decoder</find>
     </findStrings>
     <replaceStrings>
       <replace>lr</replace>
@@ -190,7 +202,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/mnist/run.sh" />
         <option value="$PROJECT_DIR$/src/char-rnn-tensorflow/seq2seq.py" />
         <option value="$PROJECT_DIR$/src/translate/seq2seq.py" />
         <option value="$PROJECT_DIR$/src/normal_vani_cells_refactor/lstm_basic.py" />
@@ -200,10 +211,7 @@
         <option value="$PROJECT_DIR$/src/translate/seq2seq_model.py" />
         <option value="$PROJECT_DIR$/src/vani_mnist/test_784*1.py" />
         <option value="$PROJECT_DIR$/src/normal_cells_2/weights_init.py" />
-        <option value="$PROJECT_DIR$/src/normal_cells_2/lstm_bn_sep.py" />
         <option value="$PROJECT_DIR$/src/normal_cells_2/lstm_basic.py" />
-        <option value="$PROJECT_DIR$/src/normal_cells_2/lstm_cn_sep.py" />
-        <option value="$PROJECT_DIR$/src/normal_cells_2/lstm_ln_sep.py" />
         <option value="$PROJECT_DIR$/src/normal_cells_refactor/vanilla_norm_rnn_cell.py" />
         <option value="$PROJECT_DIR$/src/normal_cells_refactor/lstm_basic.py" />
         <option value="$PROJECT_DIR$/src/normal_cells_2/lstm_scale_cn.py" />
@@ -221,7 +229,6 @@
         <option value="/anaconda/lib/python3.5/site-packages/tensorflow/python/framework/ops.py" />
         <option value="$PROJECT_DIR$/src/draw/run.sh" />
         <option value="$PROJECT_DIR$/src/normal_cells_2/lstm_pcc_sep.py" />
-        <option value="$PROJECT_DIR$/src/normal_cells_2/lstm_wn_sep.py" />
         <option value="$PROJECT_DIR$/src/nmt/nmt/model_helper.py" />
         <option value="$PROJECT_DIR$/src/nmt/nmt/inference.py" />
         <option value="$PROJECT_DIR$/src/nmt/nmt/gnmt_model.py" />
@@ -234,13 +241,18 @@
         <option value="$PROJECT_DIR$/src/mnist/test_784*1_base.py" />
         <option value="$PROJECT_DIR$/src/draw/draw.py" />
         <option value="$PROJECT_DIR$/src/normal_cells_refactor/lstm_bn_sep.py" />
-        <option value="$PROJECT_DIR$/src/nmt/nmt/model.py" />
         <option value="$PROJECT_DIR$/src/nmt/nmt/train.py" />
         <option value="$PROJECT_DIR$/src/nmt/nmt/nmt.py" />
-        <option value="$PROJECT_DIR$/src/nmt/nmt/attention_model.py" />
         <option value="$PROJECT_DIR$/src/nmt/run.sh" />
         <option value="$PROJECT_DIR$/src/nmt/run_cn.sh" />
         <option value="$PROJECT_DIR$/src/nmt/run_pcc.sh" />
+        <option value="$PROJECT_DIR$/src/nmt/run_bn.sh" />
+        <option value="$PROJECT_DIR$/src/normal_cells_2/lstm_bn_sep.py" />
+        <option value="$PROJECT_DIR$/src/normal_cells_2/lstm_cn_sep.py" />
+        <option value="$PROJECT_DIR$/src/normal_cells_2/lstm_ln_sep.py" />
+        <option value="$PROJECT_DIR$/src/normal_cells_2/lstm_wn_sep.py" />
+        <option value="$PROJECT_DIR$/src/nmt/nmt/model.py" />
+        <option value="$PROJECT_DIR$/src/nmt/nmt/attention_model.py" />
       </list>
     </option>
   </component>
@@ -252,9 +264,9 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="x" value="1280" />
-    <option name="y" value="-250" />
-    <option name="width" value="1680" />
-    <option name="height" value="1050" />
+    <option name="y" value="49" />
+    <option name="width" value="1920" />
+    <option name="height" value="1178" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -345,9 +357,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="NBKnowledgePane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -373,14 +382,31 @@
               <item name="nmt" type="462c0819:PsiDirectoryNode" />
               <item name="nmt" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="lstm_normalizations" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lstm_normalizations" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="nmt" type="462c0819:PsiDirectoryNode" />
+              <item name="nmt" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lstm_normalizations" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lstm_normalizations" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="normal_cells_2" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="NBKnowledgePane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Python" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="SearchEverywhereHistoryKey" value="git&#9;ACTION&#9;Git.Init" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -401,141 +427,6 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/__init__.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/attention_model.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/gnmt_model.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/inference.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/model.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/model_helper.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/scripts/__init__.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/scripts/bleu.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/scripts/rouge.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/train.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/utils/__init__.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/utils/evaluation_utils.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/utils/iterator_utils.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/utils/misc_utils.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/utils/nmt_utils.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/nmt/utils/vocab_utils.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/nmt/run.sh</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/normal_cells_2/__init__.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/normal_cells_2/lstm_basic.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/normal_cells_2/lstm_bn_sep.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/normal_cells_2/lstm_cn_sep.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/normal_cells_2/lstm_hid_cn.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/normal_cells_2/lstm_ln_sep.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/normal_cells_2/lstm_pcc_sep.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/normal_cells_2/lstm_scale_cn.pyc</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/normal_cells_2/lstm_wn_sep.pyc</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
-  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -548,7 +439,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.draw">
+  <component name="RunManager" selected="Bash.run_bn.sh">
+    <configuration name="run_bn.sh" type="BashConfigurationType" factoryName="Bash" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="bash" />
+      <option name="INTERPRETER_PATH" value="/usr/bin/env" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/nmt" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/nmt/run_bn.sh" />
+      <option name="PARAMETERS" value="" />
+      <module name="lstm_normalizations" />
+      <envs />
+    </configuration>
     <configuration name="draw" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -568,21 +469,21 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="ptb_word_lm" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="nmt" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/ptb" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="SDK_HOME" value="/anaconda/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/nmt/nmt" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="lstm_normalizations" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/ptb/ptb_word_lm.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/nmt/nmt/nmt.py" />
+      <option name="PARAMETERS" value="--unit_type=bn_sep \ --encoder_type=bi \ --attention=scaled_luong \ --src=vi --tgt=en \ --vocab_prefix=../../data/nmt_data/vocab  \ --train_prefix=../../data/nmt_data/train \ --dev_prefix=../../data/nmt_data/tst2012  \ --test_prefix=../../data/nmt_data/tst2013 \ --out_dir=$HOME/log/nmt_noattention_model_bn_conb \ --learning_rate=1.0 \ --grain=5.0 \ --start_decay_step=8000 \ --decay_steps=1000 \ --decay_factor=0.5 \ --num_train_steps=12000 \ --steps_per_stats=100 \ --num_layers=2 \ --num_units=512 \ --dropout=0.0 \ --forget_bias=0.0 \ --metrics=bleu" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -660,21 +561,22 @@
       <option name="_new_target" value="&quot;$PROJECT_DIR$/src/mnist/test_784*1.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
     </configuration>
-    <list size="6">
+    <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Python.test_28*28" />
-      <item index="1" class="java.lang.String" itemvalue="Python.ptb_word_lm" />
-      <item index="2" class="java.lang.String" itemvalue="Python.test_784*1 (1)" />
-      <item index="3" class="java.lang.String" itemvalue="Python.ptb_word_lm_base" />
-      <item index="4" class="java.lang.String" itemvalue="Python.draw" />
-      <item index="5" class="java.lang.String" itemvalue="Python tests.Nosetests in test_784*1.py" />
+      <item index="1" class="java.lang.String" itemvalue="Python.nmt" />
+      <item index="2" class="java.lang.String" itemvalue="Bash.run_bn.sh" />
+      <item index="3" class="java.lang.String" itemvalue="Python.test_784*1 (1)" />
+      <item index="4" class="java.lang.String" itemvalue="Python.ptb_word_lm_base" />
+      <item index="5" class="java.lang.String" itemvalue="Python.draw" />
+      <item index="6" class="java.lang.String" itemvalue="Python tests.Nosetests in test_784*1.py" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.draw" />
-        <item index="1" class="java.lang.String" itemvalue="Python.ptb_word_lm_base" />
-        <item index="2" class="java.lang.String" itemvalue="Python.test_784*1 (1)" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Nosetests in test_784*1.py" />
-        <item index="4" class="java.lang.String" itemvalue="Python.ptb_word_lm" />
+        <item index="0" class="java.lang.String" itemvalue="Bash.run_bn.sh" />
+        <item index="1" class="java.lang.String" itemvalue="Python.draw" />
+        <item index="2" class="java.lang.String" itemvalue="Python.ptb_word_lm_base" />
+        <item index="3" class="java.lang.String" itemvalue="Python.test_784*1 (1)" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Nosetests in test_784*1.py" />
       </list>
     </recent_temporary>
   </component>
@@ -691,13 +593,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1509936427866</updated>
-    </task>
-    <task id="LOCAL-00033" summary="prepare nmt">
-      <created>1512728162888</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1512728162888</updated>
     </task>
     <task id="LOCAL-00034" summary="prepare nmt">
       <created>1512728328788</created>
@@ -1035,7 +930,14 @@
       <option name="project" value="LOCAL" />
       <updated>1516860666850</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="add cn and pcc for nmt">
+      <created>1516867215154</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1516867215155</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1064,18 +966,18 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32907802" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32753327" sideWeight="0.50915754" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26068377" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="0" y="0" width="370" height="850" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2985348" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="0" y="0" width="370" height="850" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28249744" sideWeight="0.4908425" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265097" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265097" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23234391" sideWeight="0.4908425" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37359264" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1996337" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23870574" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3285568" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2045177" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40122825" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1133,7 +1035,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="change nmt to tf 1.2" />
     <MESSAGE value="refactor ptb" />
     <MESSAGE value="fix ptb" />
     <MESSAGE value="add cells2 to mnist_base" />
@@ -1158,7 +1059,8 @@
     <MESSAGE value="change max stpe in decoder for bn_sep in nmt" />
     <MESSAGE value="try nmt benchmarks" />
     <MESSAGE value="fix bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bug" />
+    <MESSAGE value="add cn and pcc for nmt" />
+    <option name="LAST_COMMIT_MESSAGE" value="add cn and pcc for nmt" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1230,14 +1132,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_scaleNorm_cn.py" />
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_scale_cn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1560">
-          <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ptb/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1287,13 +1181,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_ln_sep.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="150" column="0" lean-forward="false" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/draw/plot_data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1326,13 +1213,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
           <caret line="56" column="76" lean-forward="false" selection-start-line="56" selection-start-column="76" selection-end-line="56" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_wn_sep.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="35" column="45" lean-forward="false" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -1419,14 +1299,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_cn_sep.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="104" column="0" lean-forward="false" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/normal_cells_refactor/lstm_cn_sep.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="753">
@@ -1446,13 +1318,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1260">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_bn_sep.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1710">
-          <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1477,31 +1342,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/nmt2/run.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nmt2/nmt/model_helper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nmt2/run.sh" />
+    <entry file="file://$PROJECT_DIR$/src/nmt2/nmt/model_helper.py" />
     <entry file="file://$PROJECT_DIR$/src/ptb/run.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="269" column="0" lean-forward="true" selection-start-line="269" selection-start-column="0" selection-end-line="269" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1513,62 +1359,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pppppp.txt">
+    <entry file="file://$PROJECT_DIR$/pppppp.txt" />
+    <entry file="file://$PROJECT_DIR$/src/nmt/run_base.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7155">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/nmt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="221" column="11" lean-forward="false" selection-start-line="221" selection-start-column="11" selection-end-line="221" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/attention_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="106" column="0" lean-forward="true" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/model_helper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="493" column="47" lean-forward="false" selection-start-line="493" selection-start-column="28" selection-end-line="493" selection-end-column="47" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="e#743#781#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nmt/run_pcc.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-          <folding />
+        <state relative-caret-position="615">
+          <caret line="41" column="18" lean-forward="false" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -1576,15 +1371,116 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="29" lean-forward="false" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nmt/run_pcc.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4065">
+          <caret line="276" column="59" lean-forward="false" selection-start-line="276" selection-start-column="55" selection-end-line="276" selection-end-column="59" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/nmt/run_base.sh">
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_cn_sep.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="18" lean-forward="true" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
+        <state relative-caret-position="194">
+          <caret line="109" column="0" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_ln_sep.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="105" column="0" lean-forward="true" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_wn_sep.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="524">
+          <caret line="125" column="0" lean-forward="true" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nmt/run_bn.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/utils/iterator_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2655">
+          <caret line="177" column="0" lean-forward="true" selection-start-line="177" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
+          <folding>
+            <element signature="e#718#755#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/model_helper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="108" column="56" lean-forward="false" selection-start-line="108" selection-start-column="42" selection-end-line="108" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/nmt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="61" column="70" lean-forward="true" selection-start-line="61" selection-start-column="70" selection-end-line="61" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="150" column="0" lean-forward="true" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_bn_sep.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="584">
+          <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/attention_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="81" column="27" lean-forward="true" selection-start-line="81" selection-start-column="27" selection-end-line="81" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="332" column="0" lean-forward="true" selection-start-line="332" selection-start-column="0" selection-end-line="332" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#743#781#0" expanded="true" />
+            <element signature="e#16064#18229#0" expanded="false" />
+            <element signature="e#18522#19938#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -24,7 +24,7 @@ class WNLSTMCell(RNNCell):
 	             state_is_tuple=True,
 	             activation=None,
 	             reuse=None):
-
+		
 		super(WNLSTMCell, self).__init__(_reuse=reuse)
 		if not state_is_tuple:
 			logging.warn(
@@ -35,16 +35,16 @@ class WNLSTMCell(RNNCell):
 		self._forget_bias = forget_bias
 		self._state_is_tuple = state_is_tuple
 		self._activation = activation or math_ops.tanh
-
+	
 	@property
 	def state_size(self):
 		return (LSTMStateTuple(self._num_units, self._num_units)
 		if self._state_is_tuple else 2 * self._num_units)
-
+	
 	@property
 	def output_size(self):
 		return self._num_units
-
+	
 	def call(self, inputs, state):
 		"""Long short-term memory cell (LSTM)."""
 		sigmoid = math_ops.sigmoid
@@ -53,23 +53,23 @@ class WNLSTMCell(RNNCell):
 			c, h = state
 		else:
 			c, h = array_ops.split(value=state, num_or_size_splits=2, axis=1)
-
+		
 		concat = self._line_sep([inputs, h], 4 * self._num_units, bias=False)
-
+		
 		# i = input_gate, j = new_input, f = forget_gate, o = output_gate
 		i, j, f, o = array_ops.split(
 			value=concat, num_or_size_splits=4, axis=1)
-
+		
 		new_c = (c * sigmoid(f + self._forget_bias) +
 		         sigmoid(i) * self._activation(j))
 		new_h = self._activation(new_c) * sigmoid(o)
-
+		
 		if self._state_is_tuple:
 			new_state = LSTMStateTuple(new_c, new_h)
 		else:
 			new_state = array_ops.concat([new_c, new_h], 1)
 		return new_h, new_state
-
+	
 	def _line_sep(self,
 	              args,
 	              output_size,
@@ -80,7 +80,7 @@ class WNLSTMCell(RNNCell):
 			raise ValueError("`args` must be specified")
 		if not nest.is_sequence(args):
 			args = [args]
-
+		
 		# Calculate the total size of arguments on dimension 1.
 		total_arg_size = 0
 		shapes = [a.get_shape() for a in args]
@@ -89,28 +89,28 @@ class WNLSTMCell(RNNCell):
 				raise ValueError("linear is expecting 2D arguments: %s" % shapes)
 			if shape[1].value is None:
 				raise ValueError("linear expects shape[1] to \
-	                             be provided for shape %s, "
+                                 be provided for shape %s, "
 				                 "but saw %s" % (shape, shape[1]))
 			else:
 				total_arg_size += shape[1].value
-
+		
 		dtype = [a.dtype for a in args][0]
-
+		
 		# Now the computation.
 		scope = vs.get_variable_scope()
 		with vs.variable_scope(scope) as outer_scope:
-
+			
 			[x, h] = args
-                        input = tf.concat([x,h],1)
+			input = tf.concat([x, h], 1)
 			x_size = input.get_shape().as_list()[1]
-
+			
 			W_xh = tf.get_variable(
 				'W_xh', [x_size, output_size], initializer=weights_initializer
 			)
-
+			
 			wn_xh = self.weight_norm(input, W_xh, 'wn_xh')
-			res = wn_xh 
-
+			res = wn_xh
+			
 			if not bias:
 				return res
 			with vs.variable_scope(outer_scope) as inner_scope:
@@ -123,7 +123,7 @@ class WNLSTMCell(RNNCell):
 					dtype=dtype,
 					initializer=bias_initializer)
 			return nn_ops.bias_add(res, biases)
-
+	
 	def weight_norm(self, x, V, scope='weight_norm'):
 		with tf.name_scope(scope):
 			shape = V.get_shape().as_list()[1]
@@ -132,13 +132,13 @@ class WNLSTMCell(RNNCell):
 				shape=[shape, ],
 				dtype=tf.float32,
 				initializer=tf.truncated_normal_initializer(self._grain))
-
+			
 			beta = tf.get_variable(
 				scope + '_beta', shape=[shape, ],
 				initializer=tf.zeros_initializer)
-
+			
 			w = g * tf.nn.l2_normalize(V, 0)
-
+			
 			return tf.matmul(x, w) + beta
 
 
@@ -152,5 +152,5 @@ def identity_initializer(scale):
 		t[:, size * 2:size * 3] = np.identity(size) * scale
 		t[:, size * 3:] = np.identity(size) * scale
 		return tf.constant(t, dtype)
-
+	
 	return _initializer

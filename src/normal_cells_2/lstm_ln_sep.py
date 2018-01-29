@@ -24,7 +24,7 @@ class LNLSTMCell(RNNCell):
 	             state_is_tuple=True,
 	             activation=None,
 	             reuse=None):
-
+		
 		super(LNLSTMCell, self).__init__(_reuse=reuse)
 		if not state_is_tuple:
 			logging.warn(
@@ -35,16 +35,16 @@ class LNLSTMCell(RNNCell):
 		self._forget_bias = forget_bias
 		self._state_is_tuple = state_is_tuple
 		self._activation = activation or math_ops.tanh
-
+	
 	@property
 	def state_size(self):
 		return (LSTMStateTuple(self._num_units, self._num_units)
 		if self._state_is_tuple else 2 * self._num_units)
-
+	
 	@property
 	def output_size(self):
 		return self._num_units
-
+	
 	def call(self, inputs, state):
 		"""Long short-term memory cell (LSTM)."""
 		sigmoid = math_ops.sigmoid
@@ -53,24 +53,24 @@ class LNLSTMCell(RNNCell):
 			c, h = state
 		else:
 			c, h = array_ops.split(value=state, num_or_size_splits=2, axis=1)
-
+		
 		concat = self._line_sep([inputs, h], 4 * self._num_units, bias=False)
-
+		
 		# i = input_gate, j = new_input, f = forget_gate, o = output_gate
 		i, j, f, o = array_ops.split(
 			value=concat, num_or_size_splits=4, axis=1)
-
+		
 		new_c = (c * sigmoid(f + self._forget_bias) +
 		         sigmoid(i) * self._activation(j))
 		bn_new_c = self.layer_norm(new_c, scope='c')
 		new_h = self._activation(bn_new_c) * sigmoid(o)
-
+		
 		if self._state_is_tuple:
 			new_state = LSTMStateTuple(new_c, new_h)
 		else:
 			new_state = array_ops.concat([new_c, new_h], 1)
 		return new_h, new_state
-
+	
 	def _line_sep(self,
 	              args,
 	              output_size,
@@ -81,7 +81,7 @@ class LNLSTMCell(RNNCell):
 			raise ValueError("`args` must be specified")
 		if not nest.is_sequence(args):
 			args = [args]
-
+		
 		# Calculate the total size of arguments on dimension 1.
 		total_arg_size = 0
 		shapes = [a.get_shape() for a in args]
@@ -94,26 +94,26 @@ class LNLSTMCell(RNNCell):
 				                 "but saw %s" % (shape, shape[1]))
 			else:
 				total_arg_size += shape[1].value
-
+		
 		dtype = [a.dtype for a in args][0]
-
+		
 		# Now the computation.
 		scope = vs.get_variable_scope()
 		with vs.variable_scope(scope) as outer_scope:
-
+			
 			[x, h] = args
-                        input=tf.concat([x,h],1)
-
+			input = tf.concat([x, h], 1)
+			
 			x_size = input.get_shape().as_list()[1]
 			W_xh = tf.get_variable(
 				'W_xh', [x_size, output_size], initializer=weights_initializer
 			)
-
+			
 			xh = tf.matmul(input, W_xh)
-
+			
 			ln_xh = self.layer_norm(xh, scope='ln_xh')
-			res = ln_xh 
-
+			res = ln_xh
+			
 			if not bias:
 				return res
 			with vs.variable_scope(outer_scope) as inner_scope:
@@ -126,7 +126,7 @@ class LNLSTMCell(RNNCell):
 					dtype=dtype,
 					initializer=bias_initializer)
 			return nn_ops.bias_add(res, biases)
-
+	
 	# LN funcition
 	def layer_norm(self, inputs, epsilon=1e-7, scope=None):
 		# TODO: may be optimized
@@ -141,7 +141,7 @@ class LNLSTMCell(RNNCell):
 				shape=[inputs.get_shape()[1]],
 				initializer=tf.zeros_initializer)
 		LN = scale * (inputs - mean) / tf.sqrt(var + epsilon) + shift
-
+		
 		return LN
 
 
@@ -155,5 +155,5 @@ def identity_initializer(scale):
 		t[:, size * 2:size * 3] = np.identity(size) * scale
 		t[:, size * 3:] = np.identity(size) * scale
 		return tf.constant(t, dtype)
-
+	
 	return _initializer
