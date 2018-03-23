@@ -7,13 +7,13 @@ import sys
 import os
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)  + '..'))
-from normal_cells_refactor.lstm_bn_sep import BNLSTMCell
-from normal_cells_refactor.lstm_scale_cn import SCALECNLSTMCell
-from normal_cells_refactor.lstm_cn_sep import CNLSTMCell
-from normal_cells_refactor.lstm_ln_sep import LNLSTMCell
-from normal_cells_refactor.lstm_pcc_sep import PCCLSTMCell
-from normal_cells_refactor.lstm_wn_sep import WNLSTMCell
-from normal_cells_refactor.lstm_basic import BASICLSTMCell
+from normal_cells_separate.lstm_bn_sep import BNLSTMCell
+from normal_cells_separate.lstm_scale_cn import SCALECNLSTMCell
+from normal_cells_separate.lstm_cn_sep import CNLSTMCell
+from normal_cells_separate.lstm_ln_sep import LNLSTMCell
+from normal_cells_separate.lstm_pcc_sep import PCCLSTMCell
+from normal_cells_separate.lstm_wn_sep import WNLSTMCell
+from normal_cells_separate.lstm_basic import BASICLSTMCell
 
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
@@ -25,8 +25,8 @@ batch_size = 128
 display_step = 200
 
 # Network Parameters
-num_input = 7  # mnist data input (img shape: 28*28)
-timesteps = 112  # timesteps
+num_input = 1  # mnist data input (img shape: 28*28)
+timesteps = 784  # timesteps
 num_hidden = 128  # hidden layer num of features
 num_classes = 10  # mnist total classes (0-9 digits)
 

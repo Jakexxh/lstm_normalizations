@@ -2,17 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0754ad83-7524-4d9e-ac27-6f7b38ce1b37" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/nmt/.run_bn.sh.swp" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/attention_model.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/attention_model.py" />
+      <change beforePath="$PROJECT_DIR$/src/char-rnn-tensorflow/model.py" afterPath="$PROJECT_DIR$/src/char-rnn-tensorflow/model.py" />
+      <change beforePath="$PROJECT_DIR$/src/draw/__init__.py" afterPath="$PROJECT_DIR$/README.md" />
+      <change beforePath="$PROJECT_DIR$/src/draw/draw.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/draw/plot_data.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/draw/run.sh" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/mnist/test_28*28.py" afterPath="$PROJECT_DIR$/src/mnist/test_28*28.py" />
+      <change beforePath="$PROJECT_DIR$/src/mnist/test_784*1.py" afterPath="$PROJECT_DIR$/src/mnist/test_784*1.py" />
+      <change beforePath="$PROJECT_DIR$/src/mnist/test_784*1_base.py" afterPath="$PROJECT_DIR$/src/mnist/test_784*1_base.py" />
       <change beforePath="$PROJECT_DIR$/src/nmt/nmt/model.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/model.py" />
-      <change beforePath="$PROJECT_DIR$/src/nmt/run_bn.sh" afterPath="$PROJECT_DIR$/src/nmt/run_bn.sh" />
-      <change beforePath="$PROJECT_DIR$/src/normal_cells_2/lstm_bn_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_2/lstm_bn_sep.py" />
-      <change beforePath="$PROJECT_DIR$/src/normal_cells_2/lstm_cn_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_2/lstm_cn_sep.py" />
-      <change beforePath="$PROJECT_DIR$/src/normal_cells_2/lstm_ln_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_2/lstm_ln_sep.py" />
-      <change beforePath="$PROJECT_DIR$/src/normal_cells_2/lstm_pcc_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_2/lstm_pcc_sep.py" />
-      <change beforePath="$PROJECT_DIR$/src/normal_cells_2/lstm_wn_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_2/lstm_wn_sep.py" />
+      <change beforePath="$PROJECT_DIR$/src/nmt/nmt/model_helper.py" afterPath="$PROJECT_DIR$/src/nmt/nmt/model_helper.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2/__init__.py" afterPath="$PROJECT_DIR$/src/normal_cells/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2/lstm_basic.py" afterPath="$PROJECT_DIR$/src/normal_cells/lstm_basic.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2/lstm_bn_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_conb/lstm_bn_sep.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2/lstm_cn_norm_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells/lstm_cn_norm_sep.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2/lstm_cn_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_conb/lstm_cn_sep.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2/lstm_hid_cn.py" afterPath="$PROJECT_DIR$/src/normal_cells/lstm_hid_cn.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2/lstm_ln_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_conb/lstm_ln_sep.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2/lstm_pcc_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_conb/lstm_pcc_sep.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2/lstm_scale_cn.py" afterPath="$PROJECT_DIR$/src/normal_cells/lstm_scale_cn.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2/lstm_wn_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_conb/lstm_wn_sep.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2_backup/__init__.py" afterPath="$PROJECT_DIR$/src/normal_cells_conb/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2_backup/lstm_basic.py" afterPath="$PROJECT_DIR$/src/normal_cells_conb/lstm_basic.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2_backup/lstm_bn_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells/lstm_bn_sep.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2_backup/lstm_cn_norm_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_conb/lstm_cn_norm_sep.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2_backup/lstm_cn_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells/lstm_cn_sep.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2_backup/lstm_hid_cn.py" afterPath="$PROJECT_DIR$/src/normal_cells_conb/lstm_hid_cn.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2_backup/lstm_ln_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells/lstm_ln_sep.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2_backup/lstm_pcc_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells/lstm_pcc_sep.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2_backup/lstm_scale_cn.py" afterPath="$PROJECT_DIR$/src/normal_cells_conb/lstm_scale_cn.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_2_backup/lstm_wn_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells/lstm_wn_sep.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_refactor/__init__.py" afterPath="$PROJECT_DIR$/src/normal_cells_separate/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_refactor/lstm_basic.py" afterPath="$PROJECT_DIR$/src/normal_cells_separate/lstm_basic.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_refactor/lstm_cn_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_separate/lstm_cn_sep.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_refactor/lstm_hid_cn.py" afterPath="$PROJECT_DIR$/src/normal_cells_separate/lstm_hid_cn.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_refactor/lstm_ln_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_separate/lstm_ln_sep.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_refactor/lstm_pcc_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_separate/lstm_pcc_sep.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_refactor/lstm_scale_cn.py" afterPath="$PROJECT_DIR$/src/normal_cells_separate/lstm_scale_cn.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_refactor/lstm_wn_sep.py" afterPath="$PROJECT_DIR$/src/normal_cells_separate/lstm_wn_sep.py" />
+      <change beforePath="$PROJECT_DIR$/src/normal_cells_refactor/vanilla_norm_rnn_cell.py" afterPath="$PROJECT_DIR$/src/normal_cells_separate/vanilla_norm_rnn_cell.py" />
+      <change beforePath="$PROJECT_DIR$/src/ptb/ptb_word_lm.py" afterPath="$PROJECT_DIR$/src/ptb/ptb_word_lm.py" />
+      <change beforePath="$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py" afterPath="$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py" />
+      <change beforePath="$PROJECT_DIR$/src/vani_mnist/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/vani_mnist/run.sh" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/vani_mnist/test_784*1.py" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -52,85 +86,36 @@
       <file leaf-file-name="model_helper.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/nmt/nmt/model_helper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="108" column="56" lean-forward="false" selection-start-line="108" selection-start-column="42" selection-end-line="108" selection-end-column="56" />
+            <state relative-caret-position="180">
+              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="attention_model.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nmt/nmt/attention_model.py">
+      <file leaf-file-name="ptb_word_lm_base.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="81" column="27" lean-forward="true" selection-start-line="81" selection-start-column="27" selection-end-line="81" selection-end-column="27" />
+            <state relative-caret-position="402">
+              <caret line="65" column="17" lean-forward="false" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
+              <caret line="66" column="17" lean-forward="false" selection-start-line="66" selection-start-column="17" selection-end-line="66" selection-end-column="17" />
+              <caret line="67" column="17" lean-forward="false" selection-start-line="67" selection-start-column="17" selection-end-line="67" selection-end-column="17" />
+              <caret line="68" column="17" lean-forward="false" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="17" />
+              <caret line="69" column="17" lean-forward="false" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
+              <caret line="70" column="17" lean-forward="false" selection-start-line="70" selection-start-column="17" selection-end-line="70" selection-end-column="17" />
+              <caret line="71" column="17" lean-forward="false" selection-start-line="71" selection-start-column="17" selection-end-line="71" selection-end-column="17" />
+              <caret line="73" column="17" lean-forward="false" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
+              <caret line="74" column="17" lean-forward="false" selection-start-line="74" selection-start-column="17" selection-end-line="74" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="model.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/nmt/nmt/model.py">
+      <file leaf-file-name="ptb_word_lm.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ptb/ptb_word_lm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="332" column="0" lean-forward="true" selection-start-line="332" selection-start-column="0" selection-end-line="332" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="false" />
-                <element signature="e#743#781#0" expanded="true" />
-                <element signature="e#16064#18229#0" expanded="false" />
-                <element signature="e#18522#19938#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nmt.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nmt/nmt/nmt.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="61" column="70" lean-forward="true" selection-start-line="61" selection-start-column="70" selection-end-line="61" selection-end-column="70" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lstm_bn_sep.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_bn_sep.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="584">
-              <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="train.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nmt/nmt/train.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="150" column="0" lean-forward="true" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="iterator_utils.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nmt/nmt/utils/iterator_utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2655">
-              <caret line="177" column="0" lean-forward="true" selection-start-line="177" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
-              <folding>
-                <element signature="e#718#755#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="run_bn.sh" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nmt/run_bn.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state relative-caret-position="268">
+              <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -147,8 +132,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>gpu</find>
-      <find>bid</find>
       <find>AttentionWrapper</find>
       <find>search</find>
       <find>mtest</find>
@@ -177,6 +160,8 @@
       <find>rnn</find>
       <find>_build_decoder_cell</find>
       <find>embedding_decoder</find>
+      <find>forget</find>
+      <find>forge</find>
     </findStrings>
     <replaceStrings>
       <replace>lr</replace>
@@ -202,7 +187,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/char-rnn-tensorflow/seq2seq.py" />
         <option value="$PROJECT_DIR$/src/translate/seq2seq.py" />
         <option value="$PROJECT_DIR$/src/normal_vani_cells_refactor/lstm_basic.py" />
         <option value="$PROJECT_DIR$/src/normal_vani_cells_refactor/vanilla_norm_rnn_cell.py" />
@@ -223,22 +207,16 @@
         <option value="$PROJECT_DIR$/src/ptb/run.sh" />
         <option value="$PROJECT_DIR$/src/normal_cells_2/lstm_cn_norm_sep.py" />
         <option value="$PROJECT_DIR$/src/normal_cells_refactor/lstm_hid_cn.py" />
-        <option value="$PROJECT_DIR$/src/ptb/ptb_word_lm.py" />
         <option value="$PROJECT_DIR$/src/normal_cells_2/lstm_hid_cn.py" />
         <option value="$PROJECT_DIR$/src/draw/__init__.py" />
         <option value="/anaconda/lib/python3.5/site-packages/tensorflow/python/framework/ops.py" />
         <option value="$PROJECT_DIR$/src/draw/run.sh" />
         <option value="$PROJECT_DIR$/src/normal_cells_2/lstm_pcc_sep.py" />
-        <option value="$PROJECT_DIR$/src/nmt/nmt/model_helper.py" />
         <option value="$PROJECT_DIR$/src/nmt/nmt/inference.py" />
         <option value="$PROJECT_DIR$/src/nmt/nmt/gnmt_model.py" />
-        <option value="$PROJECT_DIR$/src/mnist/test_784*1.py" />
         <option value="$PROJECT_DIR$/src/normal_cells_refactor/lstm_cn_sep.py" />
         <option value="$PROJECT_DIR$/src/normal_cells_refactor/lstm_pcc_sep.py" />
         <option value="$PROJECT_DIR$/src/normal_cells_refactor/lstm_wn_sep.py" />
-        <option value="$PROJECT_DIR$/src/mnist/test_28*28.py" />
-        <option value="$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py" />
-        <option value="$PROJECT_DIR$/src/mnist/test_784*1_base.py" />
         <option value="$PROJECT_DIR$/src/draw/draw.py" />
         <option value="$PROJECT_DIR$/src/normal_cells_refactor/lstm_bn_sep.py" />
         <option value="$PROJECT_DIR$/src/nmt/nmt/train.py" />
@@ -251,8 +229,15 @@
         <option value="$PROJECT_DIR$/src/normal_cells_2/lstm_cn_sep.py" />
         <option value="$PROJECT_DIR$/src/normal_cells_2/lstm_ln_sep.py" />
         <option value="$PROJECT_DIR$/src/normal_cells_2/lstm_wn_sep.py" />
-        <option value="$PROJECT_DIR$/src/nmt/nmt/model.py" />
         <option value="$PROJECT_DIR$/src/nmt/nmt/attention_model.py" />
+        <option value="$PROJECT_DIR$/src/nmt/nmt/model.py" />
+        <option value="$PROJECT_DIR$/src/nmt/nmt/model_helper.py" />
+        <option value="$PROJECT_DIR$/src/char-rnn-tensorflow/model.py" />
+        <option value="$PROJECT_DIR$/src/mnist/test_784*1.py" />
+        <option value="$PROJECT_DIR$/src/mnist/test_28*28.py" />
+        <option value="$PROJECT_DIR$/src/mnist/test_784*1_base.py" />
+        <option value="$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py" />
+        <option value="$PROJECT_DIR$/src/ptb/ptb_word_lm.py" />
       </list>
     </option>
   </component>
@@ -262,11 +247,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="x" value="1280" />
-    <option name="y" value="49" />
-    <option name="width" value="1920" />
-    <option name="height" value="1178" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="18" />
+    <option name="width" value="1291" />
+    <option name="height" value="800" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -373,28 +357,7 @@
               <item name="lstm_normalizations" type="b2602c69:ProjectViewProjectNode" />
               <item name="lstm_normalizations" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="nmt" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lstm_normalizations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lstm_normalizations" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="nmt" type="462c0819:PsiDirectoryNode" />
-              <item name="nmt" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lstm_normalizations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lstm_normalizations" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="nmt" type="462c0819:PsiDirectoryNode" />
-              <item name="nmt" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lstm_normalizations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lstm_normalizations" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="normal_cells_2" type="462c0819:PsiDirectoryNode" />
+              <item name="ptb" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -410,6 +373,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="SearchEverywhereHistoryKey" value="git&#9;ACTION&#9;Git.Init" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/src/mnist/test_784*1_base.py" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -593,13 +557,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1509936427866</updated>
-    </task>
-    <task id="LOCAL-00034" summary="prepare nmt">
-      <created>1512728328788</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1512728328788</updated>
     </task>
     <task id="LOCAL-00035" summary="add nmt">
       <created>1512960654533</created>
@@ -937,7 +894,14 @@
       <option name="project" value="LOCAL" />
       <updated>1516867215155</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="improve  bn_sep in nmt">
+      <created>1517195072129</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1517195072130</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -961,19 +925,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="-250" width="1680" height="1050" extended-state="6" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32907802" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32753327" sideWeight="0.50915754" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2985348" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="0" y="0" width="370" height="850" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28249744" sideWeight="0.4908425" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265097" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2980614" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="0" y="0" width="370" height="850" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28249744" sideWeight="0.4908425" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32624114" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3265097" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37359264" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23870574" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24555735" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3285568" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32765958" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2045177" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40122825" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -984,7 +949,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3285568" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1035,7 +999,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="refactor ptb" />
     <MESSAGE value="fix ptb" />
     <MESSAGE value="add cells2 to mnist_base" />
     <MESSAGE value="refactor" />
@@ -1060,17 +1023,13 @@
     <MESSAGE value="try nmt benchmarks" />
     <MESSAGE value="fix bug" />
     <MESSAGE value="add cn and pcc for nmt" />
-    <option name="LAST_COMMIT_MESSAGE" value="add cn and pcc for nmt" />
+    <MESSAGE value="improve  bn_sep in nmt" />
+    <option name="LAST_COMMIT_MESSAGE" value="improve  bn_sep in nmt" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/ptb/ptb_word_lm.py</url>
-          <line>458</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/char-rnn-tensorflow/train.py</url>
           <line>151</line>
@@ -1102,22 +1061,17 @@
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/mnist/test_784*1.py</url>
-          <line>72</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/mnist/test_28*28.py</url>
           <line>74</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/normal_cells_2/lstm_cn_sep.py</url>
+          <url>file://$PROJECT_DIR$/src/normal_cells_conb/lstm_cn_sep.py</url>
           <line>102</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/normal_cells_2/lstm_cn_sep.py</url>
+          <url>file://$PROJECT_DIR$/src/normal_cells_conb/lstm_cn_sep.py</url>
           <line>53</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
@@ -1132,69 +1086,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ptb/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_refactor/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///anaconda/lib/python3.5/site-packages/tensorflow/python/ops/rnn_cell_impl.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="199" column="6" lean-forward="false" selection-start-line="199" selection-start-column="6" selection-end-line="199" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///anaconda/lib/python3.5/site-packages/tensorflow/python/layers/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="376" column="17" lean-forward="true" selection-start-line="376" selection-start-column="17" selection-end-line="376" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_refactor/lstm_hid_cn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/inference_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1254">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_hid_cn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/draw/plot_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="67" lean-forward="false" selection-start-line="1" selection-start-column="49" selection-end-line="1" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/draw/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///anaconda/lib/python3.5/site-packages/tensorflow/python/framework/ops.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
@@ -1209,7 +1100,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_pcc_sep.py">
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_conb/lstm_pcc_sep.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
           <caret line="56" column="76" lean-forward="false" selection-start-line="56" selection-start-column="76" selection-end-line="56" selection-end-column="76" />
@@ -1245,69 +1136,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mnist/test_784*1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_refactor/lstm_scale_cn.py">
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_separate/lstm_scale_cn.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-150">
           <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_refactor/lstm_wn_sep.py">
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_separate/lstm_wn_sep.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
           <caret line="170" column="35" lean-forward="true" selection-start-line="170" selection-start-column="35" selection-end-line="170" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_refactor/lstm_pcc_sep.py">
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_separate/lstm_pcc_sep.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="721">
           <caret line="181" column="16" lean-forward="false" selection-start-line="181" selection-start-column="16" selection-end-line="181" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mnist/test_28*28.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="209" column="0" lean-forward="false" selection-start-line="209" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ptb/ptb_word_lm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1543">
-          <caret line="48" column="25" lean-forward="true" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mnist/test_784*1_base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3090">
-          <caret line="212" column="0" lean-forward="false" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_refactor/lstm_cn_sep.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="753">
-          <caret line="173" column="0" lean-forward="true" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/normal_cells_refactor/lstm_bn_sep.py" />
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_cn_norm_sep.py">
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_conb/lstm_cn_norm_sep.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="922">
           <caret line="155" column="0" lean-forward="false" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
@@ -1328,7 +1179,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_refactor/lstm_ln_sep.py">
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_separate/lstm_ln_sep.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="39" column="33" lean-forward="false" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
@@ -1348,14 +1199,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/draw/draw.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-310">
-          <caret line="263" column="0" lean-forward="true" selection-start-line="263" selection-start-column="0" selection-end-line="263" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1381,106 +1224,249 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4065">
-          <caret line="276" column="59" lean-forward="false" selection-start-line="276" selection-start-column="55" selection-end-line="276" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_cn_sep.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="109" column="0" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_ln_sep.py">
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_conb/lstm_ln_sep.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="105" column="0" lean-forward="true" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_wn_sep.py">
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_conb/lstm_wn_sep.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="524">
           <caret line="125" column="0" lean-forward="true" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nmt/run_bn.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nmt/nmt/utils/iterator_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2655">
-          <caret line="177" column="0" lean-forward="true" selection-start-line="177" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
+        <state relative-caret-position="2595">
+          <caret line="177" column="0" lean-forward="false" selection-start-line="177" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
           <folding>
-            <element signature="e#718#755#0" expanded="true" />
+            <element signature="e#718#755#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/model_helper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="108" column="56" lean-forward="false" selection-start-line="108" selection-start-column="42" selection-end-line="108" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/nmt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="61" column="70" lean-forward="true" selection-start-line="61" selection-start-column="70" selection-end-line="61" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="150" column="0" lean-forward="true" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/normal_cells_2/lstm_bn_sep.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="584">
-          <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nmt/nmt/attention_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="81" column="27" lean-forward="true" selection-start-line="81" selection-start-column="27" selection-end-line="81" selection-end-column="27" />
+        <state relative-caret-position="1110">
+          <caret line="81" column="27" lean-forward="false" selection-start-line="81" selection-start-column="27" selection-end-line="81" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SECOND">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/vani_mnist/test_784*1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2717">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_separate/lstm_cn_sep.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="96" column="53" lean-forward="true" selection-start-line="96" selection-start-column="53" selection-end-line="96" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/normal_cells/lstm_bn_sep.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="114" column="95" lean-forward="true" selection-start-line="114" selection-start-column="95" selection-end-line="114" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_conb/lstm_cn_sep.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-358">
+          <caret line="65" column="8" lean-forward="true" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/char-rnn-tensorflow/run.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/draw/draw.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="644">
+          <caret line="263" column="0" lean-forward="true" selection-start-line="263" selection-start-column="0" selection-end-line="263" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nmt/nmt/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="332" column="0" lean-forward="true" selection-start-line="332" selection-start-column="0" selection-end-line="332" selection-end-column="0" />
+        <state relative-caret-position="-2957">
+          <caret line="379" column="20" lean-forward="false" selection-start-line="379" selection-start-column="20" selection-end-line="379" selection-end-column="20" />
           <folding>
             <element signature="n#!!doc" expanded="false" />
             <element signature="e#743#781#0" expanded="true" />
-            <element signature="e#16064#18229#0" expanded="false" />
-            <element signature="e#18522#19938#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/normal_cells/lstm_cn_sep.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="25" lean-forward="true" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_last/lstm_cn_sep.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1338">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/normal_cells/lstm_ln_sep.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-816">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/nmt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2214">
+          <caret line="158" column="33" lean-forward="false" selection-start-line="158" selection-start-column="27" selection-end-line="158" selection-end-column="33" />
+          <folding>
+            <element signature="e#721#758#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/normal_cells/lstm_wn_sep.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="99" column="39" lean-forward="true" selection-start-line="99" selection-start-column="39" selection-end-line="99" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2250">
+          <caret line="150" column="0" lean-forward="false" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
+          <folding>
+            <element signature="e#708#745#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/normal_cells_conb/lstm_bn_sep.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="55" column="38" lean-forward="false" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/char-rnn-tensorflow/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mnist/test_28*28.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mnist/test_784*1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mnist/test_784*1_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nmt/nmt/model_helper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ptb/ptb_word_lm_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="65" column="17" lean-forward="false" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
+          <caret line="66" column="17" lean-forward="false" selection-start-line="66" selection-start-column="17" selection-end-line="66" selection-end-column="17" />
+          <caret line="67" column="17" lean-forward="false" selection-start-line="67" selection-start-column="17" selection-end-line="67" selection-end-column="17" />
+          <caret line="68" column="17" lean-forward="false" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="17" />
+          <caret line="69" column="17" lean-forward="false" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
+          <caret line="70" column="17" lean-forward="false" selection-start-line="70" selection-start-column="17" selection-end-line="70" selection-end-column="17" />
+          <caret line="71" column="17" lean-forward="false" selection-start-line="71" selection-start-column="17" selection-end-line="71" selection-end-column="17" />
+          <caret line="73" column="17" lean-forward="false" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
+          <caret line="74" column="17" lean-forward="false" selection-start-line="74" selection-start-column="17" selection-end-line="74" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ptb/ptb_word_lm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
