@@ -150,15 +150,6 @@ def train(args):
                 start = time.time()
                 x, y = data_loader.next_batch()
                 feed = {model.input_data: x, model.targets: y}
-                # if args.model != 'bn_sep':
-                #     for i, (c, h) in enumerate(model.initial_state):
-                #         feed[c] = state[i].c
-                #         feed[h] = state[i].h
-                # else:
-                #     for i, (c, h, step) in enumerate(model.initial_state):
-                #         feed[c] = state[i][0]
-                #         feed[h] = state[i][1]
-                #         feed[step] = state[i][2]
 
                 # instrument for tensorboard
                 summ, train_loss, state, _ = sess.run(

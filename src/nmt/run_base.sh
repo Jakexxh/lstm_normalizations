@@ -33,7 +33,7 @@ python -m nmt.nmt \
     --grain=0.0 \
     --start_decay_step=8000 \
     --decay_steps=1000 \
-    --decay_facto=0.5 \
+    --decay_factor=0.5 \
     --num_train_steps=12000 \
     --steps_per_stats=100 \
     --num_layers=2 \
