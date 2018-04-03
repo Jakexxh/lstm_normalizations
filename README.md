@@ -23,7 +23,7 @@ norm(h_{t-1} ,W_{h})  \ +  \ norm(x_{t}, W_{x})
 \\
 new\_c = (c * \sigma(f + bias) + \sigma(i) * \tanh(j))
 \\
-(new\_c = batch\_norm(new\_c) \  or  \ layer\_norm (new\_c))
+(new\_c = batch\_norm(new\_c) \  /  \ layer\_norm (new\_c))
 \\
 new\_h = \tanh(new\_c) * \sigma(o)
 $$
@@ -43,7 +43,7 @@ norm(\begin{bmatrix} h_{t-1} ,\  x_{t} \end{bmatrix}, W)
 \\
 new\_c = (c * \sigma(f + bias) + \sigma(i) * \tanh(j))
 \\
-(new\_c = batch\_norm(new\_c) \  or  \ layer\_norm (new\_c))
+(new\_c = batch\_norm(new\_c) \  /  \ layer\_norm (new\_c))
 \\
 new\_h = \tanh(new\_c) * \sigma(o)
 $$
@@ -61,7 +61,7 @@ i \ f \ g \ o
 \\
 new\_c = (c * \sigma(f + bias) + \sigma(i) * \tanh(j))
 \\
-(new\_c = batch\_norm(new\_c) \  or  \ layer\_norm (new\_c))
+(new\_c = batch\_norm(new\_c) \  /  \ layer\_norm (new\_c))
 \\
 new\_h = \tanh(new\_c) * \sigma(o)
 $$
@@ -102,7 +102,7 @@ python test_784*1.py --cell=base --log_dir=/tmp/logs/ --g=0.5 --lr=0.001
 
 #### 1.4 Results
 
-##### #normal_cells:
+##### #normal_cells
 
 | Rank | Normal | Scale | lr   | Accuracy    |
 | ---- | ------ | ----- | ---- | ----------- |
@@ -110,7 +110,7 @@ python test_784*1.py --cell=base --log_dir=/tmp/logs/ --g=0.5 --lr=0.001
 | 2    | cn     | 1.0   | 0.01 | 0.97796     |
 | 3    | base   | 0.0   | 0.01 | 0.651671875 |
 
-##### #normal_cells_separate:
+##### #normal_cells_separate
 
 | Rank | Normal | Scale | lr   | Accuracy     |
 | ---- | ------ | ----- | ---- | ------------ |
@@ -144,7 +144,7 @@ python ptb_word_lm.py --lr=1.0 --g=5.0 --rnn_mode=cn_sep --num_gpus=1 \
 
 #### 2.4 Results - small model
 
-##### #normal_cells:
+##### #normal_cells
 
 | Rank | Normal | lr   | Scale | ppl           |
 | ---- | ------ | ---- | ----- | ------------- |
@@ -155,7 +155,7 @@ python ptb_word_lm.py --lr=1.0 --g=5.0 --rnn_mode=cn_sep --num_gpus=1 \
 | 5    | bn     | 1.0  | 1.0   | 129.818630436 |
 | 6    | ln     | 1.0  | 1.0   | 130           |
 
-##### #normal_cells_separate:
+##### #normal_cells_separate
 
 cn 效果依然最好，结果与上述类似
 
@@ -283,4 +283,12 @@ python -m nmt.nmt \
 2. Batch Normalization:
 
 
-   因为在Batch Normalization在测试时需要用到 population mean 和 population var，所以在Batch Normalization初始化state时，除了 h 和 c ，还有step来标记当前的time step。具体请看代码。
+- 因为在Batch Normalization在测试时需要用到 population mean 和 population var，所以在Batch Normalization初始化state时，除了 h 和 c ，还有step来标记当前的time step。具体请看代码。
+- 因为Batch Normalization的规范化算法是纵向的，所以理论上它在normal_cells上的效果应该和在其余两个cells的效果一样，所以就没有进行试验。
+
+3. Initializer:
+
+- RNN 中 Weights 的initializer 全部等于变量 *weights_initializer*，默认值为None。 [生成方式](https://stackoverflow.com/questions/37350131/what-is-the-default-variable-initializer-in-tensorflow)
+
+
+- Normalization 中scale 变量的initialer全部为*truncated_normal_initializer*。
