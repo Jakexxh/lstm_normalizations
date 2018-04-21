@@ -98,18 +98,13 @@ def _line_sep(args,
     scope = vs.get_variable_scope()
     with vs.variable_scope(scope) as outer_scope:
 
-        [x, h] = args
-        x_size = x.get_shape().as_list()[1]
-        W_xh = tf.get_variable(
-            'W_xh', [x_size, output_size], initializer=weights_initializer
-        )
-        W_hh = tf.get_variable(
-            'W_hh', [int(output_size / 4), output_size], initializer=weights_initializer
-	)
-        cn_xh = tf.matmul(x, W_xh)  # one hot vector
-        cn_hh = tf.matmul(h, W_hh)
-        res = cn_xh + cn_hh
-
+		[x, h] = args
+		input = tf.concat([x, h], 1)
+		x_size = input.get_shape().as_list()[1]
+		W_xh = tf.get_variable(
+			'W_xh', [x_size, output_size], initializer=weights_initializer
+			)
+		res = tf.matmul(input,W_xh)
         if not bias:
             return res
         with vs.variable_scope(outer_scope) as inner_scope:

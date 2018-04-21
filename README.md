@@ -93,6 +93,10 @@ g         #grain, the initial_scale of weight of noramlization
 该项目的每个数据是一个28\*28的数字手写体图片。在数据预处理中图片被转换成784\*1的向量，所以LSTM一共有784个timestep即LSTM的每次输入都是图片集的单个向量(大小为：batch size * 1)
 
 - 在转换成784\*1的向量时，可以尝试固定的随机置换索引方式转换即permuted MNIST。 本项目还未进行尝试。
+- 参考
+  - https://github.com/OlavHN/bnlstm (有瑕疵)
+  - https://gist.github.com/spitis/27ab7d2a30bbaf5ef431b4a02194ac60
+
 
 #### 1.3 Run
 
@@ -121,7 +125,7 @@ python test_784*1.py --cell=base --log_dir=/tmp/logs/ --g=0.5 --lr=0.001
 
 None
 
-
+#### 
 
 ### 2. PTB
 
@@ -217,6 +221,8 @@ python train.py --model=base --lr=0.001  \
 
 ##### Small Data:
 
+Train: 133K examples, vocab=vocab.(vi|en), train=train.(vi|en) dev=tst2012.(vi|en), test=tst2013.(vi|en), [download script](https://github.com/tensorflow/nmt/blob/master/nmt/scripts/download_iwslt15.sh).
+
 Training details: We train 2-layer LSTMs of 512 units with bidirectional encoder (i.e., 1 bidirectional layers for the encoder), embedding dim is 512. LuongAttention (scale=True) is used together with dropout keep_prob of 0.8. All parameters are uniformly. We use SGD with learning rate 1.0 as follows: train for 12K steps (~ 12 epochs); after 8K steps, we start halving learning rate every 1K step.
 
 ```bash
@@ -242,8 +248,33 @@ python -m nmt.nmt \
 
 ##### Medium Data:
 
+Train: 4.5M examples, vocab=vocab.bpe.32000.(de|en),train=train.tok.clean.bpe.32000.(de|en), dev=newstest2013.tok.bpe.32000.(de|en),test=newstest2015.tok.bpe.32000.(de|en),[download script](https://github.com/tensorflow/nmt/blob/master/nmt/scripts/wmt16_en_de.sh)
+
+**Training details**. Our training hyperparameters are similar to theEnglish-Vietnamese experiments except for the following details. The data issplit into subword units using [BPE](https://github.com/rsennrich/subword-nmt)(32K operations). We train 4-layer LSTMs of 1024 units with bidirectionalencoder (i.e., 2 bidirectional layers for the encoder), embedding dimis 1024. We train for 350K steps (~ 10 epochs); after 170K steps, we start halving learning rate every 17K step. But, dopout is 0.0, and forget_bias is 0.0.
+
 ```bash
-...
+python -m nmt.nmt \
+    --unit_type=base \
+    --encoder_type=bi \
+    --attention=scaled_luong \
+    --src=de --tgt=en \
+    --vocab_prefix=../../data/nmt_data_large/wmt16_de_en/vocab.bpe.32000  \
+    --train_prefix=../../data/nmt_data_large/wmt16_de_en/train.tok.clean.bpe.32000 \
+    --dev_prefix=../../data/nmt_data_large/wmt16_de_en/newstest2013.tok.bpe.32000  \
+    --test_prefix=../../data/nmt_data_large/wmt16_de_en/newstest2015.tok.bpe.32000 \
+    --out_dir=$HOME/log/nmt_attention_model_large\
+    --learning_rate=1.0 \
+    --grain=1.0 \
+    --start_decay_step=170000 \
+    --decay_steps=17000 \
+    --decay_factor=0.5 \
+    --num_train_steps=350000 \
+    --steps_per_stats=100 \
+    --num_layers=4 \
+    --num_units=1024 \
+    --dropout=0.0 \
+    --forget_bias=0.0 \
+    --metrics=bleu
 ```
 
 
@@ -261,7 +292,6 @@ python -m nmt.nmt \
 | 3    | ln     | 1.0   | 1.0  | 5.486             |
 | 4    | wn     | 1.0   | 1.0  | 5.272             |
 | 5    | base   | 0.0   | 1.0  | 4.625/5.177/4.898 |
-|      |        |       |      |                   |
 
 ###### #normal_cells_separate:
 
@@ -274,7 +304,18 @@ python -m nmt.nmt \
 
 ##### 4.4.1 Medium Data:
 
+###### #normal_cells_separate:
 
+| Rank | Normal | Scale | lr   | bleu test |
+| ---- | ------ | ----- | ---- | --------- |
+| 1    | wn     | 1.0   | 1.0  | 30.7      |
+| 2    | pcc    | 5.0   | 1.0  | 30.5      |
+| 3    | cn     | 5.0   | 1.0  | 30.3      |
+| 4    | ln     | 1.0   | 1.0  | 30.2      |
+| 5    | base   | 0.0   | 1.0  | 27.6      |
+| 6    | bn     | 1.0   | 1.0  | 崩溃      |
+
+##### 
 
 ## Other
 
@@ -292,3 +333,4 @@ python -m nmt.nmt \
 
 
 - Normalization 中scale 变量的initialer全部为*truncated_normal_initializer*。
+

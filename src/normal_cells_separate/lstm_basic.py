@@ -97,21 +97,34 @@ def _line_sep(args,
     # Now the computation.
     scope = vs.get_variable_scope()
     with vs.variable_scope(scope) as outer_scope:
-
         [x, h] = args
+
         x_size = x.get_shape().as_list()[1]
         W_xh = tf.get_variable(
-            'W_xh', [x_size, output_size], initializer=weights_initializer
-	)
-        W_hh = tf.get_variable(
-            'W_hh', [int(output_size / 4), output_size], initializer=weights_initializer
-	)
-        cn_xh = tf.matmul(x, W_xh)  # one hot vector
-        cn_hh = tf.matmul(h, W_hh)
-        res = cn_xh + cn_hh
+            'W_xh', [x_size, h_size * 4], initializer=weights_initializer
+           )
+        W_ih = tf.get_variable(
+            'W_ih', [h_size, h_size], initializer=weights_initializer
+            )
+        W_jh = tf.get_variable(
+            'W_jh', [h_size, h_size], initializer=weights_initializer
+            )
+        W_fh = tf.get_variable(
+            'W_fh', [h_size, h_size], initializer=weights_initializer
+            )
+        W_oh = tf.get_variable(
+            'W_oh', [h_size, h_size], initializer=weights_initializer
+            )
+
+        xh = tf.matmul(x, W_xh)
+
+        ih = tf.matmul(h, W_ih) + cn_xh[:, :h_size]
+        jh = tf.matmul(h, W_jh) + cn_xh[:, h_size:h_size * 2]
+        fh = tf.matmul(h, W_fh) + cn_xh[:, h_size * 2:h_size * 3]
+        oh = tf.matmul(h, W_oh) + cn_xh[:, h_size * 3:]
 
         if not bias:
-            return res
+            return ih, jh, fh, oh
         with vs.variable_scope(outer_scope) as inner_scope:
             inner_scope.set_partitioner(None)
             if bias_initializer is None:
