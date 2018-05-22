@@ -6,71 +6,47 @@ Xiaohe Xue
 
 
 
-## Form of Normalizations
+## 1 Form of Normalizations
 
 
 
-### 1. normal_cells
+### 1.1 normal_cells
 
-$$
-\begin{bmatrix}
-i \ f \ g \ o
-\end{bmatrix}
-=
+**base, cosine normalization, weight normalization:**
 
-norm(h_{t-1} ,W_{h})  \ +  \ norm(x_{t}, W_{x})
+![](https://ws3.sinaimg.cn/large/006tKfTcly1frk0fbnbk3j30c104ijrr.jpg)
 
-\\
-new\_c = (c * \sigma(f + bias) + \sigma(i) * \tanh(j))
-\\
-(new\_c = batch\_norm(new\_c) \  /  \ layer\_norm (new\_c))
-\\
-new\_h = \tanh(new\_c) * \sigma(o)
-$$
+**batch normalization, layer normalization:**
+
+![](https://ws3.sinaimg.cn/large/006tKfTcly1frk0gweuybj30dv02j3yp.jpg)
 
 
 
-### 2. normal_cells_conb
+### 1.2 normal_cells_conb
 
-$$
-\begin{bmatrix}
-i \ f \ g \ o
-\end{bmatrix}
-=
+**base, cosine normalization, weight normalization:**
 
-norm(\begin{bmatrix} h_{t-1} ,\  x_{t} \end{bmatrix}, W)
+![](https://ws2.sinaimg.cn/large/006tKfTcly1frk0jd79d3j30bi04e74k.jpg)
 
-\\
-new\_c = (c * \sigma(f + bias) + \sigma(i) * \tanh(j))
-\\
-(new\_c = batch\_norm(new\_c) \  /  \ layer\_norm (new\_c))
-\\
-new\_h = \tanh(new\_c) * \sigma(o)
-$$
+**batch normalization, layer normalization:**
 
-### 3. normal_cells_separate
+![](https://ws4.sinaimg.cn/large/006tKfTcly1frk0jji40uj30d002s74h.jpg)
 
-$$
-\begin{bmatrix}
-i \ f \ g \ o
-\end{bmatrix}
-=
+### 1.3 normal_cells_separate
 
-[norm( h_{t-1},  w_{ih}) ,\  norm( h_{t-1},  w_{fh}) ,\  norm( h_{t-1},  w_{gh}), \  norm( h_{t-1},  w_{oh})] + \ norm(x_{t}, W_{x})
+**base, cosine normalization, weight normalization:**
 
-\\
-new\_c = (c * \sigma(f + bias) + \sigma(i) * \tanh(j))
-\\
-(new\_c = batch\_norm(new\_c) \  /  \ layer\_norm (new\_c))
-\\
-new\_h = \tanh(new\_c) * \sigma(o)
-$$
+![](https://ws3.sinaimg.cn/large/006tKfTcly1frk0hr8dl9j30rb02bglz.jpg)
+
+**batch normalization, layer normalization:**
+
+![](https://ws4.sinaimg.cn/large/006tKfTcly1frk0i4ofsij30l205fq3q.jpg)
 
 
 
-## Models
+## 2 Models
 
-### 0. General Arguments
+### General Arguments
 
 ```bash
 rnn_mode/cell/model  # cells
@@ -84,13 +60,21 @@ rnn_mode/cell/model  # cells
 lr 		  #Learning rate
 g         #grain, the initial_scale of weight of noramlization
 ```
+经多次实验验证，由于规范化算法会让神经网络对learning rate敏感度降低，在每个模型中不同规范化算法使用的最优learning rate 都是趋于一个很小的阈值，所以在最终的实验比较中，每个模型中不同规范化算法使用的learning rate 是统一的。
+
+不同变量初始化的方法会使神经网络的效果变化，经过多次实验验证使用用Identity 和Orthogonal初始化方法等，得到不同规范化算法之间的平行差异和效果并没有由此变化，所以最终三个实验报告中所有规范化算法中权重变量的初始化方法都是统一的，最终选择的是TensorFlow中的默认生成方式——Xavier Normal initializer。 
+
+Normalization 中scale 变量的initializer全部为*truncated_normal_initializer*。
+
 ### 1. Sequential MNIST
 
 #### 1.1 [Data - MNIST](http://yann.lecun.com/exdb/mnist/)
 
 #### 1.2 Introduction
 
-该项目的每个数据是一个28\*28的数字手写体图片。在数据预处理中图片被转换成784\*1的向量，所以LSTM一共有784个timestep即LSTM的每次输入都是图片集的单个向量(大小为：batch size * 1)
+神经网络的的输入是将图片转换成1*784的向量，每个time step是一个像素块。实际上，这种向量化和输入方式大大的增加了模型训练的难度，因为每次输入的值内容过于简单，循环神经网络在训练过程中很难收集可依赖的信息，正是因为这种困难延长的神经网络训练的时间，在做规范化对比试验时能更好观察分析它们的训练情况。 
+
+LSTM中每批数据为128个；梯度下降选择Adam算法，初始learning rate 为0.01；LSTM的cell 和hidden state 大小为128，初始化方式为标准差为0.1的随机Norm分布；LSTM中权重变量按默认方式生成，其余权重变量选择随机Orthogonal方式；每单次试验，训练模型15000次即结束；所有规范化初始scale值选择1.0；当计算神经网络的中每个输出的损失时，该实验选择交叉熵。在所列的结果中，所有Base模型的训练结果都很差，这是因为其训练次数太少，达到理想的情况至少需要训练20000次，由于单次训练成本太高，而且15000次内足以看出所有规范化训练的情况，所以没有选择继续训练。 
 
 - 在转换成784\*1的向量时，可以尝试固定的随机置换索引方式转换即permuted MNIST。 本项目还未进行尝试。
 - 参考
@@ -101,31 +85,46 @@ g         #grain, the initial_scale of weight of noramlization
 #### 1.3 Run
 
 ```bash
-python test_784*1.py --cell=base --log_dir=/tmp/logs/ --g=0.5 --lr=0.001
+python test_784*1.py --cell=base --log_dir=./logs/ --g=0.5 --lr=0.001
 ```
 
 #### 1.4 Results
 
 ##### #normal_cells
 
-| Rank | Normal | Scale | lr   | Accuracy    |
-| ---- | ------ | ----- | ---- | ----------- |
-| 1    | wn     | 1.0   | 0.01 | 0.98203125  |
-| 2    | cn     | 1.0   | 0.01 | 0.97796     |
-| 3    | base   | 0.0   | 0.01 | 0.651671875 |
+| Rank | Normal               | Acc         | Loss        |
+| ---- | -------------------- | ----------- | ----------- |
+| 1    | Weight Normalization | 0.98165     | 0.06123     |
+| 2    | Cosine Normalization | **0.97978** | **0.06319** |
+| 3    | PCC Normalization    | **0.97915** | **0.06218** |
+| 4    | Layer Normalization  | 0.96226     | 0.10989     |
+| 5    | Batch Normalization  | 0.18503     | 2.28426     |
+| 6    | Base                 | 0.10071     | 2.34336     |
 
 ##### #normal_cells_separate
 
-| Rank | Normal | Scale | lr   | Accuracy     |
-| ---- | ------ | ----- | ---- | ------------ |
-| 1    | wn     | 1.0   | 0.01 | 0.9814609375 |
-| 2    | cn     | 1.0   | 0.01 | 0.9811328125 |
+| Rank | Normal               | Acc         | Loss        |
+| ---- | -------------------- | ----------- | ----------- |
+| 1    | Weight Normalization | 0.98200     | 0.05438     |
+| 2    | Cosine Normalization | **0.98089** | **0.06101** |
+| 3    | PCC Normalization    | **0.97553** | **0.07571** |
+| 4    | Base                 | 0.10250     | 2.31774     |
+| 5    | Batch Normalization  | 0.09789     | 2.32820     |
+| 6    | Layer Normalization  | 0.09736     | 2.30080     |
 
-##### normal_cells_separate
 
-None
+##### #normal_cells_conb
 
-#### 
+| Rank | Normal               | Acc         | Loss        |
+| ---- | -------------------- | ----------- | ----------- |
+| 1    | Layer Normalization  | 0.97235     | 0.09181     |
+| 2    | Cosine Normalization | **0.87246** | **0.34002** |
+| 3    | PCC Normalization    | **0.11350** | **2.29953** |
+| 4    | Weight Normalization | 0.10264     | 2.30098     |
+| 5    | Base                 | 0.10189     | 2.33089     |
+| 6    | Batch Normalization  | 0.10189     | 2.34810     |
+
+
 
 ### 2. PTB
 
@@ -137,11 +136,13 @@ Download: [simple-examples](http://www.fit.vutbr.cz/~imikolov/rnnlm/simple-examp
 
 [RNN TensorFlow](https://www.tensorflow.org/tutorials/recurrent)
 
+LSTM中每批数据为20个，使用截断反向传播，每个截断长20个time step；梯度下降方式为保持1.0的learning rate 直到第4次Epoch，之后每次Epoch 减半learning rate的数值，同时对变量的梯度具体见代码所示；LSTM的cell 和hidden state 大小为200，全部初始化为零，LSTM中权重变量按默认方式生成，其余变量按照上界0.1，下界-0.1的随机Norm分布生成；所有规范化初始scale值选择1.0。 
+
 #### 2.3 Run
 
 ```bash
 python ptb_word_lm.py --lr=1.0 --g=5.0 --rnn_mode=cn_sep --num_gpus=1 \
---save_path=$HOME/log/ptb_cob
+--save_path=./log/ptb_cob
 ```
 
 
@@ -150,18 +151,36 @@ python ptb_word_lm.py --lr=1.0 --g=5.0 --rnn_mode=cn_sep --num_gpus=1 \
 
 ##### #normal_cells
 
-| Rank | Normal | lr   | Scale | ppl           |
-| ---- | ------ | ---- | ----- | ------------- |
-| 1    | cn     | 1.0  | 5.0   | 107.70843414  |
-| 2    | pcc    | 1.0  | 5.0   | 108.879889268 |
-| 3    | wn     | 1.0  | 1.0   | 115.074287843 |
-| 4    | base   | 1.0  | 0.0   | 117.544       |
-| 5    | bn     | 1.0  | 1.0   | 129.818630436 |
-| 6    | ln     | 1.0  | 1.0   | 130           |
+| Normalization        |   Train | Valid   | Test        |
+| -------------------- | ------: | ------- | ----------- |
+| PCC Normalization    |  43.269 | 115.349 | **108.647** |
+| Cosine Normalization |  43.789 | 114.863 | **108.710** |
+| Weight Normalization |  45.193 | 118.892 | 113.786     |
+| Base                 |  47.946 | 121.160 | 116.031     |
+| Batch Normalization  |  41.104 | 132.828 | 126.505     |
+| Layer Normalization  | 110.360 | 160.186 | 149.163     |
 
 ##### #normal_cells_separate
 
-cn 效果依然最好，结果与上述类似
+| Normalization        | Train  | Valid   | Test        |
+| -------------------- | ------ | ------- | ----------- |
+| PCC Normalization    | 42.738 | 114.488 | **108.398** |
+| Cosine Normalization | 43.532 | 113.341 | **107.973** |
+| Base                 | 41.610 | 120.849 | 114.936     |
+| Weight Normalization | 43.915 | 121.311 | 115.206     |
+| Batch Normalization  | 56.819 | 129.550 | 124.410     |
+| Layer Normalization  | 60.453 | 134.189 | 126.715     |
+
+##### #normal_cells_conb
+
+| Normalization        | Train  | Valid   | Test        |
+| -------------------- | ------ | ------- | ----------- |
+| Cosine Normalization | 50.236 | 110.437 | **104.357** |
+| PCC Normalization    | 50.209 | 110.561 | **104.431** |
+| Weight Normalization | 45.983 | 121.774 | 116.431     |
+| Base                 | 45.755 | 121.856 | 116.750     |
+| Layer Normalization  | 60.450 | 129.629 | 122.976     |
+| Batch Normalization  | 56.819 | 129.550 | 124.410     |
 
 ### 3. DRAW
 
@@ -185,7 +204,7 @@ python train.py --model=base --lr=0.001  \
 
 #### 3.4 Results
 
-##### #normal_cells:
+##### #normal_cells
 
 | Rank | Normal | Scale | lr         | cost          |
 | ---- | ------ | ----- | ---------- | ------------- |
@@ -196,7 +215,7 @@ python train.py --model=base --lr=0.001  \
 | 5    | base   | 0.0   | 0.01/0.001 | 120           |
 | 6    | cn     | 5.0   | 0.001      | 123.905787323 |
 
-##### #normal_cells_separate:
+##### #normal_cells_separate
 
 | Rank | Normal | Scale | lr    | cost          |
 | ---- | ------ | ----- | ----- | ------------- |
@@ -221,9 +240,9 @@ python train.py --model=base --lr=0.001  \
 
 ##### Small Data:
 
-Train: 133K examples, vocab=vocab.(vi|en), train=train.(vi|en) dev=tst2012.(vi|en), test=tst2013.(vi|en), [download script](https://github.com/tensorflow/nmt/blob/master/nmt/scripts/download_iwslt15.sh).
+data: 133K examples, vocab=vocab.(vi|en), train=train.(vi|en) dev=tst2012.(vi|en), test=tst2013.(vi|en), [download script](https://github.com/tensorflow/nmt/blob/master/nmt/scripts/download_iwslt15.sh).
 
-Training details: We train 2-layer LSTMs of 512 units with bidirectional encoder (i.e., 1 bidirectional layers for the encoder), embedding dim is 512. LuongAttention (scale=True) is used together with dropout keep_prob of 0.8. All parameters are uniformly. We use SGD with learning rate 1.0 as follows: train for 12K steps (~ 12 epochs); after 8K steps, we start halving learning rate every 1K step.
+双层LSTM, batch size是128，每次实验训练12000次神经网络；梯度下降方式选择SGD，learning rate为1.0；LSTM内cell和hidden state大小为128；dropout率为0.8；余弦规范化初始scale值选择5.0其余为1.0 
 
 ```bash
 python -m nmt.nmt \
@@ -248,9 +267,9 @@ python -m nmt.nmt \
 
 ##### Medium Data:
 
-Train: 4.5M examples, vocab=vocab.bpe.32000.(de|en),train=train.tok.clean.bpe.32000.(de|en), dev=newstest2013.tok.bpe.32000.(de|en),test=newstest2015.tok.bpe.32000.(de|en),[download script](https://github.com/tensorflow/nmt/blob/master/nmt/scripts/wmt16_en_de.sh)
+data: 4.5M examples, vocab=vocab.bpe.32000.(de|en),train=train.tok.clean.bpe.32000.(de|en), dev=newstest2013.tok.bpe.32000.(de|en),test=newstest2015.tok.bpe.32000.(de|en),[download script](https://github.com/tensorflow/nmt/blob/master/nmt/scripts/wmt16_en_de.sh)
 
-**Training details**. Our training hyperparameters are similar to theEnglish-Vietnamese experiments except for the following details. The data issplit into subword units using [BPE](https://github.com/rsennrich/subword-nmt)(32K operations). We train 4-layer LSTMs of 1024 units with bidirectionalencoder (i.e., 2 bidirectional layers for the encoder), embedding dimis 1024. We train for 350K steps (~ 10 epochs); after 170K steps, we start halving learning rate every 17K step. But, dopout is 0.0, and forget_bias is 0.0.
+本模型增加神经网络网络层数为四层，将Encoder变为双向循环神经网络，本模型使用的是Scaled Luong Attention[32]。batch size是1024，每次实验训练350K次神经网络；梯度下降方式选择SGD，learning rate为1.0，但是在训练170K次后没17K次learning rate 减半；LSTM内cell和hidden state大小为1024；不进行dropout；余弦规范化初始scale值选择5.0其余为1.0。 
 
 ```bash
 python -m nmt.nmt \
@@ -283,17 +302,18 @@ python -m nmt.nmt \
 
 ##### 4.4.1 Small Data:
 
-###### #normal_cells:
+##### #normal_cells
 
 | Rank | Normal | Scale | lr   | bleu test         |
 | ---- | ------ | ----- | ---- | ----------------- |
 | 1    | cn     | 5.0   | 1.0  | 6.115/5.719       |
-| 2    | pcc    | 5.0   | 1.0  | 5.838             |
-| 3    | ln     | 1.0   | 1.0  | 5.486             |
-| 4    | wn     | 1.0   | 1.0  | 5.272             |
-| 5    | base   | 0.0   | 1.0  | 4.625/5.177/4.898 |
+| 2    | bn     | 1.0   | 1.0  | 6.0               |
+| 3    | pcc    | 5.0   | 1.0  | 5.838             |
+| 4    | ln     | 1.0   | 1.0  | 5.486             |
+| 5    | wn     | 1.0   | 1.0  | 5.272             |
+| 6    | base   | 0.0   | 1.0  | 4.625/5.177/4.898 |
 
-###### #normal_cells_separate:
+##### #normal_cells_separate
 
 | Rank     | Normal | Scale | lr   | bleu test |
 | -------- | ------ | ----- | ---- | --------- |
@@ -302,9 +322,11 @@ python -m nmt.nmt \
 | 3        | wn     | 1.0   | 1.0  | 5.559     |
 | 没有效果 | ln     | /     | /    | 0.7       |
 
+
+
 ##### 4.4.1 Medium Data:
 
-###### #normal_cells_separate:
+##### #normal_cells_separate
 
 | Rank | Normal | Scale | lr   | bleu test |
 | ---- | ------ | ----- | ---- | --------- |
@@ -319,18 +341,11 @@ python -m nmt.nmt \
 
 ## Other
 
-1. Cosine Normalization does not well on all vanilla LSTM model
+1. Cosine Normalization 在vanilla LSTM上没有太大效果
 
 2. Batch Normalization:
 
 
 - 因为在Batch Normalization在测试时需要用到 population mean 和 population var，所以在Batch Normalization初始化state时，除了 h 和 c ，还有step来标记当前的time step。具体请看代码。
 - 因为Batch Normalization的规范化算法是纵向的，所以理论上它在normal_cells上的效果应该和在其余两个cells的效果一样，所以就没有进行试验。
-
-3. Initializer:
-
-- RNN 中 Weights 的initializer 全部等于变量 *weights_initializer*，默认值为None。 [生成方式](https://stackoverflow.com/questions/37350131/what-is-the-default-variable-initializer-in-tensorflow)
-
-
-- Normalization 中scale 变量的initialer全部为*truncated_normal_initializer*。
 
