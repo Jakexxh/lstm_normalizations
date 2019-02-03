@@ -4,7 +4,7 @@ Xiaohe Xue
 
 **该实验是基于LSTM的Normalization算法的比较实验**
 
-**分别有 Cosin, Weight, Layer, Batch Normalization**
+**分别有 Cosine, PCC(Cosine的去中心化),Weight, Layer, Batch Normalization**
 
 _本实验中代码格式和注释还有待改善和重构，望见谅_
 
