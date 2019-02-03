@@ -79,7 +79,7 @@ Normalization 中scale 变量的initializer全部为*truncated_normal_initialize
 LSTM中每批数据为128个；梯度下降选择Adam算法，初始learning rate 为0.01；LSTM的cell 和hidden state 大小为128，初始化方式为标准差为0.1的随机Norm分布；LSTM中权重变量按默认方式生成，其余权重变量选择随机Orthogonal方式；每单次试验，训练模型15000次即结束；所有规范化初始scale值选择1.0；当计算神经网络的中每个输出的损失时，该实验选择交叉熵。在所列的结果中，所有Base模型的训练结果都很差，这是因为其训练次数太少，达到理想的情况至少需要训练20000次，由于单次训练成本太高，而且15000次内足以看出所有规范化训练的情况，所以没有选择继续训练。 
 
 - 在转换成784\*1的向量时，可以尝试固定的随机置换索引方式转换即permuted MNIST。 本项目还未进行尝试。
-- 参考
+- 参考，prototype
   - https://github.com/OlavHN/bnlstm (有瑕疵)
   - https://gist.github.com/spitis/27ab7d2a30bbaf5ef431b4a02194ac60
 
@@ -136,7 +136,7 @@ Download: [simple-examples](http://www.fit.vutbr.cz/~imikolov/rnnlm/simple-examp
 
 #### 2.2 Introduction
 
-[RNN TensorFlow](https://www.tensorflow.org/tutorials/recurrent)
+Prototype: [RNN TensorFlow](https://www.tensorflow.org/tutorials/recurrent)
 
 LSTM中每批数据为20个，使用截断反向传播，每个截断长20个time step；梯度下降方式为保持1.0的learning rate 直到第4次Epoch，之后每次Epoch 减半learning rate的数值，同时对变量的梯度具体见代码所示；LSTM的cell 和hidden state 大小为200，全部初始化为零，LSTM中权重变量按默认方式生成，其余变量按照上界0.1，下界-0.1的随机Norm分布生成；所有规范化初始scale值选择1.0。 
 
@@ -190,6 +190,8 @@ python ptb_word_lm.py --lr=1.0 --g=5.0 --rnn_mode=cn_sep --num_gpus=1 \
 
 #### 3.2 Introduction
 
+Prototype:
+
 [char-rnn-tensorflow](https://github.com/sherjilozair/char-rnn-tensorflow)
 
 [char-rnn](https://github.com/sherjilozair/char-rnn-tensorflow)
@@ -235,6 +237,7 @@ python train.py --model=base --lr=0.001  \
 
 
 #### 4.2 Introduction
+Prototype:
 
 [Neural Machine Translation (seq2seq) Tutorial](https://github.com/tensorflow/nmt)
 
