@@ -8,7 +8,7 @@ Xiaohe Xue
 
 _本实验中代码格式和注释还有待改善和重构，望见谅_
 
-## 1 Form of Normalizations
+## 1. Form of Normalizations
 
 本实验提出了3种Normalization嵌入LSTM的方式。
 
@@ -49,9 +49,9 @@ _本实验中代码格式和注释还有待改善和重构，望见谅_
 
 
 
-## 2 Models
+## 2. Models
 
-### General Arguments
+### 2.05 General Arguments
 
 ```bash
 rnn_mode/cell/model  # cells
@@ -71,11 +71,11 @@ g         #grain, the initial_scale of weight of noramlization
 
 Normalization 中scale 变量的initializer全部为*truncated_normal_initializer*。
 
-### 1. Sequential MNIST
+### 2.1 Sequential MNIST
 
-#### 1.1 [Data - MNIST](http://yann.lecun.com/exdb/mnist/)
+#### 2.1.1 [Data - MNIST](http://yann.lecun.com/exdb/mnist/)
 
-#### 1.2 Introduction
+#### 2.1.2 Introduction
 
 神经网络的的输入是将图片转换成1*784的向量，每个time step是一个像素块。实际上，这种向量化和输入方式大大的增加了模型训练的难度，因为每次输入的值内容过于简单，循环神经网络在训练过程中很难收集可依赖的信息，正是因为这种困难延长的神经网络训练的时间，在做规范化对比试验时能更好观察分析它们的训练情况。 
 
@@ -87,13 +87,13 @@ LSTM中每批数据为128个；梯度下降选择Adam算法，初始learning rat
   - https://gist.github.com/spitis/27ab7d2a30bbaf5ef431b4a02194ac60
 
 
-#### 1.3 Run
+#### 2.1.3 Run
 
 ```bash
 python test_784*1.py --cell=base --log_dir=./logs/ --g=0.5 --lr=0.001
 ```
 
-#### 1.4 Results
+#### 2.1.4 Results
 
 ##### #normal_cells
 
@@ -131,19 +131,19 @@ python test_784*1.py --cell=base --log_dir=./logs/ --g=0.5 --lr=0.001
 
 
 
-### 2. PTB
+### 2.2 PTB
 
-#### 2.1 [Data - PTB](http://www.fit.vutbr.cz/~imikolov/rnnlm/)
+#### 2.2.1 [Data - PTB](http://www.fit.vutbr.cz/~imikolov/rnnlm/)
 
 Download: [simple-examples](http://www.fit.vutbr.cz/~imikolov/rnnlm/simple-examples.tgz)
 
-#### 2.2 Introduction
+#### 2.2.2 Introduction
 
 Prototype: [RNN TensorFlow](https://www.tensorflow.org/tutorials/recurrent)
 
 LSTM中每批数据为20个，使用截断反向传播，每个截断长20个time step；梯度下降方式为保持1.0的learning rate 直到第4次Epoch，之后每次Epoch 减半learning rate的数值，同时对变量的梯度具体见代码所示；LSTM的cell 和hidden state 大小为200，全部初始化为零，LSTM中权重变量按默认方式生成，其余变量按照上界0.1，下界-0.1的随机Norm分布生成；所有规范化初始scale值选择1.0。 
 
-#### 2.3 Run
+#### 2.2.3 Run
 
 ```bash
 python ptb_word_lm.py --lr=1.0 --g=5.0 --rnn_mode=cn_sep --num_gpus=1 \
@@ -152,7 +152,7 @@ python ptb_word_lm.py --lr=1.0 --g=5.0 --rnn_mode=cn_sep --num_gpus=1 \
 
 
 
-#### 2.4 Results - small model
+#### 2.2.4 Results - small model
 
 ##### #normal_cells
 
@@ -187,11 +187,11 @@ python ptb_word_lm.py --lr=1.0 --g=5.0 --rnn_mode=cn_sep --num_gpus=1 \
 | Layer Normalization  | 60.450 | 129.629 | 122.976     |
 | Batch Normalization  | 56.819 | 129.550 | 124.410     |
 
-### 3. DRAW
+### 2.3 DRAW
 
-#### 3.1 [Data - MNIST](http://yann.lecun.com/exdb/mnist/)
+#### 2.3.1 [Data - MNIST](http://yann.lecun.com/exdb/mnist/)
 
-#### 3.2 Introduction
+#### 2.3.2 Introduction
 
 Prototype:
 
@@ -201,7 +201,7 @@ Prototype:
 
 [The Unreasonable Effectiveness of Recurrent Neural Networks](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)
 
-#### 3.3 Run
+#### 2.3.3 Run
 
 ```bash
 python train.py --model=base --lr=0.001  \
@@ -209,7 +209,7 @@ python train.py --model=base --lr=0.001  \
 --log_dir=/tmp/char_seq100_refactor/log/base_0.001
 ```
 
-#### 3.4 Results
+#### 2.3.4 Results
 
 ##### #normal_cells
 
@@ -231,20 +231,20 @@ python train.py --model=base --lr=0.001  \
 | 3    | wn     | 1.0   | 0.001 | 111.994892326 |
 | 4    | pcc    | 5.0   | 0.001 | 116.779598183 |
 
-### 4. NMT
+### 2.4 NMT
 
-#### 4.1 [Data - Neural Machine Translation](https://nlp.stanford.edu/projects/nmt/)
+#### 2.4.1 [Data - Neural Machine Translation](https://nlp.stanford.edu/projects/nmt/)
 
 - IWSLT'15 English-Vietnamese data **[Small]**
 - WMT'14 English-German data **[Medium]**
 
 
-#### 4.2 Introduction
+#### 2.4.2 Introduction
 Prototype:
 
 [Neural Machine Translation (seq2seq) Tutorial](https://github.com/tensorflow/nmt)
 
-#### 4.3 Run
+#### 2.4.3 Run
 
 ##### Small Data:
 
@@ -306,9 +306,9 @@ python -m nmt.nmt \
 
 
 
-#### 4.4 Result
+#### 2.4.4 Result
 
-##### 4.4.1 Small Data:
+##### 2.4.4.1 Small Data:
 
 ##### #normal_cells
 
@@ -332,7 +332,7 @@ python -m nmt.nmt \
 
 
 
-##### 4.4.1 Medium Data:
+##### 2.4.4.2 Medium Data:
 
 ##### #normal_cells_separate
 
