@@ -1,4 +1,4 @@
-# LSTM_NORMALIZATIONS
+# LSTM NORMALIZATIONS
 
 Xiaohe Xue
 
@@ -6,10 +6,13 @@ Xiaohe Xue
 
 **分别有 Cosin, Weight, Layer, Batch Normalization**
 
-
+_本实验中代码格式和注释还有待改善和重构，望见谅_
 
 ## 1 Form of Normalizations
 
+本实验提出了3种Normalization嵌入LSTM的方式。
+
+3 kinds of mode are proposed in my experiment for normalizations to be embedded in LSTM.
 
 
 ### 1.1 normal_cells
