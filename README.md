@@ -2,7 +2,8 @@
 
 Xiaohe Xue
 
-[TOC]
+**该实验是基于LSTM的Normalization算法的比较实验**
+**分别有 Cosin, Weight, Layer, Batch Normalization**
 
 
 
